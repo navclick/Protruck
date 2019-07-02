@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="67ec3b83-6c36-45ce-89f2-66dcadc629d9" ChangeDateTime="06/21/2019 11:39:30">
+    <Property Name="ElementName" Value="[dbo].[Users].[EmailC]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Users]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EmailConfirmed" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3a1e16b9-e091-46f5-9509-a1ea94910ead" ChangeDateTime="06/21/2019 11:52:00">
+    <Property Name="ElementName" Value="[dbo].[ExanaduCompanies].[Expairy]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ExanaduCompanies]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ExpiryDate" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="78b09d61-c183-434e-a6cd-abb63ef1e7d5" ChangeDateTime="06/21/2019 12:10:17">
+    <Property Name="ElementName" Value="[dbo].[Modules].[Contr]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Modules]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Controller" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="da29891f-0cea-4a03-b7f4-6ca6a21bfb7e" ChangeDateTime="06/21/2019 12:20:07">
+    <Property Name="ElementName" Value="[dbo].[Users].[EcomID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Users]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RoleID" />
+  </Operation>
+</Operations>

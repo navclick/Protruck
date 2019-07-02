@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="43249996d528479ba426f6618b28da21" Name="Diagram1">
+        <EntityTypeShape EntityType="ProTruckModel.C__RefactorLog" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProTruckModel.ExanaduCompany" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProTruckModel.LinkRoleMenu" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProTruckModel.Menu" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProTruckModel.Module" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProTruckModel.Role" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="ProTruckModel.FK_Roles_ExanaduCompanies" ManuallyRouted="false" />
+        <AssociationConnector Association="ProTruckModel.FK_LinkRoleMenus_Menus" ManuallyRouted="false" />
+        <AssociationConnector Association="ProTruckModel.FK_LinkRoleMenus_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="ProTruckModel.FK_Menus_Modules" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ProTruckModel.User" Width="1.5" PointX="3" PointY="4.625" />
+        <AssociationConnector Association="ProTruckModel.FK_Users_ExanaduCompanies" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

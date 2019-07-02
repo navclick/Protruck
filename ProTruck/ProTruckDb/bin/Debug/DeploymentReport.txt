@@ -1,0 +1,27 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [ProTrukRepo] (Assembly)
+       [dbo].[ExanaduCompanies] (Table)
+       [dbo].[LinkRoleMenus] (Table)
+       [dbo].[Menus] (Table)
+       [dbo].[Modules] (Table)
+       [dbo].[Roles] (Table)
+       [dbo].[Users] (Table)
+       [dbo].[FK_LinkRoleMenus_Roles] (Foreign Key)
+       [dbo].[FK_LinkRoleMenus_Menus] (Foreign Key)
+       [dbo].[FK_Menus_Modules] (Foreign Key)
+       [dbo].[FK_Roles_ExanaduCompanies] (Foreign Key)
+       [dbo].[FK_Roles_Users] (Foreign Key)
+       [dbo].[FK_Users_ExanaduCompanies] (Foreign Key)
+
+** Supporting actions

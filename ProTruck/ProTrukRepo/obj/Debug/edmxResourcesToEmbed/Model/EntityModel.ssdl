@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProTruckModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__RefactorLog">
+    <Key>
+      <PropertyRef Name="OperationKey" />
+    </Key>
+    <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ExanaduCompanies">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientName" Type="nvarchar" MaxLength="500" />
+    <Property Name="ClientEmail" Type="nchar" MaxLength="100" />
+    <Property Name="ClientContactPeson" Type="nchar" MaxLength="100" />
+    <Property Name="ClientContactNumber" Type="nchar" MaxLength="100" />
+    <Property Name="ClientAddress" Type="nchar" MaxLength="200" />
+    <Property Name="StartDate" Type="date" />
+    <Property Name="ExpiryDate" Type="date" />
+  </EntityType>
+  <EntityType Name="LinkRoleMenus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleID" Type="int" />
+    <Property Name="MenuID" Type="int" />
+  </EntityType>
+  <EntityType Name="Menus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="100" />
+    <Property Name="Controller" Type="nchar" MaxLength="100" />
+    <Property Name="Action" Type="nchar" MaxLength="100" />
+    <Property Name="Icon" Type="nchar" MaxLength="200" />
+    <Property Name="IsActive" Type="nchar" MaxLength="10" />
+    <Property Name="ModuleID" Type="int" />
+  </EntityType>
+  <EntityType Name="Modules">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="200" />
+    <Property Name="Controller" Type="nchar" MaxLength="100" />
+    <Property Name="Action" Type="nchar" MaxLength="100" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="Icon" Type="nchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Role" Type="nchar" MaxLength="100" />
+    <Property Name="Desc" Type="nchar" MaxLength="500" />
+    <Property Name="CreatedOn" Type="date" />
+    <Property Name="EcomID" Type="int" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="nchar" MaxLength="100" />
+    <Property Name="Email" Type="nchar" MaxLength="100" />
+    <Property Name="Password" Type="nvarchar(max)" />
+    <Property Name="Phone" Type="nchar" MaxLength="100" />
+    <Property Name="EmailVeringCode" Type="nvarchar(max)" />
+    <Property Name="EmailConfirmed" Type="bit" />
+    <Property Name="AccountStatus" Type="int" />
+    <Property Name="CreatedOn" Type="nchar" MaxLength="10" />
+    <Property Name="RoleID" Type="int" />
+    <Property Name="EcomID" Type="int" Nullable="false" />
+    <Property Name="Picture" Type="nchar" MaxLength="200" />
+  </EntityType>
+  <Association Name="FK_LinkRoleMenus_Menus">
+    <End Role="Menus" Type="Self.Menus" Multiplicity="0..1" />
+    <End Role="LinkRoleMenus" Type="Self.LinkRoleMenus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LinkRoleMenus">
+        <PropertyRef Name="MenuID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LinkRoleMenus_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+    <End Role="LinkRoleMenus" Type="Self.LinkRoleMenus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LinkRoleMenus">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Menus_Modules">
+    <End Role="Modules" Type="Self.Modules" Multiplicity="0..1" />
+    <End Role="Menus" Type="Self.Menus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Modules">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Menus">
+        <PropertyRef Name="ModuleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Roles_ExanaduCompanies">
+    <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="0..1" />
+    <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompanies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Roles">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_ExanaduCompanies">
+    <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompanies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProTruckModelStoreContainer">
+    <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExanaduCompanies" EntityType="Self.ExanaduCompanies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LinkRoleMenus" EntityType="Self.LinkRoleMenus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Modules" EntityType="Self.Modules" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_LinkRoleMenus_Menus" Association="Self.FK_LinkRoleMenus_Menus">
+      <End Role="Menus" EntitySet="Menus" />
+      <End Role="LinkRoleMenus" EntitySet="LinkRoleMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LinkRoleMenus_Roles" Association="Self.FK_LinkRoleMenus_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="LinkRoleMenus" EntitySet="LinkRoleMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Menus_Modules" Association="Self.FK_Menus_Modules">
+      <End Role="Modules" EntitySet="Modules" />
+      <End Role="Menus" EntitySet="Menus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Roles_ExanaduCompanies" Association="Self.FK_Roles_ExanaduCompanies">
+      <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
+      <End Role="Roles" EntitySet="Roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_ExanaduCompanies" Association="Self.FK_Users_ExanaduCompanies">
+      <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

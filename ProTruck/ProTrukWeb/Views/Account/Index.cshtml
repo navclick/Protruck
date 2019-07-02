@@ -1,0 +1,281 @@
+﻿@model IEnumerable<ProTrukRepo.ViewModels.UserVM>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render("~/Content/datatable")
+<div id="main">
+    <div class="row">
+        <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
+        <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper"></div>
+        <div class="col s12">
+            <div class="container">
+                <div class="section section-data-tables">
+                    <!-- Page Length Options -->
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <h4 class="card-title">User's</h4>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <table id="page-length-option" class="display">
+                                                <thead>
+                                                    <tr>
+                                                        <th>User</th>
+                                                        <th>ID</th>
+                                                        <th>Full Name</th>
+                                                        <th>Email</th>
+                                                        <th>Phone</th>
+                                                        <th>Account Status</th>
+                                                        <th>Role</th>
+                                                        <th>Created On</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
+                                                        <td>1345</td>
+                                                        <td>Muhammad Aslam</td>
+                                                        <td>aslam@aolapperal.com</td>
+                                                        <td>0333-1234567</td>
+                                                        <td>2011/04/25</td>
+                                                        <td>Administrator</td>
+                                                        <td>26-12-2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
+                                                        <td>1345</td>
+                                                        <td>Muhammad Aslam</td>
+                                                        <td>aslam@aolapperal.com</td>
+                                                        <td>0333-1234567</td>
+                                                        <td>2011/04/25</td>
+                                                        <td>Administrator</td>
+                                                        <td>26-12-2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
+                                                        <td>1345</td>
+                                                        <td>Muhammad Aslam</td>
+                                                        <td>aslam@aolapperal.com</td>
+                                                        <td>0333-1234567</td>
+                                                        <td>2011/04/25</td>
+                                                        <td>Administrator</td>
+                                                        <td>26-12-2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
+                                                        <td>1345</td>
+                                                        <td>Muhammad Aslam</td>
+                                                        <td>aslam@aolapperal.com</td>
+                                                        <td>0333-1234567</td>
+                                                        <td>2011/04/25</td>
+                                                        <td>Administrator</td>
+                                                        <td>26-12-2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
+                                                        <td>1345</td>
+                                                        <td>Muhammad Aslam</td>
+                                                        <td>aslam@aolapperal.com</td>
+                                                        <td>0333-1234567</td>
+                                                        <td>2011/04/25</td>
+                                                        <td>Administrator</td>
+                                                        <td>26-12-2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
+                                                        <td>1345</td>
+                                                        <td>Muhammad Aslam</td>
+                                                        <td>aslam@aolapperal.com</td>
+                                                        <td>0333-1234567</td>
+                                                        <td>2011/04/25</td>
+                                                        <td>Administrator</td>
+                                                        <td>26-12-2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
+                                                        <td>1345</td>
+                                                        <td>Muhammad Aslam</td>
+                                                        <td>aslam@aolapperal.com</td>
+                                                        <td>0333-1234567</td>
+                                                        <td>2011/04/25</td>
+                                                        <td>Administrator</td>
+                                                        <td>26-12-2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
+                                                        <td>1345</td>
+                                                        <td>Muhammad Aslam</td>
+                                                        <td>aslam@aolapperal.com</td>
+                                                        <td>0333-1234567</td>
+                                                        <td>2011/04/25</td>
+                                                        <td>Administrator</td>
+                                                        <td>26-12-2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
+                                                        <td>1345</td>
+                                                        <td>Muhammad Aslam</td>
+                                                        <td>aslam@aolapperal.com</td>
+                                                        <td>0333-1234567</td>
+                                                        <td>2011/04/25</td>
+                                                        <td>Administrator</td>
+                                                        <td>26-12-2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
+                                                        <td>1345</td>
+                                                        <td>Muhammad Aslam</td>
+                                                        <td>aslam@aolapperal.com</td>
+                                                        <td>0333-1234567</td>
+                                                        <td>2011/04/25</td>
+                                                        <td>Administrator</td>
+                                                        <td>26-12-2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
+                                                        <td>1345</td>
+                                                        <td>Muhammad Aslam</td>
+                                                        <td>aslam@aolapperal.com</td>
+                                                        <td>0333-1234567</td>
+                                                        <td>2011/04/25</td>
+                                                        <td>Administrator</td>
+                                                        <td>26-12-2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
+                                                        <td>1345</td>
+                                                        <td>Muhammad Aslam</td>
+                                                        <td>aslam@aolapperal.com</td>
+                                                        <td>0333-1234567</td>
+                                                        <td>2011/04/25</td>
+                                                        <td>Administrator</td>
+                                                        <td>26-12-2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
+                                                        <td>1345</td>
+                                                        <td>Muhammad Aslam</td>
+                                                        <td>aslam@aolapperal.com</td>
+                                                        <td>0333-1234567</td>
+                                                        <td>2011/04/25</td>
+                                                        <td>Administrator</td>
+                                                        <td>26-12-2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
+                                                        <td>1345</td>
+                                                        <td>Muhammad Aslam</td>
+                                                        <td>aslam@aolapperal.com</td>
+                                                        <td>0333-1234567</td>
+                                                        <td>2011/04/25</td>
+                                                        <td>Administrator</td>
+                                                        <td>26-12-2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
+                                                        <td>1345</td>
+                                                        <td>Muhammad Aslam</td>
+                                                        <td>aslam@aolapperal.com</td>
+                                                        <td>0333-1234567</td>
+                                                        <td>2011/04/25</td>
+                                                        <td>Administrator</td>
+                                                        <td>26-12-2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
+                                                        <td>1345</td>
+                                                        <td>Muhammad Aslam</td>
+                                                        <td>aslam@aolapperal.com</td>
+                                                        <td>0333-1234567</td>
+                                                        <td>2011/04/25</td>
+                                                        <td>Administrator</td>
+                                                        <td>26-12-2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
+                                                        <td>1345</td>
+                                                        <td>Muhammad Aslam</td>
+                                                        <td>aslam@aolapperal.com</td>
+                                                        <td>0333-1234567</td>
+                                                        <td>2011/04/25</td>
+                                                        <td>Administrator</td>
+                                                        <td>26-12-2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
+                                                        <td>1345</td>
+                                                        <td>Muhammad Aslam</td>
+                                                        <td>aslam@aolapperal.com</td>
+                                                        <td>0333-1234567</td>
+                                                        <td>2011/04/25</td>
+                                                        <td>Administrator</td>
+                                                        <td>26-12-2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
+                                                        <td>1345</td>
+                                                        <td>Muhammad Aslam</td>
+                                                        <td>aslam@aolapperal.com</td>
+                                                        <td>0333-1234567</td>
+                                                        <td>2011/04/25</td>
+                                                        <td>Administrator</td>
+                                                        <td>26-12-2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
+                                                        <td>1345</td>
+                                                        <td>Muhammad Aslam</td>
+                                                        <td>aslam@aolapperal.com</td>
+                                                        <td>0333-1234567</td>
+                                                        <td>2011/04/25</td>
+                                                        <td>Administrator</td>
+                                                        <td>26-12-2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
+                                                        <td>1345</td>
+                                                        <td>Muhammad Aslam</td>
+                                                        <td>aslam@aolapperal.com</td>
+                                                        <td>0333-1234567</td>
+                                                        <td>2011/04/25</td>
+                                                        <td>Administrator</td>
+                                                        <td>26-12-2019</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
+                                                        <td>1345</td>
+                                                        <td>Muhammad Aslam</td>
+                                                        <td>aslam@aolapperal.com</td>
+                                                        <td>0333-1234567</td>
+                                                        <td>2011/04/25</td>
+                                                        <td>Administrator</td>
+                                                        <td>26-12-2019</td>
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>User</th>
+                                                        <th>ID</th>
+                                                        <th>Full Name</th>
+                                                        <th>Email</th>
+                                                        <th>Phone</th>
+                                                        <th>Account Status</th>
+                                                        <th>Role</th>
+                                                        <th>Created On</th>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

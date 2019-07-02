@@ -1,0 +1,20 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The column [dbo].[Roles].[CreatedBy] is being dropped, data loss could occur.
+
+** User actions
+     Drop
+       [dbo].[FK_Roles_Users] (Foreign Key)
+     Alter
+       [dbo].[Roles] (Table)
+
+** Supporting actions
+
+The column [dbo].[Roles].[CreatedBy] is being dropped, data loss could occur.
+

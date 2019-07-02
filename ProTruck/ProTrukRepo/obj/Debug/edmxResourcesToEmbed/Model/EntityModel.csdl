@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProTruckModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="C__RefactorLog">
+    <Key>
+      <PropertyRef Name="OperationKey" />
+    </Key>
+    <Property Name="OperationKey" Type="Guid" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ExanaduCompany">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ClientEmail" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="ClientContactPeson" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="ClientContactNumber" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="ClientAddress" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Precision="0" />
+    <Property Name="ExpiryDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Roles" Relationship="Self.FK_Roles_ExanaduCompanies" FromRole="ExanaduCompanies" ToRole="Roles" />
+    <NavigationProperty Name="Users" Relationship="ProTruckModel.FK_Users_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="User" />
+  </EntityType>
+  <EntityType Name="LinkRoleMenu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleID" Type="Int32" />
+    <Property Name="MenuID" Type="Int32" />
+    <NavigationProperty Name="Menu" Relationship="Self.FK_LinkRoleMenus_Menus" FromRole="LinkRoleMenus" ToRole="Menus" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_LinkRoleMenus_Roles" FromRole="LinkRoleMenus" ToRole="Roles" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="Controller" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="Action" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="Icon" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="IsActive" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ModuleID" Type="Int32" />
+    <NavigationProperty Name="LinkRoleMenus" Relationship="Self.FK_LinkRoleMenus_Menus" FromRole="Menus" ToRole="LinkRoleMenus" />
+    <NavigationProperty Name="Module" Relationship="Self.FK_Menus_Modules" FromRole="Menus" ToRole="Modules" />
+  </EntityType>
+  <EntityType Name="Module">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="Controller" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="Action" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="Icon" Type="String" MaxLength="300" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Menus" Relationship="Self.FK_Menus_Modules" FromRole="Modules" ToRole="Menus" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Role1" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="Desc" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="0" />
+    <Property Name="EcomID" Type="Int32" />
+    <NavigationProperty Name="ExanaduCompany" Relationship="Self.FK_Roles_ExanaduCompanies" FromRole="Roles" ToRole="ExanaduCompanies" />
+    <NavigationProperty Name="LinkRoleMenus" Relationship="Self.FK_LinkRoleMenus_Roles" FromRole="Roles" ToRole="LinkRoleMenus" />
+  </EntityType>
+  <Association Name="FK_Roles_ExanaduCompanies">
+    <End Role="ExanaduCompanies" Type="Self.ExanaduCompany" Multiplicity="0..1" />
+    <End Role="Roles" Type="Self.Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompanies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Roles">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LinkRoleMenus_Menus">
+    <End Role="Menus" Type="Self.Menu" Multiplicity="0..1" />
+    <End Role="LinkRoleMenus" Type="Self.LinkRoleMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LinkRoleMenus">
+        <PropertyRef Name="MenuID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LinkRoleMenus_Roles">
+    <End Role="Roles" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="LinkRoleMenus" Type="Self.LinkRoleMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LinkRoleMenus">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Menus_Modules">
+    <End Role="Modules" Type="Self.Module" Multiplicity="0..1" />
+    <End Role="Menus" Type="Self.Menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Modules">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Menus">
+        <PropertyRef Name="ModuleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProTruckEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__RefactorLog" EntityType="Self.C__RefactorLog" />
+    <EntitySet Name="ExanaduCompanies" EntityType="Self.ExanaduCompany" />
+    <EntitySet Name="LinkRoleMenus" EntityType="Self.LinkRoleMenu" />
+    <EntitySet Name="Menus" EntityType="Self.Menu" />
+    <EntitySet Name="Modules" EntityType="Self.Module" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <AssociationSet Name="FK_Roles_ExanaduCompanies" Association="Self.FK_Roles_ExanaduCompanies">
+      <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
+      <End Role="Roles" EntitySet="Roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LinkRoleMenus_Menus" Association="Self.FK_LinkRoleMenus_Menus">
+      <End Role="Menus" EntitySet="Menus" />
+      <End Role="LinkRoleMenus" EntitySet="LinkRoleMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LinkRoleMenus_Roles" Association="Self.FK_LinkRoleMenus_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="LinkRoleMenus" EntitySet="LinkRoleMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Menus_Modules" Association="Self.FK_Menus_Modules">
+      <End Role="Modules" EntitySet="Modules" />
+      <End Role="Menus" EntitySet="Menus" />
+    </AssociationSet>
+    <EntitySet Name="Users" EntityType="ProTruckModel.User" />
+    <AssociationSet Name="FK_Users_ExanaduCompanies" Association="ProTruckModel.FK_Users_ExanaduCompanies">
+      <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="EmailVeringCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" />
+    <Property Name="AccountStatus" Type="Int32" />
+    <Property Name="CreatedOn" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="RoleID" Type="Int32" />
+    <Property Name="EcomID" Type="Int32" Nullable="false" />
+    <Property Name="Picture" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Users_ExanaduCompanies" FromRole="User" ToRole="ExanaduCompany" />
+  </EntityType>
+  <Association Name="FK_Users_ExanaduCompanies">
+    <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="1" />
+    <End Type="ProTruckModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompany">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
