@@ -24,7 +24,8 @@ namespace ProTrukWeb
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/vendors/vendors.min.css",
+              
+                "~/Content/vendors/vendors.min.css",
                       "~/Content/vendors/animate-css/animate.css",
                       "~/Content/vendors/chartist-js/chartist.min.css",
                       "~/Content/vendors/vendors/chartist-js/chartist-plugin-tooltip.css",
@@ -54,7 +55,7 @@ namespace ProTrukWeb
                    ));
 
             bundles.Add(new ScriptBundle("~/bundles/themejs").Include(
-                        "~/Content/js/vendors.min.js",
+                       "~/Content/js/vendors.min.js",
                         "~/Content/vendors/chartist-js/chartist.min.js",
                         "~/Content/vendors/chartist-js/chartist-plugin-tooltip.js",
                         "~/Content/vendors/chartist-js/chartist-plugin-fill-donut.min.js",
@@ -72,6 +73,10 @@ namespace ProTrukWeb
                         
                         ));
 
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                      "~/Scripts/jquery-3.4.1.min.js",
+                       "~/Scripts/angular.min.js"
+                       ));
 
 
         }

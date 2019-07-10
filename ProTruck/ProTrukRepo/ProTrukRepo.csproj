@@ -107,6 +107,7 @@
     <Compile Include="Util\StringUtil.cs" />
     <Compile Include="ViewModels\MenuVM.cs" />
     <Compile Include="ViewModels\ModuleVM.cs" />
+    <Compile Include="ViewModels\RolesVM.cs" />
     <Compile Include="ViewModels\UserVM.cs" />
   </ItemGroup>
   <ItemGroup>

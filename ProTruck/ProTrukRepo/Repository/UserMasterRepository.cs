@@ -21,7 +21,7 @@ namespace ProTrukRepo.Repository
             AutoMapper.Mapper.Reset();
             Mapper.Initialize(cfg =>
             {
-                cfg.CreateMap<User, UserVM>();
+                cfg.CreateMap<User, UserVM>().ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role.Role1.Trim())); ;
                 cfg.CreateMap<Module, ModuleVM>();
             
         });

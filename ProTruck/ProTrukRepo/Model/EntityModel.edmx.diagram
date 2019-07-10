@@ -10,13 +10,14 @@
         <EntityTypeShape EntityType="ProTruckModel.LinkRoleMenu" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ProTruckModel.Menu" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
         <EntityTypeShape EntityType="ProTruckModel.Module" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProTruckModel.Role" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <AssociationConnector Association="ProTruckModel.FK_Roles_ExanaduCompanies" ManuallyRouted="false" />
         <AssociationConnector Association="ProTruckModel.FK_LinkRoleMenus_Menus" ManuallyRouted="false" />
-        <AssociationConnector Association="ProTruckModel.FK_LinkRoleMenus_Roles" ManuallyRouted="false" />
         <AssociationConnector Association="ProTruckModel.FK_Menus_Modules" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="ProTruckModel.User" Width="1.5" PointX="3" PointY="4.625" />
+        <EntityTypeShape EntityType="ProTruckModel.Role" Width="1.5" PointX="3" PointY="3.125" />
+        <EntityTypeShape EntityType="ProTruckModel.User" Width="1.5" PointX="8.25" PointY="2.5" />
+        <AssociationConnector Association="ProTruckModel.FK_Roles_ExanaduCompanies" />
         <AssociationConnector Association="ProTruckModel.FK_Users_ExanaduCompanies" />
+        <AssociationConnector Association="ProTruckModel.FK_LinkRoleMenus_Roles" />
+        <AssociationConnector Association="ProTruckModel.FK_Users_Roles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -18,7 +18,7 @@
     <Property Name="ClientAddress" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
     <Property Name="StartDate" Type="DateTime" Precision="0" />
     <Property Name="ExpiryDate" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="Roles" Relationship="Self.FK_Roles_ExanaduCompanies" FromRole="ExanaduCompanies" ToRole="Roles" />
+    <NavigationProperty Name="Roles" Relationship="ProTruckModel.FK_Roles_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Role" />
     <NavigationProperty Name="Users" Relationship="ProTruckModel.FK_Users_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="User" />
   </EntityType>
   <EntityType Name="LinkRoleMenu">
@@ -29,7 +29,7 @@
     <Property Name="RoleID" Type="Int32" />
     <Property Name="MenuID" Type="Int32" />
     <NavigationProperty Name="Menu" Relationship="Self.FK_LinkRoleMenus_Menus" FromRole="LinkRoleMenus" ToRole="Menus" />
-    <NavigationProperty Name="Role" Relationship="Self.FK_LinkRoleMenus_Roles" FromRole="LinkRoleMenus" ToRole="Roles" />
+    <NavigationProperty Name="Role" Relationship="ProTruckModel.FK_LinkRoleMenus_Roles" FromRole="LinkRoleMenu" ToRole="Role" />
   </EntityType>
   <EntityType Name="Menu">
     <Key>
@@ -57,30 +57,6 @@
     <Property Name="Icon" Type="String" MaxLength="300" FixedLength="true" Unicode="true" />
     <NavigationProperty Name="Menus" Relationship="Self.FK_Menus_Modules" FromRole="Modules" ToRole="Menus" />
   </EntityType>
-  <EntityType Name="Role">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Role1" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-    <Property Name="Desc" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
-    <Property Name="CreatedOn" Type="DateTime" Precision="0" />
-    <Property Name="EcomID" Type="Int32" />
-    <NavigationProperty Name="ExanaduCompany" Relationship="Self.FK_Roles_ExanaduCompanies" FromRole="Roles" ToRole="ExanaduCompanies" />
-    <NavigationProperty Name="LinkRoleMenus" Relationship="Self.FK_LinkRoleMenus_Roles" FromRole="Roles" ToRole="LinkRoleMenus" />
-  </EntityType>
-  <Association Name="FK_Roles_ExanaduCompanies">
-    <End Role="ExanaduCompanies" Type="Self.ExanaduCompany" Multiplicity="0..1" />
-    <End Role="Roles" Type="Self.Role" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ExanaduCompanies">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Roles">
-        <PropertyRef Name="EcomID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_LinkRoleMenus_Menus">
     <End Role="Menus" Type="Self.Menu" Multiplicity="0..1" />
     <End Role="LinkRoleMenus" Type="Self.LinkRoleMenu" Multiplicity="*" />
@@ -90,18 +66,6 @@
       </Principal>
       <Dependent Role="LinkRoleMenus">
         <PropertyRef Name="MenuID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_LinkRoleMenus_Roles">
-    <End Role="Roles" Type="Self.Role" Multiplicity="0..1" />
-    <End Role="LinkRoleMenus" Type="Self.LinkRoleMenu" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Roles">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="LinkRoleMenus">
-        <PropertyRef Name="RoleID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -123,29 +87,46 @@
     <EntitySet Name="LinkRoleMenus" EntityType="Self.LinkRoleMenu" />
     <EntitySet Name="Menus" EntityType="Self.Menu" />
     <EntitySet Name="Modules" EntityType="Self.Module" />
-    <EntitySet Name="Roles" EntityType="Self.Role" />
-    <AssociationSet Name="FK_Roles_ExanaduCompanies" Association="Self.FK_Roles_ExanaduCompanies">
-      <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
-      <End Role="Roles" EntitySet="Roles" />
-    </AssociationSet>
     <AssociationSet Name="FK_LinkRoleMenus_Menus" Association="Self.FK_LinkRoleMenus_Menus">
       <End Role="Menus" EntitySet="Menus" />
-      <End Role="LinkRoleMenus" EntitySet="LinkRoleMenus" />
-    </AssociationSet>
-    <AssociationSet Name="FK_LinkRoleMenus_Roles" Association="Self.FK_LinkRoleMenus_Roles">
-      <End Role="Roles" EntitySet="Roles" />
       <End Role="LinkRoleMenus" EntitySet="LinkRoleMenus" />
     </AssociationSet>
     <AssociationSet Name="FK_Menus_Modules" Association="Self.FK_Menus_Modules">
       <End Role="Modules" EntitySet="Modules" />
       <End Role="Menus" EntitySet="Menus" />
     </AssociationSet>
+    <EntitySet Name="Roles" EntityType="ProTruckModel.Role" />
     <EntitySet Name="Users" EntityType="ProTruckModel.User" />
+    <AssociationSet Name="FK_Roles_ExanaduCompanies" Association="ProTruckModel.FK_Roles_ExanaduCompanies">
+      <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
+      <End Role="Role" EntitySet="Roles" />
+    </AssociationSet>
     <AssociationSet Name="FK_Users_ExanaduCompanies" Association="ProTruckModel.FK_Users_ExanaduCompanies">
       <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
       <End Role="User" EntitySet="Users" />
     </AssociationSet>
+    <AssociationSet Name="FK_LinkRoleMenus_Roles" Association="ProTruckModel.FK_LinkRoleMenus_Roles">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="LinkRoleMenu" EntitySet="LinkRoleMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Roles" Association="ProTruckModel.FK_Users_Roles">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Role1" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="Desc" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="0" />
+    <Property Name="EcomID" Type="Int32" />
+    <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Roles_ExanaduCompanies" FromRole="Role" ToRole="ExanaduCompany" />
+    <NavigationProperty Name="LinkRoleMenus" Relationship="ProTruckModel.FK_LinkRoleMenus_Roles" FromRole="Role" ToRole="LinkRoleMenu" />
+    <NavigationProperty Name="Users" Relationship="ProTruckModel.FK_Users_Roles" FromRole="Role" ToRole="User" />
+  </EntityType>
   <EntityType Name="User">
     <Key>
       <PropertyRef Name="Id" />
@@ -163,7 +144,20 @@
     <Property Name="EcomID" Type="Int32" Nullable="false" />
     <Property Name="Picture" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
     <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Users_ExanaduCompanies" FromRole="User" ToRole="ExanaduCompany" />
+    <NavigationProperty Name="Role" Relationship="ProTruckModel.FK_Users_Roles" FromRole="User" ToRole="Role" />
   </EntityType>
+  <Association Name="FK_Roles_ExanaduCompanies">
+    <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Role" Role="Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompany">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Role">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Users_ExanaduCompanies">
     <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="1" />
     <End Type="ProTruckModel.User" Role="User" Multiplicity="*" />
@@ -173,6 +167,30 @@
       </Principal>
       <Dependent Role="User">
         <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LinkRoleMenus_Roles">
+    <End Type="ProTruckModel.Role" Role="Role" Multiplicity="0..1" />
+    <End Type="ProTruckModel.LinkRoleMenu" Role="LinkRoleMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LinkRoleMenu">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Roles">
+    <End Type="ProTruckModel.Role" Role="Role" Multiplicity="0..1" />
+    <End Type="ProTruckModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
