@@ -16,6 +16,9 @@ namespace ProTrukRepo.ViewModels
         public Nullable<int> AccountStatus { get; set; }
         public int RoleID { get; set; }
         public string Picture { get; set; }
+        public string CreatedOn { get; set; }
+
+        public string Role { get; set; }
 
 
     }

@@ -28,5 +28,6 @@ namespace ProTrukRepo.Model
         public string Picture { get; set; }
     
         public virtual ExanaduCompany ExanaduCompany { get; set; }
+        public virtual Role Role { get; set; }
     }
 }

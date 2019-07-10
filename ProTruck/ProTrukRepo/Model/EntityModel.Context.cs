@@ -17,7 +17,6 @@ namespace ProTrukRepo.Model
     {
         public ProTruckEntities()
             : base("name=ProTruckEntities")
-            
         {
         }
     

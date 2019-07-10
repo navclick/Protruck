@@ -59,11 +59,11 @@
     <EntitySetMapping Name="Roles">
       <EntityTypeMapping TypeName="ProTruckModel.Role">
         <MappingFragment StoreEntitySet="Roles">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Role1" ColumnName="Role" />
-          <ScalarProperty Name="Desc" ColumnName="Desc" />
-          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
           <ScalarProperty Name="EcomID" ColumnName="EcomID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="Role1" ColumnName="Role" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

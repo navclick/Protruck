@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using ProTrukRepo.ViewModels;
 using ProTrukRepo.Model;
 using System.Web.Script.Serialization;
+using System.Collections;
+using System.Threading.Tasks;
 
 namespace ProTrukWeb.Controllers
 {
@@ -21,7 +23,7 @@ namespace ProTrukWeb.Controllers
         // GET: Account
 
         [HttpGet]
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
            
             return View();
@@ -29,7 +31,7 @@ namespace ProTrukWeb.Controllers
 
 
         [HttpGet]
-        public ActionResult Login()
+        public async Task<ActionResult> Login()
         {
             return View();
         }
@@ -46,17 +48,25 @@ namespace ProTrukWeb.Controllers
                 return View();
             }
             else {
-                UserVM dbUser =(UserVM) response.Value;
+                UserVM dbUser = (UserVM)response.Value;
                 Session["UserID"] = dbUser.Id.ToString();
                 Session["FullName"] = dbUser.FullName;
                 Session["Picture"] = dbUser.Picture;
                 Session["RoleID"] = dbUser.RoleID;
-                var json= new JavaScriptSerializer().Serialize(responseModules.Value);
+                var json = new JavaScriptSerializer().Serialize(responseModules.Value);
                 Session["Modules"] = json;
 
-                return RedirectToAction("Index","Home") ;
+                return RedirectToAction("Index", "Home");
             }
-            
+
+        }
+
+        [HttpGet]
+        public JsonResult GetAllUsers()
+        {
+            Response r = userRepository.GetAllUsers();
+            List<UserVM> employees = ((IEnumerable)r.Value).Cast<UserVM>().ToList(); ;
+            return Json(userRepository.GetAllUsers().Value, JsonRequestBehavior.AllowGet); 
+        }
         }
     }
-}

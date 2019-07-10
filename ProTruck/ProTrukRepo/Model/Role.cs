@@ -18,6 +18,7 @@ namespace ProTrukRepo.Model
         public Role()
         {
             this.LinkRoleMenus = new HashSet<LinkRoleMenu>();
+            this.Users = new HashSet<User>();
         }
     
         public int Id { get; set; }
@@ -29,5 +30,7 @@ namespace ProTrukRepo.Model
         public virtual ExanaduCompany ExanaduCompany { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LinkRoleMenu> LinkRoleMenus { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> Users { get; set; }
     }
 }

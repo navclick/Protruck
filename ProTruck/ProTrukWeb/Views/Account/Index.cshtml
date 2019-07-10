@@ -1,19 +1,84 @@
-﻿@model IEnumerable<ProTrukRepo.ViewModels.UserVM>
-
+﻿
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+@Scripts.Render("~/bundles/angular")
+
+
+<script>
+    (function () {
+        var app = angular.module('app', []);
+
+        app.controller('HomeCtrl', ['$scope', '$http', function ($scope, $http, $window) {
+            
+            $scope.users = [];
+            $scope.newEmployee = {};
+
+            
+
+            $scope.getEmployees = function () {
+                $http.get('/Account/GetAllUsers').then(
+                    function (successResponse) {
+                       // alert(successResponse.data);
+                        $scope.users = successResponse.data;
+                    },
+                    function (errorResponse) {
+                       alert(errorResponse);
+                        // handle errors here
+                    });
+            };
+
+            
+            $scope.addEmployee = function () {
+                $http.post('/Home/AddEmployee', $scope.newEmployee).then(
+                    function (successResponse) {
+                        console.log('success');
+                    },
+                    function (errorResponse) {
+                        // handle errors here
+                    });
+            };
+        }]);
+    })();
+
+
+    $(document).ready(function () {
+        // Handler for .ready() called.
+        //alert("ready");
+        var scope = angular.element(document.getElementById("main")).scope();
+        scope.$apply(function () {
+            scope.getEmployees();
+        });
+    });
+</script>
+
+<!-- 
+<div id="MainWrap" ng-app="app" ng-controller="HomeCtrl">
+    
+    <h2>Get Employees</h2>
+    <a href="" ng-click="getEmployees()">Get Employees</a>
+    <div ng-repeat="user in users">
+        <p>Id: {{user.Id}}</p>
+        <p>First Name: {{user.FullName}}</p>
+        <p>Last Name: {{user.FullName}}</p>
+    </div>
+
+    
+</div>
+-->
+
+  
 @Styles.Render("~/Content/datatable")
-<div id="main">
+<div id="main"  ng-app="app" ng-controller="HomeCtrl">
     <div class="row">
         <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
         <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper"></div>
         <div class="col s12">
             <div class="container">
                 <div class="section section-data-tables">
-                    <!-- Page Length Options -->
-                    <div class="row">
+                                       <div class="row">
                         <div class="col s12">
                                 <div class="card">
                                     <div class="card-content">
@@ -36,359 +101,27 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
-                                                            <td>1345</td>
-                                                            <td>Muhammad Aslam</td>
-                                                            <td>aslam@aolapperal.com</td>
-                                                            <td>0333-1234567</td>
-                                                            <td><!-- Switch -->
-                                                                <div class="switch center">
+                                                        <tr ng-repeat="user in users">
+                                                            <td class="width-10"><img src="{{user.Picture}}" class="width-30 circle" alt="avatar"></td>
+                                                            <td>{{user.Id}}</td>
+                                                            <td>{{user.FullName.trim()}}</td>
+                                                            <td>{{user.Email.trim()}}</td>
+                                                            <td>{{user.Phone.trim()}}</td>
+                                                            <td>                                                                <div class="switch center">
                                                                     <label>
-                                                                        <input type="checkbox">
+                                                                       
+                                                                            <input type="checkbox" ng-bind="user.AccountStatus" checked>
+                                                                        
+                                                                        
+                                                                        
                                                                         <span class="lever"></span>
                                                                     </label>
                                                                 </div></td>
-                                                                <td>Administrator</td>
-                                                                <td>26-12-2019</td>
+                                                                <td>{{user.Role.trim()}}</td>
+                                                                <td>{{user.CreatedOn}}</td>
                                                                 <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating"><i class="material-icons">delete</i></a> </td>
                                                             </tr>
-                                                            <tr>
-                                                                <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
-                                                                <td>1345</td>
-                                                                <td>Muhammad Aslam</td>
-                                                                <td>aslam@aolapperal.com</td>
-                                                                <td>0333-1234567</td>
-                                                                <td><div class="switch center">
-                                                                    <label>
-                                                                        <input type="checkbox">
-                                                                        <span class="lever"></span>
-                                                                    </label>
-                                                                </div></td>
-                                                                <td>Administrator</td>
-                                                                <td>26-12-2019</td>
-                                                                <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating"><i class="material-icons">delete</i></a> </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
-                                                                <td>1345</td>
-                                                                <td>Muhammad Aslam</td>
-                                                                <td>aslam@aolapperal.com</td>
-                                                                <td>0333-1234567</td>
-                                                                <td><div class="switch center">
-                                                                    <label>
-                                                                        <input type="checkbox">
-                                                                        <span class="lever"></span>
-                                                                    </label>
-                                                                </div></td>
-                                                                <td>Administrator</td>
-                                                                <td>26-12-2019</td>
-                                                                <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating"><i class="material-icons">delete</i></a> </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
-                                                                <td>1345</td>
-                                                                <td>Muhammad Aslam</td>
-                                                                <td>aslam@aolapperal.com</td>
-                                                                <td>0333-1234567</td>
-                                                                <td><div class="switch center">
-                                                                    <label>
-                                                                        <input type="checkbox">
-                                                                        <span class="lever"></span>
-                                                                    </label>
-                                                                </div></td>
-                                                                <td>Administrator</td>
-                                                                <td>26-12-2019</td>
-                                                                <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating"><i class="material-icons">delete</i></a> </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
-                                                                <td>1345</td>
-                                                                <td>Muhammad Aslam</td>
-                                                                <td>aslam@aolapperal.com</td>
-                                                                <td>0333-1234567</td>
-                                                                <td><div class="switch center">
-                                                                    <label>
-                                                                        <input type="checkbox">
-                                                                        <span class="lever"></span>
-                                                                    </label>
-                                                                </div></td>
-                                                                <td>Administrator</td>
-                                                                <td>26-12-2019</td>
-                                                                <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating"><i class="material-icons">delete</i></a> </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
-                                                                <td>1345</td>
-                                                                <td>Muhammad Aslam</td>
-                                                                <td>aslam@aolapperal.com</td>
-                                                                <td>0333-1234567</td>
-                                                                <td><div class="switch center">
-                                                                    <label>
-                                                                        <input type="checkbox">
-                                                                        <span class="lever"></span>
-                                                                    </label>
-                                                                </div></td>
-                                                                <td>Administrator</td>
-                                                                <td>26-12-2019</td>
-                                                                <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating"><i class="material-icons">delete</i></a> </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
-                                                                <td>1345</td>
-                                                                <td>Muhammad Aslam</td>
-                                                                <td>aslam@aolapperal.com</td>
-                                                                <td>0333-1234567</td>
-                                                                <td><div class="switch center">
-                                                                    <label>
-                                                                        <input type="checkbox">
-                                                                        <span class="lever"></span>
-                                                                    </label>
-                                                                </div></td>
-                                                                <td>Administrator</td>
-                                                                <td>26-12-2019</td>
-                                                                <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating"><i class="material-icons">delete</i></a> </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
-                                                                <td>1345</td>
-                                                                <td>Muhammad Aslam</td>
-                                                                <td>aslam@aolapperal.com</td>
-                                                                <td>0333-1234567</td>
-                                                                <td><div class="switch center">
-                                                                    <label>
-                                                                        <input type="checkbox">
-                                                                        <span class="lever"></span>
-                                                                    </label>
-                                                                </div></td>
-                                                                <td>Administrator</td>
-                                                                <td>26-12-2019</td>
-                                                                <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating"><i class="material-icons">delete</i></a> </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
-                                                                <td>1345</td>
-                                                                <td>Muhammad Aslam</td>
-                                                                <td>aslam@aolapperal.com</td>
-                                                                <td>0333-1234567</td>
-                                                                <td><div class="switch center">
-                                                                    <label>
-                                                                        <input type="checkbox">
-                                                                        <span class="lever"></span>
-                                                                    </label>
-                                                                </div></td>
-                                                                <td>Administrator</td>
-                                                                <td>26-12-2019</td>
-                                                                <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating"><i class="material-icons">delete</i></a> </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
-                                                                <td>1345</td>
-                                                                <td>Muhammad Aslam</td>
-                                                                <td>aslam@aolapperal.com</td>
-                                                                <td>0333-1234567</td>
-                                                                <td><div class="switch center">
-                                                                    <label>
-                                                                        <input type="checkbox">
-                                                                        <span class="lever"></span>
-                                                                    </label>
-                                                                </div></td>
-                                                                <td>Administrator</td>
-                                                                <td>26-12-2019</td>
-                                                                <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating"><i class="material-icons">delete</i></a> </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
-                                                                <td>1345</td>
-                                                                <td>Muhammad Aslam</td>
-                                                                <td>aslam@aolapperal.com</td>
-                                                                <td>0333-1234567</td>
-                                                                <td><div class="switch center">
-                                                                    <label>
-                                                                        <input type="checkbox">
-                                                                        <span class="lever"></span>
-                                                                    </label>
-                                                                </div></td>
-                                                                <td>Administrator</td>
-                                                                <td>26-12-2019</td>
-                                                                <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating"><i class="material-icons">delete</i></a> </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
-                                                                <td>1345</td>
-                                                                <td>Muhammad Aslam</td>
-                                                                <td>aslam@aolapperal.com</td>
-                                                                <td>0333-1234567</td>
-                                                                <td><div class="switch center">
-                                                                    <label>
-                                                                        <input type="checkbox">
-                                                                        <span class="lever"></span>
-                                                                    </label>
-                                                                </div></td>
-                                                                <td>Administrator</td>
-                                                                <td>26-12-2019</td>
-                                                                <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating"><i class="material-icons">delete</i></a> </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
-                                                                <td>1345</td>
-                                                                <td>Muhammad Aslam</td>
-                                                                <td>aslam@aolapperal.com</td>
-                                                                <td>0333-1234567</td>
-                                                                <td><div class="switch center">
-                                                                    <label>
-                                                                        <input type="checkbox">
-                                                                        <span class="lever"></span>
-                                                                    </label>
-                                                                </div></td>
-                                                                <td>Administrator</td>
-                                                                <td>26-12-2019</td>
-                                                                <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating"><i class="material-icons">delete</i></a> </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
-                                                                <td>1345</td>
-                                                                <td>Muhammad Aslam</td>
-                                                                <td>aslam@aolapperal.com</td>
-                                                                <td>0333-1234567</td>
-                                                                <td><div class="switch center">
-                                                                    <label>
-                                                                        <input type="checkbox">
-                                                                        <span class="lever"></span>
-                                                                    </label>
-                                                                </div></td>
-                                                                <td>Administrator</td>
-                                                                <td>26-12-2019</td>
-                                                                <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating"><i class="material-icons">delete</i></a> </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
-                                                                <td>1345</td>
-                                                                <td>Muhammad Aslam</td>
-                                                                <td>aslam@aolapperal.com</td>
-                                                                <td>0333-1234567</td>
-                                                                <td><div class="switch center">
-                                                                    <label>
-                                                                        <input type="checkbox">
-                                                                        <span class="lever"></span>
-                                                                    </label>
-                                                                </div></td>
-                                                                <td>Administrator</td>
-                                                                <td>26-12-2019</td>
-                                                                <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating"><i class="material-icons">delete</i></a> </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
-                                                                <td>1345</td>
-                                                                <td>Muhammad Aslam</td>
-                                                                <td>aslam@aolapperal.com</td>
-                                                                <td>0333-1234567</td>
-                                                                <td><div class="switch center">
-                                                                    <label>
-                                                                        <input type="checkbox">
-                                                                        <span class="lever"></span>
-                                                                    </label>
-                                                                </div></td>
-                                                                <td>Administrator</td>
-                                                                <td>26-12-2019</td>
-                                                                <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating"><i class="material-icons">delete</i></a> </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
-                                                                <td>1345</td>
-                                                                <td>Muhammad Aslam</td>
-                                                                <td>aslam@aolapperal.com</td>
-                                                                <td>0333-1234567</td>
-                                                                <td><div class="switch center">
-                                                                    <label>
-                                                                        <input type="checkbox">
-                                                                        <span class="lever"></span>
-                                                                    </label>
-                                                                </div></td>
-                                                                <td>Administrator</td>
-                                                                <td>26-12-2019</td>
-                                                                <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating"><i class="material-icons">delete</i></a> </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
-                                                                <td>1345</td>
-                                                                <td>Muhammad Aslam</td>
-                                                                <td>aslam@aolapperal.com</td>
-                                                                <td>0333-1234567</td>
-                                                                <td><div class="switch center">
-                                                                    <label>
-                                                                        <input type="checkbox">
-                                                                        <span class="lever"></span>
-                                                                    </label>
-                                                                </div></td>
-                                                                <td>Administrator</td>
-                                                                <td>26-12-2019</td>
-                                                                <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating"><i class="material-icons">delete</i></a> </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
-                                                                <td>1345</td>
-                                                                <td>Muhammad Aslam</td>
-                                                                <td>aslam@aolapperal.com</td>
-                                                                <td>0333-1234567</td>
-                                                                <td><div class="switch center">
-                                                                    <label>
-                                                                        <input type="checkbox">
-                                                                        <span class="lever"></span>
-                                                                    </label>
-                                                                </div></td>
-                                                                <td>Administrator</td>
-                                                                <td>26-12-2019</td>
-                                                                <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating"><i class="material-icons">delete</i></a> </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
-                                                                <td>1345</td>
-                                                                <td>Muhammad Aslam</td>
-                                                                <td>aslam@aolapperal.com</td>
-                                                                <td>0333-1234567</td>
-                                                                <td><div class="switch center">
-                                                                    <label>
-                                                                        <input type="checkbox">
-                                                                        <span class="lever"></span>
-                                                                    </label>
-                                                                </div></td>
-                                                                <td>Administrator</td>
-                                                                <td>26-12-2019</td>
-                                                                <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating"><i class="material-icons">delete</i></a> </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
-                                                                <td>1345</td>
-                                                                <td>Muhammad Aslam</td>
-                                                                <td>aslam@aolapperal.com</td>
-                                                                <td>0333-1234567</td>
-                                                                <td><div class="switch center">
-                                                                    <label>
-                                                                        <input type="checkbox">
-                                                                        <span class="lever"></span>
-                                                                    </label>
-                                                                </div></td>
-                                                                <td>Administrator</td>
-                                                                <td>26-12-2019</td>
-                                                                <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating"><i class="material-icons">delete</i></a> </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="width-10"><img src="../../../app-assets/images/avatar/avatar-2.png" class="width-30 circle" alt="avatar"></td>
-                                                                <td>1345</td>
-                                                                <td>Muhammad Aslam</td>
-                                                                <td>aslam@aolapperal.com</td>
-                                                                <td>0333-1234567</td>
-                                                                <td><div class="switch center">
-                                                                    <label>
-                                                                        <input type="checkbox">
-                                                                        <span class="lever"></span>
-                                                                    </label>
-                                                                </div></td>
-                                                                <td>Administrator</td>
-                                                                <td>26-12-2019</td>
-                                                                <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating"><i class="material-icons">delete</i></a> </td>
-                                                            </tr>
+                                                         
                                                         </tbody>
                                                         <tfoot>
                                                             <tr>
@@ -415,4 +148,5 @@
             </div>
         </div>
     </div>
-</div>
+
+   

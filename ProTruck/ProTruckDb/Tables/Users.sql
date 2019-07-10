@@ -12,5 +12,6 @@
     [RoleID] INT NULL, 
     [EcomID] INT NOT NULL, 
     [Picture] NCHAR(200) NULL, 
-    CONSTRAINT [FK_Users_ExanaduCompanies] FOREIGN KEY ([EcomID]) REFERENCES [ExanaduCompanies]([id]) 
+    CONSTRAINT [FK_Users_ExanaduCompanies] FOREIGN KEY ([EcomID]) REFERENCES [ExanaduCompanies]([id]), 
+    CONSTRAINT [FK_Users_Roles] FOREIGN KEY ([RoleID]) REFERENCES [Roles]([id]) 
 )

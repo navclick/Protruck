@@ -28,4 +28,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="RoleID" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="8dd10f7a-7484-4438-a6a3-33e84f338285" ChangeDateTime="07/03/2019 12:39:13">
+    <Property Name="ElementName" Value="[dbo].[FK_Users_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Users]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Users_Roles]" />
+  </Operation>
 </Operations>
