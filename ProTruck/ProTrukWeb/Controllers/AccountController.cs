@@ -9,6 +9,7 @@ using ProTrukRepo.Model;
 using System.Web.Script.Serialization;
 using System.Collections;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace ProTrukWeb.Controllers
 {
@@ -53,6 +54,7 @@ namespace ProTrukWeb.Controllers
                 Session["FullName"] = dbUser.FullName;
                 Session["Picture"] = dbUser.Picture;
                 Session["RoleID"] = dbUser.RoleID;
+                Session["Comp"] = dbUser.EcomID;
                 var json = new JavaScriptSerializer().Serialize(responseModules.Value);
                 Session["Modules"] = json;
 
@@ -62,11 +64,57 @@ namespace ProTrukWeb.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetAllUsers()
+        public async Task<JsonResult>  GetAllUsers()
         {
-            Response r = userRepository.GetAllUsers();
+            Response r = await userRepository.GetAllUsers();
             List<UserVM> employees = ((IEnumerable)r.Value).Cast<UserVM>().ToList(); ;
-            return Json(userRepository.GetAllUsers().Value, JsonRequestBehavior.AllowGet); 
+            return Json(r.Value, JsonRequestBehavior.AllowGet); 
         }
+
+        [HttpGet]
+        public async Task<ActionResult> Adduser()
+        {
+            Response result = await userRepository.GetAllRoles();
+            List<RolesVM> list = ((IEnumerable)result.Value).Cast<RolesVM>().ToList();
+            var selectListItems = list.Select(x => new SelectListItem() { Value = x.Id.ToString(), Text = x.Role1 }).ToList();
+            ViewBag.roles = selectListItems;
+            return View();
         }
+        [HttpPost]
+        public ActionResult Adduser(UserVM user, HttpPostedFileBase file)
+        {
+            user.AccountStatus = 1;
+            user.CreatedOn = DateTime.Today.ToShortDateString();
+            user.EcomID = (int)Session["Comp"];
+            if (file != null && file.ContentLength > 0)
+            {
+
+                try
+                {
+                    string path = Path.Combine(Server.MapPath("~" + ProTrukRepo.Util.Constant.PathUserImage),
+                                               Path.GetFileName(Session["UserID"] + file.FileName));
+                    file.SaveAs(path);
+
+                    user.Picture = ProTrukRepo.Util.Constant.PathUserImage + Session["UserID"] + file.FileName;
+                    userRepository.Adduser(user);
+
+
+                }
+                catch (Exception ex)
+                {
+                    
+                }
+
+
+
+            }
+            else {
+                user.Picture = ProTrukRepo.Util.Constant.PathUserDefultImage;
+                userRepository.Adduser(user);
+            }
+
+            return RedirectToAction("Index", "Account");
+        }
+
+    }
     }

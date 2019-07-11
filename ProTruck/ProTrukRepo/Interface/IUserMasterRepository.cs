@@ -8,13 +8,17 @@ using System.Threading.Tasks;
 
 namespace ProTrukRepo.Interface
 {
-   public interface IUserMasterRepository
+   public interface IUserMasterRepository 
     {
-        Response GetAllUsers();
+         Task<Response> GetAllUsers();
       //  Response GetUserById(int id);
         Response ValidateUser(UserVM user);
         Response GetModules();
         //Response AddUser(UserVM employee);
+        bool Adduser(UserVM user); 
+
+        
+        Task<Response> GetAllRoles();
 
     }
 }

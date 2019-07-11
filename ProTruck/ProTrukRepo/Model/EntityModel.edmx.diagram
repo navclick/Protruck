@@ -13,7 +13,7 @@
         <AssociationConnector Association="ProTruckModel.FK_LinkRoleMenus_Menus" ManuallyRouted="false" />
         <AssociationConnector Association="ProTruckModel.FK_Menus_Modules" ManuallyRouted="false" />
         <EntityTypeShape EntityType="ProTruckModel.Role" Width="1.5" PointX="3" PointY="3.125" />
-        <EntityTypeShape EntityType="ProTruckModel.User" Width="1.5" PointX="8.25" PointY="2.5" />
+        <EntityTypeShape EntityType="ProTruckModel.User" Width="1.5" PointX="8.25" PointY="2.5" IsExpanded="true" />
         <AssociationConnector Association="ProTruckModel.FK_Roles_ExanaduCompanies" />
         <AssociationConnector Association="ProTruckModel.FK_Users_ExanaduCompanies" />
         <AssociationConnector Association="ProTruckModel.FK_LinkRoleMenus_Roles" />

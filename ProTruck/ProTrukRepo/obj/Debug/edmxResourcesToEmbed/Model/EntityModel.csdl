@@ -139,7 +139,7 @@
     <Property Name="EmailVeringCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="EmailConfirmed" Type="Boolean" />
     <Property Name="AccountStatus" Type="Int32" />
-    <Property Name="CreatedOn" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="CreatedOn" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="RoleID" Type="Int32" />
     <Property Name="EcomID" Type="Int32" Nullable="false" />
     <Property Name="Picture" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
