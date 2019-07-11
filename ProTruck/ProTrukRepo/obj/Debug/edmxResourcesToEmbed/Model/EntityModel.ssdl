@@ -72,7 +72,7 @@
     <Property Name="EmailVeringCode" Type="nvarchar(max)" />
     <Property Name="EmailConfirmed" Type="bit" />
     <Property Name="AccountStatus" Type="int" />
-    <Property Name="CreatedOn" Type="nchar" MaxLength="10" />
+    <Property Name="CreatedOn" Type="nvarchar" MaxLength="50" />
     <Property Name="RoleID" Type="int" />
     <Property Name="EcomID" Type="int" Nullable="false" />
     <Property Name="Picture" Type="nchar" MaxLength="200" />

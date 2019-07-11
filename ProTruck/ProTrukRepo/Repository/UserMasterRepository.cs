@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace ProTrukRepo.Repository
 {
@@ -23,33 +24,64 @@ namespace ProTrukRepo.Repository
             {
                 cfg.CreateMap<User, UserVM>().ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role.Role1.Trim())); ;
                 cfg.CreateMap<Module, ModuleVM>();
-            
-        });
+                cfg.CreateMap<Role, RolesVM>();
+                cfg.CreateMap<UserVM, User>();
+
+            });
         }
-        public Response GetAllUsers()
+        public async Task<Response>  GetAllUsers()
         {
             try
             {
                 List<UserVM> response = new List<UserVM>();
-                var users = _db.Users.Select(x => x).ToList();
-             //   Mapper.Initialize(cfg => cfg.CreateMap<User, UserVM>());
-                response = Mapper.Map<IEnumerable<User>, List<UserVM>>(users);
+                //var users =  _db.Users.Select(x => x).ToList();
+                var users =await _db.Users.ToListAsync();
+                //   Mapper.Initialize(cfg => cfg.CreateMap<User, UserVM>());
+                response =  Mapper.Map<IEnumerable<User>, List<UserVM>>(users);
 
                 if (response.Count() > 0)
                 {
-                    return GenericResponses<IEnumerable<UserVM>>.ResponseStatus(false, response.Count() + Constant.MSGRecordFound, (int)Constant.httpStatus.Ok, response);
+                      return  GenericResponses<IEnumerable<UserVM>>.ResponseStatus(false, response.Count() + Constant.MSGRecordFound, (int)Constant.httpStatus.Ok, response);
                 }
                 else
                 {
-                    return GenericResponses<IEnumerable<UserVM>>.ResponseStatus(false, Constant.MDGNoRecordFound, (int)Constant.httpStatus.NoContent, response.ToList());
+                     return  GenericResponses<IEnumerable<UserVM>>.ResponseStatus(false, Constant.MDGNoRecordFound, (int)Constant.httpStatus.NoContent, response.ToList());
                 }
             }
             catch (Exception e)
             {
-                return GenericResponses<UserVM>.ResponseStatus(true);
+                  return GenericResponses<UserVM>.ResponseStatus(true);
             }
         }
 
+
+        public async Task<Response> GetAllRoles()
+        {
+            try
+            {
+                List<RolesVM> response = new List<RolesVM>();
+                //var users =  _db.Users.Select(x => x).ToList();
+                var roles = await _db.Roles.ToListAsync();
+                //   Mapper.Initialize(cfg => cfg.CreateMap<User, UserVM>());
+                response = Mapper.Map<IEnumerable<Role>, List<RolesVM>>(roles);
+
+                if (response.Count() > 0)
+                {
+                    return GenericResponses<IEnumerable<RolesVM>>.ResponseStatus(false, response.Count() + Constant.MSGRecordFound, (int)Constant.httpStatus.Ok, response);
+                }
+                else
+                {
+                    return GenericResponses<IEnumerable<RolesVM>>.ResponseStatus(false, Constant.MDGNoRecordFound, (int)Constant.httpStatus.NoContent, response.ToList());
+                }
+            }
+            catch (Exception e)
+            {
+                return GenericResponses<RolesVM>.ResponseStatus(true);
+            }
+        }
+
+
+        
 
 
         public Response GetModules() {
@@ -95,6 +127,17 @@ namespace ProTrukRepo.Repository
 
         }
 
+        public bool Adduser(UserVM user) {
+
+            var userDto = Mapper.Map<UserVM, User>(user);
+            _db.Users.Add(userDto);
+            if (_db.SaveChanges() == 1) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
 
     }
 }

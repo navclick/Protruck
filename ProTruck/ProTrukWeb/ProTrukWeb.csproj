@@ -348,6 +348,7 @@
     <Content Include="Content\images\avatar\avatar-7.png" />
     <Content Include="Content\images\avatar\avatar-8.png" />
     <Content Include="Content\images\avatar\avatar-9.png" />
+    <Content Include="Content\images\avatar\noimage.png" />
     <Content Include="Content\images\cards\applewatch.png" />
     <Content Include="Content\images\cards\camara.png" />
     <Content Include="Content\images\cards\cameras.png" />
@@ -494,6 +495,7 @@
     <Content Include="Content\js\custom\custom-script.js" />
     <Content Include="Content\js\custom\custom-script.min.js" />
     <Content Include="Content\js\jquery.form-validator.min.js" />
+    <Content Include="Content\js\jquery.min.js" />
     <Content Include="Content\js\materialize.js" />
     <Content Include="Content\js\materialize.min.js" />
     <Content Include="Content\js\plugins.js" />
@@ -1564,6 +1566,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\Adduser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

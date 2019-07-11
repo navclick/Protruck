@@ -45,7 +45,8 @@ namespace ProTrukRepo.Util
         public static readonly string PathRecordingsDir = @"D:\Google Drive\SIPRecordings\";
         public static readonly string PathRecordingsFileName = "Master*";
         public static readonly string PathRecordingsSearchedList = @"D:\\Google Drive\SIPRecordings\FilesSearchedlist.txt";
-
+        public static readonly string PathUserImage = "/content/images/avatar/";
+        public static readonly string PathUserDefultImage = "/content/images/avatar/noimage.png";
 
         // *************************************** STORED PROCEDURES ***************************************** //
 

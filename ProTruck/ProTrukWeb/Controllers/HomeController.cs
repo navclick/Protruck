@@ -21,7 +21,7 @@ namespace ProTrukWeb.Controllers
        [UserAuthenticationFilter]
         public ActionResult Index()
         {
-           ProTrukRepo.Model.Response Result = userRepository.GetAllUsers();
+           //ProTrukRepo.Model.Response Result = userRepository.GetAllUsers();
             
             return View();
         }

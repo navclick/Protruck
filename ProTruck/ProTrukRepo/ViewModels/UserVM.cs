@@ -17,7 +17,7 @@ namespace ProTrukRepo.ViewModels
         public int RoleID { get; set; }
         public string Picture { get; set; }
         public string CreatedOn { get; set; }
-
+        public int EcomID { get; set; }
         public string Role { get; set; }
 
 

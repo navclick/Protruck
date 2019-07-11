@@ -8,7 +8,7 @@
     [EmailVeringCode] NVARCHAR(MAX) NULL, 
     [EmailConfirmed] BIT NULL, 
     [AccountStatus] INT NULL, 
-    [CreatedOn] NCHAR(10) NULL, 
+    [CreatedOn] DATE NULL, 
     [RoleID] INT NULL, 
     [EcomID] INT NOT NULL, 
     [Picture] NCHAR(200) NULL, 

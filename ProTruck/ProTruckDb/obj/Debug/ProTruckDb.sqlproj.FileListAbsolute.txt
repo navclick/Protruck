@@ -10,9 +10,5 @@ F:\Project\VS\ProTruk\ProTruck\ProTruckDb\obj\Debug\predeploy.sql
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTruckDb\bin\Debug\ProTruckDb.dacpac
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTruckDb\bin\Debug\ProTruckDb.dll
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTruckDb\bin\Debug\ProTruckDb.pdb
-F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTruckDb\obj\Debug\Model.xml
-F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTruckDb\obj\Debug\refactor.xml
-F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTruckDb\obj\Debug\postdeploy.sql
-F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTruckDb\obj\Debug\predeploy.sql
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTruckDb\obj\Debug\ProTruckDb.dll
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTruckDb\obj\Debug\ProTruckDb.pdb
