@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewBag.Title = "Role";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render("~/Content/datatable")
+<div id="main">
+    <div class="row">
+        <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
+        <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper"></div>
+        <div class="col s12">
+            <div class="container">
+                <div class="section section-data-tables">
+                    <!-- Page Length Options -->
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <h4 class="card-title left">User's</h4>
+                                    <a class="right waves-effect waves-light btn btn-small modal-trigger" href="#modal1">Add Role <i class="material-icons right">add</i></a>
+                                    <div id="modal1" class="modal">
+                                        <div class="modal-content">
+                                            <!-- Form Advance -->
+                                            <div class="col s12 m12 l12">
+                                                <form class="col s12">
+                                                    <div class="row">
+                                                        <div class="input-field col m6 s12">
+                                                            <input id="first_name01" type="text">
+                                                            <label for="first_name01">Role</label>
+                                                        </div>
+                                                        <div class="input-field col m6 s12">
+                                                            <input id="last_name" type="text">
+                                                            <label for="last_name">Description</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="input-field col s12">
+                                                            <input id="email5" type="email">
+                                                            <label for="email">Email</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="input-field col s12">
+                                                            <input id="password6" type="password">
+                                                            <label for="password">Phone</label>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <!-- Form End -->
+                                        </div>
+                                        <div class="modal-footer">
+                                            <div class="input-field col s12">
+                                                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Cancel</a>
+                                                <a href="#!" class="modal-action modal-close waves-effect waves-green btn">Add</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <table id="scroll-vert-hor" class="display nowrap">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Role</th>
+                                                        <th>Description</th>
+                                                        <th>Email</th>
+                                                        <th>Phone</th>
+                                                        <th>Created On</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1234567</td>
+                                                        <td>1345</td>
+                                                        <td>Muhammad Aslam</td>
+                                                        <td>aslam@aolapperal.com</td>
+                                                        <td>0333-1234567</td>
+                                                        <td>26-12-2019</td>
+                                                        <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating"><i class="material-icons">delete</i></a> </td>
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Role</th>
+                                                        <th>Description</th>
+                                                        <th>Email</th>
+                                                        <th>Phone</th>
+                                                        <th>Created On</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+			$(document).ready(function(){
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+});
+</script>

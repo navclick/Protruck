@@ -127,11 +127,14 @@ namespace ProTrukRepo.Repository
 
         }
 
-        public bool Adduser(UserVM user) {
+        public async Task<bool> Adduser(UserVM user) {
 
             var userDto = Mapper.Map<UserVM, User>(user);
-            _db.Users.Add(userDto);
-            if (_db.SaveChanges() == 1) {
+             _db.Users.Add(userDto);
+
+            int result = await _db.SaveChangesAsync();
+
+            if (result == 1) {
                 return true;
             }
             else {
@@ -139,5 +142,22 @@ namespace ProTrukRepo.Repository
             }
         }
 
+        public async Task<bool> RemoveUser(UserVM user)
+        {
+            var userDto = await _db.Users.Where(x => x.Id == user.Id).FirstOrDefaultAsync();
+            
+            _db.Users.Remove(userDto);
+
+            int result = await _db.SaveChangesAsync();
+
+            if (result == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

@@ -181,6 +181,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="CustomFilters\UserAuthenticationFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -190,6 +191,8 @@
   <ItemGroup>
     <Content Include="Content\css\custom\custom.css" />
     <Content Include="Content\css\custom\custom.min.css" />
+    <Content Include="Content\css\jquery-confirm.css" />
+    <Content Include="Content\css\jquery-ui.css" />
     <Content Include="Content\css\layouts\style-horizontal.css" />
     <Content Include="Content\css\layouts\style-horizontal.min.css" />
     <Content Include="Content\css\materialize.css" />
@@ -494,8 +497,13 @@
     <Content Include="Content\images\user\9.jpg" />
     <Content Include="Content\js\custom\custom-script.js" />
     <Content Include="Content\js\custom\custom-script.min.js" />
+    <Content Include="Content\js\jquery-1.8.0.min.js" />
+    <Content Include="Content\js\jquery-1.8.3.min.js" />
+    <Content Include="Content\js\jquery-confirm.js" />
+    <Content Include="Content\js\jquery-ui.min.js" />
     <Content Include="Content\js\jquery.form-validator.min.js" />
     <Content Include="Content\js\jquery.min.js" />
+    <Content Include="Content\js\lang\es.js" />
     <Content Include="Content\js\materialize.js" />
     <Content Include="Content\js\materialize.min.js" />
     <Content Include="Content\js\plugins.js" />
@@ -602,6 +610,7 @@
     <Content Include="Content\js\scripts\ui-navbar.min.js" />
     <Content Include="Content\js\scripts\vectormap-script.js" />
     <Content Include="Content\js\scripts\vectormap-script.min.js" />
+    <Content Include="Content\js\util.js" />
     <Content Include="Content\js\vendors.min.js" />
     <Content Include="Content\vendors\animate-css\animate.css" />
     <Content Include="Content\vendors\chartist-js\chartist-plugin-fill-donut.min.js" />
@@ -1537,6 +1546,7 @@
     <Content Include="Content\vendors\tinymce\skins\lightgray\fonts\tinymce.eot" />
     <Content Include="Content\vendors\tinymce\skins\lightgray\fonts\tinymce.ttf" />
     <Content Include="Content\vendors\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <Content Include="Content\css\jquery-confirm.less" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1567,6 +1577,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\Adduser.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

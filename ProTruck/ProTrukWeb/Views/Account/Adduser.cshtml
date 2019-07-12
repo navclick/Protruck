@@ -20,7 +20,7 @@
                     @using (Html.BeginForm("Adduser",
                 "Account",
                 FormMethod.Post,
-                new { enctype = "multipart/form-data" }))
+                new { enctype = "multipart/form-data"}))
                     {
                         <div class="row">
                             <div class="input-field col m6 s12">
@@ -28,17 +28,18 @@
                                 <label for="first_name01">Full Name</label>
                             </div>
                             <div class="input-field col m6 s12">
-                                @Html.TextBoxFor(x => Model.Email, new { @id = "email" }) 
+                               
+                                @Html.TextBoxFor(x => Model.Email, new { @id = "email", @data_validation = "email" }) 
                                 <label for="email">Email</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col m6 s12">
-                                @Html.PasswordFor(x => Model.Password, new { @id = "password" }) 
+                                @Html.PasswordFor(x => Model.Password, new { @id = "password", @data_validation = "required" }) 
                                 <label for="password">Password</label>
                             </div>
                             <div class="input-field col m6 s12">
-                                <input id="Cpassword6" type="password">
+                                <input id="Cpassword6" type="password" data-validation = "required">
                                 <label for="Cpassword">Confirm Password</label>
                             </div>
                         </div>

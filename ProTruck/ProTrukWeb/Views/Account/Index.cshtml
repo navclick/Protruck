@@ -4,55 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@Scripts.Render("~/bundles/angular")
 
-
-<script>
-    (function () {
-        var app = angular.module('app', []);
-
-        app.controller('HomeCtrl', ['$scope', '$http', function ($scope, $http, $window) {
-            
-            $scope.users = [];
-            $scope.newEmployee = {};
-
-            
-
-            $scope.getEmployees = function () {
-                $http.get('/Account/GetAllUsers').then(
-                    function (successResponse) {
-                       // alert(successResponse.data);
-                        $scope.users = successResponse.data;
-                    },
-                    function (errorResponse) {
-                       alert(errorResponse);
-                        // handle errors here
-                    });
-            };
-
-            
-            $scope.addEmployee = function () {
-                $http.post('/Home/AddEmployee', $scope.newEmployee).then(
-                    function (successResponse) {
-                        console.log('success');
-                    },
-                    function (errorResponse) {
-                        // handle errors here
-                    });
-            };
-        }]);
-    })();
-
-
-    $(document).ready(function () {
-        // Handler for .ready() called.
-        //alert("ready");
-        var scope = angular.element(document.getElementById("main")).scope();
-        scope.$apply(function () {
-            scope.getEmployees();
-        });
-    });
-</script>
 
 <!-- 
 <div id="MainWrap" ng-app="app" ng-controller="HomeCtrl">
@@ -71,8 +23,80 @@
 
   
 @Styles.Render("~/Content/datatable")
-<div id="main"  ng-app="app" ng-controller="HomeCtrl">
-    <div class="row">
+
+
+
+<script>
+
+    app.controller('HomeCtrl', ['$scope','svc', '$http', function ($scope,svc, $http) {
+
+        $scope.users = [];
+        $scope.user = {};
+
+
+
+        $scope.getEmployees = function () {
+            
+            $http.get('/Account/GetAllUsers').then(
+                function (successResponse) {
+                   // alert(successResponse.data[0].AccountStatus);
+                    $scope.users = successResponse.data;
+                },
+                function (errorResponse) {
+                    alert(errorResponse);
+                    // handle errors here
+                });
+        };
+
+        $scope.DeleteUser = function (user) {
+            if (confirm("Do you want to delete!")) {
+                $http({
+                    method: "post",
+                    url: "/Account/RemoveUser",
+                    datatype: "json",
+                    data: JSON.stringify(user)
+                }).then(function (response) {
+                    if (response.data == true) {
+                        svc.notifymsg(false);
+                        // util.notifymsg(false);
+                        $scope.getEmployees();
+                    }
+                    else {
+                        svc.notifymsg(true);
+
+                    }
+                })
+            }
+        };
+
+        $scope.changeStatus = function () {
+            alert("call");
+           
+        };
+
+        $scope.addEmployee = function () {
+            $http.post('/Home/AddEmployee', $scope.newEmployee).then(
+                function (successResponse) {
+                    console.log('success');
+                },
+                function (errorResponse) {
+                    // handle errors here
+                });
+        };
+    }]);
+
+    $(document).ready(function () {
+        // Handler for .ready() called.
+        //alert("ready");
+        var scope = angular.element(document.getElementById("main")).scope();
+        scope.$apply(function () {
+            scope.getEmployees();
+        });
+    });
+</script>
+
+<div >
+    <div class="row" id="main"   ng-controller="HomeCtrl">
         <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
         <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper"></div>
         <div class="col s12">
@@ -102,16 +126,16 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr ng-repeat="user in users">
+                                                        <tr ng-repeat="user in users" id="{{user.Id}}">
                                                             <td class="width-10"><img src="{{user.Picture}}" class="width-30 circle" alt="avatar"></td>
                                                             <td>{{user.Id}}</td>
                                                             <td>{{user.FullName.trim()}}</td>
                                                             <td>{{user.Email.trim()}}</td>
-                                                            <td>{{user.Phone.trim()}}</td>
+                                                            <td>{{user.AccountStatus}}</td>
                                                             <td>                                                                <div class="switch center">
                                                                     <label>
                                                                        
-                                                                            <input type="checkbox" ng-bind="user.AccountStatus" checked>
+                                                                            <input type="checkbox" ng-bind="user.AccountStatus" ng-model="chk"  ng-true-value="{{ 1 | json }}" ng-false-value="{{ 0 | json }}" >
                                                                         
                                                                         
                                                                         
@@ -120,7 +144,7 @@
                                                                 </div></td>
                                                                 <td>{{user.Role.trim()}}</td>
                                                                 <td>{{user.CreatedOn}}</td>
-                                                                <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating"><i class="material-icons">delete</i></a> </td>
+                                                                <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <button class="btn-floating" ng-click="DeleteUser(user)"><i class="material-icons">delete</i></button> </td>
                                                             </tr>
                                                          
                                                         </tbody>
@@ -148,6 +172,9 @@
                 </div>
             </div>
         </div>
-    </div>
+   
+    
+    
+    </div >
 
    
