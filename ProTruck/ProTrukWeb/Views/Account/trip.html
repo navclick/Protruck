@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+	<meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google.">
+	<meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template, eCommerce dashboard, analytic dashboard">
+	<meta name="author" content="ThemeSelect">
+	<title>Trip | Pro Truck</title>
+	<link rel="apple-touch-icon" href="~/Content/images/favicon/apple-touch-icon-152x152.png">
+	<link rel="shortcut icon" type="image/x-icon" href="~/Content/images/favicon/favicon-32x32.png">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- BEGIN: VENDOR CSS-->
+	<link rel="stylesheet" type="text/css" href="~/Content/vendors/vendors.min.css">
+	<link rel="stylesheet" type="text/css" href="~/Content/vendors/flag-icon/css/flag-icon.min.css">
+	<link rel="stylesheet" type="text/css" href="~/Content/vendors/data-tables/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="~/Content/vendors/data-tables/extensions/responsive/css/responsive.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="~/Content/vendors/data-tables/css/select.dataTables.min.css">
+	<!-- END: VENDOR CSS-->
+	<!-- BEGIN: Page Level CSS-->
+	<link rel="stylesheet" type="text/css" href="~/Content/css/themes/vertical-modern-menu-template/materialize.css">
+	<link rel="stylesheet" type="text/css" href="~/Content/css/themes/vertical-modern-menu-template/style.css">
+	<link rel="stylesheet" type="text/css" href="~/Content/css/pages/data-tables.css">
+	<!-- END: Page Level CSS-->
+	<!-- BEGIN: Custom CSS-->
+	<link rel="stylesheet" type="text/css" href="~/Content/css/custom/custom.css">
+	<!-- END: Custom CSS-->
+</head>
+<!-- END: Head-->
+<body class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu 2-columns  " data-open="click" data-menu="vertical-modern-menu" data-col="2-columns">
+
+	<!-- BEGIN: Header-->
+	<header class="page-topbar" id="header">
+		<div class="navbar navbar-fixed"> 
+			<nav class="navbar-main navbar-color nav-collapsible sideNav-lock navbar-dark gradient-45deg-indigo-purple no-shadow">
+				<div class="nav-wrapper">
+					<div class="header-search-wrapper hide-on-med-and-down"><i class="material-icons">search</i>
+						<input class="header-search-input z-depth-2" type="text" name="Search" placeholder="Explore Materialize">
+					</div>
+					<ul class="navbar-list right">
+						<li class="hide-on-med-and-down"><a class="waves-effect waves-block waves-light toggle-fullscreen" href="javascript:void(0);"><i class="material-icons">settings_overscan</i></a></li>
+						<li class="hide-on-large-only"><a class="waves-effect waves-block waves-light search-button" href="javascript:void(0);"><i class="material-icons">search</i></a></li>
+						<li><a class="waves-effect waves-block waves-light notification-button" href="javascript:void(0);" data-target="notifications-dropdown"><i class="material-icons">notifications_none<small class="notification-badge">5</small></i></a></li>
+						<li><a class="waves-effect waves-block waves-light profile-button" href="javascript:void(0);" data-target="profile-dropdown"><span class="avatar-status avatar-online"><img src="~/Content/images/avatar/avatar-7.png" alt="avatar"><i></i></span></a></li>
+					</ul>
+					<!-- notifications-dropdown-->
+					<ul class="dropdown-content" id="notifications-dropdown">
+						<li>
+							<h6>NOTIFICATIONS<span class="new badge">5</span></h6>
+						</li>
+						<li class="divider"></li>
+						<li><a class="grey-text text-darken-2" href="#!"><span class="material-icons icon-bg-circle cyan small">add_shopping_cart</span> A new order has been placed!</a>
+							<time class="media-meta" datetime="2015-06-12T20:50:48+08:00">2 hours ago</time>
+						</li>
+						<li><a class="grey-text text-darken-2" href="#!"><span class="material-icons icon-bg-circle red small">stars</span> Completed the task</a>
+							<time class="media-meta" datetime="2015-06-12T20:50:48+08:00">3 days ago</time>
+						</li>
+						<li><a class="grey-text text-darken-2" href="#!"><span class="material-icons icon-bg-circle teal small">settings</span> Settings updated</a>
+							<time class="media-meta" datetime="2015-06-12T20:50:48+08:00">4 days ago</time>
+						</li>
+						<li><a class="grey-text text-darken-2" href="#!"><span class="material-icons icon-bg-circle deep-orange small">today</span> Director meeting started</a>
+							<time class="media-meta" datetime="2015-06-12T20:50:48+08:00">6 days ago</time>
+						</li>
+						<li><a class="grey-text text-darken-2" href="#!"><span class="material-icons icon-bg-circle amber small">trending_up</span> Generate monthly report</a>
+							<time class="media-meta" datetime="2015-06-12T20:50:48+08:00">1 week ago</time>
+						</li>
+					</ul>
+					<!-- profile-dropdown-->
+					<ul class="dropdown-content" id="profile-dropdown">
+						<li><a class="grey-text text-darken-1" href="user-profile-page.html"><i class="material-icons">person_outline</i> Profile</a></li>
+						<li><a class="grey-text text-darken-1" href="app-chat.html"><i class="material-icons">chat_bubble_outline</i> Chat</a></li>
+						<li><a class="grey-text text-darken-1" href="page-faq.html"><i class="material-icons">help_outline</i> Help</a></li>
+						<li class="divider"></li>
+						<li><a class="grey-text text-darken-1" href="user-lock-screen.html"><i class="material-icons">lock_outline</i> Lock</a></li>
+						<li><a class="grey-text text-darken-1" href="user-login.html"><i class="material-icons">keyboard_tab</i> Logout</a></li>
+					</ul>
+				</div>
+				<nav class="display-none search-sm">
+					<div class="nav-wrapper">
+						<form>
+							<div class="input-field">
+								<input class="search-box-sm" type="search" required="">
+								<label class="label-icon" for="search"><i class="material-icons search-sm-icon">search</i></label><i class="material-icons search-sm-close">close</i>
+							</div>
+						</form>
+					</div>
+				</nav>
+			</nav>
+		</div>
+	</header>
+	<!-- END: Header-->
+
+	<!-- BEGIN: SideNav-->
+	<aside class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-light sidenav-active-square">
+		<div class="brand-sidebar">
+			<h1 class="logo-wrapper"><a class="brand-logo darken-1" href="index.html"><img src="~/Content/images/logo/materialize-logo-color.png" alt="materialize logo"/><!-- <span class="logo-text hide-on-med-and-down">Materialize</span> --></a><!-- <a class="navbar-toggler" href="#"><i class="material-icons">radio_button_checked</i></a> --></h1>
+		</div>
+		<ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
+			<li class="bold"><a class="active waves-effect waves-cyan" href="#"><span class="menu-title dashboard-icon" data-i18n="">Dashboard</span></a></li>
+			<li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><span class="menu-title booking-icon" data-i18n="">Booking</span></a>
+				<div class="collapsible-body">
+					<ul class="collapsible collapsible-sub" data-collapsible="accordion">
+						<li><a class="collapsible-body" href="dashboard-modern.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Contracts</span></a>
+						</li>
+						<li><a class="collapsible-body" href="dashboard-ecommerce.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Parties</span></a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><span class="menu-title order-icon" data-i18n="">Order Managment</span></a>
+				<div class="collapsible-body">
+					<ul class="collapsible collapsible-sub" data-collapsible="accordion">
+						<li><a class="collapsible-body" href="dashboard-modern.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Delivery Orders</span></a>
+						</li>             
+					</ul>
+				</div>
+			</li>
+			<li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><span class="menu-title account-icon" data-i18n="">Accounts & Billing</span></a>
+				<div class="collapsible-body">
+					<ul class="collapsible collapsible-sub" data-collapsible="accordion">
+						<li><a class="collapsible-body" href="dashboard-modern.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Leader</span></a>
+						</li>
+						<li><a class="collapsible-body" href="dashboard-ecommerce.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Billing</span></a>
+						</li>
+						<li><a class="collapsible-body" href="dashboard-analytics.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Vouchers</span></a>
+						</li>
+						<li><a class="collapsible-body" href="dashboard-analytics.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Account Payable</span></a>
+						</li>
+						<li><a class="collapsible-body" href="dashboard-analytics.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Account Reciveable</span></a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><span class="menu-title vehicle-icon" data-i18n="">Vehicle Managment</span></a>
+				<div class="collapsible-body">
+					<ul class="collapsible collapsible-sub" data-collapsible="accordion">
+						<li><a class="collapsible-body" href="dashboard-modern.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Vehicles</span></a>
+						</li>
+						<li><a class="collapsible-body" href="dashboard-ecommerce.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Drivers</span></a>
+						</li>
+						<li><a class="collapsible-body" href="dashboard-analytics.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Trips</span></a>
+						</li>
+						<li><a class="collapsible-body" href="dashboard-analytics.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Trip Reader</span></a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><span class="menu-title expense-icon" data-i18n="">Expense Managment</span></a>
+				<div class="collapsible-body">
+					<ul class="collapsible collapsible-sub" data-collapsible="accordion">
+						<li><a class="collapsible-body" href="dashboard-modern.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Expense Type</span></a>
+						</li>
+						<li><a class="collapsible-body" href="dashboard-ecommerce.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Expense Voucher</span></a>
+						</li>
+						<li><a class="collapsible-body" href="dashboard-analytics.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Paty Cash</span></a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><span class="menu-title repair-icon" data-i18n="">Repairing & Maintenance</span></a>
+				<div class="collapsible-body">
+					<ul class="collapsible collapsible-sub" data-collapsible="accordion">
+						<li><a class="collapsible-body" href="dashboard-modern.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Reapir Order</span></a>
+						</li>
+						<li><a class="collapsible-body" href="dashboard-ecommerce.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Purchase Order</span></a>
+						</li>
+						<li><a class="collapsible-body" href="dashboard-analytics.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Gatepass</span></a>
+						</li>
+						<li><a class="collapsible-body" href="dashboard-analytics.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Inward Gatepass</span></a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><span class="menu-title user-icon" data-i18n="">Administration</span></a>
+				<div class="collapsible-body">
+					<ul class="collapsible collapsible-sub" data-collapsible="accordion">
+						<li><a class="collapsible-body" href="dashboard-modern.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Users</span></a>
+						</li>
+						<li><a class="collapsible-body" href="dashboard-ecommerce.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Role</span></a>
+						</li>
+						<li><a class="collapsible-body" href="dashboard-analytics.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>User Access</span></a>
+						</li>
+						<li><a class="collapsible-body" href="dashboard-analytics.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Goods Type</span></a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li class="bold"><a class="collapsible-header waves-effect waves-cyan " href="#"><span class="menu-title report-icon" data-i18n="">Reports</span></a>
+				<div class="collapsible-body">
+					<ul class="collapsible collapsible-sub" data-collapsible="accordion">
+						<li><a class="collapsible-body" href="dashboard-modern.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Contract</span></a>
+						</li>
+						<li><a class="collapsible-body" href="dashboard-ecommerce.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Vehicle Trip Report</span></a>
+						</li>
+						<li><a class="collapsible-body" href="dashboard-analytics.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Builty Report</span></a>
+						</li>
+						<li><a class="collapsible-body" href="dashboard-analytics.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Party Ledger</span></a>
+						</li>
+						<li><a class="collapsible-body" href="dashboard-analytics.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Expense Report</span></a>
+						</li>
+						<li><a class="collapsible-body" href="dashboard-analytics.html" data-i18n=""><i class="material-icons">radio_button_unchecked</i><span>Payment Report</span></a>
+						</li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+		<div class="navigation-background"></div><a class="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only" href="#" data-target="slide-out"><i class="material-icons">menu</i></a>
+	</aside>
+	<!-- END: SideNav-->
+	<!-- BEGIN: Page Main-->
+	<div id="main">
+		<div class="row">
+			<div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
+			<div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper"></div>
+			<div class="col s12">
+				<div class="container">
+					<div class="section section-data-tables">
+						<!-- Scroll - Vertical and Horizontal -->
+						<div class="row">
+							<div class="col s12">
+								<div class="card">
+									<div class="card-content">
+										<h4 class="card-title left">Trip</h4>
+										<a class="right waves-effect waves-light btn btn-small modal-trigger" href="#modal1">Add Trip <i class="material-icons right">add</i></a>
+										<div class="row">
+											<div class="col s12">
+												<table id="data-table-simple" class="display nowrap">
+													<thead>
+														<tr>
+															<th>ID</th>
+															<th>Bilty Number</th>
+															<th>DO Number</th>
+															<th>Pickup</th>
+															<th>Delivered</th>
+															<th>Date & Time</th>
+															<th>Status</th>
+															<th>Created On</th> 
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>123456</td>
+															<td>001-002-003</td>
+															<td>5698741</td>
+															<td>Liaquatabad</td>
+															<td>Nooriabad</td>
+															<td><div class="switch"><label><input checked type="checkbox"><span class="lever"></span></label></div></td>
+															<td>2011/01/25</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END: Page Main-->
+
+	<!-- BEGIN: Footer-->
+
+	<footer class="page-footer footer footer-static footer-dark gradient-45deg-indigo-purple gradient-shadow navbar-border navbar-shadow">
+		<div class="footer-copyright">
+			<div class="container"><span><span class="right hide-on-small-only">Developed by <a href="https://http://www.e-xanadu.com//"><img src="~/Content/images/logo/powered.png"></a></span></div>
+		</div>
+	</footer>
+
+	<!-- END: Footer-->
+
+	<!-- BEGIN VENDOR JS-->
+	<script src="~/Content/js/vendors.min.js" type="text/javascript"></script>
+	<!-- BEGIN VENDOR JS-->
+	<!-- BEGIN PAGE VENDOR JS-->
+	<script src="~/Content/vendors/data-tables/js/jquery.dataTables.min.js" type="text/javascript"></script>
+	<script src="~/Content/vendors/data-tables/extensions/responsive/js/dataTables.responsive.min.js" type="text/javascript"></script>
+	<script src="~/Content/vendors/data-tables/js/dataTables.select.min.js" type="text/javascript"></script>
+	<!-- END PAGE VENDOR JS-->
+	<!-- BEGIN THEME  JS-->
+	<script src="~/Content/js/plugins.js" type="text/javascript"></script>
+	<script src="~/Content/js/custom/custom-script.js" type="text/javascript"></script>
+	<!-- END THEME  JS-->
+	<!-- BEGIN PAGE LEVEL JS-->
+	<script src="~/Content/js/scripts/data-tables.js" type="text/javascript"></script>
+	<!-- END PAGE LEVEL JS-->
+</body>
+</html>
