@@ -9,7 +9,15 @@ namespace ProTrukWeb
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Content/js/jquery-1.8.3.min.js",
+                       
+                        "~/Content/js/jquery-confirm.js",
+                        "~/Content/js/util.js",
+                         "~/Scripts/angular.min.js"
+                        )
+                        
+                        
+                        );
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -17,6 +25,15 @@ namespace ProTrukWeb
             bundles.Add(new ScriptBundle("~/bundles/val").Include(
                        "~/Content/js/jquery.min.js",
                        "~/Content/js/jquery.form-validator.min.js"
+                      
+
+
+                       ));
+
+
+            bundles.Add(new ScriptBundle("~/bundles/util").Include(
+                 
+                "~/Content/js/util.js"
 
 
                        ));
@@ -41,8 +58,10 @@ namespace ProTrukWeb
                       "~/Content/css/themes/vertical-modern-menu-template/style.css",
                       "~/Content/css/pages/dashboard-modern.css",
                       "~/Content/css/pages/intro.css",
-                      "~/Content/css/custom/custom.css"
-                            
+                      "~/Content/css/custom/custom.css",
+                      
+                      "~/Content/css/jquery-confirm.css"
+
 
 
 
@@ -62,7 +81,8 @@ namespace ProTrukWeb
                    ));
 
             bundles.Add(new ScriptBundle("~/bundles/themejs").Include(
-                       "~/Content/js/vendors.min.js",
+                
+                "~/Content/js/vendors.min.js",
                         "~/Content/vendors/chartist-js/chartist.min.js",
                         "~/Content/vendors/chartist-js/chartist-plugin-tooltip.js",
                         "~/Content/vendors/chartist-js/chartist-plugin-fill-donut.min.js",
@@ -80,12 +100,17 @@ namespace ProTrukWeb
                         
                         ));
 
-            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+/*            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                       "~/Scripts/jquery-3.4.1.min.js",
                        "~/Scripts/angular.min.js"
                        ));
+                       */
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                      
+                       "~/Scripts/angular.min.js"
+                       ));
 
-
+            
         }
     }
 }

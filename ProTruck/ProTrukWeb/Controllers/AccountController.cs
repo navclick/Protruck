@@ -81,7 +81,7 @@ namespace ProTrukWeb.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Adduser(UserVM user, HttpPostedFileBase file)
+        public async Task<ActionResult> Adduser(UserVM user, HttpPostedFileBase file)
         {
             user.AccountStatus = 1;
             user.CreatedOn = DateTime.Today.ToShortDateString();
@@ -96,7 +96,7 @@ namespace ProTrukWeb.Controllers
                     file.SaveAs(path);
 
                     user.Picture = ProTrukRepo.Util.Constant.PathUserImage + Session["UserID"] + file.FileName;
-                    userRepository.Adduser(user);
+                    await userRepository.Adduser(user);
 
 
                 }
@@ -110,10 +110,17 @@ namespace ProTrukWeb.Controllers
             }
             else {
                 user.Picture = ProTrukRepo.Util.Constant.PathUserDefultImage;
-                userRepository.Adduser(user);
+                await userRepository.Adduser(user);
             }
 
-            return RedirectToAction("Index", "Account");
+             return RedirectToAction("Index", "Account");
+        }
+
+        [HttpPost]
+        public async Task<JsonResult>  RemoveUser(UserVM user)
+        {
+            bool result= await userRepository.RemoveUser(user);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
     }

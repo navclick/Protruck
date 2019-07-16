@@ -15,9 +15,10 @@ namespace ProTrukRepo.Interface
         Response ValidateUser(UserVM user);
         Response GetModules();
         //Response AddUser(UserVM employee);
-        bool Adduser(UserVM user); 
+        Task<bool> Adduser(UserVM user);
+        Task<bool> RemoveUser(UserVM user);
 
-        
+
         Task<Response> GetAllRoles();
 
     }
