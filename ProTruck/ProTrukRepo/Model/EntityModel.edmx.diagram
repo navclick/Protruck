@@ -5,18 +5,20 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="43249996d528479ba426f6618b28da21" Name="Diagram1">
-        <EntityTypeShape EntityType="ProTruckModel.C__RefactorLog" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProTruckModel.ExanaduCompany" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProTruckModel.LinkRoleMenu" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProTruckModel.Menu" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProTruckModel.Module" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
-        <AssociationConnector Association="ProTruckModel.FK_LinkRoleMenus_Menus" ManuallyRouted="false" />
-        <AssociationConnector Association="ProTruckModel.FK_Menus_Modules" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="ProTruckModel.Role" Width="1.5" PointX="3" PointY="3.125" />
-        <EntityTypeShape EntityType="ProTruckModel.User" Width="1.5" PointX="8.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProTruckModel.C__RefactorLog" Width="1.5" PointX="5.75" PointY="2.375" />
+        <EntityTypeShape EntityType="ProTruckModel.ExanaduCompany" Width="1.5" PointX="0.75" PointY="6" />
+        <EntityTypeShape EntityType="ProTruckModel.GoodsType" Width="1.5" PointX="3" PointY="8.125" />
+        <EntityTypeShape EntityType="ProTruckModel.LinkRoleMenu" Width="1.5" PointX="5.25" PointY="5.125" />
+        <EntityTypeShape EntityType="ProTruckModel.Menu" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="ProTruckModel.Module" Width="1.5" PointX="0.75" PointY="2.25" />
+        <EntityTypeShape EntityType="ProTruckModel.Role" Width="1.5" PointX="3" PointY="4.875" />
+        <EntityTypeShape EntityType="ProTruckModel.User" Width="1.5" PointX="5.25" PointY="8.125" />
+        <AssociationConnector Association="ProTruckModel.FK_GoodsTypes_ExanaduCompanies" />
         <AssociationConnector Association="ProTruckModel.FK_Roles_ExanaduCompanies" />
         <AssociationConnector Association="ProTruckModel.FK_Users_ExanaduCompanies" />
+        <AssociationConnector Association="ProTruckModel.FK_LinkRoleMenus_Menus" />
         <AssociationConnector Association="ProTruckModel.FK_LinkRoleMenus_Roles" />
+        <AssociationConnector Association="ProTruckModel.FK_Menus_Modules" />
         <AssociationConnector Association="ProTruckModel.FK_Users_Roles" />
       </Diagram>
     </edmx:Diagrams>

@@ -19,6 +19,16 @@
     <Property Name="StartDate" Type="date" />
     <Property Name="ExpiryDate" Type="date" />
   </EntityType>
+  <EntityType Name="GoodsTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Goods" Type="nchar" MaxLength="20" />
+    <Property Name="Description" Type="nchar" MaxLength="50" />
+    <Property Name="Unit" Type="int" />
+    <Property Name="EcomID" Type="int" />
+  </EntityType>
   <EntityType Name="LinkRoleMenus">
     <Key>
       <PropertyRef Name="Id" />
@@ -72,11 +82,23 @@
     <Property Name="EmailVeringCode" Type="nvarchar(max)" />
     <Property Name="EmailConfirmed" Type="bit" />
     <Property Name="AccountStatus" Type="int" />
-    <Property Name="CreatedOn" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="nchar" MaxLength="15" />
     <Property Name="RoleID" Type="int" />
     <Property Name="EcomID" Type="int" Nullable="false" />
     <Property Name="Picture" Type="nchar" MaxLength="200" />
   </EntityType>
+  <Association Name="FK_GoodsTypes_ExanaduCompanies">
+    <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="0..1" />
+    <End Role="GoodsTypes" Type="Self.GoodsTypes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompanies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GoodsTypes">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_LinkRoleMenus_Menus">
     <End Role="Menus" Type="Self.Menus" Multiplicity="0..1" />
     <End Role="LinkRoleMenus" Type="Self.LinkRoleMenus" Multiplicity="*" />
@@ -152,11 +174,16 @@
   <EntityContainer Name="ProTruckModelStoreContainer">
     <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ExanaduCompanies" EntityType="Self.ExanaduCompanies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GoodsTypes" EntityType="Self.GoodsTypes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LinkRoleMenus" EntityType="Self.LinkRoleMenus" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Modules" EntityType="Self.Modules" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_GoodsTypes_ExanaduCompanies" Association="Self.FK_GoodsTypes_ExanaduCompanies">
+      <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
+      <End Role="GoodsTypes" EntitySet="GoodsTypes" />
+    </AssociationSet>
     <AssociationSet Name="FK_LinkRoleMenus_Menus" Association="Self.FK_LinkRoleMenus_Menus">
       <End Role="Menus" EntitySet="Menus" />
       <End Role="LinkRoleMenus" EntitySet="LinkRoleMenus" />

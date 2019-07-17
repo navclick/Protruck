@@ -57,6 +57,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Interface\IGoodsRepository.cs" />
+    <Compile Include="Interface\IRoleRepository.cs" />
     <Compile Include="Interface\IUserMasterRepository.cs" />
     <Compile Include="Model\C__RefactorLog.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
@@ -77,6 +79,9 @@
       <DependentUpon>EntityModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\ExanaduCompany.cs">
+      <DependentUpon>EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\GoodsType.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\LinkRoleMenu.cs">
@@ -101,10 +106,13 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings1.settings</DependentUpon>
     </Compile>
+    <Compile Include="Repository\GoodsRepository.cs" />
+    <Compile Include="Repository\RoleRepository.cs" />
     <Compile Include="Repository\UserMasterRepository.cs" />
     <Compile Include="Util\Constant.cs" />
     <Compile Include="Util\GenericResponses.cs" />
     <Compile Include="Util\StringUtil.cs" />
+    <Compile Include="ViewModels\DropDownListModel.cs" />
     <Compile Include="ViewModels\MenuVM.cs" />
     <Compile Include="ViewModels\ModuleVM.cs" />
     <Compile Include="ViewModels\RolesVM.cs" />

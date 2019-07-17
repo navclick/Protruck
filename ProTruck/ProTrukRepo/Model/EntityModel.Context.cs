@@ -27,6 +27,7 @@ namespace ProTrukRepo.Model
     
         public virtual DbSet<C__RefactorLog> C__RefactorLog { get; set; }
         public virtual DbSet<ExanaduCompany> ExanaduCompanies { get; set; }
+        public virtual DbSet<GoodsType> GoodsTypes { get; set; }
         public virtual DbSet<LinkRoleMenu> LinkRoleMenus { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<Module> Modules { get; set; }

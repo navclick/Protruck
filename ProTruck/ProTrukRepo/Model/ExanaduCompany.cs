@@ -17,6 +17,7 @@ namespace ProTrukRepo.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ExanaduCompany()
         {
+            this.GoodsTypes = new HashSet<GoodsType>();
             this.Roles = new HashSet<Role>();
             this.Users = new HashSet<User>();
         }
@@ -30,6 +31,8 @@ namespace ProTrukRepo.Model
         public Nullable<System.DateTime> StartDate { get; set; }
         public Nullable<System.DateTime> ExpiryDate { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GoodsType> GoodsTypes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Role> Roles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

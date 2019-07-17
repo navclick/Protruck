@@ -1,0 +1,24 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[Users]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Table rebuild
+       [dbo].[Users] (Table)
+     Create
+       [dbo].[GoodsTypes] (Table)
+       [dbo].[FK_GoodsTypes_ExanaduCompanies] (Foreign Key)
+
+** Supporting actions
+     Drop
+       [dbo].[FK_Users_ExanaduCompanies] (Foreign Key)
+       [dbo].[FK_Users_Roles] (Foreign Key)
+     Create
+       [dbo].[FK_Users_ExanaduCompanies] (Foreign Key)
+       [dbo].[FK_Users_Roles] (Foreign Key)
