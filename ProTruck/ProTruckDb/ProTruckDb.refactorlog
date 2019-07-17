@@ -35,4 +35,25 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="[FK_Users_Roles]" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="5d7d6efa-e234-4483-8695-2715a98386d8" ChangeDateTime="07/16/2019 10:54:30">
+    <Property Name="ElementName" Value="[dbo].[GoodsTypes].[good]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[GoodsTypes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Goods" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="69aacbe3-1fed-4128-bd63-18599342da9e" ChangeDateTime="07/16/2019 10:55:33">
+    <Property Name="ElementName" Value="[dbo].[GoodsTypes].[Ecomm]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[GoodsTypes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EcomId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8bf4c6ac-5827-4d03-9e67-19a52d5587ce" ChangeDateTime="07/16/2019 10:55:46">
+    <Property Name="ElementName" Value="[dbo].[GoodsTypes].[EcomId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[GoodsTypes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EcomID" />
+  </Operation>
 </Operations>

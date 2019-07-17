@@ -66,6 +66,7 @@
     <Build Include="Tables\Modules.sql" />
     <Build Include="Tables\Menus.sql" />
     <Build Include="Tables\LinkRoleMenus.sql" />
+    <Build Include="Tables\GoodsTypes.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ProTruckDb.refactorlog" />

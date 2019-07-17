@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProTrukRepo.ViewModels;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -63,11 +65,20 @@ namespace ProTrukRepo.Util
         public static readonly string UserRoleHOD = "HOD";
         public static readonly string UserRoleSales = "Sales";
 
+        
+        
+                
+        
+       
+
+
 
         //****************************Response Messages******************************
         public static readonly string MSGRecordFound = "Record found";
         public static readonly string MDGNoRecordFound= "No record found!";
         public static readonly string MDGNoLoginFailed = "Login Failed!";
+        public static readonly string MSGFailed = "Failed!";
+        public static readonly string MDGNoAlreadyExist = "Already Exist";
 
         //*****************************
 

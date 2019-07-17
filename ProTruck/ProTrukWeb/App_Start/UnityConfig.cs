@@ -15,8 +15,8 @@ namespace ProTrukWeb
 
             // e.g. container.RegisterType<ITestService, TestService>();
             container.RegisterType<ProTrukRepo.Interface.IUserMasterRepository, ProTrukRepo.Repository.UserMasterRepository>();
-
-
+            container.RegisterType<ProTrukRepo.Interface.IRoleRepository, ProTrukRepo.Repository.RoleRepository>();
+            container.RegisterType<ProTrukRepo.Interface.IGoodsRepository, ProTrukRepo.Repository.GoodsRepository>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

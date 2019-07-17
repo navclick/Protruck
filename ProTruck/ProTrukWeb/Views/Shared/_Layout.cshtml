@@ -29,6 +29,16 @@
                        M.toast({ html: toastHTML });
                    }
                },
+               notifymsgcus: function (error,msg) {
+                   if (error == false) {
+                       var toastHTML = '<span>'+msg+' </span>';
+                       M.toast({ html: toastHTML });
+                   }
+                   else {
+                       var toastHTML = '<span style="color:red;">'+msg+'</span>';
+                       M.toast({ html: toastHTML });
+                   }
+               },
                getMessage: function () {
                    return msg;
                }
