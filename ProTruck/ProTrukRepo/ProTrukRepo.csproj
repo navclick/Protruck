@@ -57,10 +57,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Interface\IDriversRepository.cs" />
     <Compile Include="Interface\IGoodsRepository.cs" />
     <Compile Include="Interface\IRoleRepository.cs" />
+    <Compile Include="Interface\ISharedRepository.cs" />
     <Compile Include="Interface\IUserMasterRepository.cs" />
+    <Compile Include="Interface\IVehicleRepository.cs" />
     <Compile Include="Model\C__RefactorLog.cs">
+      <DependentUpon>EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Driver.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\EntityModel.Context.cs">
@@ -100,23 +106,32 @@
     <Compile Include="Model\User.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\vehicle.cs">
+      <DependentUpon>EntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings1.settings</DependentUpon>
     </Compile>
+    <Compile Include="Repository\DriverRepository.cs" />
     <Compile Include="Repository\GoodsRepository.cs" />
     <Compile Include="Repository\RoleRepository.cs" />
+    <Compile Include="Repository\SharedRepository.cs" />
     <Compile Include="Repository\UserMasterRepository.cs" />
+    <Compile Include="Repository\VehicleRepository.cs" />
     <Compile Include="Util\Constant.cs" />
     <Compile Include="Util\GenericResponses.cs" />
     <Compile Include="Util\StringUtil.cs" />
+    <Compile Include="ViewModels\DriverVM.cs" />
     <Compile Include="ViewModels\DropDownListModel.cs" />
+    <Compile Include="ViewModels\GoodsTypeVM.cs" />
     <Compile Include="ViewModels\MenuVM.cs" />
     <Compile Include="ViewModels\ModuleVM.cs" />
     <Compile Include="ViewModels\RolesVM.cs" />
     <Compile Include="ViewModels\UserVM.cs" />
+    <Compile Include="ViewModels\VehicleVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

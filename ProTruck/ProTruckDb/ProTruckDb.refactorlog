@@ -56,4 +56,32 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="EcomID" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="857c5ddc-7094-46f9-9e54-5efa2203f9f7" ChangeDateTime="07/17/2019 13:05:59">
+    <Property Name="ElementName" Value="[dbo].[vehicle].[Man]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[vehicle]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Manufact" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9618b66e-e96d-47dc-97ca-31a48aa5bf47" ChangeDateTime="07/17/2019 13:06:13">
+    <Property Name="ElementName" Value="[dbo].[vehicle].[Manufact]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[vehicle]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Manufacturer" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d5d128ec-1c95-4b9b-9ce4-f21085e9ea8f" ChangeDateTime="07/17/2019 13:08:55">
+    <Property Name="ElementName" Value="[dbo].[vehicle].[CreatedOn]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[vehicle]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Status" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="37a8d9fc-090c-425f-9ee9-e742877bad57" ChangeDateTime="07/18/2019 11:38:52">
+    <Property Name="ElementName" Value="[dbo].[Drivers].[E]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Drivers]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EcomID" />
+  </Operation>
 </Operations>

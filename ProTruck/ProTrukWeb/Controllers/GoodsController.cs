@@ -33,9 +33,9 @@ namespace ProTrukWeb.Controllers
             return Json(r.Value, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public async Task<JsonResult> AddGoods(GoodsType goods)
+        public async Task<JsonResult> AddGoods(GoodsTypeVM good)
         {
-            Response r = await goodsRepository.AddGood(goods);
+            Response r = await goodsRepository.AddGood(good);
             //  List<UserVM> employees = ((IEnumerable)r.Value).Cast<UserVM>().ToList(); ;
             return Json(r, JsonRequestBehavior.AllowGet);
         }
@@ -48,9 +48,9 @@ namespace ProTrukWeb.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> RemoveGoods(GoodsType goods)
+        public async Task<JsonResult> RemoveGoods(GoodsTypeVM good)
         {
-            Response r = await goodsRepository.RemoveGood(goods);
+            Response r = await goodsRepository.RemoveGood(good);
             //  List<UserVM> employees = ((IEnumerable)r.Value).Cast<UserVM>().ToList(); ;
             return Json(r, JsonRequestBehavior.AllowGet);
         }

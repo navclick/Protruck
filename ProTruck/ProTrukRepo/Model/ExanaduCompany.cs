@@ -20,6 +20,7 @@ namespace ProTrukRepo.Model
             this.GoodsTypes = new HashSet<GoodsType>();
             this.Roles = new HashSet<Role>();
             this.Users = new HashSet<User>();
+            this.Drivers = new HashSet<Driver>();
         }
     
         public int Id { get; set; }
@@ -37,5 +38,7 @@ namespace ProTrukRepo.Model
         public virtual ICollection<Role> Roles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User> Users { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Driver> Drivers { get; set; }
     }
 }
