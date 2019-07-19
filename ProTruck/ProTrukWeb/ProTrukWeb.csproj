@@ -184,6 +184,7 @@
     <Compile Include="Controllers\DriverController.cs" />
     <Compile Include="Controllers\GoodsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PartiesController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\VehicleController.cs" />
     <Compile Include="CustomFilters\UserAuthenticationFilter.cs" />
@@ -1586,6 +1587,7 @@
     <Content Include="Views\Vehicle\Index.cshtml" />
     <Content Include="Views\Driver\Index.cshtml" />
     <Content Include="Views\Bank\Index.cshtml" />
+    <Content Include="Views\Parties\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
