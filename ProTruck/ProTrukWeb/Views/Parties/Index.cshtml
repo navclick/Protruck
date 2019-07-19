@@ -21,8 +21,8 @@
                         <div class="col s12">
                             <div class="card">
                                 <div class="card-content">
-                                    <h4 class="card-title left">Vehicle</h4>
-                                    <a class="right waves-effect waves-light btn btn-small modal-trigger" href="#modal1">Add Bank <i class="material-icons right">add</i></a>
+                                    <h4 class="card-title left">Parties</h4>
+                                    <a class="right waves-effect waves-light btn btn-small modal-trigger" href="#modal1">Add Party <i class="material-icons right">add</i></a>
                                     <div id="modal1" class="modal">
                                         <form ng-submit="addBank()" id="frm" name="frm" class="col s12">
                                             <div class="modal-content">
@@ -30,19 +30,33 @@
                                                 <div class="col s12 m12 l12">
 
                                                     <div class="row">
+                                                        <div class="input-field col s12">
+                                                            <select>
+                                                                <option value="1">Option 1</option>
+                                                                <option value="2">Option 2</option>
+                                                                <option value="3">Option 3</option>
+                                                            </select>
+                                                            <label>Main Party</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
                                                         <div class="input-field col m6 s12">
                                                             <input id="first_name01" ng-model="bank.Bank1" required type="text">
-                                                            <label for="first_name01">Bank</label>
+                                                            <label for="first_name01">Party Name</label>
                                                         </div>
                                                         <div class="input-field col m6 s12">
                                                             <input id="last_name" ng-model="bank.Branch" type="text">
-                                                            <label for="last_name">Branch</label>
+                                                            <label for="last_name">Contact Person</label>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="input-field col s12">
-                                                            <input id="capacity" ng-model="bank.Address" type="text">
-                                                            <label for="capacity">Address</label>
+                                                            <p>
+                                                                <label>
+                                                                    <input type="checkbox" class="filled-in" />
+                                                                    <span>Sub Party</span>
+                                                                </label>
+                                                            </p>
                                                         </div>
 
                                                     </div>
@@ -67,10 +81,11 @@
                                                 <thead>
                                                     <tr>
                                                         <th>ID</th>
-                                                        <th>Bank</th>
-                                                        <th>Branch</th>
-                                                        <th>Address</th>
-
+                                                        <th>Party Name</th>
+                                                        <th>Contact Person</th>
+                                                        <th>Sub Party</th>
+                                                        <td>Parent Party</td>
+                                                        <th>Created On</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
@@ -78,12 +93,24 @@
                                                     <tr ng-repeat="bank in banks">
                                                         <td>{{bank.Id}}</td>
                                                         <td>{{bank.Bank1}}</td>
+                                                        <td></td>
                                                         <td>{{bank.Branch}}</td>
                                                         <td>{{bank.Address}}</td>
-
+                                                        <td></td>
                                                         <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating" ng-click="DeleteBank(bank)">><i class="material-icons">delete</i></a></td>
                                                     </tr>
                                                 </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Party Name</th>
+                                                        <th>Contact Person</th>
+                                                        <th>Sub Party</th>
+                                                        <td>Parent Party</td>
+                                                        <th>Created On</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </tfoot>
                                             </table>
                                         </div>
                                     </div>
