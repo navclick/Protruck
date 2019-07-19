@@ -59,6 +59,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Interface\IBankRepository.cs" />
     <Compile Include="Interface\IDriversRepository.cs" />
+    <Compile Include="Interface\IExpenseRepository.cs" />
     <Compile Include="Interface\IGoodsRepository.cs" />
     <Compile Include="Interface\IRoleRepository.cs" />
     <Compile Include="Interface\ISharedRepository.cs" />
@@ -124,6 +125,7 @@
     </Compile>
     <Compile Include="Repository\BankRepository.cs" />
     <Compile Include="Repository\DriverRepository.cs" />
+    <Compile Include="Repository\ExpenseRepository.cs" />
     <Compile Include="Repository\GoodsRepository.cs" />
     <Compile Include="Repository\RoleRepository.cs" />
     <Compile Include="Repository\SharedRepository.cs" />

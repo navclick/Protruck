@@ -42,6 +42,16 @@
     <Property Name="StartDate" Type="date" />
     <Property Name="ExpiryDate" Type="date" />
   </EntityType>
+  <EntityType Name="Expense">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Expense" Type="nchar" MaxLength="50" />
+    <Property Name="Description" Type="nchar" MaxLength="100" />
+    <Property Name="Type" Type="int" />
+    <Property Name="EcomID" Type="int" />
+  </EntityType>
   <EntityType Name="GoodsTypes">
     <Key>
       <PropertyRef Name="Id" />
@@ -149,6 +159,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Expense_ExanaduCompanies">
+    <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="0..1" />
+    <End Role="Expense" Type="Self.Expense" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompanies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Expense">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_GoodsTypes_ExanaduCompanies">
     <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="0..1" />
     <End Role="GoodsTypes" Type="Self.GoodsTypes" Multiplicity="*" />
@@ -238,6 +260,7 @@
     <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Drivers" EntityType="Self.Drivers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ExanaduCompanies" EntityType="Self.ExanaduCompanies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Expense" EntityType="Self.Expense" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="GoodsTypes" EntityType="Self.GoodsTypes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LinkRoleMenus" EntityType="Self.LinkRoleMenus" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
@@ -252,6 +275,10 @@
     <AssociationSet Name="FK_Drivers_vehicle" Association="Self.FK_Drivers_vehicle">
       <End Role="vehicle" EntitySet="vehicle" />
       <End Role="Drivers" EntitySet="Drivers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Expense_ExanaduCompanies" Association="Self.FK_Expense_ExanaduCompanies">
+      <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
+      <End Role="Expense" EntitySet="Expense" />
     </AssociationSet>
     <AssociationSet Name="FK_GoodsTypes_ExanaduCompanies" Association="Self.FK_GoodsTypes_ExanaduCompanies">
       <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />

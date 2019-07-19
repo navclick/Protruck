@@ -20,6 +20,7 @@ namespace ProTrukWeb
             container.RegisterType<ProTrukRepo.Interface.IVehicleRepository, ProTrukRepo.Repository.VehicleRepository>();
             container.RegisterType<ProTrukRepo.Interface.IDriversRepository, ProTrukRepo.Repository.DriverRepository>();
             container.RegisterType<ProTrukRepo.Interface.IBankRepository, ProTrukRepo.Repository.BankRepository>();
+            container.RegisterType<ProTrukRepo.Interface.IExpenseRepository, ProTrukRepo.Repository.ExpenseRepository>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }
