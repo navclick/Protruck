@@ -93,6 +93,19 @@
     <Property Name="IsActive" Type="bit" />
     <Property Name="Icon" Type="nchar" MaxLength="300" />
   </EntityType>
+  <EntityType Name="Party">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Party" Type="nchar" MaxLength="100" />
+    <Property Name="ConectPerson" Type="nchar" MaxLength="15" />
+    <Property Name="Phone" Type="nchar" MaxLength="15" />
+    <Property Name="IsSubParty" Type="bit" />
+    <Property Name="CreatedOn" Type="date" />
+    <Property Name="ParentId" Type="int" />
+    <Property Name="EcomID" Type="int" />
+  </EntityType>
   <EntityType Name="Roles">
     <Key>
       <PropertyRef Name="Id" />
@@ -219,6 +232,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Party_ExanaduCompanies">
+    <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="0..1" />
+    <End Role="Party" Type="Self.Party" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompanies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Party">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Roles_ExanaduCompanies">
     <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="0..1" />
     <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
@@ -265,6 +290,7 @@
     <EntitySet Name="LinkRoleMenus" EntityType="Self.LinkRoleMenus" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Modules" EntityType="Self.Modules" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Party" EntityType="Self.Party" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="vehicle" EntityType="Self.vehicle" Schema="dbo" store:Type="Tables" />
@@ -295,6 +321,10 @@
     <AssociationSet Name="FK_Menus_Modules" Association="Self.FK_Menus_Modules">
       <End Role="Modules" EntitySet="Modules" />
       <End Role="Menus" EntitySet="Menus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Party_ExanaduCompanies" Association="Self.FK_Party_ExanaduCompanies">
+      <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
+      <End Role="Party" EntitySet="Party" />
     </AssociationSet>
     <AssociationSet Name="FK_Roles_ExanaduCompanies" Association="Self.FK_Roles_ExanaduCompanies">
       <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />

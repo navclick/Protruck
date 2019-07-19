@@ -98,6 +98,19 @@
           <Property Name="IsActive" Type="bit" />
           <Property Name="Icon" Type="nchar" MaxLength="300" />
         </EntityType>
+        <EntityType Name="Party">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Party" Type="nchar" MaxLength="100" />
+          <Property Name="ConectPerson" Type="nchar" MaxLength="15" />
+          <Property Name="Phone" Type="nchar" MaxLength="15" />
+          <Property Name="IsSubParty" Type="bit" />
+          <Property Name="CreatedOn" Type="date" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="EcomID" Type="int" />
+        </EntityType>
         <EntityType Name="Roles">
           <Key>
             <PropertyRef Name="Id" />
@@ -224,6 +237,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Party_ExanaduCompanies">
+          <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="0..1" />
+          <End Role="Party" Type="Self.Party" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExanaduCompanies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Party">
+              <PropertyRef Name="EcomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Roles_ExanaduCompanies">
           <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="0..1" />
           <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
@@ -270,6 +295,7 @@
           <EntitySet Name="LinkRoleMenus" EntityType="Self.LinkRoleMenus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Modules" EntityType="Self.Modules" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Party" EntityType="Self.Party" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="vehicle" EntityType="Self.vehicle" Schema="dbo" store:Type="Tables" />
@@ -300,6 +326,10 @@
           <AssociationSet Name="FK_Menus_Modules" Association="Self.FK_Menus_Modules">
             <End Role="Modules" EntitySet="Modules" />
             <End Role="Menus" EntitySet="Menus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Party_ExanaduCompanies" Association="Self.FK_Party_ExanaduCompanies">
+            <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
+            <End Role="Party" EntitySet="Party" />
           </AssociationSet>
           <AssociationSet Name="FK_Roles_ExanaduCompanies" Association="Self.FK_Roles_ExanaduCompanies">
             <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
@@ -371,6 +401,11 @@
             <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
             <End Role="Expense" EntitySet="Expenses" />
           </AssociationSet>
+          <EntitySet Name="Parties" EntityType="ProTruckModel.Party" />
+          <AssociationSet Name="FK_Party_ExanaduCompanies" Association="ProTruckModel.FK_Party_ExanaduCompanies">
+            <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
+            <End Role="Party" EntitySet="Parties" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="C__RefactorLog">
           <Key>
@@ -395,6 +430,7 @@
           <NavigationProperty Name="Users" Relationship="ProTruckModel.FK_Users_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="User" />
           <NavigationProperty Name="Drivers" Relationship="ProTruckModel.FK_Drivers_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Driver" />
           <NavigationProperty Name="Expenses" Relationship="ProTruckModel.FK_Expense_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Expense" />
+          <NavigationProperty Name="Parties" Relationship="ProTruckModel.FK_Party_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Party" />
         </EntityType>
         <EntityType Name="GoodsType">
           <Key>
@@ -647,6 +683,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Party">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Party1" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="ConectPerson" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="IsSubParty" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="0" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="EcomID" Type="Int32" />
+          <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Party_ExanaduCompanies" FromRole="Party" ToRole="ExanaduCompany" />
+        </EntityType>
+        <Association Name="FK_Party_ExanaduCompanies">
+          <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
+          <End Type="ProTruckModel.Party" Role="Party" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExanaduCompany">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Party">
+              <PropertyRef Name="EcomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -796,6 +858,20 @@
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Expense1" ColumnName="Expense" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parties">
+            <EntityTypeMapping TypeName="ProTruckModel.Party">
+              <MappingFragment StoreEntitySet="Party">
+                <ScalarProperty Name="EcomID" ColumnName="EcomID" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsSubParty" ColumnName="IsSubParty" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="ConectPerson" ColumnName="ConectPerson" />
+                <ScalarProperty Name="Party1" ColumnName="Party" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

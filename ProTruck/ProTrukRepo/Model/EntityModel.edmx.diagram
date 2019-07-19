@@ -27,6 +27,8 @@
         <EntityTypeShape EntityType="ProTruckModel.Bank" Width="1.5" PointX="7.375" PointY="6.75" />
         <EntityTypeShape EntityType="ProTruckModel.Expense" Width="1.5" PointX="3" PointY="0.75" />
         <AssociationConnector Association="ProTruckModel.FK_Expense_ExanaduCompanies" />
+        <EntityTypeShape EntityType="ProTruckModel.Party" Width="1.5" PointX="3" PointY="13.875" />
+        <AssociationConnector Association="ProTruckModel.FK_Party_ExanaduCompanies" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

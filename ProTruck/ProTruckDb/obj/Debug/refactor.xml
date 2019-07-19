@@ -91,4 +91,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="Branch" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="205086ca-1038-4628-bb8f-fddb99d5baf9" ChangeDateTime="07/19/2019 13:24:03" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[Party].[CreatedOn]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Party]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IsSubParty" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="63f783ff-91bd-4f37-a301-2ff55d5e2db1" ChangeDateTime="07/19/2019 13:25:00" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[Party].[E]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Party]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EcomID" />
+  </Operation>
 </Operations>

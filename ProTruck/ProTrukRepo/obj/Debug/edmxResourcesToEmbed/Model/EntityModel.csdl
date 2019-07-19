@@ -53,6 +53,11 @@
       <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
       <End Role="Expense" EntitySet="Expenses" />
     </AssociationSet>
+    <EntitySet Name="Parties" EntityType="ProTruckModel.Party" />
+    <AssociationSet Name="FK_Party_ExanaduCompanies" Association="ProTruckModel.FK_Party_ExanaduCompanies">
+      <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
+      <End Role="Party" EntitySet="Parties" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="C__RefactorLog">
     <Key>
@@ -77,6 +82,7 @@
     <NavigationProperty Name="Users" Relationship="ProTruckModel.FK_Users_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="User" />
     <NavigationProperty Name="Drivers" Relationship="ProTruckModel.FK_Drivers_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Driver" />
     <NavigationProperty Name="Expenses" Relationship="ProTruckModel.FK_Expense_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Expense" />
+    <NavigationProperty Name="Parties" Relationship="ProTruckModel.FK_Party_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Party" />
   </EntityType>
   <EntityType Name="GoodsType">
     <Key>
@@ -325,6 +331,32 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Expense">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Party">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Party1" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="ConectPerson" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="IsSubParty" Type="Boolean" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="0" />
+    <Property Name="ParentId" Type="Int32" />
+    <Property Name="EcomID" Type="Int32" />
+    <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Party_ExanaduCompanies" FromRole="Party" ToRole="ExanaduCompany" />
+  </EntityType>
+  <Association Name="FK_Party_ExanaduCompanies">
+    <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Party" Role="Party" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompany">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Party">
         <PropertyRef Name="EcomID" />
       </Dependent>
     </ReferentialConstraint>

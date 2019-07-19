@@ -182,6 +182,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BankController.cs" />
     <Compile Include="Controllers\CityController.cs" />
+    <Compile Include="Controllers\DOController.cs" />
     <Compile Include="Controllers\DriverController.cs" />
     <Compile Include="Controllers\ExpenseController.cs" />
     <Compile Include="Controllers\GoodsController.cs" />
@@ -1592,10 +1593,12 @@
     <Content Include="Views\Parties\Index.cshtml" />
     <Content Include="Views\City\Index.cshtml" />
     <Content Include="Views\Expense\Index.cshtml" />
+    <Content Include="Views\DO\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Party\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

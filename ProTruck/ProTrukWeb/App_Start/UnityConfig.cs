@@ -21,6 +21,7 @@ namespace ProTrukWeb
             container.RegisterType<ProTrukRepo.Interface.IDriversRepository, ProTrukRepo.Repository.DriverRepository>();
             container.RegisterType<ProTrukRepo.Interface.IBankRepository, ProTrukRepo.Repository.BankRepository>();
             container.RegisterType<ProTrukRepo.Interface.IExpenseRepository, ProTrukRepo.Repository.ExpenseRepository>();
+            container.RegisterType<ProTrukRepo.Interface.IPartyRepository, ProTrukRepo.Repository.PartyRepository>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

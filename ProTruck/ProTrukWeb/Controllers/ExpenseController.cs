@@ -33,6 +33,7 @@ namespace ProTrukWeb.Controllers
         [HttpPost]
         public async Task<JsonResult> AddExpense(ExpenseVM expense)
         {
+            expense.EcomID =(int) Session["Comp"];
 
             Response r = await Repository.AddExpense(expense);
             //  List<UserVM> employees = ((IEnumerable)r.Value).Cast<UserVM>().ToList(); ;

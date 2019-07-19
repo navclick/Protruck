@@ -61,6 +61,7 @@
     <Compile Include="Interface\IDriversRepository.cs" />
     <Compile Include="Interface\IExpenseRepository.cs" />
     <Compile Include="Interface\IGoodsRepository.cs" />
+    <Compile Include="Interface\IPartyRepository.cs" />
     <Compile Include="Interface\IRoleRepository.cs" />
     <Compile Include="Interface\ISharedRepository.cs" />
     <Compile Include="Interface\IUserMasterRepository.cs" />
@@ -107,6 +108,9 @@
     <Compile Include="Model\Module.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Party.cs">
+      <DependentUpon>EntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Response.cs" />
     <Compile Include="Model\Role.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
@@ -127,6 +131,7 @@
     <Compile Include="Repository\DriverRepository.cs" />
     <Compile Include="Repository\ExpenseRepository.cs" />
     <Compile Include="Repository\GoodsRepository.cs" />
+    <Compile Include="Repository\PartyRepository.cs" />
     <Compile Include="Repository\RoleRepository.cs" />
     <Compile Include="Repository\SharedRepository.cs" />
     <Compile Include="Repository\UserMasterRepository.cs" />
@@ -141,6 +146,7 @@
     <Compile Include="ViewModels\GoodsTypeVM.cs" />
     <Compile Include="ViewModels\MenuVM.cs" />
     <Compile Include="ViewModels\ModuleVM.cs" />
+    <Compile Include="ViewModels\PartyVM.cs" />
     <Compile Include="ViewModels\RolesVM.cs" />
     <Compile Include="ViewModels\UserVM.cs" />
     <Compile Include="ViewModels\VehicleVM.cs" />

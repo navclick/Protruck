@@ -71,6 +71,7 @@
     <Build Include="Tables\Drivers.sql" />
     <Build Include="Tables\Bank.sql" />
     <Build Include="Tables\Expense.sql" />
+    <Build Include="Tables\Party.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ProTruckDb.refactorlog" />
