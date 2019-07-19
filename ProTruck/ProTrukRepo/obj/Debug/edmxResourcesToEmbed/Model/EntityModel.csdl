@@ -48,6 +48,11 @@
       <End Role="Driver" EntitySet="Drivers" />
     </AssociationSet>
     <EntitySet Name="Banks" EntityType="ProTruckModel.Bank" />
+    <EntitySet Name="Expenses" EntityType="ProTruckModel.Expense" />
+    <AssociationSet Name="FK_Expense_ExanaduCompanies" Association="ProTruckModel.FK_Expense_ExanaduCompanies">
+      <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
+      <End Role="Expense" EntitySet="Expenses" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="C__RefactorLog">
     <Key>
@@ -71,6 +76,7 @@
     <NavigationProperty Name="Roles" Relationship="ProTruckModel.FK_Roles_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Role" />
     <NavigationProperty Name="Users" Relationship="ProTruckModel.FK_Users_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="User" />
     <NavigationProperty Name="Drivers" Relationship="ProTruckModel.FK_Drivers_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Driver" />
+    <NavigationProperty Name="Expenses" Relationship="ProTruckModel.FK_Expense_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Expense" />
   </EntityType>
   <EntityType Name="GoodsType">
     <Key>
@@ -300,4 +306,27 @@
     <Property Name="Branch" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
     <Property Name="Address" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
   </EntityType>
+  <EntityType Name="Expense">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Expense1" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="Type" Type="Int32" />
+    <Property Name="EcomID" Type="Int32" />
+    <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Expense_ExanaduCompanies" FromRole="Expense" ToRole="ExanaduCompany" />
+  </EntityType>
+  <Association Name="FK_Expense_ExanaduCompanies">
+    <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Expense" Role="Expense" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompany">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Expense">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>
