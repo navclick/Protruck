@@ -111,7 +111,7 @@
     $(document).ready(function () {
         // Handler for .ready() called.
         //alert("ready");
-        var scope = angular.element(document.getElementById("main")).scope();
+        var scope = angular.element(document.getElementById("ContentMain")).scope();
         scope.$apply(function () {
             scope.getDrivers();
             scope.getseleclistvehicle();
@@ -119,7 +119,7 @@
         });
     });
 </script>
-<div id="main" ng-controller="DriverCtrl">
+<div id="ContentMain" ng-controller="DriverCtrl">
     <div class="row">
         <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
         <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper"></div>

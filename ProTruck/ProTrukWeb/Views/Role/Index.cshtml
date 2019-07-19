@@ -85,7 +85,7 @@
     $(document).ready(function () {
         // Handler for .ready() called.
         //alert("ready");
-        var scope = angular.element(document.getElementById("main")).scope();
+        var scope = angular.element(document.getElementById("ContentMain")).scope();
         scope.$apply(function () {
             scope.getRoles();
         });
@@ -93,7 +93,7 @@
 </script>
 
 
-<div id="main" id="main"   ng-controller="RoleCtrl">
+<div id="ContentMain" ng-controller="RoleCtrl">
     <div class="row">
         <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
         <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper"></div>
