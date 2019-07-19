@@ -36,5 +36,6 @@ namespace ProTrukRepo.Model
         public virtual DbSet<vehicle> vehicles { get; set; }
         public virtual DbSet<Driver> Drivers { get; set; }
         public virtual DbSet<Bank> Banks { get; set; }
+        public virtual DbSet<Expense> Expenses { get; set; }
     }
 }

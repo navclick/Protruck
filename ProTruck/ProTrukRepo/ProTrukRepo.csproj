@@ -91,6 +91,9 @@
     <Compile Include="Model\ExanaduCompany.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Expense.cs">
+      <DependentUpon>EntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\GoodsType.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
@@ -132,6 +135,7 @@
     <Compile Include="ViewModels\BankVM.cs" />
     <Compile Include="ViewModels\DriverVM.cs" />
     <Compile Include="ViewModels\DropDownListModel.cs" />
+    <Compile Include="ViewModels\ExpenseVM.cs" />
     <Compile Include="ViewModels\GoodsTypeVM.cs" />
     <Compile Include="ViewModels\MenuVM.cs" />
     <Compile Include="ViewModels\ModuleVM.cs" />
