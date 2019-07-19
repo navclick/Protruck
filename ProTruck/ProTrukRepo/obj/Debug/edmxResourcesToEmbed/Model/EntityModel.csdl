@@ -47,6 +47,7 @@
       <End Role="vehicle" EntitySet="vehicles" />
       <End Role="Driver" EntitySet="Drivers" />
     </AssociationSet>
+    <EntitySet Name="Banks" EntityType="ProTruckModel.Bank" />
   </EntityContainer>
   <EntityType Name="C__RefactorLog">
     <Key>
@@ -290,4 +291,13 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="Bank">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Bank1" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="Branch" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+  </EntityType>
 </Schema>

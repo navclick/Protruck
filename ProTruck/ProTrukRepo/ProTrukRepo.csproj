@@ -57,12 +57,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Interface\IBankRepository.cs" />
     <Compile Include="Interface\IDriversRepository.cs" />
     <Compile Include="Interface\IGoodsRepository.cs" />
     <Compile Include="Interface\IRoleRepository.cs" />
     <Compile Include="Interface\ISharedRepository.cs" />
     <Compile Include="Interface\IUserMasterRepository.cs" />
     <Compile Include="Interface\IVehicleRepository.cs" />
+    <Compile Include="Model\Bank.cs">
+      <DependentUpon>EntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\C__RefactorLog.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
@@ -115,6 +119,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings1.settings</DependentUpon>
     </Compile>
+    <Compile Include="Repository\BankRepository.cs" />
     <Compile Include="Repository\DriverRepository.cs" />
     <Compile Include="Repository\GoodsRepository.cs" />
     <Compile Include="Repository\RoleRepository.cs" />
@@ -124,6 +129,7 @@
     <Compile Include="Util\Constant.cs" />
     <Compile Include="Util\GenericResponses.cs" />
     <Compile Include="Util\StringUtil.cs" />
+    <Compile Include="ViewModels\BankVM.cs" />
     <Compile Include="ViewModels\DriverVM.cs" />
     <Compile Include="ViewModels\DropDownListModel.cs" />
     <Compile Include="ViewModels\GoodsTypeVM.cs" />

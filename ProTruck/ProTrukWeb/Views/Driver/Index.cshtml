@@ -60,7 +60,7 @@
                     datatype: "json",
                     data: JSON.stringify(driver)
                 }).then(function (response) {
-                    $scope, getDrivers();
+                    $scope.getDrivers();
                     if (response.data.IsError == false) {
                         svc.notifymsg(false);
                         // util.notifymsg(false);

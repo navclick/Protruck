@@ -84,4 +84,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="EcomID" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="4ea7eecd-6bf0-426a-8739-104a336e84fc" ChangeDateTime="07/18/2019 21:31:20">
+    <Property Name="ElementName" Value="[dbo].[Bank].[Br]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Bank]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Branch" />
+  </Operation>
 </Operations>

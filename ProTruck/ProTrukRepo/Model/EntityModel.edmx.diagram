@@ -24,6 +24,7 @@
         <EntityTypeShape EntityType="ProTruckModel.Driver" Width="1.5" PointX="8" PointY="2.625" />
         <AssociationConnector Association="ProTruckModel.FK_Drivers_ExanaduCompanies" />
         <AssociationConnector Association="ProTruckModel.FK_Drivers_vehicle" />
+        <EntityTypeShape EntityType="ProTruckModel.Bank" Width="1.5" PointX="7.375" PointY="6.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

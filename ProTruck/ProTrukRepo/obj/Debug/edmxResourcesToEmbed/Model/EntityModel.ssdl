@@ -6,6 +6,15 @@
     </Key>
     <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
+  <EntityType Name="Bank">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Bank" Type="nchar" MaxLength="20" />
+    <Property Name="Branch" Type="nchar" MaxLength="20" />
+    <Property Name="Address" Type="nchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="Drivers">
     <Key>
       <PropertyRef Name="Id" />
@@ -226,6 +235,7 @@
   </Association>
   <EntityContainer Name="ProTruckModelStoreContainer">
     <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Drivers" EntityType="Self.Drivers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ExanaduCompanies" EntityType="Self.ExanaduCompanies" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="GoodsTypes" EntityType="Self.GoodsTypes" Schema="dbo" store:Type="Tables" />
