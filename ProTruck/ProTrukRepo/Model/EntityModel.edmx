@@ -47,6 +47,16 @@
           <Property Name="StartDate" Type="date" />
           <Property Name="ExpiryDate" Type="date" />
         </EntityType>
+        <EntityType Name="Expense">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Expense" Type="nchar" MaxLength="50" />
+          <Property Name="Description" Type="nchar" MaxLength="100" />
+          <Property Name="Type" Type="int" />
+          <Property Name="EcomID" Type="int" />
+        </EntityType>
         <EntityType Name="GoodsTypes">
           <Key>
             <PropertyRef Name="Id" />
@@ -154,6 +164,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Expense_ExanaduCompanies">
+          <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="0..1" />
+          <End Role="Expense" Type="Self.Expense" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExanaduCompanies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Expense">
+              <PropertyRef Name="EcomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_GoodsTypes_ExanaduCompanies">
           <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="0..1" />
           <End Role="GoodsTypes" Type="Self.GoodsTypes" Multiplicity="*" />
@@ -243,6 +265,7 @@
           <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Drivers" EntityType="Self.Drivers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ExanaduCompanies" EntityType="Self.ExanaduCompanies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Expense" EntityType="Self.Expense" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GoodsTypes" EntityType="Self.GoodsTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LinkRoleMenus" EntityType="Self.LinkRoleMenus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
@@ -257,6 +280,10 @@
           <AssociationSet Name="FK_Drivers_vehicle" Association="Self.FK_Drivers_vehicle">
             <End Role="vehicle" EntitySet="vehicle" />
             <End Role="Drivers" EntitySet="Drivers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Expense_ExanaduCompanies" Association="Self.FK_Expense_ExanaduCompanies">
+            <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
+            <End Role="Expense" EntitySet="Expense" />
           </AssociationSet>
           <AssociationSet Name="FK_GoodsTypes_ExanaduCompanies" Association="Self.FK_GoodsTypes_ExanaduCompanies">
             <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
@@ -339,6 +366,11 @@
             <End Role="Driver" EntitySet="Drivers" />
           </AssociationSet>
           <EntitySet Name="Banks" EntityType="ProTruckModel.Bank" />
+          <EntitySet Name="Expenses" EntityType="ProTruckModel.Expense" />
+          <AssociationSet Name="FK_Expense_ExanaduCompanies" Association="ProTruckModel.FK_Expense_ExanaduCompanies">
+            <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
+            <End Role="Expense" EntitySet="Expenses" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="C__RefactorLog">
           <Key>
@@ -362,6 +394,7 @@
           <NavigationProperty Name="Roles" Relationship="ProTruckModel.FK_Roles_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Role" />
           <NavigationProperty Name="Users" Relationship="ProTruckModel.FK_Users_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="User" />
           <NavigationProperty Name="Drivers" Relationship="ProTruckModel.FK_Drivers_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Driver" />
+          <NavigationProperty Name="Expenses" Relationship="ProTruckModel.FK_Expense_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Expense" />
         </EntityType>
         <EntityType Name="GoodsType">
           <Key>
@@ -591,6 +624,29 @@
           <Property Name="Branch" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
         </EntityType>
+        <EntityType Name="Expense">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Expense1" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="EcomID" Type="Int32" />
+          <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Expense_ExanaduCompanies" FromRole="Expense" ToRole="ExanaduCompany" />
+        </EntityType>
+        <Association Name="FK_Expense_ExanaduCompanies">
+          <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
+          <End Type="ProTruckModel.Expense" Role="Expense" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExanaduCompany">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Expense">
+              <PropertyRef Name="EcomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -729,6 +785,17 @@
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Branch" ColumnName="Branch" />
                 <ScalarProperty Name="Bank1" ColumnName="Bank" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Expenses">
+            <EntityTypeMapping TypeName="ProTruckModel.Expense">
+              <MappingFragment StoreEntitySet="Expense">
+                <ScalarProperty Name="EcomID" ColumnName="EcomID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Expense1" ColumnName="Expense" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
