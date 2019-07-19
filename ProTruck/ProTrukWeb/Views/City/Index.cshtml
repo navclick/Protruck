@@ -94,7 +94,7 @@
     $(document).ready(function () {
         // Handler for .ready() called.
         //alert("ready");
-        var scope = angular.element(document.getElementById("main")).scope();
+        var scope = angular.element(document.getElementById("MainContent")).scope();
         scope.$apply(function () {
             scope.getDrivers();
             scope.getseleclistvehicle();
@@ -102,7 +102,7 @@
         });
     });
 </script>
-<div id="main" ng-controller="BankCtrl">
+<div id="MainContent" ng-controller="BankCtrl">
     <div class="row">
         <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
         <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper"></div>
@@ -114,8 +114,8 @@
                         <div class="col s12">
                             <div class="card">
                                 <div class="card-content">
-                                    <h4 class="card-title left">Vehicle</h4>
-                                    <a class="right waves-effect waves-light btn btn-small modal-trigger" href="#modal1">Add Bank <i class="material-icons right">add</i></a>
+                                    <h4 class="card-title left">Cities</h4>
+                                    <a class="right waves-effect waves-light btn btn-small modal-trigger" href="#modal1">Add City <i class="material-icons right">add</i></a>
                                     <div id="modal1" class="modal">
                                         <form ng-submit="addBank()" id="frm" name="frm" class="col s12">
                                             <div class="modal-content">
@@ -123,25 +123,11 @@
                                                 <div class="col s12 m12 l12">
 
                                                     <div class="row">
-                                                        <div class="input-field col m6 s12">
-                                                            <input id="first_name01" ng-model="bank.Bank1" required type="text">
-                                                            <label for="first_name01">Bank</label>
-                                                        </div>
-                                                        <div class="input-field col m6 s12">
-                                                            <input id="last_name" ng-model="bank.Branch" type="text">
-                                                            <label for="last_name">Branch</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
                                                         <div class="input-field col s12">
-                                                            <input id="capacity" ng-model="bank.Address" type="text">
-                                                            <label for="capacity">Address</label>
+                                                            <input id="first_name01" ng-model="bank.Bank1" required type="text">
+                                                            <label for="first_name01">City Name</label>
                                                         </div>
-
                                                     </div>
-
-
-
                                                 </div>
                                                 <!-- Form End -->
                                             </div>
@@ -160,10 +146,8 @@
                                                 <thead>
                                                     <tr>
                                                         <th>ID</th>
-                                                        <th>Bank</th>
-                                                        <th>Branch</th>
-                                                        <th>Address</th>
-
+                                                        <th>City Name</th>
+                                                        <th>Created On</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
@@ -172,11 +156,17 @@
                                                         <td>{{bank.Id}}</td>
                                                         <td>{{bank.Bank1}}</td>
                                                         <td>{{bank.Branch}}</td>
-                                                        <td>{{bank.Address}}</td>
-
-                                                        <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating" ng-click="DeleteBank(bank)">><i class="material-icons">delete</i></a></td>
+                                                        <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating" ng-click="DeleteBank(bank)"><i class="material-icons">delete</i></a></td>
                                                     </tr>
                                                 </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>City Name</th>
+                                                        <th>Created On</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </tfoot>
                                             </table>
                                         </div>
                                     </div>
