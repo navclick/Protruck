@@ -6641,55 +6641,49 @@ small
 
 .btn,
 .btn-large,
-.btn-small
-{
+.btn-small {
     cursor: pointer;
     -webkit-transition: background-color .2s ease-out;
-       -moz-transition: background-color .2s ease-out;
-         -o-transition: background-color .2s ease-out;
-            transition: background-color .2s ease-out;
+    -moz-transition: background-color .2s ease-out;
+    -o-transition: background-color .2s ease-out;
+    transition: background-color .2s ease-out;
     text-align: center;
     text-decoration: none;
     letter-spacing: .5px;
-
     color: #fff;
-    background-color: #ff4081;
+    /*background-color: #ff4081;*/
+    background-color: #7b1fa2;
 }
-.btn:hover,
-.btn-large:hover,
-.btn-small:hover
-{
-    background-color: #ff5a92;
-}
+    .btn:hover,
+    .btn-large:hover,
+    .btn-small:hover {
+        /*background-color: #ff5a92;*/
+        background-color: #303f9f;
+    }
 
-.btn-floating
-{
+.btn-floating {
     line-height: 40px;
-
     position: relative;
     z-index: 1;
-
     display: inline-block;
     overflow: hidden;
-
     width: 40px;
     height: 40px;
     padding: 0;
-
     cursor: pointer;
     -webkit-transition: background-color .3s;
-       -moz-transition: background-color .3s;
-         -o-transition: background-color .3s;
-            transition: background-color .3s;
+    -moz-transition: background-color .3s;
+    -o-transition: background-color .3s;
+    transition: background-color .3s;
     vertical-align: middle;
-
     color: #fff;
     border-radius: 50%;
-    background-color: #ff4081;
+    background-color: #7b1fa2;
+    /*background-color: #ff4081;*/
 }
-.btn-floating:hover
-{
-    background-color: #ff4081;
+.btn-floating:hover {
+    /*background-color: #ff4081;*/
+    background-color: #303f9f;
 }
 .btn-floating:before
 {

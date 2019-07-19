@@ -154,7 +154,7 @@
     $(document).ready(function () {
         // Handler for .ready() called.
         //alert("ready");
-        var scope = angular.element(document.getElementById("main")).scope();
+        var scope = angular.element(document.getElementById("MainContent")).scope();
         scope.$apply(function () {
           scope.getVehicles();
           scope.getUnits();
@@ -164,7 +164,7 @@
         });
     });
 </script>
-<div id="main" ng-controller="VechicleCtrl">
+<div id="MainContent" ng-controller="VechicleCtrl">
     <div class="row">
         <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
         <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper"></div>
@@ -274,7 +274,7 @@
                                                         <td>{{vehicle.TypeName}}</td>
                                                         <td>{{vehicle.StatusName}}</td>
                                                         <td>{{vehicle.CreatedOn.slice(6, -2) | date : 'dd MMMM yyyy'}}</td>
-                                                        <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating" ng-click="DeleteVehicle(vehicle)">><i class="material-icons">delete</i></a></td>
+                                                        <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating" ng-click="DeleteVehicle(vehicle)"><i class="material-icons">delete</i></a></td>
                                                     </tr>
                                                 </tbody>
                                                 </table>
