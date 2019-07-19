@@ -102,7 +102,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Party" Type="nchar" MaxLength="100" />
           <Property Name="ConectPerson" Type="nchar" MaxLength="15" />
           <Property Name="Phone" Type="nchar" MaxLength="15" />
@@ -687,7 +687,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Party1" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
           <Property Name="ConectPerson" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />

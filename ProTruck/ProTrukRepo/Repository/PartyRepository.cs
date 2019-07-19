@@ -56,9 +56,10 @@ namespace ProTrukRepo.Repository
                     obj.IsSubParty = party.IsSubParty;
                     obj.ParentId = party.ParentId;
                     obj.Phone = party.Phone;
-                    if(party.ParentId != null && party.ParentId != 0)
+                    obj.Party1 = party.Party1;
+                    if (party.ParentId != null && party.ParentId != 0)
                     {
-                        obj.ParentPartyName = GetPartyById(party.Id).Party1;
+                        obj.ParentPartyName = GetPartyById((int)party.ParentId).Party1;
 
                     }
                     response.Add(obj);
@@ -140,9 +141,23 @@ namespace ProTrukRepo.Repository
             }
         }
 
+        public Response GetallSelectListParties()
+        {
+            var DTO = _db.Parties.ToList();
+            List<DropDownListModel> Lst = new List<DropDownListModel>();
+            foreach (var party in DTO)
+            {
+                DropDownListModel obj = new DropDownListModel();
+                obj.Value = (int)party.Id;
+                obj.Text = party.Party1;
+                Lst.Add(obj);
+                // Console.WriteLine("{0}, {1}", entry.Key, entry.Value);
+            }
+
+            return GenericResponses<List<DropDownListModel>>.ResponseStatus(false, Lst.Count() + Constant.MSGRecordFound, (int)Constant.httpStatus.Ok, Lst);
+        }
 
 
-     
 
         public  Party GetPartyById(int id)
         {

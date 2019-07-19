@@ -97,7 +97,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Party" Type="nchar" MaxLength="100" />
     <Property Name="ConectPerson" Type="nchar" MaxLength="15" />
     <Property Name="Phone" Type="nchar" MaxLength="15" />

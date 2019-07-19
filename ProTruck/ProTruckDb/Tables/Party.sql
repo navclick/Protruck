@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Party]
 (
-	[Id] INT NOT NULL PRIMARY KEY, 
+	[Id] INT NOT NULL PRIMARY KEY Identity, 
     [Party] NCHAR(100) NULL, 
     [ConectPerson] NCHAR(15) NULL, 
     [Phone] NCHAR(15) NULL, 

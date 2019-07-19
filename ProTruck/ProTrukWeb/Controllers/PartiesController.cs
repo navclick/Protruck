@@ -49,6 +49,11 @@ namespace ProTrukWeb.Controllers
             //  List<UserVM> employees = ((IEnumerable)r.Value).Cast<UserVM>().ToList(); ;
             return Json(r, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult GetallSelectListParties()
+        {
+            Response r = Repository.GetallSelectListParties();
+            return Json(r.Value, JsonRequestBehavior.AllowGet);
+        }
 
 
 
