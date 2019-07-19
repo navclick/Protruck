@@ -22,7 +22,7 @@
                 function (successResponse) {
 
                     //this.notes = JSON.parse(successResponse);
-                    //alert(successResponse.);
+                    
                     $scope.goods = successResponse.data;
                 },
                 function (errorResponse) {
@@ -56,14 +56,15 @@
                     datatype: "json",
                     data: JSON.stringify(good)
                 }).then(function (response) {
+                    $scope.getGoods();
                     if (response.data.IsError == false) {
                         svc.notifymsg(false);
                         // util.notifymsg(false);
-                        $scope.getRoles();
+                        
                     }
                     else {
                         svc.notifymsgcus(true, response.data.Message);
-
+                       
                     }
                 })
             }
@@ -75,7 +76,11 @@
         };
 
         $scope.addGoods = function () {
+            if (!$scope.good.Unit || !$scope.good.Unit ) {
 
+                $scope.msg = "Please select unit!";
+                return;
+            }
             $http.post('/Goods/AddGoods', $scope.good).then(
                 function (successResponse) {
                     if (successResponse.data.IsError == true) {
@@ -87,7 +92,7 @@
                         svc.notifymsg(false);
                         // util.notifymsg(false);
                         angular.element('#cancel').triggerHandler('click');
-                        $scope.getRoles();
+                        $scope.getGoods();
 
                     }
 
@@ -123,47 +128,50 @@
                         <div class="col s12">
                             <div class="card">
                                 <div class="card-content">
-                                    <h4 class="card-title left">User's</h4>
+                                    <h4 class="card-title left">GoodType</h4>
                                     <a class="right waves-effect waves-light btn btn-small modal-trigger" href="#modal1">Add Goods Type <i class="material-icons right">add</i></a>
                                     <div id="modal1" class="modal">
-                                        <div class="modal-content">
-                                            <!-- Form Advance -->
-                                            <div class="col s12 m12 l12">
-                                                <form class="col s12">
+                                        <form  ng-submit="addGoods()" id="frm" name="frm" class="col s12">
+                                            <div class="modal-content">
+                                                <!-- Form Advance -->
+                                                <div class="col s12 m12 l12">
+
                                                     <div class="row">
                                                         <div class="input-field col m6 s12">
-                                                            <input id="first_name01" type="text">
+                                                            <input id="first_name01" ng-model="good.Goods" required type="text">
                                                             <label for="first_name01">Goods Type</label>
                                                         </div>
                                                         <div class="input-field col m6 s12">
-                                                            <input id="last_name" type="text">
+                                                            <input id="last_name" ng-model="good.Description" type="text">
                                                             <label for="last_name">Description</label>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="input-field col s12">
                                                             <label>Unit</label>
-                                                            <select ng-model="selectedUnit" class="browser-default">
-                                                                <option ng-repeat="x in selectlist"  value="{{x.Value}}" >{{x.Text}}</option>
-                                                                
+                                                            <select ng-model="good.Unit" class="browser-default">
+                                                                <option ng-repeat="x in selectlist" value="{{x.Value}}">{{x.Text}}</option>
+
 
                                                             </select>
                                                         </div>
                                                     </div>
-                                                </form>
+
+                                                </div>
+                                                <!-- Form End -->
                                             </div>
-                                            <!-- Form End -->
-                                        </div>
-                                        <div class="modal-footer">
-                                            <div class="input-field col s12">
-                                                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Cancel</a>
-                                                <a href="#!" class="modal-action modal-close waves-effect waves-green btn">Add</a>
+                                            <div class="modal-footer">
+                                                <div class="input-field col s12">
+                                                    <span style="float:left;color:red;font-size:medium" id="messages" ng-bind="msg"></span>
+                                                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Cancel</a>
+                                                    <input type="submit" class="modal-action  waves-green btn" value="Add" />
+                                                </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
                                     <div class="row">
                                         <div class="col s12">
-                                            <table id="scroll-vert-hor" class="display nowrap">
+                                            <table id="data-table-simple" class="display nowrap">
                                                 <thead>
                                                     <tr>
                                                         <th>ID</th>
@@ -180,8 +188,8 @@
                                                         <td>{{good.Goods}}</td>
                                                         <td>{{good.Description}}</td>
                                                         <td>{{good.Unit}}</td>
-                                                        
-                                                        <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating"><i class="material-icons">delete</i></a> </td>
+                                                        <td>01-02-2019</td>
+                                                        <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating" ng-click="DeleteGoods(good)"><i class="material-icons">delete</i></a> </td>
                                                     </tr>
                                                 </tbody>
                                                 <tfoot>

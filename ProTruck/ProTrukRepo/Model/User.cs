@@ -22,7 +22,7 @@ namespace ProTrukRepo.Model
         public string EmailVeringCode { get; set; }
         public Nullable<bool> EmailConfirmed { get; set; }
         public Nullable<int> AccountStatus { get; set; }
-        public string CreatedOn { get; set; }
+        public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<int> RoleID { get; set; }
         public int EcomID { get; set; }
         public string Picture { get; set; }

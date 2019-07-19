@@ -18,6 +18,7 @@
        var app = angular.module('app', []);
        app.factory('svc', function () {
 
+          
            return {
                notifymsg: function (error) {
                    if (error == false) {
@@ -29,6 +30,8 @@
                        M.toast({ html: toastHTML });
                    }
                },
+
+
                notifymsgcus: function (error,msg) {
                    if (error == false) {
                        var toastHTML = '<span>'+msg+' </span>';
@@ -158,16 +161,17 @@
         <div class="navigation-background"></div><a class="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only" href="#" data-target="slide-out"><i class="material-icons">menu</i></a>
     </aside>
     
-    <div ng-app="app">>
+    <div class="main" ng-app="app">
     @RenderBody()
     </div>
+    
+    @Scripts.Render("~/bundles/themejs")
+    @Scripts.Render("~/bundles/datatablejs")
     <footer class="page-footer footer footer-static footer-dark gradient-45deg-indigo-purple gradient-shadow navbar-border navbar-shadow">
         <div class="footer-copyright">
             <div class="container"><span><span class="right hide-on-small-only">Developed by <a href="https://http://www.e-xanadu.com//"><img src="../../../app-assets/images/logo/powered.png"></a></span></div>
         </div>
     </footer>
-    @Scripts.Render("~/bundles/themejs")
-    @Scripts.Render("~/bundles/datatablejs")
-
 </body>
+
 </html>

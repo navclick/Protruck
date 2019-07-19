@@ -17,10 +17,11 @@ namespace ProTrukRepo.Repository
     public class RoleRepository : IRoleRepository
     {
         private readonly ProTruckEntities _db;
+       
         public RoleRepository()
         {
             _db = new ProTruckEntities();
-
+           
             AutoMapper.Mapper.Reset();
             Mapper.Initialize(cfg =>
             {

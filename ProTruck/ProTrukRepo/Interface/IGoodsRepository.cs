@@ -1,4 +1,5 @@
 ﻿using ProTrukRepo.Model;
+using ProTrukRepo.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,8 @@ namespace ProTrukRepo.Interface
     {
         Task<Response> GetALLGoods();
         
-        Task<Response> AddGood(GoodsType goods);
-        Task<Response> RemoveGood(GoodsType goods);
+        Task<Response> AddGood(GoodsTypeVM goods);
+        Task<Response> RemoveGood(GoodsTypeVM goods);
 
         Response GetallUnits();
         

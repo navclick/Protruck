@@ -67,6 +67,10 @@
     <Build Include="Tables\Menus.sql" />
     <Build Include="Tables\LinkRoleMenus.sql" />
     <Build Include="Tables\GoodsTypes.sql" />
+    <Build Include="Tables\vehicle.sql" />
+    <Build Include="Tables\Drivers.sql" />
+    <Build Include="Tables\Bank.sql" />
+    <Build Include="Tables\Expense.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ProTruckDb.refactorlog" />

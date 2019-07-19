@@ -1,0 +1,19 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[Units]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Table rebuild
+       [dbo].[Units] (Table)
+
+** Supporting actions
+     Drop
+       [dbo].[FK_vehicle_ToTable_1] (Foreign Key)
+     Create
+       [dbo].[FK_vehicle_ToTable_1] (Foreign Key)

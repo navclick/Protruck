@@ -9,6 +9,7 @@ using System.Data.Entity;
 using ProTrukRepo.Util;
 using System.Collections;
 using ProTrukRepo.ViewModels;
+using AutoMapper;
 
 namespace ProTrukRepo.Repository
 {
@@ -17,43 +18,60 @@ public    class GoodsRepository : IGoodsRepository
 
         private readonly ProTruckEntities _db;
         private Hashtable Units = new Hashtable();
+        private SharedRepository _shareRepo;
         public GoodsRepository()
         {
             _db = new ProTruckEntities();
-
+            //------------------------------
             Units[1] = "ton(s)";
             Units[2] = "Kgs";
+            //-------------------------
 
+            AutoMapper.Mapper.Reset();
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<GoodsType, GoodsTypeVM>();
+                cfg.CreateMap<GoodsTypeVM, GoodsType>();
+                /* cfg.CreateMap<User, UserVM>().ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role.Role1.Trim())); ;
+                 cfg.CreateMap<Module, ModuleVM>();
+                 cfg.CreateMap<Role, RolesVM>();
+                 cfg.CreateMap<UserVM, User>();
+                 */
+            });
+
+            _shareRepo = new SharedRepository();
         }
 
         public async Task<Response> GetALLGoods()
         {
             try
             {
-                List<GoodsType> response = new List<GoodsType>();
+                List<GoodsTypeVM> response = new List<GoodsTypeVM>();
                 //var users =  _db.Users.Select(x => x).ToList();
-                 response = await _db.GoodsTypes.ToListAsync();
+                 var goods = await _db.GoodsTypes.ToListAsync();
                 //   Mapper.Initialize(cfg => cfg.CreateMap<User, UserVM>());
                 
+                //   Mapper.Initialize(cfg => cfg.CreateMap<User, UserVM>());
+                response = Mapper.Map<IEnumerable<GoodsType>, List<GoodsTypeVM>>(goods);
                 if (response.Count() > 0)
                 {
-                    return GenericResponses<IEnumerable<GoodsType>>.ResponseStatus(false, response.Count() + Constant.MSGRecordFound, (int)Constant.httpStatus.Ok, response);
+                    return GenericResponses<IEnumerable<GoodsTypeVM>>.ResponseStatus(false, response.Count() + Constant.MSGRecordFound, (int)Constant.httpStatus.Ok, response);
                 }
                 else
                 {
-                    return GenericResponses<IEnumerable<GoodsType>>.ResponseStatus(false, Constant.MDGNoRecordFound, (int)Constant.httpStatus.NoContent, response.ToList());
+                    return GenericResponses<IEnumerable<GoodsTypeVM>>.ResponseStatus(false, Constant.MDGNoRecordFound, (int)Constant.httpStatus.NoContent, response.ToList());
                 }
             }
             catch (Exception e)
             {
-                return GenericResponses<GoodsType>.ResponseStatus(true);
+                return GenericResponses<GoodsTypeVM>.ResponseStatus(true);
             }
         }
 
-        public async Task<Response> AddGood(GoodsType goods)
+        public async Task<Response> AddGood(GoodsTypeVM goods)
         {
 
-           
+            var goodsDto = Mapper.Map<GoodsTypeVM, GoodsType>(goods);
 
             GoodsType goodsExist = await _db.GoodsTypes.Where(x => x.Goods.Trim() == goods.Goods.Trim()).FirstOrDefaultAsync();
             if (goodsExist != null)
@@ -61,7 +79,7 @@ public    class GoodsRepository : IGoodsRepository
                 return GenericResponses<int>.ResponseStatus(true, Constant.MDGNoAlreadyExist, (int)Constant.httpStatus.NoContent, 0);
             }
 
-            _db.GoodsTypes.Add(goods);
+            _db.GoodsTypes.Add(goodsDto);
 
             int result = await _db.SaveChangesAsync();
 
@@ -79,7 +97,7 @@ public    class GoodsRepository : IGoodsRepository
 
         }
 
-        public async Task<Response> RemoveGood(GoodsType goods)
+        public async Task<Response> RemoveGood(GoodsTypeVM goods)
         {
             try
             {
@@ -110,19 +128,10 @@ public    class GoodsRepository : IGoodsRepository
         public Response GetallUnits()
         {
 
-            List<DropDownListModel> Lst = new List<DropDownListModel>();
-            foreach (DictionaryEntry entry in Units)
-            {
-                DropDownListModel obj = new DropDownListModel();
-                obj.Value = (int)entry.Key;
-                obj.Text = entry.Value.ToString();
-                Lst.Add(obj);
-                // Console.WriteLine("{0}, {1}", entry.Key, entry.Value);
-            }
-
-            return GenericResponses<List<DropDownListModel>>.ResponseStatus(false, Lst.Count() + Constant.MSGRecordFound, (int)Constant.httpStatus.Ok, Lst);
+            return _shareRepo.GetallUnits();
         }
 
 
+        
     }
 }

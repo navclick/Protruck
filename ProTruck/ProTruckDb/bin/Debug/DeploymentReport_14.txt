@@ -1,0 +1,19 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The type for column Status in table [dbo].[Drivers] is currently  INT NULL but is being changed to  BIT NULL. Data loss
+         could occur.
+
+** User actions
+     Alter
+       [dbo].[Drivers] (Table)
+
+** Supporting actions
+
+The type for column Status in table [dbo].[Drivers] is currently  INT NULL but is being changed to  BIT NULL. Data loss could occur.
+

@@ -1,0 +1,255 @@
+﻿
+@{
+    ViewBag.Title = "Driver";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render("~/Content/datatable")
+
+<script>
+
+    app.controller('DriverCtrl', ['$scope', 'svc', '$http', function ($scope, svc, $http) {
+
+        $scope.selectlistvehicles = [];
+        $scope.drivers = [];
+        $scope.driver = {};
+        $scope.msg = "";
+        
+
+        $scope.getDrivers = function () {
+
+            $http.get('/Driver/GetallDrivers').then(
+
+                function (successResponse) {
+
+                    //this.notes = JSON.parse(successResponse);
+
+                    $scope.drivers = successResponse.data;
+                },
+                function (errorResponse) {
+                    alert(errorResponse);
+                    // handle errors here
+                });
+        };
+
+
+        $scope.getseleclistvehicle = function () {
+
+            $http.get('/Vehicle/GetallSelectListVehicles').then(
+
+                function (successResponse) {
+
+                    //this.notes = JSON.parse(successResponse);
+                    //alert(successResponse.);
+                    $scope.selectlistvehicles = successResponse.data;
+                },
+                function (errorResponse) {
+                    alert(errorResponse);
+                    // handle errors here
+                });
+        };
+
+       
+
+       
+
+        $scope.DeleteDriver = function (driver) {
+            if (confirm("Do you want to delete!")) {
+                $http({
+                    method: "post",
+                    url: "/Driver/RemoveDriver",
+                    datatype: "json",
+                    data: JSON.stringify(driver)
+                }).then(function (response) {
+                    $scope.getDrivers();
+                    if (response.data.IsError == false) {
+                        svc.notifymsg(false);
+                        // util.notifymsg(false);
+
+                    }
+                    else {
+                        svc.notifymsgcus(true, response.data.Message);
+
+                    }
+                })
+            }
+        };
+
+        $scope.addDriver = function () {
+            if (!$scope.driver.Vehicle  ) {
+
+                $scope.msg = "Please select Vehicle!";
+                return;
+            }
+
+           
+
+
+            $http.post('/Driver/AddDriver', $scope.driver).then(
+                function (successResponse) {
+                    if (successResponse.data.IsError == true) {
+                        $scope.msg = successResponse.data.Message;
+
+                    }
+                    else {
+                        $('.modal').modal('close');;
+                        svc.notifymsg(false);
+                        // util.notifymsg(false);
+
+                        $scope.getDrivers();
+
+                    }
+
+
+                    console.log(successResponse.data.IsError);
+                },
+                function (errorResponse) {
+                    // handle errors here
+                });
+        };
+    }]);
+
+    $(document).ready(function () {
+        // Handler for .ready() called.
+        //alert("ready");
+        var scope = angular.element(document.getElementById("main")).scope();
+        scope.$apply(function () {
+            scope.getDrivers();
+            scope.getseleclistvehicle();
+          
+        });
+    });
+</script>
+<div id="main" ng-controller="DriverCtrl">
+    <div class="row">
+        <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
+        <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper"></div>
+        <div class="col s12">
+            <div class="container">
+                <div class="section section-data-tables">
+                    <!-- Page Length Options -->
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <h4 class="card-title left">Vehicle</h4>
+                                    <a class="right waves-effect waves-light btn btn-small modal-trigger" href="#modal1">Add Driver <i class="material-icons right">add</i></a>
+                                    <div id="modal1" class="modal">
+                                        <form ng-submit="addDriver()" id="frm" name="frm" class="col s12">
+                                            <div class="modal-content">
+                                                <!-- Form Advance -->
+                                                <div class="col s12 m12 l12">
+
+                                                    <div class="row">
+                                                        <div class="input-field col m6 s12">
+                                                            <input id="first_name01" ng-model="driver.Name" required type="text">
+                                                            <label for="first_name01">Driver Name</label>
+                                                        </div>
+                                                        <div class="input-field col m6 s12">
+                                                            <input id="last_name" ng-model="driver.Phone" required type="text">
+                                                            <label for="last_name">Phone</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="input-field col m6 s12">
+                                                            <input id="capacity" ng-model="driver.Address"  type="text">
+                                                            <label for="capacity">Address</label>
+                                                        </div>
+                                                        <div class="input-field col m6 s12">
+                                                            <label>Vehicle</label>
+                                                            <select ng-model="driver.Vehicle" class="browser-default">
+                                                                <option ng-repeat="x in selectlistvehicles" value="{{x.Value}}">{{x.Text}}</option>
+
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="input-field col m6 s12">
+                                                            <input id="manufacturer" ng-model="driver.DeviceID" type="text">
+                                                            <label for="manufacturer">DeviceIMEI</label>
+                                                        </div>
+                                                        <div class="switch center">
+                                                            <label>
+
+                                                                <input type="checkbox"  ng-model="driver.Status" >
+
+
+
+                                                                <span class="lever"></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    
+
+                                                </div>
+                                                <!-- Form End -->
+                                            </div>
+                                            <div class="modal-footer">
+                                                <div class="input-field col s12">
+                                                    <span style="float:left;color:red;font-size:medium" id="messages" ng-bind="msg"></span>
+                                                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Cancel</a>
+                                                    <input type="submit" class="modal-action  waves-green btn" value="Add" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <table id="data-table-simple" class="display nowrap">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Driver Name</th>
+                                                        <th>Phone</th>
+                                                        <th>Address</th>
+                                                        <th>Vehicle</th>
+                                                        
+                                                        <th> Status</th>
+
+
+
+                                                        <th>Created On</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="driver in drivers">
+                                                        <td>{{driver.Id}}</td>
+                                                        <td>{{driver.Name}}</td>
+                                                        <td>{{driver.Phone}}</td>
+                                                        <td>{{driver.Address}}</td>
+                                                        <td>{{driver.VehicleReg}}</td>
+                                                        <td><div class="switch center">
+    <label>
+
+        <input type="checkbox" ng-model="driver.Status" >
+
+
+
+        <span class="lever"></span>
+    </label>
+</div></td>
+                                                       
+                                                        <td>{{driver.CreatedOn.slice(6, -2) | date : 'dd MMMM yyyy'}}</td>
+                                                        <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating" ng-click="DeleteDriver(driver)">><i class="material-icons">delete</i></a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+        $('.modal').modal();
+    });
+</script>
