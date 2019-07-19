@@ -148,12 +148,17 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="input-field col s12">
-                                                            <label>Unit</label>
+                                                            <select>
+                                                                <option>123</option>
+                                                                <option>456</option>
+                                                            </select>
+                                                            <label>Materialize Select</label>
+                                                        </div>
+                                                        <div class="input-field col s12">
                                                             <select ng-model="good.Unit" class="browser-default">
                                                                 <option ng-repeat="x in selectlist" value="{{x.Value}}">{{x.Text}}</option>
-
-
                                                             </select>
+                                                            <label>Unit</label>
                                                         </div>
                                                     </div>
 
