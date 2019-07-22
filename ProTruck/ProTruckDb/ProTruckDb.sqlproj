@@ -72,6 +72,7 @@
     <Build Include="Tables\Bank.sql" />
     <Build Include="Tables\Expense.sql" />
     <Build Include="Tables\Party.sql" />
+    <Build Include="Tables\Cities.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ProTruckDb.refactorlog" />

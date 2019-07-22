@@ -221,6 +221,7 @@
                                                         <td>{{party.Phone}}</td>
                                                         <td>{{party.IsSubParty}}</td>
                                                         <td>{{party.ParentPartyName}}</td>
+                                                        <td>{{party.CreatedOn.slice(6, -2) | date : 'dd MMMM yyyy'}}</td>
                                                         
                                                         <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating" ng-click="DeleteParty(party)"><i class="material-icons">delete</i></a></td>
                                                     </tr>

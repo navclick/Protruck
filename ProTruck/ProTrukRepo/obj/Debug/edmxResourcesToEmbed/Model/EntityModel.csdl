@@ -58,6 +58,11 @@
       <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
       <End Role="Party" EntitySet="Parties" />
     </AssociationSet>
+    <EntitySet Name="Cities" EntityType="ProTruckModel.City" />
+    <AssociationSet Name="FK_Cities_ExanaduCompanies" Association="ProTruckModel.FK_Cities_ExanaduCompanies">
+      <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
+      <End Role="City" EntitySet="Cities" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="C__RefactorLog">
     <Key>
@@ -83,6 +88,7 @@
     <NavigationProperty Name="Drivers" Relationship="ProTruckModel.FK_Drivers_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Driver" />
     <NavigationProperty Name="Expenses" Relationship="ProTruckModel.FK_Expense_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Expense" />
     <NavigationProperty Name="Parties" Relationship="ProTruckModel.FK_Party_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Party" />
+    <NavigationProperty Name="Cities" Relationship="ProTruckModel.FK_Cities_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="City" />
   </EntityType>
   <EntityType Name="GoodsType">
     <Key>
@@ -357,6 +363,28 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Party">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="City1" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="0" />
+    <Property Name="EcomID" Type="Int32" />
+    <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Cities_ExanaduCompanies" FromRole="City" ToRole="ExanaduCompany" />
+  </EntityType>
+  <Association Name="FK_Cities_ExanaduCompanies">
+    <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
+    <End Type="ProTruckModel.City" Role="City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompany">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="City">
         <PropertyRef Name="EcomID" />
       </Dependent>
     </ReferentialConstraint>

@@ -8,23 +8,24 @@
 
 <script>
 
-    app.controller('BankCtrl', ['$scope', 'svc', '$http', function ($scope, svc, $http) {
+    app.controller('CityCtrl', ['$scope', 'svc', '$http', function ($scope, svc, $http) {
 
 
-        $scope.banks = [];
-        $scope.bank = {};
+        $scope.cities = [];
+        $scope.citiesSelectList = [];
+        $scope.city = {};
         $scope.msg = "";
 
 
-        $scope.getBanks = function () {
+        $scope.getCities = function () {
 
-            $http.get('/Bank/GetallBanks').then(
+            $http.get('/City/GetALLCities').then(
 
                 function (successResponse) {
 
                     //this.notes = JSON.parse(successResponse);
 
-                    $scope.banks = successResponse.data;
+                    $scope.cities = successResponse.data;
                 },
                 function (errorResponse) {
                     alert(errorResponse);
@@ -39,15 +40,15 @@
 
 
 
-        $scope.DeleteBank = function (bank) {
+        $scope.DeleteCity = function (city) {
             if (confirm("Do you want to delete!")) {
                 $http({
                     method: "post",
-                    url: "/Bank/RemoveBank",
+                    url: "/City/RemoveCityy",
                     datatype: "json",
-                    data: JSON.stringify(bank)
+                    data: JSON.stringify(city)
                 }).then(function (response) {
-                    $scope.getBanks();
+                    $scope.getCities();
                     if (response.data.IsError == false) {
                         svc.notifymsg(false);
                         // util.notifymsg(false);
@@ -61,13 +62,13 @@
             }
         };
 
-        $scope.addBank = function () {
+        $scope.addCity = function () {
 
 
 
 
 
-            $http.post('/Bank/AddBank', $scope.bank).then(
+            $http.post('/City/AddCity', $scope.city).then(
                 function (successResponse) {
                     if (successResponse.data.IsError == true) {
                         $scope.msg = successResponse.data.Message;
@@ -78,7 +79,7 @@
                         svc.notifymsg(false);
                         // util.notifymsg(false);
 
-                        $scope.getBanks();
+                        $scope.getCities();
 
                     }
 
@@ -96,13 +97,13 @@
         //alert("ready");
         var scope = angular.element(document.getElementById("MainContent")).scope();
         scope.$apply(function () {
-            scope.getDrivers();
-            scope.getseleclistvehicle();
+            scope.getCities();
+            
 
         });
     });
 </script>
-<div id="MainContent" ng-controller="BankCtrl">
+<div id="MainContent" ng-controller="CityCtrl">
     <div class="row">
         <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
         <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper"></div>
@@ -117,14 +118,14 @@
                                     <h4 class="card-title left">Cities</h4>
                                     <a class="right waves-effect waves-light btn btn-small modal-trigger" href="#modal1">Add City <i class="material-icons right">add</i></a>
                                     <div id="modal1" class="modal">
-                                        <form ng-submit="addBank()" id="frm" name="frm" class="col s12">
+                                        <form ng-submit="addCity()" id="frm" name="frm" class="col s12">
                                             <div class="modal-content">
                                                 <!-- Form Advance -->
                                                 <div class="col s12 m12 l12">
 
                                                     <div class="row">
                                                         <div class="input-field col s12">
-                                                            <input id="first_name01" ng-model="bank.Bank1" required type="text">
+                                                            <input id="first_name01" ng-model="city.City1" required type="text">
                                                             <label for="first_name01">City Name</label>
                                                         </div>
                                                     </div>
@@ -152,11 +153,11 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr ng-repeat="bank in banks">
-                                                        <td>{{bank.Id}}</td>
-                                                        <td>{{bank.Bank1}}</td>
-                                                        <td>{{bank.Branch}}</td>
-                                                        <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating" ng-click="DeleteBank(bank)"><i class="material-icons">delete</i></a></td>
+                                                    <tr ng-repeat="city in cities">
+                                                        <td>{{city.Id}}</td>
+                                                        <td>{{city.City1}}</td>
+                                                        <td>{{city.CreatedOn.slice(6, -2) | date : 'dd MMMM yyyy'}}</td>
+                                                        <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating" ng-click="DeleteCity(city)"><i class="material-icons">delete</i></a></td>
                                                     </tr>
                                                 </tbody>
                                                 <tfoot>
