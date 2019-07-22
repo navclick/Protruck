@@ -90,58 +90,52 @@
                             <div class="card">
                                 <div class="card-content">
                                     <h4 class="card-title left">Delivery Order</h4>
-
                                     <a class="right waves-effect waves-light btn btn-small modal-trigger" href="/Account/Adduser">Add Delivery Order <i class="material-icons right">add</i></a>
                                     <div class="row">
                                         <div class="col s12">
                                             <table id="data-table-simple" class="display nowrap striped">
                                                 <thead>
                                                     <tr>
-                                                        <th>User</th>
                                                         <th>ID</th>
-                                                        <th>Full Name</th>
-                                                        <th>Email</th>
-                                                        <th>Phone</th>
-                                                        <th>Account Status</th>
-                                                        <th>Role</th>
+                                                        <th>Bilty No</th>
+                                                        <th>Date</th>
+                                                        <th>Raty Name</th>
+                                                        <th>Vehicle ID</th>
+                                                        <th>Total Qty</th>
+                                                        <th>Cement Type</th>
+                                                        <th>Total Weight</th>
+                                                        <th>DOs</th>
                                                         <th>Created On</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr ng-repeat="user in users" id="{{user.Id}}">
-                                                        <td class="width-10"><img src="{{user.Picture}}" class="width-30 circle" alt="avatar"></td>
-                                                        <td>{{user.Id}}</td>
-                                                        <td>{{user.FullName.trim()}}</td>
-                                                        <td>{{user.Email.trim()}}</td>
-                                                        <td>{{user.AccountStatus}}</td>
-                                                        <td>
-                                                            <div class="switch center">
-                                                                <label>
-
-                                                                    <input type="checkbox" ng-bind="user.AccountStatus" ng-model="chk" ng-true-value="{{ 1 | json }}" ng-false-value="{{ 0 | json }}">
-
-
-
-                                                                    <span class="lever"></span>
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                        <td>{{user.Role.trim()}}</td>
-                                                        <td>{{user.CreatedOn}}</td>
+                                                        <td>123456</td>
+                                                        <td>75529</td>
+                                                        <td>22-Jul-2019</td>
+                                                        <td>Lakhani Silk Mills</td>
+                                                        <td>TKN-083</td>
+                                                        <td>350</td>
+                                                        <td>SRC</td>
+                                                        <td>17.5</td>
+                                                        <td>403123</td>
+                                                        <td>22-Jul-2019</td>
                                                         <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <button class="btn-floating" ng-click="DeleteUser(user)"><i class="material-icons">delete</i></button> </td>
                                                     </tr>
 
                                                 </tbody>
                                                 <tfoot>
                                                     <tr>
-                                                        <th>User</th>
                                                         <th>ID</th>
-                                                        <th>Full Name</th>
-                                                        <th>Email</th>
-                                                        <th>Phone</th>
-                                                        <th>Account Status</th>
-                                                        <th>Role</th>
+                                                        <th>Bilty No</th>
+                                                        <th>Date</th>
+                                                        <th>Raty Name</th>
+                                                        <th>Vehicle ID</th>
+                                                        <th>Total Qty</th>
+                                                        <th>Cement Type</th>
+                                                        <th>Total Weight</th>
+                                                        <th>DOs</th>
                                                         <th>Created On</th>
                                                         <th>Action</th>
                                                     </tr>
@@ -156,8 +150,138 @@
                 </div>
             </div>
         </div>
+
+        <div class="col s12">
+            <div class="container">
+                <div class="section section-data-tables">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <h4 class="card-title left">Delivery Order</h4>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <div class="input-field col s3">
+                                                <input id="date" type="text" class="datepicker">
+                                                <label for="date">Select Date</label>
+                                            </div>
+                                            <div class="input-field col s4">
+                                                <input id="do_number" type="number" class="validate">
+                                                <label for="do_number">DO Number</label>
+                                            </div>
+                                            <div class="input-field col s1">
+                                                <p class="center">
+                                                    <label>
+                                                        <input type="checkbox" class="filled-in" checked="checked" />
+                                                        <span>Inc</span>
+                                                    </label>
+                                                </p>
+                                            </div>
+                                            <div class="input-field col s4">
+                                                <select>
+                                                    <option value="" disabled selected>Choose your option</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                </select>
+                                                <label>Save DO(s)</label>
+                                            </div>
+                                        </div>
+                                            
+                                            
+                                        </div>
+
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <div class="input-field col s6">
+                                                <input id="party" type="text" class="validate">
+                                                <label for="party">Party</label>
+                                            </div>
+                                            <div class="input-field col s6">
+                                                <input id="cement" type="text" class="validate">
+                                                <label for="cement">Cement</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <div class="input-field col s5">
+                                                <textarea id="e_address" class="materialize-textarea"></textarea>
+                                                <label for="e_address">Address English</label>
+                                            </div>
+                                            <div class="input-field col s2">
+                                                <div class="input-field col s12 center">
+                                                    <a class="btn btn-small purple waves-effect waves-light pull-left" style="padding:0 25px">Copy</a>
+                                                    <a class="btn btn-small purple waves-effect waves-light pull-right" style="padding:0 25px">Paste</a>
+                                                </div>
+                                            </div>
+                                            <div class="input-field col s5">
+                                                <textarea id="u_address" class="materialize-textarea"></textarea>
+                                                <label for="u_address">Address Urdu</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <div class="input-field col s4">
+                                                <select>
+                                                    <option value="" disabled selected>Choose a City</option>
+                                                    <option value="1">Karachi</option>
+                                                    <option value="2">Lahore</option>
+                                                    <option value="3">Islamabad</option>
+                                                </select>
+                                                <label>Save DO(s)</label>
+                                            </div>
+                                            
+                                            <div class="input-field col s4">
+                                                <input id="qty" type="text" placeholder="20 Bag(s) = 1 Ton" class="validate">
+                                                <label for="qty">Qty</label>
+                                            </div>
+
+                                            <div class="input-field col s4">
+                                                <input id="weight" type="text" class="validate">
+                                                <label for="weight">Weight</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <div class="input-field col s4">
+                                                <input id="bal_ton" type="text" class="validate">
+                                                <label for="bal_ton">Enter Balance Ton(s) If Any</label>
+                                            </div>
+
+                                            <div class="input-field col s4 push-s4">
+                                                <a class="btn purple waves-effect waves-light right">Save</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-
-
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.datepicker');
+        var instances = M.Datepicker.init(elems, options);
+    });
+
+    // Or with jQuery
+
+    $(document).ready(function () {
+        $('.datepicker').datepicker();
+    });
+</script>
