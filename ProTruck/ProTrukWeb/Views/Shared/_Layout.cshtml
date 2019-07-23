@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <title>Dashboard | Pro Truck</title>
     <!-- <link rel="apple-touch-icon" href="../../../app-assets/images/favicon/apple-touch-icon-152x152.png"> -->
-    <link rel="shortcut icon" type="image/x-icon" href="../../../app-assets/images/favicon/favicon-32x32.png">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/images/favicon/favicon-32x32.png">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- BEGIN: VENDOR CSS-->
     
@@ -165,13 +165,13 @@
     @RenderBody()
     </div>
     
-    @Scripts.Render("~/bundles/themejs")
-    @Scripts.Render("~/bundles/datatablejs")
+   
     <footer class="page-footer footer footer-static footer-dark gradient-45deg-indigo-purple gradient-shadow navbar-border navbar-shadow">
         <div class="footer-copyright">
             <div class="container"><span class="right hide-on-small-only">Developed by <a href="https://http://www.e-xanadu.com//"><img src="~/Content/images/logo/powered.png"></a></span></div>
         </div>
     </footer>
 </body>
-
+@Scripts.Render("~/bundles/themejs")
+@Scripts.Render("~/bundles/datatablejs")
 </html>

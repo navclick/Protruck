@@ -1,36 +1,40 @@
 /*----------------------------------------
     Login Page
 ------------------------------------------*/
-.login-bg
-{
-    background-image: url('../../images/gallery/flat-bg.jpg');
+.login-bg {
+    /*background-image: url('../../images/gallery/flat-bg.jpg');
     background-repeat: no-repeat;
     -webkit-background-size: cover;
-            background-size: cover;
+    background-size: cover;*/
+    background: #303f9f;
+    background: -webkit-linear-gradient(45deg, #303f9f, #7b1fa2) !important;
+    background: -moz- oldlinear-gradient(45deg, #303f9f, #7b1fa2) !important;
+    background: -o-linear-gradient(45deg, #303f9f, #7b1fa2) !important;
+    background: linear-gradient(45deg, #303f9f, #7b1fa2) !important;
 }
 
-#login-page
-{
+#login-page {
     display: -webkit-box;
     display: -webkit-flex;
-    display:    -moz-box;
+    display: -moz-box;
     display: -ms-flexbox;
-    display:         flex;
-
-    height: 100vh; 
-
+    display: flex;
+    height: 100vh;
     -webkit-box-pack: center;
     -webkit-justify-content: center;
-       -moz-box-pack: center;
+    -moz-box-pack: center;
     -ms-flex-pack: center;
-            justify-content: center;
+    justify-content: center;
     -webkit-box-align: center;
     -webkit-align-items: center;
-       -moz-box-align: center;
+    -moz-box-align: center;
     -ms-flex-align: center;
-            align-items: center;
+    align-items: center;
 }
-#login-page .card-panel.border-radius-6.login-card
-{
-    margin-left: 0 !important;
+
+    #login-page .card-panel.border-radius-6.login-card {
+        margin-left: 0 !important;
+    }
+.waves-button-input {
+    color:white !important;
 }

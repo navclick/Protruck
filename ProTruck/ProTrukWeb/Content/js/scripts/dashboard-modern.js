@@ -360,40 +360,40 @@
     };
     var SLlabels = ["January", "February", "March", "April", "May", "June"];
 
-    var LineSL3ctx = document.getElementById("custom-line-chart-sample-three").getContext("2d");
+    //var LineSL3ctx = document.getElementById("custom-line-chart-sample-three").getContext("2d");
 
-    var gradientStroke = LineSL3ctx.createLinearGradient(500, 0, 0, 200);
-    gradientStroke.addColorStop(0, "#8133ff");
-    gradientStroke.addColorStop(1, "#ff4bac");
+    //var gradientStroke = LineSL3ctx.createLinearGradient(500, 0, 0, 200);
+    //gradientStroke.addColorStop(0, "#8133ff");
+    //gradientStroke.addColorStop(1, "#ff4bac");
 
-    var gradientFill = LineSL3ctx.createLinearGradient(500, 0, 0, 200);
-    gradientFill.addColorStop(0, "#8133ff");
-    gradientFill.addColorStop(1, "#ff4bac");
+    //var gradientFill = LineSL3ctx.createLinearGradient(500, 0, 0, 200);
+    //gradientFill.addColorStop(0, "#8133ff");
+    //gradientFill.addColorStop(1, "#ff4bac");
 
-    var SL3Chart = new Chart(LineSL3ctx, {
-        type: "line",
-        data: {
-            labels: SLlabels,
-            datasets: [
-                {
-                    label: "My Second dataset",
-                    borderColor: gradientStroke,
-                    pointColor: "#fff",
-                    pointBorderColor: gradientStroke,
-                    pointBackgroundColor: "#fff",
-                    pointHoverBackgroundColor: gradientStroke,
-                    pointHoverBorderColor: gradientStroke,
-                    pointRadius: 4,
-                    pointBorderWidth: 1,
-                    pointHoverRadius: 4,
-                    pointHoverBorderWidth: 1,
-                    fill: true,
-                    backgroundColor: gradientFill,
-                    borderWidth: 1,
-                    data: [24, 18, 20, 30, 40, 43]
-                }
-            ]
-        },
-        options: SLOption
-    });
+    //var SL3Chart = new Chart(LineSL3ctx, {
+    //    type: "line",
+    //    data: {
+    //        labels: SLlabels,
+    //        datasets: [
+    //            {
+    //                label: "My Second dataset",
+    //                borderColor: gradientStroke,
+    //                pointColor: "#fff",
+    //                pointBorderColor: gradientStroke,
+    //                pointBackgroundColor: "#fff",
+    //                pointHoverBackgroundColor: gradientStroke,
+    //                pointHoverBorderColor: gradientStroke,
+    //                pointRadius: 4,
+    //                pointBorderWidth: 1,
+    //                pointHoverRadius: 4,
+    //                pointHoverBorderWidth: 1,
+    //                fill: true,
+    //                backgroundColor: gradientFill,
+    //                borderWidth: 1,
+    //                data: [24, 18, 20, 30, 40, 43]
+    //            }
+    //        ]
+    //    },
+    //    options: SLOption
+    //});
 })(window, document, jQuery);
