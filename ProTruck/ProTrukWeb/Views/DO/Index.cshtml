@@ -11,7 +11,7 @@
 
 <script>
 
-    app.controller('HomeCtrl', ['$scope','svc', '$http', function ($scope,svc, $http) {
+    app.controller('HomeCtrl', ['$scope', 'svc', '$http', function ($scope, svc, $http) {
 
         $scope.users = [];
         $scope.user = {};
@@ -22,7 +22,7 @@
 
             $http.get('/Account/GetAllUsers').then(
                 function (successResponse) {
-                   // alert(successResponse.data[0].AccountStatus);
+                    // alert(successResponse.data[0].AccountStatus);
                     $scope.users = successResponse.data;
                 },
                 function (errorResponse) {
@@ -161,23 +161,18 @@
                                     <h4 class="card-title left">Delivery Order</h4>
                                     <div class="row">
                                         <div class="col s12">
-                                            <div class="input-field col s3">
+
+                                            <div class="input-field col s2">
                                                 <input id="date" type="text" class="datepicker">
                                                 <label for="date">Select Date</label>
                                             </div>
-                                            <div class="input-field col s4">
-                                                <input id="do_number" type="number" class="validate">
+
+                                            <div class="input-field col s2">
+                                                <input id="do_number" type="text" class="validate">
                                                 <label for="do_number">DO Number</label>
                                             </div>
-                                            <div class="input-field col s1">
-                                                <p class="center">
-                                                    <label>
-                                                        <input type="checkbox" class="filled-in" checked="checked" />
-                                                        <span>Inc</span>
-                                                    </label>
-                                                </p>
-                                            </div>
-                                            <div class="input-field col s4">
+
+                                            <div class="input-field col s2">
                                                 <select>
                                                     <option value="" disabled selected>Choose your option</option>
                                                     <option value="1">1</option>
@@ -186,10 +181,31 @@
                                                 </select>
                                                 <label>Save DO(s)</label>
                                             </div>
+
+                                            <div class="input-field col s2">
+                                                <p class="center">
+                                                    <label>
+                                                        <input type="checkbox" class="filled-in" checked="checked" />
+                                                        <span>Inc</span>
+                                                    </label>
+                                                </p>
+                                            </div>
+
+                                            <div class="input-field col s2">
+                                                <select>
+                                                    <option value="1">SBR</option>
+                                                    <option value="2">LSB</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="input-field col s2">
+                                                <input id="sbr-lsb-number" type="text" class="validate">
+                                            </div>
+
                                         </div>
-                                            
-                                            
-                                        </div>
+
+
+                                    </div>
 
                                     <div class="row">
                                         <div class="col s12">
@@ -234,7 +250,7 @@
                                                 </select>
                                                 <label>Save DO(s)</label>
                                             </div>
-                                            
+
                                             <div class="input-field col s4">
                                                 <input id="qty" type="text" placeholder="20 Bag(s) = 1 Ton" class="validate">
                                                 <label for="qty">Qty</label>
@@ -262,6 +278,67 @@
 
 
 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col s12">
+            <div class="container">
+                <div class="section section-data-tables">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <h4 class="card-title left">Payment</h4>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <div class="input-field col s3">
+                                                <input id="amount" type="text" class="validate">
+                                                <label for="amount">Amount</label>
+                                            </div>
+                                            <div class="input-field col s3">
+                                                <select>
+                                                    <option value="" disabled selected>Choose your option</option>
+                                                    <option value="1">On Delivery</option>
+                                                    <option value="2">Advance Payment</option>
+                                                    <option value="3">Credit</option>
+                                                </select>
+                                                <label>Payment Type</label>
+                                            </div>
+                                            <div class="input-field col s3 center">
+                                                <div class="col s6">
+                                                    <label>
+                                                        <input class="with-gap" name="group1" type="radio" checked />
+                                                        <span>Cash</span>
+                                                    </label>
+                                                </div>
+                                                <div class="col s6">
+                                                    <label>
+                                                        <input class="with-gap" name="group1" type="radio" />
+                                                        <span>Cheque</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="input-field col s3">
+                                                <div class="input-field col s6">
+                                                    <select>
+                                                        <option value="" disabled selected>Choose your Bank</option>
+                                                        <option value="1">Meezan Bank Ltd</option>
+                                                        <option value="2">Habib Bank Ltd</option>
+                                                        <option value="3">NBP</option>
+                                                    </select>
+                                                    <label>Bank</label>
+                                                </div>
+                                                <div class="input-field col s6">
+                                                    <input id="cheque_number" type="text" class="validate">
+                                                    <label for="cheque_number">Cheque Number</label>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -271,17 +348,16 @@
             </div>
         </div>
     </div>
-</div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var elems = document.querySelectorAll('.datepicker');
-        var instances = M.Datepicker.init(elems, options);
-    });
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.datepicker');
+            var instances = M.Datepicker.init(elems, options);
+        });
 
-    // Or with jQuery
+        // Or with jQuery
 
-    $(document).ready(function () {
-        $('.datepicker').datepicker();
-    });
-</script>
+        $(document).ready(function () {
+            $('.datepicker').datepicker();
+        });
+    </script>
