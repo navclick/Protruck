@@ -4,5 +4,218 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>AddDo</h2>
+<div class="row" id="ContentMain" ng-controller="DoCtrl">
+    <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
+    <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper"></div>
 
+    <div class="col s12">
+        <div class="container">
+            <div class="section section-data-tables">
+                <div class="row">
+                    <div class="col s12">
+                        <div class="card">
+                            <div class="card-content">
+                                <h4 class="card-title left">Delivery Order</h4>
+                                <div class="row">
+                                    <div class="col s12">
+
+                                        <div class="input-field col s2">
+                                            <input id="date" type="text" class="datepicker">
+                                            <label for="date">Select Date</label>
+                                        </div>
+
+                                        <div class="input-field col s2">
+                                            <input id="do_number" type="text" class="validate">
+                                            <label for="do_number">DO Number</label>
+                                        </div>
+
+                                        <div class="input-field col s2">
+                                            <select>
+                                                <option value="" disabled selected>Choose your option</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                            </select>
+                                            <label>Save DO(s)</label>
+                                        </div>
+
+                                        <div class="input-field col s2">
+                                            <p class="center">
+                                                <label>
+                                                    <input type="checkbox" class="filled-in" checked="checked" />
+                                                    <span>Inc</span>
+                                                </label>
+                                            </p>
+                                        </div>
+
+                                        <div class="input-field col s2">
+                                            <select>
+                                                <option value="1">SBR</option>
+                                                <option value="2">LSB</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="input-field col s2">
+                                            <input id="sbr-lsb-number" type="text" class="validate">
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col s12">
+                                        <div class="input-field col s6">
+                                            <input id="party" type="text" class="validate">
+                                            <label for="party">Party</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                            <input id="cement" type="text" class="validate">
+                                            <label for="cement">Cement</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col s12">
+                                        <div class="input-field col s5">
+                                            <textarea id="e_address" class="materialize-textarea"></textarea>
+                                            <label for="e_address">Address English</label>
+                                        </div>
+                                        <div class="input-field col s2">
+                                            <div class="input-field col s12 center">
+                                                <a class="btn btn-small purple waves-effect waves-light pull-left" style="padding:0 25px">Copy</a>
+                                                <a class="btn btn-small purple waves-effect waves-light pull-right" style="padding:0 25px">Paste</a>
+                                            </div>
+                                        </div>
+                                        <div class="input-field col s5">
+                                            <textarea id="u_address" class="materialize-textarea"></textarea>
+                                            <label for="u_address">Address Urdu</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col s12">
+                                        <div class="input-field col s4">
+                                            <select>
+                                                <option value="" disabled selected>Choose a City</option>
+                                                <option value="1">Karachi</option>
+                                                <option value="2">Lahore</option>
+                                                <option value="3">Islamabad</option>
+                                            </select>
+                                            <label>Save DO(s)</label>
+                                        </div>
+
+                                        <div class="input-field col s4">
+                                            <input id="qty" type="text" placeholder="20 Bag(s) = 1 Ton" class="validate">
+                                            <label for="qty">Qty</label>
+                                        </div>
+
+                                        <div class="input-field col s4">
+                                            <input id="weight" type="text" class="validate">
+                                            <label for="weight">Weight</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col s12">
+                                        <div class="input-field col s4">
+                                            <input id="bal_ton" type="text" class="validate">
+                                            <label for="bal_ton">Enter Balance Ton(s) If Any</label>
+                                        </div>
+
+                                        <div class="input-field col s4 push-s4">
+                                            <a class="btn purple waves-effect waves-light right">Save</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col s12">
+        <div class="container">
+            <div class="section section-data-tables">
+                <div class="row">
+                    <div class="col s12">
+                        <div class="card">
+                            <div class="card-content">
+                                <h4 class="card-title left">Payment</h4>
+                                <div class="row">
+                                    <div class="col s12">
+                                        <div class="input-field col s3">
+                                            <input id="amount" type="text" class="validate">
+                                            <label for="amount">Amount</label>
+                                        </div>
+                                        <div class="input-field col s3">
+                                            <select>
+                                                <option value="" disabled selected>Choose your option</option>
+                                                <option value="1">On Delivery</option>
+                                                <option value="2">Advance Payment</option>
+                                                <option value="3">Credit</option>
+                                            </select>
+                                            <label>Payment Type</label>
+                                        </div>
+                                        <div class="input-field col s3 center">
+                                            <div class="col s6">
+                                                <label>
+                                                    <input class="with-gap" name="group1" type="radio" checked />
+                                                    <span>Cash</span>
+                                                </label>
+                                            </div>
+                                            <div class="col s6">
+                                                <label>
+                                                    <input class="with-gap" name="group1" type="radio" />
+                                                    <span>Cheque</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="input-field col s3">
+                                            <div class="input-field col s6">
+                                                <select>
+                                                    <option value="" disabled selected>Choose your Bank</option>
+                                                    <option value="1">Meezan Bank Ltd</option>
+                                                    <option value="2">Habib Bank Ltd</option>
+                                                    <option value="3">NBP</option>
+                                                </select>
+                                                <label>Bank</label>
+                                            </div>
+                                            <div class="input-field col s6">
+                                                <input id="cheque_number" type="text" class="validate">
+                                                <label for="cheque_number">Cheque Number</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.datepicker');
+            var instances = M.Datepicker.init(elems, options);
+        });
+
+        // Or with jQuery
+
+        $(document).ready(function () {
+            $('.datepicker').datepicker();
+        });
+</script>
