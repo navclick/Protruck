@@ -184,6 +184,7 @@
     <Compile Include="Controllers\BiltyController.cs" />
     <Compile Include="Controllers\CityController.cs" />
     <Compile Include="Controllers\ContractController.cs" />
+    <Compile Include="Controllers\ContractTypeController.cs" />
     <Compile Include="Controllers\DOController.cs" />
     <Compile Include="Controllers\DriverController.cs" />
     <Compile Include="Controllers\ExpenseController.cs" />
@@ -1598,6 +1599,7 @@
     <Content Include="Views\DO\Index.cshtml" />
     <Content Include="Views\Bilty\Index.cshtml" />
     <Content Include="Views\Contract\Index.cshtml" />
+    <Content Include="Views\ContractType\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

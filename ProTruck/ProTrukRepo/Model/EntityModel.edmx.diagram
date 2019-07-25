@@ -31,6 +31,8 @@
         <AssociationConnector Association="ProTruckModel.FK_Party_ExanaduCompanies" />
         <EntityTypeShape EntityType="ProTruckModel.City" Width="1.5" PointX="3" PointY="18.375" />
         <AssociationConnector Association="ProTruckModel.FK_Cities_ExanaduCompanies" />
+        <EntityTypeShape EntityType="ProTruckModel.ContractType" Width="1.5" PointX="3" PointY="21.375" />
+        <AssociationConnector Association="ProTruckModel.FK_ContractType_ExanaduCompanies" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

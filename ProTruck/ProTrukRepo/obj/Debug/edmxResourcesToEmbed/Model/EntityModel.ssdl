@@ -24,6 +24,15 @@
     <Property Name="CreatedOn" Type="date" />
     <Property Name="EcomID" Type="int" />
   </EntityType>
+  <EntityType Name="ContractType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="nchar" MaxLength="10" />
+    <Property Name="EcomID" Type="int" />
+    <Property Name="CreatedOn" Type="date" />
+  </EntityType>
   <EntityType Name="Drivers">
     <Key>
       <PropertyRef Name="Id" />
@@ -169,6 +178,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ContractType_ExanaduCompanies">
+    <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="0..1" />
+    <End Role="ContractType" Type="Self.ContractType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompanies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContractType">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Drivers_ExanaduCompanies">
     <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="0..1" />
     <End Role="Drivers" Type="Self.Drivers" Multiplicity="*" />
@@ -305,6 +326,7 @@
     <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ContractType" EntityType="Self.ContractType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Drivers" EntityType="Self.Drivers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ExanaduCompanies" EntityType="Self.ExanaduCompanies" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Expense" EntityType="Self.Expense" Schema="dbo" store:Type="Tables" />
@@ -319,6 +341,10 @@
     <AssociationSet Name="FK_Cities_ExanaduCompanies" Association="Self.FK_Cities_ExanaduCompanies">
       <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
       <End Role="Cities" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContractType_ExanaduCompanies" Association="Self.FK_ContractType_ExanaduCompanies">
+      <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
+      <End Role="ContractType" EntitySet="ContractType" />
     </AssociationSet>
     <AssociationSet Name="FK_Drivers_ExanaduCompanies" Association="Self.FK_Drivers_ExanaduCompanies">
       <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />

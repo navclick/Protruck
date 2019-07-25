@@ -59,6 +59,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Interface\IBankRepository.cs" />
     <Compile Include="Interface\ICityRepository.cs" />
+    <Compile Include="Interface\IContractTypeRepository.cs" />
     <Compile Include="Interface\IDriversRepository.cs" />
     <Compile Include="Interface\IExpenseRepository.cs" />
     <Compile Include="Interface\IGoodsRepository.cs" />
@@ -71,6 +72,9 @@
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\City.cs">
+      <DependentUpon>EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ContractType.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\C__RefactorLog.cs">
@@ -133,6 +137,7 @@
     </Compile>
     <Compile Include="Repository\BankRepository.cs" />
     <Compile Include="Repository\CityRepository.cs" />
+    <Compile Include="Repository\ContractTypeRepository.cs" />
     <Compile Include="Repository\DriverRepository.cs" />
     <Compile Include="Repository\ExpenseRepository.cs" />
     <Compile Include="Repository\GoodsRepository.cs" />
@@ -146,6 +151,7 @@
     <Compile Include="Util\StringUtil.cs" />
     <Compile Include="ViewModels\BankVM.cs" />
     <Compile Include="ViewModels\CityVM.cs" />
+    <Compile Include="ViewModels\ContractTypeVM.cs" />
     <Compile Include="ViewModels\DriverVM.cs" />
     <Compile Include="ViewModels\DropDownListModel.cs" />
     <Compile Include="ViewModels\ExpenseVM.cs" />
