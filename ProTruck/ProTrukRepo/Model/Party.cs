@@ -14,6 +14,12 @@ namespace ProTrukRepo.Model
     
     public partial class Party
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Party()
+        {
+            this.Contracts = new HashSet<Contract>();
+        }
+    
         public int Id { get; set; }
         public string Party1 { get; set; }
         public string ConectPerson { get; set; }
@@ -24,5 +30,7 @@ namespace ProTrukRepo.Model
         public Nullable<int> EcomID { get; set; }
     
         public virtual ExanaduCompany ExanaduCompany { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Contract> Contracts { get; set; }
     }
 }

@@ -105,4 +105,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="EcomID" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="31f88260-80a4-46bf-ad3a-4dbe52c99bcc" ChangeDateTime="07/25/2019 12:10:11">
+    <Property Name="ElementName" Value="[dbo].[Settings].[DoAutoInc]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Settings]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DoAutoincrement" />
+  </Operation>
 </Operations>

@@ -68,6 +68,19 @@
       <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
       <End Role="ContractType" EntitySet="ContractTypes" />
     </AssociationSet>
+    <EntitySet Name="Contracts" EntityType="ProTruckModel.Contract" />
+    <AssociationSet Name="FK_Contract_ContractType" Association="ProTruckModel.FK_Contract_ContractType">
+      <End Role="ContractType" EntitySet="ContractTypes" />
+      <End Role="Contract" EntitySet="Contracts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contract_ExanaduCompanies" Association="ProTruckModel.FK_Contract_ExanaduCompanies">
+      <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
+      <End Role="Contract" EntitySet="Contracts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contract_Party" Association="ProTruckModel.FK_Contract_Party">
+      <End Role="Party" EntitySet="Parties" />
+      <End Role="Contract" EntitySet="Contracts" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="C__RefactorLog">
     <Key>
@@ -95,6 +108,7 @@
     <NavigationProperty Name="Parties" Relationship="ProTruckModel.FK_Party_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Party" />
     <NavigationProperty Name="Cities" Relationship="ProTruckModel.FK_Cities_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="City" />
     <NavigationProperty Name="ContractTypes" Relationship="ProTruckModel.FK_ContractType_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="ContractType" />
+    <NavigationProperty Name="Contracts" Relationship="ProTruckModel.FK_Contract_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Contract" />
   </EntityType>
   <EntityType Name="GoodsType">
     <Key>
@@ -360,6 +374,7 @@
     <Property Name="ParentId" Type="Int32" />
     <Property Name="EcomID" Type="Int32" />
     <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Party_ExanaduCompanies" FromRole="Party" ToRole="ExanaduCompany" />
+    <NavigationProperty Name="Contracts" Relationship="ProTruckModel.FK_Contract_Party" FromRole="Party" ToRole="Contract" />
   </EntityType>
   <Association Name="FK_Party_ExanaduCompanies">
     <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
@@ -404,6 +419,7 @@
     <Property Name="EcomID" Type="Int32" />
     <Property Name="CreatedOn" Type="DateTime" Precision="0" />
     <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_ContractType_ExanaduCompanies" FromRole="ContractType" ToRole="ExanaduCompany" />
+    <NavigationProperty Name="Contracts" Relationship="ProTruckModel.FK_Contract_ContractType" FromRole="ContractType" ToRole="Contract" />
   </EntityType>
   <Association Name="FK_ContractType_ExanaduCompanies">
     <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
@@ -414,6 +430,58 @@
       </Principal>
       <Dependent Role="ContractType">
         <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Contract">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ContractNo" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ContractType" Type="Int32" />
+    <Property Name="Party" Type="Int32" />
+    <Property Name="TotatQty" Type="Double" />
+    <Property Name="Unit" Type="Int32" />
+    <Property Name="EcomID" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="ContractType1" Relationship="ProTruckModel.FK_Contract_ContractType" FromRole="Contract" ToRole="ContractType" />
+    <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Contract_ExanaduCompanies" FromRole="Contract" ToRole="ExanaduCompany" />
+    <NavigationProperty Name="Party1" Relationship="ProTruckModel.FK_Contract_Party" FromRole="Contract" ToRole="Party" />
+  </EntityType>
+  <Association Name="FK_Contract_ContractType">
+    <End Type="ProTruckModel.ContractType" Role="ContractType" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Contract" Role="Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ContractType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="ContractType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contract_ExanaduCompanies">
+    <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Contract" Role="Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompany">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contract_Party">
+    <End Type="ProTruckModel.Party" Role="Party" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Contract" Role="Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Party">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="Party" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

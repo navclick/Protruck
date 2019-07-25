@@ -24,6 +24,7 @@ namespace ProTrukWeb
             container.RegisterType<ProTrukRepo.Interface.IPartyRepository, ProTrukRepo.Repository.PartyRepository>();
             container.RegisterType<ProTrukRepo.Interface.ICityRepository, ProTrukRepo.Repository.CityRepository>();
             container.RegisterType<ProTrukRepo.Interface.IContractTypeRepository, ProTrukRepo.Repository.ContractTypeRepository>();
+            
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

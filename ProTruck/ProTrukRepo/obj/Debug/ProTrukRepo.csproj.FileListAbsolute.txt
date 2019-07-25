@@ -28,3 +28,7 @@ F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukRepo\bin\Debug\System.ValueTup
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukRepo\obj\Debug\ProTrukRepo.csprojResolveAssemblyReference.cache
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukRepo\obj\Debug\ProTrukRepo.dll
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukRepo\obj\Debug\ProTrukRepo.pdb
+D:\Projects\VS\PROTruck\ProTruck\ProTrukRepo\obj\Debug\ProTrukRepo.csprojAssemblyReference.cache
+D:\Projects\VS\PROTruck\ProTruck\ProTrukRepo\obj\Debug\ProTrukRepo.csproj.CoreCompileInputs.cache
+D:\Projects\VS\PROTruck\ProTruck\ProTrukRepo\obj\Debug\ProTrukRepo.dll
+D:\Projects\VS\PROTruck\ProTruck\ProTrukRepo\obj\Debug\ProTrukRepo.pdb
