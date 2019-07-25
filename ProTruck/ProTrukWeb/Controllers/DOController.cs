@@ -40,7 +40,7 @@ namespace ProTrukWeb.Controllers
             return Json(r, JsonRequestBehavior.AllowGet);
         }
 
-
+        [HttpGet]
         public ActionResult AddDo()
         {
             return View();
