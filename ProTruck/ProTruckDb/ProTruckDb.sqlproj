@@ -76,6 +76,7 @@
     <Build Include="Tables\ContractType.sql" />
     <Build Include="Tables\Contract.sql" />
     <Build Include="Tables\Settings.sql" />
+    <Build Include="Tables\Dorder.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ProTruckDb.refactorlog" />

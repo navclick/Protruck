@@ -1,0 +1,19 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[Dorder] (Table)
+       [dbo].[FK_Dorder_ContractType] (Foreign Key)
+       [dbo].[FK_Dorder_GoodsTypes] (Foreign Key)
+       [dbo].[FK_Dorder_Cities] (Foreign Key)
+       [dbo].[FK_Dorder_Party] (Foreign Key)
+
+** Supporting actions

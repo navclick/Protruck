@@ -14,6 +14,12 @@ namespace ProTrukRepo.Model
     
     public partial class GoodsType
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public GoodsType()
+        {
+            this.Dorders = new HashSet<Dorder>();
+        }
+    
         public int Id { get; set; }
         public string Goods { get; set; }
         public string Description { get; set; }
@@ -21,5 +27,7 @@ namespace ProTrukRepo.Model
         public Nullable<int> EcomID { get; set; }
     
         public virtual ExanaduCompany ExanaduCompany { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Dorder> Dorders { get; set; }
     }
 }

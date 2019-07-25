@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "DO";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,19 +11,20 @@
 
 <script>
 
-    app.controller('HomeCtrl', ['$scope', 'svc', '$http', function ($scope, svc, $http) {
+    app.controller('DoCtrl', ['$scope', 'svc', '$http', function ($scope, svc, $http) {
 
-        $scope.users = [];
-        $scope.user = {};
+        $scope.dorders = [];
+        $scope.dorder = [];
+        $scope.msg = "";
 
 
 
-        $scope.getEmployees = function () {
+        $scope.getDos = function () {
 
-            $http.get('/Account/GetAllUsers').then(
+            $http.get('/DO/GetAllDos').then(
                 function (successResponse) {
                     // alert(successResponse.data[0].AccountStatus);
-                    $scope.users = successResponse.data;
+                    $scope.dorders = successResponse.data;
                 },
                 function (errorResponse) {
                     alert(errorResponse);
@@ -31,31 +32,28 @@
                 });
         };
 
-        $scope.DeleteUser = function (user) {
+        $scope.DeleteDo = function (dorder) {
             if (confirm("Do you want to delete!")) {
                 $http({
                     method: "post",
-                    url: "/Account/RemoveUser",
+                    url: "/DO/RemoveDo",
                     datatype: "json",
-                    data: JSON.stringify(user)
+                    data: JSON.stringify(dorder)
                 }).then(function (response) {
-                    if (response.data == true) {
+                    $scope.getDos();
+                    if (response.data.IsError == false) {
                         svc.notifymsg(false);
                         // util.notifymsg(false);
-                        $scope.getEmployees();
+
                     }
                     else {
-                        svc.notifymsg(true);
+                        svc.notifymsgcus(true, response.data.Message);
 
                     }
                 })
             }
         };
-
-        $scope.changeStatus = function () {
-            alert("call");
-
-        };
+        
 
         $scope.addEmployee = function () {
             $http.post('/Home/AddEmployee', $scope.newEmployee).then(
@@ -73,13 +71,13 @@
         //alert("ready");
         var scope = angular.element(document.getElementById("ContentMain")).scope();
         scope.$apply(function () {
-            scope.getEmployees();
+            scope.getDos();
         });
     });
 </script>
 
 <div>
-    <div class="row" id="ContentMain" ng-controller="HomeCtrl">
+    <div class="row" id="ContentMain" ng-controller="DoCtrl">
         <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
         <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper"></div>
         <div class="col s12">
@@ -90,52 +88,54 @@
                             <div class="card">
                                 <div class="card-content">
                                     <h4 class="card-title left">Delivery Order</h4>
-                                    <a class="right waves-effect waves-light btn btn-small modal-trigger" href="/Account/Adduser">Add Delivery Order <i class="material-icons right">add</i></a>
+                                    <a class="right waves-effect waves-light btn btn-small modal-trigger" href="/DO/AddDo">Add Delivery Order <i class="material-icons right">add</i></a>
                                     <div class="row">
                                         <div class="col s12">
                                             <table id="data-table-simple" class="display nowrap striped">
                                                 <thead>
                                                     <tr>
-                                                        <th>ID</th>
-                                                        <th>Bilty No</th>
+                                                        <th>Sno</th>
+                                                        <th>DO</th>
                                                         <th>Date</th>
-                                                        <th>Raty Name</th>
-                                                        <th>Vehicle ID</th>
-                                                        <th>Total Qty</th>
-                                                        <th>Cement Type</th>
+                                                        <th>Contract#</th>
+                                                        <th>Party</th>
+                                                        <th>Type</th>
+                                                        <th>City</th>
+                                                        <th>QTY</th>
                                                         <th>Total Weight</th>
-                                                        <th>DOs</th>
+                                                        
                                                         <th>Created On</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr ng-repeat="user in users" id="{{user.Id}}">
-                                                        <td>123456</td>
-                                                        <td>75529</td>
-                                                        <td>22-Jul-2019</td>
-                                                        <td>Lakhani Silk Mills</td>
-                                                        <td>TKN-083</td>
-                                                        <td>350</td>
-                                                        <td>SRC</td>
-                                                        <td>17.5</td>
-                                                        <td>403123</td>
-                                                        <td>22-Jul-2019</td>
+                                                    <tr ng-repeat="dorder in dorders" >
+                                                        <td>{{dorder.Id}}</td>
+                                                        <td>{{dorder.DoNumber}}</td>
+                                                        <td>{{dorder.DoDate.slice(6, -2) | date : 'dd MMMM yyyy'}}</td>
+                                                        <td>{{dorder.ContractTypeName.toString() + dorder.ContractNumber.toString()}}</td>
+                                                        <td>{{dorder.PartyName}}</td>
+                                                        <td>{{dorder.GoodsTypeName}}</td>
+                                                        <td>{{dorder.CityName}}</td>
+                                                        <td>{{dorder.QTY}}</td>
+                                                        <td>{{dorder.Weight}}</td>
+                                                        <td>{{dorder.CreatedOn.slice(6, -2) | date : 'dd MMMM yyyy'}}</td>
                                                         <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <button class="btn-floating" ng-click="DeleteUser(user)"><i class="material-icons">delete</i></button> </td>
                                                     </tr>
 
                                                 </tbody>
                                                 <tfoot>
                                                     <tr>
-                                                        <th>ID</th>
-                                                        <th>Bilty No</th>
+                                                        <th>Sno</th>
+                                                        <th>DO</th>
                                                         <th>Date</th>
-                                                        <th>Raty Name</th>
-                                                        <th>Vehicle ID</th>
-                                                        <th>Total Qty</th>
-                                                        <th>Cement Type</th>
+                                                        <th>Contract#</th>
+                                                        <th>Party</th>
+                                                        <th>Type</th>
+                                                        <th>City</th>
+                                                        <th>QTY</th>
                                                         <th>Total Weight</th>
-                                                        <th>DOs</th>
+
                                                         <th>Created On</th>
                                                         <th>Action</th>
                                                     </tr>

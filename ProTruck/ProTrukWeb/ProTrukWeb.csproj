@@ -1600,6 +1600,7 @@
     <Content Include="Views\Bilty\Index.cshtml" />
     <Content Include="Views\Contract\Index.cshtml" />
     <Content Include="Views\ContractType\Index.cshtml" />
+    <Content Include="Views\DO\AddDo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

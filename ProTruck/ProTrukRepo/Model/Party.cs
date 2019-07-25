@@ -18,6 +18,7 @@ namespace ProTrukRepo.Model
         public Party()
         {
             this.Contracts = new HashSet<Contract>();
+            this.Dorders = new HashSet<Dorder>();
         }
     
         public int Id { get; set; }
@@ -32,5 +33,7 @@ namespace ProTrukRepo.Model
         public virtual ExanaduCompany ExanaduCompany { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contract> Contracts { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Dorder> Dorders { get; set; }
     }
 }

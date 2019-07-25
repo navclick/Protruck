@@ -196,5 +196,38 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Settings">
+      <EntityTypeMapping TypeName="ProTruckModel.Setting">
+        <MappingFragment StoreEntitySet="Settings">
+          <ScalarProperty Name="EcomID" ColumnName="EcomID" />
+          <ScalarProperty Name="PackPerWeight" ColumnName="PackPerWeight" />
+          <ScalarProperty Name="LastDoNumber" ColumnName="LastDoNumber" />
+          <ScalarProperty Name="DoAutoincrement" ColumnName="DoAutoincrement" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dorders">
+      <EntityTypeMapping TypeName="ProTruckModel.Dorder">
+        <MappingFragment StoreEntitySet="Dorder">
+          <ScalarProperty Name="EcomID" ColumnName="EcomID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="DoDate" ColumnName="DoDate" />
+          <ScalarProperty Name="Attached" ColumnName="Attached" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Party" ColumnName="Party" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="AddressUrd" ColumnName="AddressUrd" />
+          <ScalarProperty Name="AddressEng" ColumnName="AddressEng" />
+          <ScalarProperty Name="GoodsType" ColumnName="GoodsType" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="ContractType" ColumnName="ContractType" />
+          <ScalarProperty Name="ContractNumber" ColumnName="ContractNumber" />
+          <ScalarProperty Name="DoNumber" ColumnName="DoNumber" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

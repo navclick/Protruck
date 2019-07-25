@@ -26,6 +26,7 @@ namespace ProTrukRepo.Model
             this.Cities = new HashSet<City>();
             this.ContractTypes = new HashSet<ContractType>();
             this.Contracts = new HashSet<Contract>();
+            this.Settings = new HashSet<Setting>();
         }
     
         public int Id { get; set; }
@@ -55,5 +56,7 @@ namespace ProTrukRepo.Model
         public virtual ICollection<ContractType> ContractTypes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contract> Contracts { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Setting> Settings { get; set; }
     }
 }

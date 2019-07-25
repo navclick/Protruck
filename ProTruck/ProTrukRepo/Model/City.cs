@@ -14,11 +14,19 @@ namespace ProTrukRepo.Model
     
     public partial class City
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public City()
+        {
+            this.Dorders = new HashSet<Dorder>();
+        }
+    
         public int Id { get; set; }
         public string City1 { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<int> EcomID { get; set; }
     
         public virtual ExanaduCompany ExanaduCompany { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Dorder> Dorders { get; set; }
     }
 }

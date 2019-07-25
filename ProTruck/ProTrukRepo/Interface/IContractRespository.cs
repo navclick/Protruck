@@ -18,7 +18,7 @@ namespace ProTrukRepo.Interface
 
         Task<Response> GetContract(int Id);
 
-        Task<Response> UpdateContract(ContractTypeVM contract);
+        Task<Response> UpdateContract(ContractVM contract);
 
 
     }

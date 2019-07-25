@@ -41,5 +41,7 @@ namespace ProTrukRepo.Model
         public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<ContractType> ContractTypes { get; set; }
         public virtual DbSet<Contract> Contracts { get; set; }
+        public virtual DbSet<Setting> Settings { get; set; }
+        public virtual DbSet<Dorder> Dorders { get; set; }
     }
 }

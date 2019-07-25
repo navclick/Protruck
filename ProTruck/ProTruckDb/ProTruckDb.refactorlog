@@ -112,4 +112,25 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="DoAutoincrement" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="ca7111ca-4942-480d-a13d-80da72a20187" ChangeDateTime="07/25/2019 13:11:50">
+    <Property Name="ElementName" Value="[dbo].[Dorder].[AdressEng]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Dorder]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="AddressEng" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5f8147a8-f09d-49f5-bc4a-8d5a0e533c89" ChangeDateTime="07/25/2019 13:11:58">
+    <Property Name="ElementName" Value="[dbo].[Dorder].[A]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Dorder]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="AddressUrd" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="78b433a5-633d-4007-8e16-6ed9bf4f0a06" ChangeDateTime="07/25/2019 13:15:57">
+    <Property Name="ElementName" Value="[dbo].[Dorder].[ContractNumber]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Dorder]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ContractType" />
+  </Operation>
 </Operations>

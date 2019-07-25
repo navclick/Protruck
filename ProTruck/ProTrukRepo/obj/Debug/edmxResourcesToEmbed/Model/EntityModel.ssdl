@@ -46,6 +46,27 @@
     <Property Name="EcomID" Type="int" />
     <Property Name="CreatedOn" Type="date" />
   </EntityType>
+  <EntityType Name="Dorder">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DoNumber" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="ContractNumber" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="ContractType" Type="int" />
+    <Property Name="QTY" Type="int" />
+    <Property Name="GoodsType" Type="int" />
+    <Property Name="AddressEng" Type="nvarchar(max)" />
+    <Property Name="AddressUrd" Type="nvarchar(max)" />
+    <Property Name="CityID" Type="int" />
+    <Property Name="Party" Type="int" />
+    <Property Name="Weight" Type="float" />
+    <Property Name="Unit" Type="int" />
+    <Property Name="Attached" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="DoDate" Type="date" />
+    <Property Name="CreatedOn" Type="date" />
+    <Property Name="EcomID" Type="int" />
+  </EntityType>
   <EntityType Name="Drivers">
     <Key>
       <PropertyRef Name="Id" />
@@ -147,6 +168,16 @@
     <Property Name="CreatedOn" Type="date" />
     <Property Name="EcomID" Type="int" />
   </EntityType>
+  <EntityType Name="Settings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DoAutoincrement" Type="bit" />
+    <Property Name="LastDoNumber" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="PackPerWeight" Type="int" />
+    <Property Name="EcomID" Type="int" />
+  </EntityType>
   <EntityType Name="Users">
     <Key>
       <PropertyRef Name="Id" />
@@ -236,6 +267,54 @@
       </Principal>
       <Dependent Role="ContractType">
         <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dorder_Cities">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+    <End Role="Dorder" Type="Self.Dorder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Dorder">
+        <PropertyRef Name="CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dorder_ContractType">
+    <End Role="ContractType" Type="Self.ContractType" Multiplicity="0..1" />
+    <End Role="Dorder" Type="Self.Dorder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ContractType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Dorder">
+        <PropertyRef Name="ContractType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dorder_GoodsTypes">
+    <End Role="GoodsTypes" Type="Self.GoodsTypes" Multiplicity="0..1" />
+    <End Role="Dorder" Type="Self.Dorder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GoodsTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Dorder">
+        <PropertyRef Name="GoodsType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dorder_Party">
+    <End Role="Party" Type="Self.Party" Multiplicity="0..1" />
+    <End Role="Dorder" Type="Self.Dorder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Party">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Dorder">
+        <PropertyRef Name="Party" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -347,6 +426,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Settings_ExanaduCompanies">
+    <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="0..1" />
+    <End Role="Settings" Type="Self.Settings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompanies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Settings">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Users_ExanaduCompanies">
     <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="1" />
     <End Role="Users" Type="Self.Users" Multiplicity="*" />
@@ -377,6 +468,7 @@
     <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Contract" EntityType="Self.Contract" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ContractType" EntityType="Self.ContractType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dorder" EntityType="Self.Dorder" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Drivers" EntityType="Self.Drivers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ExanaduCompanies" EntityType="Self.ExanaduCompanies" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Expense" EntityType="Self.Expense" Schema="dbo" store:Type="Tables" />
@@ -386,6 +478,7 @@
     <EntitySet Name="Modules" EntityType="Self.Modules" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Party" EntityType="Self.Party" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="vehicle" EntityType="Self.vehicle" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Cities_ExanaduCompanies" Association="Self.FK_Cities_ExanaduCompanies">
@@ -407,6 +500,22 @@
     <AssociationSet Name="FK_ContractType_ExanaduCompanies" Association="Self.FK_ContractType_ExanaduCompanies">
       <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
       <End Role="ContractType" EntitySet="ContractType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dorder_Cities" Association="Self.FK_Dorder_Cities">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="Dorder" EntitySet="Dorder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dorder_ContractType" Association="Self.FK_Dorder_ContractType">
+      <End Role="ContractType" EntitySet="ContractType" />
+      <End Role="Dorder" EntitySet="Dorder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dorder_GoodsTypes" Association="Self.FK_Dorder_GoodsTypes">
+      <End Role="GoodsTypes" EntitySet="GoodsTypes" />
+      <End Role="Dorder" EntitySet="Dorder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dorder_Party" Association="Self.FK_Dorder_Party">
+      <End Role="Party" EntitySet="Party" />
+      <End Role="Dorder" EntitySet="Dorder" />
     </AssociationSet>
     <AssociationSet Name="FK_Drivers_ExanaduCompanies" Association="Self.FK_Drivers_ExanaduCompanies">
       <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
@@ -443,6 +552,10 @@
     <AssociationSet Name="FK_Roles_ExanaduCompanies" Association="Self.FK_Roles_ExanaduCompanies">
       <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
       <End Role="Roles" EntitySet="Roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Settings_ExanaduCompanies" Association="Self.FK_Settings_ExanaduCompanies">
+      <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
+      <End Role="Settings" EntitySet="Settings" />
     </AssociationSet>
     <AssociationSet Name="FK_Users_ExanaduCompanies" Association="Self.FK_Users_ExanaduCompanies">
       <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />

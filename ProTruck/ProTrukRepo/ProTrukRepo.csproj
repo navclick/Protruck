@@ -61,11 +61,13 @@
     <Compile Include="Interface\ICityRepository.cs" />
     <Compile Include="Interface\IContractRespository.cs" />
     <Compile Include="Interface\IContractTypeRepository.cs" />
+    <Compile Include="Interface\IDoRepository.cs" />
     <Compile Include="Interface\IDriversRepository.cs" />
     <Compile Include="Interface\IExpenseRepository.cs" />
     <Compile Include="Interface\IGoodsRepository.cs" />
     <Compile Include="Interface\IPartyRepository.cs" />
     <Compile Include="Interface\IRoleRepository.cs" />
+    <Compile Include="Interface\ISettingRepository.cs" />
     <Compile Include="Interface\ISharedRepository.cs" />
     <Compile Include="Interface\IUserMasterRepository.cs" />
     <Compile Include="Interface\IVehicleRepository.cs" />
@@ -82,6 +84,9 @@
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\C__RefactorLog.cs">
+      <DependentUpon>EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Dorder.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Driver.cs">
@@ -127,6 +132,9 @@
     <Compile Include="Model\Role.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Setting.cs">
+      <DependentUpon>EntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\User.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
@@ -143,11 +151,13 @@
     <Compile Include="Repository\CityRepository.cs" />
     <Compile Include="Repository\ContractRepository.cs" />
     <Compile Include="Repository\ContractTypeRepository.cs" />
+    <Compile Include="Repository\DoRepository.cs" />
     <Compile Include="Repository\DriverRepository.cs" />
     <Compile Include="Repository\ExpenseRepository.cs" />
     <Compile Include="Repository\GoodsRepository.cs" />
     <Compile Include="Repository\PartyRepository.cs" />
     <Compile Include="Repository\RoleRepository.cs" />
+    <Compile Include="Repository\SettingRepository.cs" />
     <Compile Include="Repository\SharedRepository.cs" />
     <Compile Include="Repository\UserMasterRepository.cs" />
     <Compile Include="Repository\VehicleRepository.cs" />
@@ -158,6 +168,7 @@
     <Compile Include="ViewModels\CityVM.cs" />
     <Compile Include="ViewModels\ContractTypeVM.cs" />
     <Compile Include="ViewModels\ContractVM.cs" />
+    <Compile Include="ViewModels\DorderVM.cs" />
     <Compile Include="ViewModels\DriverVM.cs" />
     <Compile Include="ViewModels\DropDownListModel.cs" />
     <Compile Include="ViewModels\ExpenseVM.cs" />

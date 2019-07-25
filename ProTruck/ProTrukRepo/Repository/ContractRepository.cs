@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using ProTrukRepo.Util;
+using ProTrukRepo.Interface;
 
 namespace ProTrukRepo.Repository
 {
- public  class ContractRepository : IContractRepository
+ public  class ContractRepository : IContractRespository
     {
 
         private readonly ProTruckEntities _db;
