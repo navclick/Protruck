@@ -1,0 +1,74 @@
+.btnHelp 
+{	
+	background: #ECECEC;
+	border: 1px solid #888888;
+	cursor: pointer;
+	cursor: hand;
+	text-align:center;
+	font-family:Tahoma;
+	font-size:16px;
+}
+
+.btnFlat 
+{	
+	background: #ECECEC;
+	border: 1px solid #888888;
+	cursor: pointer;
+	cursor: hand;
+	text-align:center;
+	font-family: Tahoma;
+	font-size:16px;
+}
+
+.btnRaised, .btnFlat:hover {
+	background: #D3D3D3;
+	border: 1px outset;
+	cursor: pointer;
+	cursor: hand;
+	text-align:center;
+	font-family:Tahoma;
+	font-size:16px;
+	font-weight:bold;
+}
+.btnLowered, .btnFlat:active {
+	background: #D3D3D3;
+	border: 1px inset;
+	cursor: pointer;
+	cursor: hand;
+	text-align:center;
+	font-family: Tahoma;
+	font-size:16px;
+}
+
+.btnSysFlat 
+{	
+	background: #808080;
+	border: 1px solid #888888;
+	cursor: pointer;
+	cursor: hand;
+	text-align:center;
+	font-family:Tahoma;
+	font-size:16px;
+}
+
+.btnSysRaised, .btnSysFlat:hover {
+	background: #333333;
+	border: 1px outset;
+	cursor: pointer;
+	cursor: hand;
+	text-align:center;
+	font-family:Tahoma;
+	font-size:16px;
+	font-weight:bold;
+}
+.btnSysLowered, .btnSysFlat:active {
+	background: #333333;
+	border: 1px inset;
+	cursor: pointer;
+	cursor: hand;
+	text-align:center;	
+	font-family:Tahoma;
+	font-size:16px;
+}
+.hiddentext {display:none}
+.outline {cursor:hand; text-decoration:underline}

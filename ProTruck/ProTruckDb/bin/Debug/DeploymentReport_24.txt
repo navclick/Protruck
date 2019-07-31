@@ -1,0 +1,20 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[Contractor] (Table)
+       [dbo].[Vendor] (Table)
+       [dbo].[FK_Contractor_Cities] (Foreign Key)
+       [dbo].[FK_Contractor_ExanaduCompanies] (Foreign Key)
+       [dbo].[FK_Vendor_Cities] (Foreign Key)
+       [dbo].[FK_Vendor_ExanaduCompanies] (Foreign Key)
+
+** Supporting actions

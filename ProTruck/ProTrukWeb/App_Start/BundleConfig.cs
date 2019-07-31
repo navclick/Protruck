@@ -14,6 +14,7 @@ namespace ProTrukWeb
                         "~/Content/js/jquery-confirm.js",
                         "~/Content/js/util.js",
                          "~/Scripts/angular.min.js"
+                        
                         )
                         
                         
@@ -60,6 +61,7 @@ namespace ProTrukWeb
                       "~/Content/css/pages/intro.css",
                       "~/Content/css/custom/custom.css",
                       
+
                       "~/Content/css/jquery-confirm.css"
 
 
@@ -81,14 +83,15 @@ namespace ProTrukWeb
                    ));
 
             bundles.Add(new ScriptBundle("~/bundles/themejs").Include(
-                
+                 "~/Content/js/select2.min.js",
                 "~/Content/js/vendors.min.js",
                         "~/Content/vendors/chartist-js/chartist.min.js",
                         "~/Content/vendors/chartist-js/chartist-plugin-tooltip.js",
                         "~/Content/vendors/chartist-js/chartist-plugin-fill-donut.min.js",
                         "~/Content/js/plugins.js",
                          "~/Content/js/custom/custom-script.js",
-                         "~/Content/js/scripts/dashboard-modern.js"       
+                         "~/Content/js/scripts/dashboard-modern.js"
+                          
                         ));
 
 

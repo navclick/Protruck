@@ -42,6 +42,19 @@
           <Property Name="EcomID" Type="int" />
           <Property Name="CreatedOn" Type="date" />
         </EntityType>
+        <EntityType Name="Contractor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="15" />
+          <Property Name="ContactPerson" Type="nchar" MaxLength="15" />
+          <Property Name="Cell" Type="nchar" MaxLength="18" />
+          <Property Name="Email" Type="nchar" MaxLength="20" />
+          <Property Name="Address" Type="nchar" MaxLength="100" />
+          <Property Name="City" Type="int" />
+          <Property Name="EcomID" Type="int" />
+        </EntityType>
         <EntityType Name="ContractType">
           <Key>
             <PropertyRef Name="Id" />
@@ -215,6 +228,19 @@
           <Property Name="CreatedOn" Type="date" />
           <Property Name="EcomID" Type="int" />
         </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="15" />
+          <Property Name="ContactPerson" Type="nchar" MaxLength="15" />
+          <Property Name="Cell" Type="nchar" MaxLength="15" />
+          <Property Name="Email" Type="nchar" MaxLength="18" />
+          <Property Name="Address" Type="nchar" MaxLength="50" />
+          <Property Name="City" Type="int" />
+          <Property Name="EcomID" Type="int" />
+        </EntityType>
         <Association Name="FK_Cities_ExanaduCompanies">
           <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="0..1" />
           <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
@@ -260,6 +286,30 @@
             </Principal>
             <Dependent Role="Contract">
               <PropertyRef Name="Party" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contractor_Cities">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+          <End Role="Contractor" Type="Self.Contractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contractor">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contractor_ExanaduCompanies">
+          <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="0..1" />
+          <End Role="Contractor" Type="Self.Contractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExanaduCompanies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contractor">
+              <PropertyRef Name="EcomID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -467,11 +517,36 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Vendor_Cities">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vendor">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vendor_ExanaduCompanies">
+          <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="0..1" />
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExanaduCompanies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vendor">
+              <PropertyRef Name="EcomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ProTruckModelStoreContainer">
           <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contract" EntityType="Self.Contract" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contractor" EntityType="Self.Contractor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ContractType" EntityType="Self.ContractType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Dorder" EntityType="Self.Dorder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Drivers" EntityType="Self.Drivers" Schema="dbo" store:Type="Tables" />
@@ -486,6 +561,7 @@
           <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="vehicle" EntityType="Self.vehicle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Cities_ExanaduCompanies" Association="Self.FK_Cities_ExanaduCompanies">
             <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
             <End Role="Cities" EntitySet="Cities" />
@@ -501,6 +577,14 @@
           <AssociationSet Name="FK_Contract_Party" Association="Self.FK_Contract_Party">
             <End Role="Party" EntitySet="Party" />
             <End Role="Contract" EntitySet="Contract" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contractor_Cities" Association="Self.FK_Contractor_Cities">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Contractor" EntitySet="Contractor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contractor_ExanaduCompanies" Association="Self.FK_Contractor_ExanaduCompanies">
+            <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
+            <End Role="Contractor" EntitySet="Contractor" />
           </AssociationSet>
           <AssociationSet Name="FK_ContractType_ExanaduCompanies" Association="Self.FK_ContractType_ExanaduCompanies">
             <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
@@ -569,6 +653,14 @@
           <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendor_Cities" Association="Self.FK_Vendor_Cities">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Vendor" EntitySet="Vendor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendor_ExanaduCompanies" Association="Self.FK_Vendor_ExanaduCompanies">
+            <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
+            <End Role="Vendor" EntitySet="Vendor" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -678,6 +770,24 @@
             <End Role="Party" EntitySet="Parties" />
             <End Role="Dorder" EntitySet="Dorders" />
           </AssociationSet>
+          <EntitySet Name="Contractors" EntityType="ProTruckModel.Contractor" />
+          <EntitySet Name="Vendors" EntityType="ProTruckModel.Vendor" />
+          <AssociationSet Name="FK_Contractor_Cities" Association="ProTruckModel.FK_Contractor_Cities">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Contractor" EntitySet="Contractors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendor_Cities" Association="ProTruckModel.FK_Vendor_Cities">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Vendor" EntitySet="Vendors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contractor_ExanaduCompanies" Association="ProTruckModel.FK_Contractor_ExanaduCompanies">
+            <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
+            <End Role="Contractor" EntitySet="Contractors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vendor_ExanaduCompanies" Association="ProTruckModel.FK_Vendor_ExanaduCompanies">
+            <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
+            <End Role="Vendor" EntitySet="Vendors" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="C__RefactorLog">
           <Key>
@@ -707,6 +817,8 @@
           <NavigationProperty Name="ContractTypes" Relationship="ProTruckModel.FK_ContractType_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="ContractType" />
           <NavigationProperty Name="Contracts" Relationship="ProTruckModel.FK_Contract_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Contract" />
           <NavigationProperty Name="Settings" Relationship="ProTruckModel.FK_Settings_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Setting" />
+          <NavigationProperty Name="Contractors" Relationship="ProTruckModel.FK_Contractor_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Contractor" />
+          <NavigationProperty Name="Vendors" Relationship="ProTruckModel.FK_Vendor_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Vendor" />
         </EntityType>
         <EntityType Name="GoodsType">
           <Key>
@@ -998,6 +1110,8 @@
           <Property Name="EcomID" Type="Int32" />
           <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Cities_ExanaduCompanies" FromRole="City" ToRole="ExanaduCompany" />
           <NavigationProperty Name="Dorders" Relationship="ProTruckModel.FK_Dorder_Cities" FromRole="City" ToRole="Dorder" />
+          <NavigationProperty Name="Contractors" Relationship="ProTruckModel.FK_Contractor_Cities" FromRole="City" ToRole="Contractor" />
+          <NavigationProperty Name="Vendors" Relationship="ProTruckModel.FK_Vendor_Cities" FromRole="City" ToRole="Vendor" />
         </EntityType>
         <Association Name="FK_Cities_ExanaduCompanies">
           <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
@@ -1180,6 +1294,84 @@
             </Principal>
             <Dependent Role="Dorder">
               <PropertyRef Name="Party" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Contractor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="ContactPerson" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="Cell" Type="String" MaxLength="18" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="City" Type="Int32" />
+          <Property Name="EcomID" Type="Int32" />
+          <NavigationProperty Name="City1" Relationship="ProTruckModel.FK_Contractor_Cities" FromRole="Contractor" ToRole="City" />
+          <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Contractor_ExanaduCompanies" FromRole="Contractor" ToRole="ExanaduCompany" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="ContactPerson" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="Cell" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="18" FixedLength="true" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="City" Type="Int32" />
+          <Property Name="EcomID" Type="Int32" />
+          <NavigationProperty Name="City1" Relationship="ProTruckModel.FK_Vendor_Cities" FromRole="Vendor" ToRole="City" />
+          <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Vendor_ExanaduCompanies" FromRole="Vendor" ToRole="ExanaduCompany" />
+        </EntityType>
+        <Association Name="FK_Contractor_Cities">
+          <End Type="ProTruckModel.City" Role="City" Multiplicity="0..1" />
+          <End Type="ProTruckModel.Contractor" Role="Contractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contractor">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vendor_Cities">
+          <End Type="ProTruckModel.City" Role="City" Multiplicity="0..1" />
+          <End Type="ProTruckModel.Vendor" Role="Vendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vendor">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contractor_ExanaduCompanies">
+          <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
+          <End Type="ProTruckModel.Contractor" Role="Contractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExanaduCompany">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contractor">
+              <PropertyRef Name="EcomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vendor_ExanaduCompanies">
+          <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
+          <End Type="ProTruckModel.Vendor" Role="Vendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExanaduCompany">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vendor">
+              <PropertyRef Name="EcomID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1413,6 +1605,34 @@
                 <ScalarProperty Name="ContractType" ColumnName="ContractType" />
                 <ScalarProperty Name="ContractNumber" ColumnName="ContractNumber" />
                 <ScalarProperty Name="DoNumber" ColumnName="DoNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contractors">
+            <EntityTypeMapping TypeName="ProTruckModel.Contractor">
+              <MappingFragment StoreEntitySet="Contractor">
+                <ScalarProperty Name="EcomID" ColumnName="EcomID" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Cell" ColumnName="Cell" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendors">
+            <EntityTypeMapping TypeName="ProTruckModel.Vendor">
+              <MappingFragment StoreEntitySet="Vendor">
+                <ScalarProperty Name="EcomID" ColumnName="EcomID" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Cell" ColumnName="Cell" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

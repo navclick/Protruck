@@ -292,6 +292,7 @@
     <Content Include="Content\css\pages\user-profile-page.min.css" />
     <Content Include="Content\css\pages\variables.css" />
     <Content Include="Content\css\pages\variables.min.css" />
+    <Content Include="Content\css\select2.min.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\style.min.css" />
     <Content Include="Content\css\themes\horizontal-menu-template\materialize.css" />
@@ -517,6 +518,7 @@
     <Content Include="Content\js\lang\es.js" />
     <Content Include="Content\js\materialize.js" />
     <Content Include="Content\js\materialize.min.js" />
+    <Content Include="Content\js\OpenPad.js" />
     <Content Include="Content\js\plugins.js" />
     <Content Include="Content\js\plugins.min.js" />
     <Content Include="Content\js\scripts\advance-ui-carousel.js" />
@@ -621,6 +623,7 @@
     <Content Include="Content\js\scripts\ui-navbar.min.js" />
     <Content Include="Content\js\scripts\vectormap-script.js" />
     <Content Include="Content\js\scripts\vectormap-script.min.js" />
+    <Content Include="Content\js\select2.min.js" />
     <Content Include="Content\js\util.js" />
     <Content Include="Content\js\vendors.min.js" />
     <Content Include="Content\vendors\animate-css\animate.css" />
@@ -1568,6 +1571,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\OpenPad.css" />
+    <Content Include="Scripts\OpenPad.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Web.config" />

@@ -1,10 +1,28 @@
-﻿
+﻿@model ProTrukRepo.ViewModels.DorderVM
 @{
     ViewBag.Title = "AddDo";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="row" id="ContentMain" ng-controller="DoCtrl">
+
+<script src="@Url.Content("~/Scripts/OpenPad.js")"></script>
+<script>
+    initUrduEditor();
+</script>
+
+<script>
+
+    window.onload = myOnload;
+
+    function myOnload(evt) {
+        $('.datepicker').datepicker();
+        makeUrduEditorById("uaddress", "19px");//enable Urdu in html text area
+       // makeUrduEditorById("txtBox", "14px");//enable Urdu in html text box
+
+    }
+</script>
+<div class="row" id="ContentMain" >
+    
     <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
     <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper"></div>
 
@@ -31,8 +49,8 @@
 
                                         <div class="input-field col s2">
                                             <select>
-                                                <option value="" disabled selected>Choose your option</option>
-                                                <option value="1">1</option>
+                                                
+                                                <option value="1" selected>1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
                                             </select>
@@ -49,10 +67,8 @@
                                         </div>
 
                                         <div class="input-field col s2">
-                                            <select>
-                                                <option value="1">SBR</option>
-                                                <option value="2">LSB</option>
-                                            </select>
+                                            @Html.DropDownListFor(x => Model.ContractType, (IEnumerable
+     <SelectListItem>)ViewBag.LstContractType)
                                         </div>
 
                                         <div class="input-field col s2">
@@ -67,11 +83,13 @@
                                 <div class="row">
                                     <div class="col s12">
                                         <div class="input-field col s6">
-                                            <input id="party" type="text" class="validate">
+                                            @Html.DropDownListFor(x => Model.Party, (IEnumerable
+     <SelectListItem>)ViewBag.LstParty)
                                             <label for="party">Party</label>
                                         </div>
                                         <div class="input-field col s6">
-                                            <input id="cement" type="text" class="validate">
+                                            @Html.DropDownListFor(x => Model.GoodsType, (IEnumerable
+     <SelectListItem>)ViewBag.LstGoods)
                                             <label for="cement">Cement</label>
                                         </div>
                                     </div>
@@ -90,8 +108,8 @@
                                             </div>
                                         </div>
                                         <div class="input-field col s5">
-                                            <textarea id="u_address" class="materialize-textarea"></textarea>
-                                            <label for="u_address">Address Urdu</label>
+                                            <textarea id="uaddress" name="uaddress" dir="rtl" class="materialize-textarea"></textarea>
+                                            <label for="uaddress">Address Urdu</label>
                                         </div>
                                     </div>
                                 </div>
@@ -99,13 +117,9 @@
                                 <div class="row">
                                     <div class="col s12">
                                         <div class="input-field col s4">
-                                            <select>
-                                                <option value="" disabled selected>Choose a City</option>
-                                                <option value="1">Karachi</option>
-                                                <option value="2">Lahore</option>
-                                                <option value="3">Islamabad</option>
-                                            </select>
-                                            <label>Save DO(s)</label>
+                                            @Html.DropDownListFor(x => Model.CityID,(IEnumerable
+     <SelectListItem>)ViewBag.LstCities,new { @id = "phone", @class = "js-example-basic-single" })
+                                            <label>City</label>
                                         </div>
 
                                         <div class="input-field col s4">
@@ -208,14 +222,13 @@
 </div>
 
 <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var elems = document.querySelectorAll('.datepicker');
-            var instances = M.Datepicker.init(elems, options);
-        });
+       
 
         // Or with jQuery
 
         $(document).ready(function () {
             $('.datepicker').datepicker();
+
+           
         });
 </script>
