@@ -25,7 +25,7 @@ namespace ProTrukRepo.Repository
             AutoMapper.Mapper.Reset();
             Mapper.Initialize(cfg =>
             {
-                cfg.CreateMap<vehicle, VehicleVM>();
+                cfg.CreateMap<vehicle, VehicleVM>().ForMember(dest => dest.ContractorName, opt => opt.MapFrom(src => src.Contractor.Name.Trim())); 
                 cfg.CreateMap<VehicleVM, vehicle>();
                 /* cfg.CreateMap<User, UserVM>().ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role.Role1.Trim())); ;
                  cfg.CreateMap<Module, ModuleVM>();
@@ -64,6 +64,9 @@ namespace ProTrukRepo.Repository
                     obj.TypeName= _shareRepo.GetVehicleTypeID((int)vehicle.Type);
                     obj.Unit = vehicle.Unit;
                     obj.UnitName = _shareRepo.GetUnitByID((int)vehicle.Unit);
+                    obj.IsContractorVehicle = vehicle.IsContractorVehicle;
+                    obj.ContractorId = vehicle.ContractorId;
+                  
                     response.Add(obj);
                 }
 

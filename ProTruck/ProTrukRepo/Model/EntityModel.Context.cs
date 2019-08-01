@@ -33,7 +33,6 @@ namespace ProTrukRepo.Model
         public virtual DbSet<Module> Modules { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<vehicle> vehicles { get; set; }
         public virtual DbSet<Driver> Drivers { get; set; }
         public virtual DbSet<Bank> Banks { get; set; }
         public virtual DbSet<Expense> Expenses { get; set; }
@@ -45,5 +44,6 @@ namespace ProTrukRepo.Model
         public virtual DbSet<Dorder> Dorders { get; set; }
         public virtual DbSet<Contractor> Contractors { get; set; }
         public virtual DbSet<Vendor> Vendors { get; set; }
+        public virtual DbSet<vehicle> vehicles { get; set; }
     }
 }

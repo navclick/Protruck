@@ -59,6 +59,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Interface\IBankRepository.cs" />
     <Compile Include="Interface\ICityRepository.cs" />
+    <Compile Include="Interface\IContractorRepository.cs" />
     <Compile Include="Interface\IContractRespository.cs" />
     <Compile Include="Interface\IContractTypeRepository.cs" />
     <Compile Include="Interface\IDoRepository.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Interface\ISharedRepository.cs" />
     <Compile Include="Interface\IUserMasterRepository.cs" />
     <Compile Include="Interface\IVehicleRepository.cs" />
+    <Compile Include="Interface\IVendorRepository.cs" />
     <Compile Include="Model\Bank.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
@@ -155,6 +157,7 @@
     </Compile>
     <Compile Include="Repository\BankRepository.cs" />
     <Compile Include="Repository\CityRepository.cs" />
+    <Compile Include="Repository\ContractorRepository.cs" />
     <Compile Include="Repository\ContractRepository.cs" />
     <Compile Include="Repository\ContractTypeRepository.cs" />
     <Compile Include="Repository\DoRepository.cs" />
@@ -167,11 +170,13 @@
     <Compile Include="Repository\SharedRepository.cs" />
     <Compile Include="Repository\UserMasterRepository.cs" />
     <Compile Include="Repository\VehicleRepository.cs" />
+    <Compile Include="Repository\VendorRepository.cs" />
     <Compile Include="Util\Constant.cs" />
     <Compile Include="Util\GenericResponses.cs" />
     <Compile Include="Util\StringUtil.cs" />
     <Compile Include="ViewModels\BankVM.cs" />
     <Compile Include="ViewModels\CityVM.cs" />
+    <Compile Include="ViewModels\ContractorVM.cs" />
     <Compile Include="ViewModels\ContractTypeVM.cs" />
     <Compile Include="ViewModels\ContractVM.cs" />
     <Compile Include="ViewModels\DorderVM.cs" />
@@ -185,6 +190,7 @@
     <Compile Include="ViewModels\RolesVM.cs" />
     <Compile Include="ViewModels\UserVM.cs" />
     <Compile Include="ViewModels\VehicleVM.cs" />
+    <Compile Include="ViewModels\VendorVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

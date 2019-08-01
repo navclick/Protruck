@@ -1,10 +1,10 @@
 ﻿CREATE TABLE [dbo].[Contractor]
 (
 	[Id] INT NOT NULL PRIMARY KEY Identity, 
-    [Name] NCHAR(15) NULL, 
-    [ContactPerson] NCHAR(15) NULL, 
-    [Cell] NCHAR(18) NULL, 
-    [Email] NCHAR(20) NULL, 
+    [Name] NCHAR(100) NULL, 
+    [ContactPerson] NCHAR(100) NULL, 
+    [Cell] NCHAR(58) NULL, 
+    [Email] NCHAR(50) NULL, 
     [Address] NCHAR(100) NULL, 
     [City] INT NULL, 
     [EcomID] INT NULL, 

@@ -14,6 +14,12 @@ namespace ProTrukRepo.Model
     
     public partial class Contractor
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Contractor()
+        {
+            this.vehicles = new HashSet<vehicle>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public string ContactPerson { get; set; }
@@ -25,5 +31,7 @@ namespace ProTrukRepo.Model
     
         public virtual City City1 { get; set; }
         public virtual ExanaduCompany ExanaduCompany { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<vehicle> vehicles { get; set; }
     }
 }

@@ -184,6 +184,7 @@
     <Compile Include="Controllers\BiltyController.cs" />
     <Compile Include="Controllers\CityController.cs" />
     <Compile Include="Controllers\ContractController.cs" />
+    <Compile Include="Controllers\ContractorController.cs" />
     <Compile Include="Controllers\ContractTypeController.cs" />
     <Compile Include="Controllers\DOController.cs" />
     <Compile Include="Controllers\DriverController.cs" />
@@ -193,6 +194,7 @@
     <Compile Include="Controllers\PartiesController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\VehicleController.cs" />
+    <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="CustomFilters\UserAuthenticationFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1606,6 +1608,8 @@
     <Content Include="Views\Contract\Index.cshtml" />
     <Content Include="Views\ContractType\Index.cshtml" />
     <Content Include="Views\DO\AddDo.cshtml" />
+    <Content Include="Views\Contractor\Index.cshtml" />
+    <Content Include="Views\Vendor\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

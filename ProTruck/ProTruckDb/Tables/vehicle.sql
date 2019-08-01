@@ -10,5 +10,8 @@
     [Status] INT NULL, 
     [CreatedOn] DATE NULL, 
     [EcomID] INT NULL, 
+    [IsContractorVehicle] BIT NULL, 
+    [ContractorId] INT NULL, 
+    CONSTRAINT [FK_vehicle_Contractor] FOREIGN KEY ([ContractorId]) REFERENCES [Contractor]([Id]), 
   
 )

@@ -13,6 +13,7 @@
         $scope.vehicle = {};
         $scope.msg = "";
         $scope.selectlist = [];
+        $scope.selectlistContarctors = [];
         $scope.selectlistvtype = [];
         $scope.selectlistvstatus = [];
 
@@ -64,6 +65,26 @@
                     // handle errors here
                 });
         };
+
+
+        $scope.getContractors = function () {
+
+            $http.get('/Contractor/GetallSelectListContractors').then(
+
+                function (successResponse) {
+
+                    //this.notes = JSON.parse(successResponse);
+                    //alert(successResponse.);
+                    $scope.selectlistContarctors = successResponse.data;
+                },
+                function (errorResponse) {
+                    alert(errorResponse);
+                    // handle errors here
+                });
+        };
+
+
+        
 
         $scope.getVehicleStatus = function () {
 
@@ -127,6 +148,16 @@
             }
 
 
+            if ($scope.vehicle.IsContractorVehicle) {
+                if (!$scope.vehicle.ContractorId) {
+
+                    $scope.msg = "Please select Contractor!";
+                    return;
+                }
+
+            }
+
+
             $http.post('/Vehicle/AddVehicle', $scope.vehicle).then(
                 function (successResponse) {
                     if (successResponse.data.IsError == true) {
@@ -159,7 +190,8 @@
           scope.getVehicles();
           scope.getUnits();
           scope.getVehicleTypes();
-          scope.getVehicleStatus();
+          scope.getVehicleStatus(); 
+          scope.getContractors();
 
         });
     });
@@ -223,6 +255,24 @@
                                                         </div>
                                                     </div>
                                                     <div class="row">
+                                                        <div class="input-field col m6 s12">
+                                                            <p>
+                                                                <label>
+                                                                    <input ng-model="vehicle.IsContractorVehicle" type="checkbox" class="filled-in" />
+                                                                    <span>Contractor's Vehicle</span>
+                                                                </label>
+                                                            </p>
+                                                        </div>
+                                                        <div class="input-field col m6 s12" ng-show='vehicle.IsContractorVehicle'>
+                                                            <label>Contractors</label>
+                                                            <select ng-model="vehicle.ContractorId" class="browser-default">
+                                                                <option ng-repeat="x in selectlistContarctors" value="{{x.Value}}">{{x.Text}}</option>
+
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
                                                         <div class="input-field col s12">
                                                             <label>Status</label>
                                                             <select ng-model="vehicle.Status" class="browser-default">
@@ -255,6 +305,7 @@
                                                         <th>Model</th>
                                                         <th>Capacity</th>
                                                         <th>Manufacturer</th>
+                                                        <th>Contractor</th>
                                                         <th>Vehicle Type</th>
                                                         <th>Vehicle Status</th>
                                                         
@@ -271,6 +322,7 @@
                                                         <td>{{vehicle.Model}}</td>
                                                         <td>{{vehicle.Capacity}}</td>
                                                         <td>{{vehicle.Manufacturer}}</td>
+                                                        <td>{{vehicle.ContractorName}}</td>
                                                         <td>{{vehicle.TypeName}}</td>
                                                         <td>{{vehicle.StatusName}}</td>
                                                         <td>{{vehicle.CreatedOn.slice(6, -2) | date : 'dd MMMM yyyy'}}</td>

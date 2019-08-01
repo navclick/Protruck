@@ -35,6 +35,12 @@ namespace ProTrukWeb.Controllers
         {
             vehicle.CreatedOn = DateTime.Today;
             vehicle.EcomID = (int)Session["Comp"];
+            if (((bool)vehicle.IsContractorVehicle)==false)
+            {
+                vehicle.ContractorId = null;
+
+            }
+            
             Response r = await Repository.AddVehicle(vehicle);
             //  List<UserVM> employees = ((IEnumerable)r.Value).Cast<UserVM>().ToList(); ;
             return Json(r, JsonRequestBehavior.AllowGet);

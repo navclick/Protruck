@@ -47,10 +47,10 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="15" />
-          <Property Name="ContactPerson" Type="nchar" MaxLength="15" />
-          <Property Name="Cell" Type="nchar" MaxLength="18" />
-          <Property Name="Email" Type="nchar" MaxLength="20" />
+          <Property Name="Name" Type="nchar" MaxLength="100" />
+          <Property Name="ContactPerson" Type="nchar" MaxLength="100" />
+          <Property Name="Cell" Type="nchar" MaxLength="58" />
+          <Property Name="Email" Type="nchar" MaxLength="50" />
           <Property Name="Address" Type="nchar" MaxLength="100" />
           <Property Name="City" Type="int" />
           <Property Name="EcomID" Type="int" />
@@ -227,17 +227,19 @@
           <Property Name="Status" Type="int" />
           <Property Name="CreatedOn" Type="date" />
           <Property Name="EcomID" Type="int" />
+          <Property Name="IsContractorVehicle" Type="bit" />
+          <Property Name="ContractorId" Type="int" />
         </EntityType>
         <EntityType Name="Vendor">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="15" />
-          <Property Name="ContactPerson" Type="nchar" MaxLength="15" />
-          <Property Name="Cell" Type="nchar" MaxLength="15" />
-          <Property Name="Email" Type="nchar" MaxLength="18" />
-          <Property Name="Address" Type="nchar" MaxLength="50" />
+          <Property Name="Name" Type="nchar" MaxLength="100" />
+          <Property Name="ContactPerson" Type="nchar" MaxLength="100" />
+          <Property Name="Cell" Type="nchar" MaxLength="100" />
+          <Property Name="Email" Type="nchar" MaxLength="100" />
+          <Property Name="Address" Type="nchar" MaxLength="100" />
           <Property Name="City" Type="int" />
           <Property Name="EcomID" Type="int" />
         </EntityType>
@@ -517,6 +519,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_vehicle_Contractor">
+          <End Role="Contractor" Type="Self.Contractor" Multiplicity="0..1" />
+          <End Role="vehicle" Type="Self.vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contractor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="vehicle">
+              <PropertyRef Name="ContractorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Vendor_Cities">
           <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
           <End Role="Vendor" Type="Self.Vendor" Multiplicity="*" />
@@ -654,6 +668,10 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
+          <AssociationSet Name="FK_vehicle_Contractor" Association="Self.FK_vehicle_Contractor">
+            <End Role="Contractor" EntitySet="Contractor" />
+            <End Role="vehicle" EntitySet="vehicle" />
+          </AssociationSet>
           <AssociationSet Name="FK_Vendor_Cities" Association="Self.FK_Vendor_Cities">
             <End Role="Cities" EntitySet="Cities" />
             <End Role="Vendor" EntitySet="Vendor" />
@@ -676,7 +694,6 @@
           <EntitySet Name="Modules" EntityType="ProTruckModel.Module" />
           <EntitySet Name="Roles" EntityType="ProTruckModel.Role" />
           <EntitySet Name="Users" EntityType="ProTruckModel.User" />
-          <EntitySet Name="vehicles" EntityType="ProTruckModel.vehicle" />
           <AssociationSet Name="FK_GoodsTypes_ExanaduCompanies" Association="ProTruckModel.FK_GoodsTypes_ExanaduCompanies">
             <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
             <End Role="GoodsType" EntitySet="GoodsTypes" />
@@ -708,10 +725,6 @@
           <EntitySet Name="Drivers" EntityType="ProTruckModel.Driver" />
           <AssociationSet Name="FK_Drivers_ExanaduCompanies" Association="ProTruckModel.FK_Drivers_ExanaduCompanies">
             <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
-            <End Role="Driver" EntitySet="Drivers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Drivers_vehicle" Association="ProTruckModel.FK_Drivers_vehicle">
-            <End Role="vehicle" EntitySet="vehicles" />
             <End Role="Driver" EntitySet="Drivers" />
           </AssociationSet>
           <EntitySet Name="Banks" EntityType="ProTruckModel.Bank" />
@@ -771,22 +784,31 @@
             <End Role="Dorder" EntitySet="Dorders" />
           </AssociationSet>
           <EntitySet Name="Contractors" EntityType="ProTruckModel.Contractor" />
-          <EntitySet Name="Vendors" EntityType="ProTruckModel.Vendor" />
           <AssociationSet Name="FK_Contractor_Cities" Association="ProTruckModel.FK_Contractor_Cities">
             <End Role="City" EntitySet="Cities" />
             <End Role="Contractor" EntitySet="Contractors" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Vendor_Cities" Association="ProTruckModel.FK_Vendor_Cities">
-            <End Role="City" EntitySet="Cities" />
-            <End Role="Vendor" EntitySet="Vendors" />
           </AssociationSet>
           <AssociationSet Name="FK_Contractor_ExanaduCompanies" Association="ProTruckModel.FK_Contractor_ExanaduCompanies">
             <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
             <End Role="Contractor" EntitySet="Contractors" />
           </AssociationSet>
+          <EntitySet Name="Vendors" EntityType="ProTruckModel.Vendor" />
+          <AssociationSet Name="FK_Vendor_Cities" Association="ProTruckModel.FK_Vendor_Cities">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Vendor" EntitySet="Vendors" />
+          </AssociationSet>
           <AssociationSet Name="FK_Vendor_ExanaduCompanies" Association="ProTruckModel.FK_Vendor_ExanaduCompanies">
             <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
             <End Role="Vendor" EntitySet="Vendors" />
+          </AssociationSet>
+          <EntitySet Name="vehicles" EntityType="ProTruckModel.vehicle" />
+          <AssociationSet Name="FK_vehicle_Contractor" Association="ProTruckModel.FK_vehicle_Contractor">
+            <End Role="Contractor" EntitySet="Contractors" />
+            <End Role="vehicle" EntitySet="vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Drivers_vehicle" Association="ProTruckModel.FK_Drivers_vehicle">
+            <End Role="vehicle" EntitySet="vehicles" />
+            <End Role="Driver" EntitySet="Drivers" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="C__RefactorLog">
@@ -900,22 +922,6 @@
           <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Users_ExanaduCompanies" FromRole="User" ToRole="ExanaduCompany" />
           <NavigationProperty Name="Role" Relationship="ProTruckModel.FK_Users_Roles" FromRole="User" ToRole="Role" />
         </EntityType>
-        <EntityType Name="vehicle">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RegNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Type" Type="Int32" />
-          <Property Name="Manufacturer" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
-          <Property Name="Model" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
-          <Property Name="Capacity" Type="Int32" />
-          <Property Name="Unit" Type="Int32" />
-          <Property Name="Status" Type="Int32" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="0" />
-          <Property Name="EcomID" Type="Int32" />
-          <NavigationProperty Name="Drivers" Relationship="ProTruckModel.FK_Drivers_vehicle" FromRole="vehicle" ToRole="Driver" />
-        </EntityType>
         <Association Name="FK_GoodsTypes_ExanaduCompanies">
           <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
           <End Type="ProTruckModel.GoodsType" Role="GoodsType" Multiplicity="*" />
@@ -1025,18 +1031,6 @@
             </Principal>
             <Dependent Role="Driver">
               <PropertyRef Name="EcomID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Drivers_vehicle">
-          <End Type="ProTruckModel.vehicle" Role="vehicle" Multiplicity="0..1" />
-          <End Type="ProTruckModel.Driver" Role="Driver" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="vehicle">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Driver">
-              <PropertyRef Name="Vehicle" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1302,30 +1296,16 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
-          <Property Name="ContactPerson" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
-          <Property Name="Cell" Type="String" MaxLength="18" FixedLength="true" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="ContactPerson" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Cell" Type="String" MaxLength="58" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
           <Property Name="City" Type="Int32" />
           <Property Name="EcomID" Type="Int32" />
           <NavigationProperty Name="City1" Relationship="ProTruckModel.FK_Contractor_Cities" FromRole="Contractor" ToRole="City" />
           <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Contractor_ExanaduCompanies" FromRole="Contractor" ToRole="ExanaduCompany" />
-        </EntityType>
-        <EntityType Name="Vendor">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
-          <Property Name="ContactPerson" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
-          <Property Name="Cell" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="18" FixedLength="true" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="City" Type="Int32" />
-          <Property Name="EcomID" Type="Int32" />
-          <NavigationProperty Name="City1" Relationship="ProTruckModel.FK_Vendor_Cities" FromRole="Vendor" ToRole="City" />
-          <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Vendor_ExanaduCompanies" FromRole="Vendor" ToRole="ExanaduCompany" />
+          <NavigationProperty Name="vehicles" Relationship="ProTruckModel.FK_vehicle_Contractor" FromRole="Contractor" ToRole="vehicle" />
         </EntityType>
         <Association Name="FK_Contractor_Cities">
           <End Type="ProTruckModel.City" Role="City" Multiplicity="0..1" />
@@ -1335,18 +1315,6 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Contractor">
-              <PropertyRef Name="City" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Vendor_Cities">
-          <End Type="ProTruckModel.City" Role="City" Multiplicity="0..1" />
-          <End Type="ProTruckModel.Vendor" Role="Vendor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="City">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Vendor">
               <PropertyRef Name="City" />
             </Dependent>
           </ReferentialConstraint>
@@ -1363,6 +1331,33 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="ContactPerson" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Cell" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="City" Type="Int32" />
+          <Property Name="EcomID" Type="Int32" />
+          <NavigationProperty Name="City1" Relationship="ProTruckModel.FK_Vendor_Cities" FromRole="Vendor" ToRole="City" />
+          <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Vendor_ExanaduCompanies" FromRole="Vendor" ToRole="ExanaduCompany" />
+        </EntityType>
+        <Association Name="FK_Vendor_Cities">
+          <End Type="ProTruckModel.City" Role="City" Multiplicity="0..1" />
+          <End Type="ProTruckModel.Vendor" Role="Vendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Vendor">
+              <PropertyRef Name="City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Vendor_ExanaduCompanies">
           <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
           <End Type="ProTruckModel.Vendor" Role="Vendor" Multiplicity="*" />
@@ -1372,6 +1367,49 @@
             </Principal>
             <Dependent Role="Vendor">
               <PropertyRef Name="EcomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="vehicle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="Manufacturer" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="Capacity" Type="Int32" />
+          <Property Name="Unit" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="0" />
+          <Property Name="EcomID" Type="Int32" />
+          <Property Name="IsContractorVehicle" Type="Boolean" />
+          <Property Name="ContractorId" Type="Int32" />
+          <NavigationProperty Name="Contractor" Relationship="ProTruckModel.FK_vehicle_Contractor" FromRole="vehicle" ToRole="Contractor" />
+          <NavigationProperty Name="Drivers" Relationship="ProTruckModel.FK_Drivers_vehicle" FromRole="vehicle" ToRole="Driver" />
+        </EntityType>
+        <Association Name="FK_vehicle_Contractor">
+          <End Type="ProTruckModel.Contractor" Role="Contractor" Multiplicity="0..1" />
+          <End Type="ProTruckModel.vehicle" Role="vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contractor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="vehicle">
+              <PropertyRef Name="ContractorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Drivers_vehicle">
+          <End Type="ProTruckModel.vehicle" Role="vehicle" Multiplicity="0..1" />
+          <End Type="ProTruckModel.Driver" Role="Driver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vehicle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Driver">
+              <PropertyRef Name="Vehicle" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1472,22 +1510,6 @@
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vehicles">
-            <EntityTypeMapping TypeName="ProTruckModel.vehicle">
-              <MappingFragment StoreEntitySet="vehicle">
-                <ScalarProperty Name="EcomID" ColumnName="EcomID" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Unit" ColumnName="Unit" />
-                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
-                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="RegNumber" ColumnName="RegNumber" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1633,6 +1655,24 @@
                 <ScalarProperty Name="Cell" ColumnName="Cell" />
                 <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vehicles">
+            <EntityTypeMapping TypeName="ProTruckModel.vehicle">
+              <MappingFragment StoreEntitySet="vehicle">
+                <ScalarProperty Name="ContractorId" ColumnName="ContractorId" />
+                <ScalarProperty Name="IsContractorVehicle" ColumnName="IsContractorVehicle" />
+                <ScalarProperty Name="EcomID" ColumnName="EcomID" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="RegNumber" ColumnName="RegNumber" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

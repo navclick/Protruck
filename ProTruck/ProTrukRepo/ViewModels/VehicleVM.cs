@@ -21,5 +21,9 @@ namespace ProTrukRepo.ViewModels
         public string StatusName { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<int> EcomID { get; set; }
+
+        public Nullable<bool> IsContractorVehicle { get; set; }
+        public Nullable<int> ContractorId { get; set; }
+        public string ContractorName { get; set; }
     }
 }
