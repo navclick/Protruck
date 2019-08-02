@@ -16,7 +16,7 @@
 
     function myOnload(evt) {
         $('.datepicker').datepicker();
-        makeUrduEditorById("uaddress", "19px");//enable Urdu in html text area
+        makeUrduEditorById("AddressUrd", "25px");//enable Urdu in html text area
        // makeUrduEditorById("txtBox", "14px");//enable Urdu in html text box
 
     }
@@ -38,17 +38,20 @@
                                     <div class="col s12">
 
                                         <div class="input-field col s2">
-                                            <input id="date" type="text" class="datepicker">
+                                            @Html.TextBoxFor(m=> m.DoDate,new { @id = "date", @class = "datepicker" })                                
+                                            
                                             <label for="date">Select Date</label>
                                         </div>
 
                                         <div class="input-field col s2">
-                                            <input id="do_number" type="text" class="validate">
+                                            
+                                            @Html.TextBoxFor(m => m.DoNumber, new { @id = "do_number", @class = "validate" })
+                                            
                                             <label for="do_number">DO Number</label>
                                         </div>
 
                                         <div class="input-field col s2">
-                                            <select>
+                                            <select name="SaveCop">
                                                 
                                                 <option value="1" selected>1</option>
                                                 <option value="2">2</option>
@@ -60,7 +63,7 @@
                                         <div class="input-field col s2">
                                             <p class="center">
                                                 <label>
-                                                    <input type="checkbox" class="filled-in" checked="checked" />
+                                                    <input type="checkbox" name="Inc" class="filled-in" checked="checked" />
                                                     <span>Inc</span>
                                                 </label>
                                             </p>
@@ -72,7 +75,9 @@
                                         </div>
 
                                         <div class="input-field col s2">
-                                            <input id="sbr-lsb-number" type="text" class="validate">
+                                            @Html.TextBoxFor(m => m.ContractNumber, new { @id = "sbr-lsb-number", @class = "validate" })
+                                            
+                                         
                                         </div>
 
                                     </div>
@@ -98,7 +103,7 @@
                                 <div class="row">
                                     <div class="col s12">
                                         <div class="input-field col s5">
-                                            <textarea id="e_address" class="materialize-textarea"></textarea>
+                                            @Html.TextBoxFor(m => m.AddressEng, new { @id = "e_address", @class = "materialize-textarea" })     
                                             <label for="e_address">Address English</label>
                                         </div>
                                         <div class="input-field col s2">
@@ -108,8 +113,10 @@
                                             </div>
                                         </div>
                                         <div class="input-field col s5">
-                                            <textarea id="uaddress" name="uaddress" dir="rtl" class="materialize-textarea"></textarea>
-                                            <label for="uaddress">Address Urdu</label>
+                                            @Html.TextBoxFor(m => m.AddressUrd, new { @id = "AddressUrd", @class = "materialize-textarea", @dir = "rtl" })
+                                            
+                                            
+                                            <label for="AddressUrd">Address Urdu</label>
                                         </div>
                                     </div>
                                 </div>
@@ -123,12 +130,14 @@
                                         </div>
 
                                         <div class="input-field col s4">
-                                            <input id="qty" type="text" placeholder="20 Bag(s) = 1 Ton" class="validate">
+                                            @Html.TextBoxFor(m => m.QTY, new { @id = "qty", @class = "validate", @placeholder = "20 Bag(s) = 1 Ton" })
+                                          
                                             <label for="qty">Qty</label>
                                         </div>
 
                                         <div class="input-field col s4">
                                             <input id="weight" type="text" class="validate">
+                                            @Html.TextBoxFor(m => m.Weight, new { @id = "weight", @class = "validate"})
                                             <label for="weight">Weight</label>
                                         </div>
                                     </div>
@@ -136,10 +145,7 @@
 
                                 <div class="row">
                                     <div class="col s12">
-                                        <div class="input-field col s4">
-                                            <input id="bal_ton" type="text" class="validate">
-                                            <label for="bal_ton">Enter Balance Ton(s) If Any</label>
-                                        </div>
+                                       
 
                                         <div class="input-field col s4 push-s4">
                                             <a class="btn purple waves-effect waves-light right">Save</a>
