@@ -19,6 +19,7 @@ namespace ProTrukRepo.Model
         public Nullable<decimal> LastDoNumber { get; set; }
         public Nullable<int> PackPerWeight { get; set; }
         public Nullable<int> EcomID { get; set; }
+        public Nullable<decimal> LastConractNumber { get; set; }
     
         public virtual ExanaduCompany ExanaduCompany { get; set; }
     }

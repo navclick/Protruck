@@ -72,8 +72,24 @@ namespace ProTrukWeb.Controllers
             var selectListItemsgoods = listgoods.Select(x => new SelectListItem() { Value = x.Id.ToString(), Text = x.Goods }).ToList();
             ViewBag.LstGoods = selectListItemsgoods;
 
+            ISettingRepository _setting = new SettingRepository();
+            DorderVM Do = new DorderVM();
+            bool autoInc = _setting.GetDoAutoIncrement();
+            if (autoInc)
+            {
 
-            return View();
+                Do.DoNumber = (_setting.GetLastDoNumber() + 1);
+            }
+            else {
+                Do.DoNumber = _setting.GetLastDoNumber();
+
+
+            }
+
+            Do.ContractNumber = _setting.GetLastContractNumber();
+
+            ViewBag.isAutoIncrement = autoInc;
+            return View(Do);
         }
     }
 }

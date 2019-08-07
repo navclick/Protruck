@@ -123,5 +123,15 @@ namespace ProTrukWeb.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult test() {
+
+            Dictionary<string, string> dict = new Dictionary<string, string>()
+                                {
+                                    {"one",null},
+                                    {"two", null},
+                                    {"three",null}
+                                };
+            return Json(dict, JsonRequestBehavior.AllowGet);
+        }
     }
     }

@@ -190,6 +190,7 @@
     <Property Name="LastDoNumber" Type="numeric" Precision="18" Scale="0" />
     <Property Name="PackPerWeight" Type="int" />
     <Property Name="EcomID" Type="int" />
+    <Property Name="LastConractNumber" Type="numeric" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="Users">
     <Key>

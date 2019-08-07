@@ -180,17 +180,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Settings">
-      <EntityTypeMapping TypeName="ProTruckModel.Setting">
-        <MappingFragment StoreEntitySet="Settings">
-          <ScalarProperty Name="EcomID" ColumnName="EcomID" />
-          <ScalarProperty Name="PackPerWeight" ColumnName="PackPerWeight" />
-          <ScalarProperty Name="LastDoNumber" ColumnName="LastDoNumber" />
-          <ScalarProperty Name="DoAutoincrement" ColumnName="DoAutoincrement" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Dorders">
       <EntityTypeMapping TypeName="ProTruckModel.Dorder">
         <MappingFragment StoreEntitySet="Dorder">
@@ -255,6 +244,18 @@
           <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="RegNumber" ColumnName="RegNumber" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Settings">
+      <EntityTypeMapping TypeName="ProTruckModel.Setting">
+        <MappingFragment StoreEntitySet="Settings">
+          <ScalarProperty Name="LastConractNumber" ColumnName="LastConractNumber" />
+          <ScalarProperty Name="EcomID" ColumnName="EcomID" />
+          <ScalarProperty Name="PackPerWeight" ColumnName="PackPerWeight" />
+          <ScalarProperty Name="LastDoNumber" ColumnName="LastDoNumber" />
+          <ScalarProperty Name="DoAutoincrement" ColumnName="DoAutoincrement" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

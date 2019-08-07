@@ -5,5 +5,6 @@
     [LastDoNumber] NUMERIC NULL, 
     [PackPerWeight] INT NULL, 
     [EcomID] INT NULL, 
+    [LastConractNumber] NUMERIC NULL, 
     CONSTRAINT [FK_Settings_ExanaduCompanies] FOREIGN KEY ([EcomID]) REFERENCES [ExanaduCompanies]([Id])
 )

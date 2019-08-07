@@ -76,11 +76,6 @@
       <End Role="Party" EntitySet="Parties" />
       <End Role="Contract" EntitySet="Contracts" />
     </AssociationSet>
-    <EntitySet Name="Settings" EntityType="ProTruckModel.Setting" />
-    <AssociationSet Name="FK_Settings_ExanaduCompanies" Association="ProTruckModel.FK_Settings_ExanaduCompanies">
-      <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
-      <End Role="Setting" EntitySet="Settings" />
-    </AssociationSet>
     <EntitySet Name="Dorders" EntityType="ProTruckModel.Dorder" />
     <AssociationSet Name="FK_Dorder_Cities" Association="ProTruckModel.FK_Dorder_Cities">
       <End Role="City" EntitySet="Cities" />
@@ -125,6 +120,11 @@
       <End Role="vehicle" EntitySet="vehicles" />
       <End Role="Driver" EntitySet="Drivers" />
     </AssociationSet>
+    <EntitySet Name="Settings" EntityType="ProTruckModel.Setting" />
+    <AssociationSet Name="FK_Settings_ExanaduCompanies" Association="ProTruckModel.FK_Settings_ExanaduCompanies">
+      <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
+      <End Role="Setting" EntitySet="Settings" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="C__RefactorLog">
     <Key>
@@ -153,9 +153,9 @@
     <NavigationProperty Name="Cities" Relationship="ProTruckModel.FK_Cities_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="City" />
     <NavigationProperty Name="ContractTypes" Relationship="ProTruckModel.FK_ContractType_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="ContractType" />
     <NavigationProperty Name="Contracts" Relationship="ProTruckModel.FK_Contract_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Contract" />
-    <NavigationProperty Name="Settings" Relationship="ProTruckModel.FK_Settings_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Setting" />
     <NavigationProperty Name="Contractors" Relationship="ProTruckModel.FK_Contractor_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Contractor" />
     <NavigationProperty Name="Vendors" Relationship="ProTruckModel.FK_Vendor_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Vendor" />
+    <NavigationProperty Name="Settings" Relationship="ProTruckModel.FK_Settings_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Setting" />
   </EntityType>
   <EntityType Name="GoodsType">
     <Key>
@@ -510,29 +510,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="Setting">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="DoAutoincrement" Type="Boolean" />
-    <Property Name="LastDoNumber" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="PackPerWeight" Type="Int32" />
-    <Property Name="EcomID" Type="Int32" />
-    <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Settings_ExanaduCompanies" FromRole="Setting" ToRole="ExanaduCompany" />
-  </EntityType>
-  <Association Name="FK_Settings_ExanaduCompanies">
-    <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
-    <End Type="ProTruckModel.Setting" Role="Setting" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ExanaduCompany">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Setting">
-        <PropertyRef Name="EcomID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="Dorder">
     <Key>
       <PropertyRef Name="Id" />
@@ -725,6 +702,30 @@
       </Principal>
       <Dependent Role="Driver">
         <PropertyRef Name="Vehicle" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Setting">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DoAutoincrement" Type="Boolean" />
+    <Property Name="LastDoNumber" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="PackPerWeight" Type="Int32" />
+    <Property Name="EcomID" Type="Int32" />
+    <Property Name="LastConractNumber" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Settings_ExanaduCompanies" FromRole="Setting" ToRole="ExanaduCompany" />
+  </EntityType>
+  <Association Name="FK_Settings_ExanaduCompanies">
+    <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Setting" Role="Setting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompany">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Setting">
+        <PropertyRef Name="EcomID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -16,5 +16,25 @@ public interface ISettingRepository
         Task<Response> RemoveSetting(Setting setting);
         Task<Response> UpdateSetting(Setting setting);
 
+        bool IsInsertable();
+
+        bool UpdateDoAutoIncrement(bool increment);
+
+        bool UpdateLastDoNumber(decimal LastDoNumber);
+
+        bool UpdateLastContractNumber(decimal LastContractNumber);
+
+        bool UpdatePackPerWeight(int pack);
+
+
+
+        bool GetDoAutoIncrement();
+
+        decimal GetLastDoNumber();
+
+        decimal GetLastContractNumber();
+
+        int GetPackPerWeight();
+
     }
 }

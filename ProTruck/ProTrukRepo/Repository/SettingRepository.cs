@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using ProTrukRepo.Util;
+using System.Web;
 
 namespace ProTrukRepo.Repository
 {
@@ -18,7 +19,19 @@ namespace ProTrukRepo.Repository
         {
             _db = new ProTruckEntities();
 
-            
+            if (IsInsertable()) {
+                Setting setting = new Setting();
+
+                setting.EcomID = (int) HttpContext.Current.Session["Comp"];
+                setting.DoAutoincrement = false;
+                setting.LastConractNumber = 0;
+                setting.LastDoNumber = 0;
+                setting.PackPerWeight = 20;
+                _db.Settings.Add(setting);
+
+                int result =  _db.SaveChanges();
+                
+            }
 
 
         }
@@ -94,6 +107,7 @@ namespace ProTrukRepo.Repository
 
                 if (result == 1)
                 {
+                    
                     // Mapper.Initialize(cfg => cfg.CreateMap<User, UserVM>());
 
                     return GenericResponses<int>.ResponseStatus(false, Constant.MSGRecordFound, (int)Constant.httpStatus.Ok, result);
@@ -141,6 +155,145 @@ namespace ProTrukRepo.Repository
             }
         }
 
+        public bool IsInsertable() {
 
+            var settings =  _db.Settings.ToList();
+            if (settings.Count > 0)
+            {
+                return false;
+
+            }
+            else {
+                return true;
+            }
+        }
+
+        public bool UpdateDoAutoIncrement(bool increment) {
+            Setting DTO =  _db.Settings.FirstOrDefault();
+
+            DTO.DoAutoincrement = increment;
+            
+
+            int result =  _db.SaveChanges();
+
+            if (result == 1)
+            {
+                // Mapper.Initialize(cfg => cfg.CreateMap<User, UserVM>());
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+
+        public bool UpdateLastDoNumber(decimal LastDoNumber) {
+            Setting DTO = _db.Settings.FirstOrDefault();
+
+            DTO.LastDoNumber = LastDoNumber;
+
+
+            int result = _db.SaveChanges();
+
+            if (result == 1)
+            {
+                // Mapper.Initialize(cfg => cfg.CreateMap<User, UserVM>());
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+
+
+       public bool UpdateLastContractNumber(decimal LastContractNumber) {
+
+            Setting DTO = _db.Settings.FirstOrDefault();
+
+            DTO.LastConractNumber = LastContractNumber;
+
+
+            int result = _db.SaveChanges();
+
+            if (result == 1)
+            {
+                // Mapper.Initialize(cfg => cfg.CreateMap<User, UserVM>());
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public bool UpdatePackPerWeight(int pack) {
+            Setting DTO = _db.Settings.FirstOrDefault();
+
+            DTO.PackPerWeight = pack;
+
+
+            int result = _db.SaveChanges();
+
+            if (result == 1)
+            {
+                // Mapper.Initialize(cfg => cfg.CreateMap<User, UserVM>());
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+
+
+        }
+
+        public bool GetDoAutoIncrement()
+        {
+            Setting DTO = _db.Settings.FirstOrDefault();
+
+            return (bool)DTO.DoAutoincrement ;
+
+            
+
+        }
+
+        public decimal GetLastDoNumber()
+        {
+            Setting DTO = _db.Settings.FirstOrDefault();
+
+            return (decimal) DTO.LastDoNumber;
+
+
+
+        }
+
+        public decimal GetLastContractNumber()
+        {
+            Setting DTO = _db.Settings.FirstOrDefault();
+
+            return (decimal)DTO.LastConractNumber;
+
+        }
+
+        public int GetPackPerWeight()
+        {
+            Setting DTO = _db.Settings.FirstOrDefault();
+
+            return (int)DTO.PackPerWeight;
+
+
+
+        }
     }
 }

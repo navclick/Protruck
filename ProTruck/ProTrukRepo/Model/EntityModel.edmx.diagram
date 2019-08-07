@@ -35,8 +35,6 @@
         <AssociationConnector Association="ProTruckModel.FK_Contract_ContractType" />
         <AssociationConnector Association="ProTruckModel.FK_Contract_ExanaduCompanies" />
         <AssociationConnector Association="ProTruckModel.FK_Contract_Party" />
-        <EntityTypeShape EntityType="ProTruckModel.Setting" Width="1.5" PointX="3" PointY="24.5" />
-        <AssociationConnector Association="ProTruckModel.FK_Settings_ExanaduCompanies" />
         <EntityTypeShape EntityType="ProTruckModel.Dorder" Width="1.5" PointX="8.25" PointY="12.125" />
         <AssociationConnector Association="ProTruckModel.FK_Dorder_Cities" />
         <AssociationConnector Association="ProTruckModel.FK_Dorder_ContractType" />
@@ -51,6 +49,8 @@
         <EntityTypeShape EntityType="ProTruckModel.vehicle" Width="1.5" PointX="7.5" PointY="17.875" />
         <AssociationConnector Association="ProTruckModel.FK_vehicle_Contractor" />
         <AssociationConnector Association="ProTruckModel.FK_Drivers_vehicle" />
+        <EntityTypeShape EntityType="ProTruckModel.Setting" Width="1.5" PointX="3" PointY="24.625" />
+        <AssociationConnector Association="ProTruckModel.FK_Settings_ExanaduCompanies" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
