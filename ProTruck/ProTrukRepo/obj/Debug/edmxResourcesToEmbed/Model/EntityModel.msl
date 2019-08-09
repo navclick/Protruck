@@ -132,20 +132,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Parties">
-      <EntityTypeMapping TypeName="ProTruckModel.Party">
-        <MappingFragment StoreEntitySet="Party">
-          <ScalarProperty Name="EcomID" ColumnName="EcomID" />
-          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
-          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-          <ScalarProperty Name="IsSubParty" ColumnName="IsSubParty" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="ConectPerson" ColumnName="ConectPerson" />
-          <ScalarProperty Name="Party1" ColumnName="Party" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Cities">
       <EntityTypeMapping TypeName="ProTruckModel.City">
         <MappingFragment StoreEntitySet="Cities">
@@ -266,6 +252,21 @@
           <ScalarProperty Name="UrduAddress" ColumnName="UrduAddress" />
           <ScalarProperty Name="EnglisgAddress" ColumnName="EnglisgAddress" />
           <ScalarProperty Name="Party" ColumnName="Party" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parties">
+      <EntityTypeMapping TypeName="ProTruckModel.Party">
+        <MappingFragment StoreEntitySet="Party">
+          <ScalarProperty Name="EcomID" ColumnName="EcomID" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsSubParty" ColumnName="IsSubParty" />
+          <ScalarProperty Name="SenderOrReceiver" ColumnName="SenderOrReceiver" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="ConectPerson" ColumnName="ConectPerson" />
+          <ScalarProperty Name="Party1" ColumnName="Party" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

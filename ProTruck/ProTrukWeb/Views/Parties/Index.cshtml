@@ -118,7 +118,7 @@
 
     $(document).ready(function () {
         // Handler for .ready() called.
-        alert("ready");
+       
         var scope = angular.element(document.getElementById("MainContent")).scope();
         scope.$apply(function () {
             scope.getParties();
@@ -176,13 +176,13 @@
                                                         <div class="input-field col m6 s12">
                                                             <p>
                                                                 <label>
-                                                                    <input name="group" ng-model="party.IsSubParty" type="radio" class="filled-in" checked />
-                                                                    <span>Recevier</span>
+                                                                    <input name="SenderOrReceiver" ng-model="party.SenderOrReceiver" type="radio" class="filled-in" ng-value="Sender"  />
+                                                                    <span>Sender</span>
                                                                 </label>
                                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 <label>
-                                                                    <input name="group" ng-model="party.IsSubParty" type="radio" class="filled-in" />
-                                                                    <span>Sender</span>
+                                                                    <input name="SenderOrReceiver" ng-model="party.SenderOrReceiver" type="radio" checked class="filled-in" ng-value="Receiver"  />
+                                                                    <span>Receiver</span>
                                                                 </label>
                                                             </p>
                                                         </div>

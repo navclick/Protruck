@@ -175,6 +175,7 @@
     <Property Name="Party" Type="nchar" MaxLength="100" />
     <Property Name="ConectPerson" Type="nchar" MaxLength="15" />
     <Property Name="Phone" Type="nchar" MaxLength="15" />
+    <Property Name="SenderOrReceiver" Type="nchar" MaxLength="10" />
     <Property Name="IsSubParty" Type="bit" />
     <Property Name="CreatedOn" Type="date" />
     <Property Name="ParentId" Type="int" />
