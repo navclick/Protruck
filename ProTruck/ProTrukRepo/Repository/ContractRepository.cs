@@ -183,5 +183,63 @@ namespace ProTrukRepo.Repository
             }
         }
 
+
+        public async Task<Response> UpdateContractQty(ContractVM contract)
+        {
+            try
+            {
+
+                Contract DTO = await _db.Contracts.Where(x => x.ContractNo == contract.ContractNo).FirstOrDefaultAsync();
+
+                DTO.TotatQty = (DTO.TotatQty + contract.TotatQty);
+
+
+
+               
+                int result = await _db.SaveChangesAsync();
+
+                if (result == 1)
+                {
+                    // Mapper.Initialize(cfg => cfg.CreateMap<User, UserVM>());
+
+                    return GenericResponses<int>.ResponseStatus(false, Constant.MSGRecordFound, (int)Constant.httpStatus.Ok, result);
+                }
+                else
+                {
+                    return GenericResponses<int>.ResponseStatus(true, Constant.MDGNoLoginFailed, (int)Constant.httpStatus.NoContent, result);
+                }
+
+
+
+            }
+            catch (Exception e)
+            {
+                return GenericResponses<int>.ResponseStatus(true, e.Message, (int)Constant.httpStatus.NoContent, 0);
+
+            }
+        }
+
+
+        public bool isInsertable(ContractVM contract)
+        {
+            try
+            {
+               
+                //var users =  _db.Users.Select(x => x).ToList();
+                var DTO =  _db.Contracts.Where(x => x.ContractNo == contract.ContractNo).ToList();
+
+                if (DTO.Count < 1)
+                {
+
+                    return true;
+                }
+
+                else { return false; }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
     }
 }

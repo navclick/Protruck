@@ -23,8 +23,8 @@ namespace ProTrukRepo.Repository
         {
             _db = new ProTruckEntities();
             //------------------------------
-            Units[1] = "ton(s)";
-            Units[2] = "Kgs";
+            Units[1] = "Ton(s)";
+            
             //-------------------------
 
             //---------------------------

@@ -1,0 +1,25 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[Party]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Table rebuild
+       [dbo].[Party] (Table)
+
+** Supporting actions
+     Drop
+       [dbo].[FK_Contract_Party] (Foreign Key)
+       [dbo].[FK_Dorder_Party] (Foreign Key)
+       [dbo].[FK_AdressHistory_Party] (Foreign Key)
+       [dbo].[FK_Party_ExanaduCompanies] (Foreign Key)
+     Create
+       [dbo].[FK_Contract_Party] (Foreign Key)
+       [dbo].[FK_Dorder_Party] (Foreign Key)
+       [dbo].[FK_AdressHistory_Party] (Foreign Key)
+       [dbo].[FK_Party_ExanaduCompanies] (Foreign Key)

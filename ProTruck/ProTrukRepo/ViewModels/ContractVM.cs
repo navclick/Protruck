@@ -19,6 +19,7 @@ namespace ProTrukRepo.ViewModels
         public Nullable<int> Unit { get; set; }
         public string UnitName { get; set; }
         public Nullable<int> EcomID { get; set; }
-       
+        public Nullable<System.DateTime> CreatedOn { get; set; }
+
     }
 }

@@ -22,13 +22,13 @@ namespace ProTrukRepo.Model
             this.Users = new HashSet<User>();
             this.Drivers = new HashSet<Driver>();
             this.Expenses = new HashSet<Expense>();
-            this.Parties = new HashSet<Party>();
             this.Cities = new HashSet<City>();
             this.ContractTypes = new HashSet<ContractType>();
             this.Contracts = new HashSet<Contract>();
             this.Contractors = new HashSet<Contractor>();
             this.Vendors = new HashSet<Vendor>();
             this.Settings = new HashSet<Setting>();
+            this.Parties = new HashSet<Party>();
         }
     
         public int Id { get; set; }
@@ -51,8 +51,6 @@ namespace ProTrukRepo.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Expense> Expenses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Party> Parties { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<City> Cities { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ContractType> ContractTypes { get; set; }
@@ -64,5 +62,7 @@ namespace ProTrukRepo.Model
         public virtual ICollection<Vendor> Vendors { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Setting> Settings { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Party> Parties { get; set; }
     }
 }

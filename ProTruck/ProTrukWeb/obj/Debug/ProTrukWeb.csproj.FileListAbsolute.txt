@@ -98,6 +98,10 @@ F:\Project\VS\ProTruk\ProTruck\ProTrukWeb\bin\System.ValueTuple.dll
 F:\Project\VS\ProTruk\ProTruck\ProTrukWeb\bin\AutoMapper.pdb
 F:\Project\VS\ProTruk\ProTruck\ProTrukWeb\bin\AutoMapper.xml
 F:\Project\VS\ProTruk\ProTruck\ProTrukWeb\bin\System.ValueTuple.xml
+D:\Projects\VS\PROTruck\ProTruck\ProTrukWeb\obj\Debug\ProTrukWeb.csprojAssemblyReference.cache
+D:\Projects\VS\PROTruck\ProTruck\ProTrukWeb\obj\Debug\ProTrukWeb.csproj.CoreCompileInputs.cache
+D:\Projects\VS\PROTruck\ProTruck\ProTrukWeb\obj\Debug\ProTrukWeb.dll
+D:\Projects\VS\PROTruck\ProTruck\ProTrukWeb\obj\Debug\ProTrukWeb.pdb
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\bin\ApplicationInsights.config
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\bin\roslyn\csc.exe
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\bin\roslyn\csc.exe.config
@@ -198,7 +202,3 @@ F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\bin\System.ValueTuple.xml
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\obj\Debug\ProTrukWeb.csprojResolveAssemblyReference.cache
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\obj\Debug\ProTrukWeb.dll
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\obj\Debug\ProTrukWeb.pdb
-D:\Projects\VS\PROTruck\ProTruck\ProTrukWeb\obj\Debug\ProTrukWeb.csprojAssemblyReference.cache
-D:\Projects\VS\PROTruck\ProTruck\ProTrukWeb\obj\Debug\ProTrukWeb.csproj.CoreCompileInputs.cache
-D:\Projects\VS\PROTruck\ProTruck\ProTrukWeb\obj\Debug\ProTrukWeb.dll
-D:\Projects\VS\PROTruck\ProTruck\ProTrukWeb\obj\Debug\ProTrukWeb.pdb

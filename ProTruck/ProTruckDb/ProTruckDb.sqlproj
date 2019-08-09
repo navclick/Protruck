@@ -79,6 +79,7 @@
     <Build Include="Tables\Dorder.sql" />
     <Build Include="Tables\Vendor.sql" />
     <Build Include="Tables\Contractor.sql" />
+    <Build Include="Tables\AdressHistory.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ProTruckDb.refactorlog" />

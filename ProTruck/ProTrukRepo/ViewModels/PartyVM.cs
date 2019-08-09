@@ -12,6 +12,8 @@ namespace ProTrukRepo.ViewModels
         public string Party1 { get; set; }
         public string ConectPerson { get; set; }
         public string Phone { get; set; }
+
+        public string SenderOrReceiver { get; set; }
         public Nullable<bool> IsSubParty { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<int> ParentId { get; set; }

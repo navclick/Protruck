@@ -11,6 +11,15 @@
           </Key>
           <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
+        <EntityType Name="AdressHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Party" Type="int" />
+          <Property Name="EnglisgAddress" Type="nvarchar(max)" />
+          <Property Name="UrduAddress" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Bank">
           <Key>
             <PropertyRef Name="Id" />
@@ -171,6 +180,7 @@
           <Property Name="Party" Type="nchar" MaxLength="100" />
           <Property Name="ConectPerson" Type="nchar" MaxLength="15" />
           <Property Name="Phone" Type="nchar" MaxLength="15" />
+          <Property Name="SenderOrReceiver" Type="nchar" MaxLength="10" />
           <Property Name="IsSubParty" Type="bit" />
           <Property Name="CreatedOn" Type="date" />
           <Property Name="ParentId" Type="int" />
@@ -244,6 +254,18 @@
           <Property Name="City" Type="int" />
           <Property Name="EcomID" Type="int" />
         </EntityType>
+        <Association Name="FK_AdressHistory_Party">
+          <End Role="Party" Type="Self.Party" Multiplicity="0..1" />
+          <End Role="AdressHistory" Type="Self.AdressHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Party">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AdressHistory">
+              <PropertyRef Name="Party" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Cities_ExanaduCompanies">
           <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="0..1" />
           <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
@@ -558,6 +580,7 @@
         </Association>
         <EntityContainer Name="ProTruckModelStoreContainer">
           <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdressHistory" EntityType="Self.AdressHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contract" EntityType="Self.Contract" Schema="dbo" store:Type="Tables" />
@@ -577,6 +600,10 @@
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="vehicle" EntityType="Self.vehicle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AdressHistory_Party" Association="Self.FK_AdressHistory_Party">
+            <End Role="Party" EntitySet="Party" />
+            <End Role="AdressHistory" EntitySet="AdressHistory" />
+          </AssociationSet>
           <AssociationSet Name="FK_Cities_ExanaduCompanies" Association="Self.FK_Cities_ExanaduCompanies">
             <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
             <End Role="Cities" EntitySet="Cities" />
@@ -734,11 +761,6 @@
             <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
             <End Role="Expense" EntitySet="Expenses" />
           </AssociationSet>
-          <EntitySet Name="Parties" EntityType="ProTruckModel.Party" />
-          <AssociationSet Name="FK_Party_ExanaduCompanies" Association="ProTruckModel.FK_Party_ExanaduCompanies">
-            <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
-            <End Role="Party" EntitySet="Parties" />
-          </AssociationSet>
           <EntitySet Name="Cities" EntityType="ProTruckModel.City" />
           <AssociationSet Name="FK_Cities_ExanaduCompanies" Association="ProTruckModel.FK_Cities_ExanaduCompanies">
             <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
@@ -758,10 +780,6 @@
             <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
             <End Role="Contract" EntitySet="Contracts" />
           </AssociationSet>
-          <AssociationSet Name="FK_Contract_Party" Association="ProTruckModel.FK_Contract_Party">
-            <End Role="Party" EntitySet="Parties" />
-            <End Role="Contract" EntitySet="Contracts" />
-          </AssociationSet>
           <EntitySet Name="Dorders" EntityType="ProTruckModel.Dorder" />
           <AssociationSet Name="FK_Dorder_Cities" Association="ProTruckModel.FK_Dorder_Cities">
             <End Role="City" EntitySet="Cities" />
@@ -773,10 +791,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_Dorder_GoodsTypes" Association="ProTruckModel.FK_Dorder_GoodsTypes">
             <End Role="GoodsType" EntitySet="GoodsTypes" />
-            <End Role="Dorder" EntitySet="Dorders" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Dorder_Party" Association="ProTruckModel.FK_Dorder_Party">
-            <End Role="Party" EntitySet="Parties" />
             <End Role="Dorder" EntitySet="Dorders" />
           </AssociationSet>
           <EntitySet Name="Contractors" EntityType="ProTruckModel.Contractor" />
@@ -811,6 +825,24 @@
             <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
             <End Role="Setting" EntitySet="Settings" />
           </AssociationSet>
+          <EntitySet Name="AdressHistories" EntityType="ProTruckModel.AdressHistory" />
+          <EntitySet Name="Parties" EntityType="ProTruckModel.Party" />
+          <AssociationSet Name="FK_AdressHistory_Party" Association="ProTruckModel.FK_AdressHistory_Party">
+            <End Role="Party" EntitySet="Parties" />
+            <End Role="AdressHistory" EntitySet="AdressHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contract_Party" Association="ProTruckModel.FK_Contract_Party">
+            <End Role="Party" EntitySet="Parties" />
+            <End Role="Contract" EntitySet="Contracts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dorder_Party" Association="ProTruckModel.FK_Dorder_Party">
+            <End Role="Party" EntitySet="Parties" />
+            <End Role="Dorder" EntitySet="Dorders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Party_ExanaduCompanies" Association="ProTruckModel.FK_Party_ExanaduCompanies">
+            <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
+            <End Role="Party" EntitySet="Parties" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="C__RefactorLog">
           <Key>
@@ -835,13 +867,13 @@
           <NavigationProperty Name="Users" Relationship="ProTruckModel.FK_Users_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="User" />
           <NavigationProperty Name="Drivers" Relationship="ProTruckModel.FK_Drivers_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Driver" />
           <NavigationProperty Name="Expenses" Relationship="ProTruckModel.FK_Expense_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Expense" />
-          <NavigationProperty Name="Parties" Relationship="ProTruckModel.FK_Party_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Party" />
           <NavigationProperty Name="Cities" Relationship="ProTruckModel.FK_Cities_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="City" />
           <NavigationProperty Name="ContractTypes" Relationship="ProTruckModel.FK_ContractType_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="ContractType" />
           <NavigationProperty Name="Contracts" Relationship="ProTruckModel.FK_Contract_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Contract" />
           <NavigationProperty Name="Contractors" Relationship="ProTruckModel.FK_Contractor_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Contractor" />
           <NavigationProperty Name="Vendors" Relationship="ProTruckModel.FK_Vendor_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Vendor" />
           <NavigationProperty Name="Settings" Relationship="ProTruckModel.FK_Settings_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Setting" />
+          <NavigationProperty Name="Parties" Relationship="ProTruckModel.FK_Party_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Party" />
         </EntityType>
         <EntityType Name="GoodsType">
           <Key>
@@ -1067,34 +1099,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Party">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Party1" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-          <Property Name="ConectPerson" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
-          <Property Name="IsSubParty" Type="Boolean" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="0" />
-          <Property Name="ParentId" Type="Int32" />
-          <Property Name="EcomID" Type="Int32" />
-          <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Party_ExanaduCompanies" FromRole="Party" ToRole="ExanaduCompany" />
-          <NavigationProperty Name="Contracts" Relationship="ProTruckModel.FK_Contract_Party" FromRole="Party" ToRole="Contract" />
-          <NavigationProperty Name="Dorders" Relationship="ProTruckModel.FK_Dorder_Party" FromRole="Party" ToRole="Dorder" />
-        </EntityType>
-        <Association Name="FK_Party_ExanaduCompanies">
-          <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
-          <End Type="ProTruckModel.Party" Role="Party" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ExanaduCompany">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Party">
-              <PropertyRef Name="EcomID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="City">
           <Key>
             <PropertyRef Name="Id" />
@@ -1184,18 +1188,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Contract_Party">
-          <End Type="ProTruckModel.Party" Role="Party" Multiplicity="0..1" />
-          <End Type="ProTruckModel.Contract" Role="Contract" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Party">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Contract">
-              <PropertyRef Name="Party" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Dorder">
           <Key>
             <PropertyRef Name="Id" />
@@ -1254,18 +1246,6 @@
             </Principal>
             <Dependent Role="Dorder">
               <PropertyRef Name="GoodsType" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Dorder_Party">
-          <End Type="ProTruckModel.Party" Role="Party" Multiplicity="0..1" />
-          <End Type="ProTruckModel.Dorder" Role="Dorder" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Party">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Dorder">
-              <PropertyRef Name="Party" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1415,6 +1395,82 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="AdressHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Party" Type="Int32" />
+          <Property Name="EnglisgAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UrduAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Party1" Relationship="ProTruckModel.FK_AdressHistory_Party" FromRole="AdressHistory" ToRole="Party" />
+        </EntityType>
+        <EntityType Name="Party">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Party1" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="ConectPerson" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="SenderOrReceiver" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="IsSubParty" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="0" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="EcomID" Type="Int32" />
+          <NavigationProperty Name="AdressHistories" Relationship="ProTruckModel.FK_AdressHistory_Party" FromRole="Party" ToRole="AdressHistory" />
+          <NavigationProperty Name="Contracts" Relationship="ProTruckModel.FK_Contract_Party" FromRole="Party" ToRole="Contract" />
+          <NavigationProperty Name="Dorders" Relationship="ProTruckModel.FK_Dorder_Party" FromRole="Party" ToRole="Dorder" />
+          <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Party_ExanaduCompanies" FromRole="Party" ToRole="ExanaduCompany" />
+        </EntityType>
+        <Association Name="FK_AdressHistory_Party">
+          <End Type="ProTruckModel.Party" Role="Party" Multiplicity="0..1" />
+          <End Type="ProTruckModel.AdressHistory" Role="AdressHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Party">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AdressHistory">
+              <PropertyRef Name="Party" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contract_Party">
+          <End Type="ProTruckModel.Party" Role="Party" Multiplicity="0..1" />
+          <End Type="ProTruckModel.Contract" Role="Contract" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Party">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="Party" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dorder_Party">
+          <End Type="ProTruckModel.Party" Role="Party" Multiplicity="0..1" />
+          <End Type="ProTruckModel.Dorder" Role="Dorder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Party">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Dorder">
+              <PropertyRef Name="Party" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Party_ExanaduCompanies">
+          <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
+          <End Type="ProTruckModel.Party" Role="Party" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExanaduCompany">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Party">
+              <PropertyRef Name="EcomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1552,20 +1608,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Parties">
-            <EntityTypeMapping TypeName="ProTruckModel.Party">
-              <MappingFragment StoreEntitySet="Party">
-                <ScalarProperty Name="EcomID" ColumnName="EcomID" />
-                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="IsSubParty" ColumnName="IsSubParty" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="ConectPerson" ColumnName="ConectPerson" />
-                <ScalarProperty Name="Party1" ColumnName="Party" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Cities">
             <EntityTypeMapping TypeName="ProTruckModel.City">
               <MappingFragment StoreEntitySet="Cities">
@@ -1676,6 +1718,31 @@
                 <ScalarProperty Name="PackPerWeight" ColumnName="PackPerWeight" />
                 <ScalarProperty Name="LastDoNumber" ColumnName="LastDoNumber" />
                 <ScalarProperty Name="DoAutoincrement" ColumnName="DoAutoincrement" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdressHistories">
+            <EntityTypeMapping TypeName="ProTruckModel.AdressHistory">
+              <MappingFragment StoreEntitySet="AdressHistory">
+                <ScalarProperty Name="UrduAddress" ColumnName="UrduAddress" />
+                <ScalarProperty Name="EnglisgAddress" ColumnName="EnglisgAddress" />
+                <ScalarProperty Name="Party" ColumnName="Party" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parties">
+            <EntityTypeMapping TypeName="ProTruckModel.Party">
+              <MappingFragment StoreEntitySet="Party">
+                <ScalarProperty Name="EcomID" ColumnName="EcomID" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsSubParty" ColumnName="IsSubParty" />
+                <ScalarProperty Name="SenderOrReceiver" ColumnName="SenderOrReceiver" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="ConectPerson" ColumnName="ConectPerson" />
+                <ScalarProperty Name="Party1" ColumnName="Party" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -19,16 +19,42 @@
         "Google": 'https://placehold.it/250x250'
     };
     function myOnload(evt) {
-        $('.datepicker').datepicker();
+       $('.datepicker').datepicker();
+       $('.datepicker').datepicker('setDate', new Date());
+
+        //$("#date").datepicker({ dateFormat: "yy/mm/dd" }).datepicker("setDate", new Date());
+
+        
         makeUrduEditorById("AddressUrd", "25px");//enable Urdu in html text area
        // makeUrduEditorById("txtBox", "14px");//enable Urdu in html text box
+        //var d = new Date("03/25/2015");
+        
+        document.getElementById("date").value = getTodayDate();
         $('input.autocomplete').autocomplete({
             data: options,
         });
-      
-        
-       
 
+        //alert(document.getElementById("bags").value);
+        /*
+        $("#qty").keypress(function () {
+            var totalbags = document.getElementById("qty").value;
+            var bagsParWeight = document.getElementById("bags").value;
+            document.getElementById("weight").value = (totalbags / bagsParWeight);
+            alert((totalbags / bagsParWeight));
+        }
+        );
+        */
+        $("#ddparty").change(function () {
+            var partyid = this.value;
+            getPartyHistoryAdd(partyid);
+        });
+        $('#qty').blur(function () {
+
+            var totalbags = document.getElementById("qty").value;
+            var bagsParWeight = document.getElementById("bags").value;
+            document.getElementById("weight").value = (totalbags / bagsParWeight);
+        });
+        
     }
 
     function test() {
@@ -65,9 +91,36 @@
        
         
     }
+
+    function getPartyHistoryAdd(party) {
+
+        $.ajax({
+            //base address/controller/Action
+            url: '/DO/GetPartyAddressHistory',
+            type: 'GET',
+            data: {
+                //Passing Input parameter
+                party: party
+            },
+            success: function (result) {
+                //write something
+                if (!result.IsError) {
+
+                    var data = result.Value;
+                    $("#e_address").val(data.EnglisgAddress);
+                    $("#AddressUrd").val(data.UrduAddress);
+                }
+
+            },
+            error: function () {
+                alert("error");
+            }
+        });
+    }
 </script>
 <div class="row" id="ContentMain" >
-    
+    @using (Html.BeginForm("AddDo", "DO", FormMethod.Post))
+    {
     <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
     <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper"></div>
 
@@ -81,26 +134,33 @@
                                 <h4 class="card-title left">Delivery Order</h4>
                                 <div class="row">
                                     <div class="col s12">
-
+                                        @Html.HiddenFor(m => m.BagsPerWeight,new {@id="bags" })
                                         <div class="input-field col s2">
-                                            @Html.TextBoxFor(m=> m.DoDate,new { @id = "date", @class = "datepicker" })                                
+                                            @Html.TextBoxFor(m => m.DoDate, new { @id = "date", @class = "datepicker", @data_validation = "required" })                                
                                             
                                             <label for="date">Select Date</label>
                                         </div>
 
                                         <div class="input-field col s2">
                                             
-                                            @Html.TextBoxFor(m => m.DoNumber, new { @id = "do_number", @class = "validate" })
+                                            @Html.TextBoxFor(m => m.DoNumber, new { @id = "do_number", @class = "validate", @type = "number", @data_validation = "required" })
                                             
                                             <label for="do_number">DO Number</label>
                                         </div>
 
                                         <div class="input-field col s2">
-                                            <select name="SaveCop">
+                                            <select name="SaveCopy">
                                                 
                                                 <option value="1" selected>1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
                                             </select>
                                             <label>Save DO(s)</label>
                                         </div>
@@ -108,7 +168,14 @@
                                         <div class="input-field col s2">
                                             <p class="center">
                                                 <label>
-                                                    <input type="checkbox" name="Inc" class="filled-in" checked="checked" />
+                                                    @{
+                                                        var checkboxAttributes = Model.autoincrement ?
+                                                            (object)new { @class = "filled-in", @checked = "checked", @style = "opacity:UNSET;" } :
+                                                            (object)new { @class = "filled-in", @style = "opacity:UNSET;" };
+                                                    }
+                                                    @Html.CheckBox("autoincrement", checkboxAttributes)
+                                                    <!-- <input type="checkbox" name="autoincrement" class="filled-in" checked="checked" /> -->
+
                                                     <span>Inc</span>
                                                 </label>
                                             </p>
@@ -116,11 +183,11 @@
 
                                         <div class="input-field col s2">
                                             @Html.DropDownListFor(x => Model.ContractType, (IEnumerable
-     <SelectListItem>)ViewBag.LstContractType)
+<SelectListItem>)ViewBag.LstContractType)
                                         </div>
 
                                         <div class="input-field col s2">
-                                            @Html.TextBoxFor(m => m.ContractNumber, new { @id = "autocomplete-input", @class = "autocomplete" })
+                                            @Html.TextBoxFor(m => m.ContractNumber, new { @id = "autocomplete-input", @class = "autocomplete", @type = "number", @data_validation = "required" })
                                             
                                          
                                         </div>
@@ -134,12 +201,12 @@
                                     <div class="col s12">
                                         <div class="input-field col s6">
                                             @Html.DropDownListFor(x => Model.Party, (IEnumerable
-     <SelectListItem>)ViewBag.LstParty)
+<SelectListItem>)ViewBag.LstParty, new { @id = "ddparty" })
                                             <label for="party">Party</label>
                                         </div>
                                         <div class="input-field col s6">
                                             @Html.DropDownListFor(x => Model.GoodsType, (IEnumerable
-     <SelectListItem>)ViewBag.LstGoods)
+<SelectListItem>)ViewBag.LstGoods)
                                             <label for="cement">Cement</label>
                                         </div>
                                     </div>
@@ -158,7 +225,7 @@
                                             </div>
                                         </div>
                                         <div class="input-field col s5">
-                                            @Html.TextAreaFor(m => m.AddressUrd, new { @id = "AddressUrd", @class = "materialize-textarea", @dir = "rtl" })
+                                            @Html.TextAreaFor(m => m.AddressUrd, new { @id = "AddressUrd", @class = "materialize-textarea", @dir = "rtl", @data_validation = "required" })
                                             
                                             
                                             <label for="AddressUrd">Address Urdu</label>
@@ -169,21 +236,27 @@
                                 <div class="row">
                                     <div class="col s12">
                                         <div class="input-field col s4">
-                                            @Html.DropDownListFor(x => Model.CityID,(IEnumerable
-     <SelectListItem>)ViewBag.LstCities,new { @id = "phone", @class = "js-example-basic-single" })
+                                            @Html.DropDownListFor(x => Model.CityID, (IEnumerable
+<SelectListItem>)ViewBag.LstCities, new { @id = "phone", @class = "js-example-basic-single" })
                                             <label>City</label>
                                         </div>
 
                                         <div class="input-field col s4">
-                                            @Html.TextBoxFor(m => m.QTY, new { @id = "qty", @class = "validate", @placeholder = "20 Bag(s) = 1 Ton" })
+                                            @Html.TextBoxFor(m => m.QTY, new { @id = "qty", @class = "validate", @placeholder = "20 Bag(s) = 1 Ton", @type = "number", @data_validation = "required" })
                                           
                                             <label for="qty">Qty</label>
                                         </div>
 
-                                        <div class="input-field col s4">
-                                            <input id="weight" type="text" class="validate">
-                                            @Html.TextBoxFor(m => m.Weight, new { @id = "weight", @class = "validate"})
+                                        <div class="input-field col s2">
+                                            
+                                            @Html.TextBoxFor(m => m.Weight, new { @id = "weight", @class = "validate", @type = "number", @data_validation = "required" })
                                             <label for="weight">Weight</label>
+                                        </div>
+                                        <div class="input-field col s2">
+                                            @Html.DropDownListFor(x => Model.Unit, (IEnumerable
+<SelectListItem>)ViewBag.LstUnits, new { @id = "Unit", @class = "js-example-basic-single" })
+                                            
+                                            <label for="Unit">Unit</label>
                                         </div>
                                     </div>
                                 </div>
@@ -193,7 +266,7 @@
                                        
 
                                         <div class="input-field col s4 push-s4">
-                                            <a class="btn purple waves-effect waves-light right">Save</a>
+                                            <input type="submit"  class="btn purple waves-effect waves-light right"  value="Save" name="action" >
                                     
                                         </div>
                                     </div>
@@ -270,16 +343,13 @@
             </div>
         </div>
     </div>
-
+    }
 </div>
 
+
+@Scripts.Render("~/bundles/val")
 <script>
-       
-
-        // Or with jQuery
-
-      
-
-
-       
+    $.validate({
+        lang: 'es'
+    });
 </script>

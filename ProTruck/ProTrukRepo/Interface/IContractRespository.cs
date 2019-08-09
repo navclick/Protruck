@@ -20,6 +20,10 @@ namespace ProTrukRepo.Interface
 
         Task<Response> UpdateContract(ContractVM contract);
 
+        Task<Response> UpdateContractQty(ContractVM contract);
+
+        bool isInsertable(ContractVM contract);
+
 
     }
 }

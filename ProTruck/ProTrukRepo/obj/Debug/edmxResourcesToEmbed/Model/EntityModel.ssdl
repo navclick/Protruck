@@ -6,6 +6,15 @@
     </Key>
     <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
+  <EntityType Name="AdressHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Party" Type="int" />
+    <Property Name="EnglisgAddress" Type="nvarchar(max)" />
+    <Property Name="UrduAddress" Type="nvarchar(max)" />
+  </EntityType>
   <EntityType Name="Bank">
     <Key>
       <PropertyRef Name="Id" />
@@ -239,6 +248,18 @@
     <Property Name="City" Type="int" />
     <Property Name="EcomID" Type="int" />
   </EntityType>
+  <Association Name="FK_AdressHistory_Party">
+    <End Role="Party" Type="Self.Party" Multiplicity="0..1" />
+    <End Role="AdressHistory" Type="Self.AdressHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Party">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AdressHistory">
+        <PropertyRef Name="Party" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Cities_ExanaduCompanies">
     <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="0..1" />
     <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
@@ -553,6 +574,7 @@
   </Association>
   <EntityContainer Name="ProTruckModelStoreContainer">
     <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdressHistory" EntityType="Self.AdressHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Contract" EntityType="Self.Contract" Schema="dbo" store:Type="Tables" />
@@ -572,6 +594,10 @@
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="vehicle" EntityType="Self.vehicle" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_AdressHistory_Party" Association="Self.FK_AdressHistory_Party">
+      <End Role="Party" EntitySet="Party" />
+      <End Role="AdressHistory" EntitySet="AdressHistory" />
+    </AssociationSet>
     <AssociationSet Name="FK_Cities_ExanaduCompanies" Association="Self.FK_Cities_ExanaduCompanies">
       <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
       <End Role="Cities" EntitySet="Cities" />

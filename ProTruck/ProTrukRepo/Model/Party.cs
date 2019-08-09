@@ -17,6 +17,7 @@ namespace ProTrukRepo.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Party()
         {
+            this.AdressHistories = new HashSet<AdressHistory>();
             this.Contracts = new HashSet<Contract>();
             this.Dorders = new HashSet<Dorder>();
         }
@@ -25,15 +26,18 @@ namespace ProTrukRepo.Model
         public string Party1 { get; set; }
         public string ConectPerson { get; set; }
         public string Phone { get; set; }
+        public string SenderOrReceiver { get; set; }
         public Nullable<bool> IsSubParty { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<int> ParentId { get; set; }
         public Nullable<int> EcomID { get; set; }
     
-        public virtual ExanaduCompany ExanaduCompany { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AdressHistory> AdressHistories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contract> Contracts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Dorder> Dorders { get; set; }
+        public virtual ExanaduCompany ExanaduCompany { get; set; }
     }
 }

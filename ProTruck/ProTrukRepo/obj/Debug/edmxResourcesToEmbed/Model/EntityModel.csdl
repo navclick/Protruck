@@ -125,6 +125,11 @@
       <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
       <End Role="Setting" EntitySet="Settings" />
     </AssociationSet>
+    <EntitySet Name="AdressHistories" EntityType="ProTruckModel.AdressHistory" />
+    <AssociationSet Name="FK_AdressHistory_Party" Association="ProTruckModel.FK_AdressHistory_Party">
+      <End Role="Party" EntitySet="Parties" />
+      <End Role="AdressHistory" EntitySet="AdressHistories" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="C__RefactorLog">
     <Key>
@@ -396,6 +401,7 @@
     <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Party_ExanaduCompanies" FromRole="Party" ToRole="ExanaduCompany" />
     <NavigationProperty Name="Contracts" Relationship="ProTruckModel.FK_Contract_Party" FromRole="Party" ToRole="Contract" />
     <NavigationProperty Name="Dorders" Relationship="ProTruckModel.FK_Dorder_Party" FromRole="Party" ToRole="Dorder" />
+    <NavigationProperty Name="AdressHistories" Relationship="ProTruckModel.FK_AdressHistory_Party" FromRole="Party" ToRole="AdressHistory" />
   </EntityType>
   <Association Name="FK_Party_ExanaduCompanies">
     <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
@@ -726,6 +732,28 @@
       </Principal>
       <Dependent Role="Setting">
         <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="AdressHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Party" Type="Int32" />
+    <Property Name="EnglisgAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UrduAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Party1" Relationship="ProTruckModel.FK_AdressHistory_Party" FromRole="AdressHistory" ToRole="Party" />
+  </EntityType>
+  <Association Name="FK_AdressHistory_Party">
+    <End Type="ProTruckModel.Party" Role="Party" Multiplicity="0..1" />
+    <End Type="ProTruckModel.AdressHistory" Role="AdressHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Party">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AdressHistory">
+        <PropertyRef Name="Party" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

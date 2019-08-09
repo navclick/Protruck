@@ -25,8 +25,6 @@
         <EntityTypeShape EntityType="ProTruckModel.Bank" Width="1.5" PointX="7.375" PointY="6.75" />
         <EntityTypeShape EntityType="ProTruckModel.Expense" Width="1.5" PointX="3" PointY="0.75" />
         <AssociationConnector Association="ProTruckModel.FK_Expense_ExanaduCompanies" />
-        <EntityTypeShape EntityType="ProTruckModel.Party" Width="1.5" PointX="3" PointY="13.875" />
-        <AssociationConnector Association="ProTruckModel.FK_Party_ExanaduCompanies" />
         <EntityTypeShape EntityType="ProTruckModel.City" Width="1.5" PointX="3" PointY="18.375" />
         <AssociationConnector Association="ProTruckModel.FK_Cities_ExanaduCompanies" />
         <EntityTypeShape EntityType="ProTruckModel.ContractType" Width="1.5" PointX="3" PointY="21.375" />
@@ -34,12 +32,10 @@
         <EntityTypeShape EntityType="ProTruckModel.Contract" Width="1.5" PointX="5.25" PointY="12.375" />
         <AssociationConnector Association="ProTruckModel.FK_Contract_ContractType" />
         <AssociationConnector Association="ProTruckModel.FK_Contract_ExanaduCompanies" />
-        <AssociationConnector Association="ProTruckModel.FK_Contract_Party" />
         <EntityTypeShape EntityType="ProTruckModel.Dorder" Width="1.5" PointX="8.25" PointY="12.125" />
         <AssociationConnector Association="ProTruckModel.FK_Dorder_Cities" />
         <AssociationConnector Association="ProTruckModel.FK_Dorder_ContractType" />
         <AssociationConnector Association="ProTruckModel.FK_Dorder_GoodsTypes" />
-        <AssociationConnector Association="ProTruckModel.FK_Dorder_Party" />
         <EntityTypeShape EntityType="ProTruckModel.Contractor" Width="1.5" PointX="5.25" PointY="17.125" />
         <AssociationConnector Association="ProTruckModel.FK_Contractor_Cities" />
         <AssociationConnector Association="ProTruckModel.FK_Contractor_ExanaduCompanies" />
@@ -51,6 +47,12 @@
         <AssociationConnector Association="ProTruckModel.FK_Drivers_vehicle" />
         <EntityTypeShape EntityType="ProTruckModel.Setting" Width="1.5" PointX="3" PointY="24.625" />
         <AssociationConnector Association="ProTruckModel.FK_Settings_ExanaduCompanies" />
+        <EntityTypeShape EntityType="ProTruckModel.AdressHistory" Width="1.5" PointX="5.25" PointY="21.5" />
+        <EntityTypeShape EntityType="ProTruckModel.Party" Width="1.5" PointX="3" PointY="14" />
+        <AssociationConnector Association="ProTruckModel.FK_AdressHistory_Party" />
+        <AssociationConnector Association="ProTruckModel.FK_Contract_Party" />
+        <AssociationConnector Association="ProTruckModel.FK_Dorder_Party" />
+        <AssociationConnector Association="ProTruckModel.FK_Party_ExanaduCompanies" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

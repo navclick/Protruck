@@ -29,7 +29,7 @@ namespace ProTrukWeb.Controllers
         public async Task<JsonResult> GetAllDos()
         {
             Response r = await _Repository.GetAllDos();
-            
+
             return Json(r.Value, JsonRequestBehavior.AllowGet);
         }
 
@@ -72,6 +72,14 @@ namespace ProTrukWeb.Controllers
             var selectListItemsgoods = listgoods.Select(x => new SelectListItem() { Value = x.Id.ToString(), Text = x.Goods }).ToList();
             ViewBag.LstGoods = selectListItemsgoods;
 
+            
+            Response resultUnits = _repogoods.GetallUnits();
+
+            List<DropDownListModel> listunits = ((IEnumerable)resultUnits.Value).Cast<DropDownListModel>().ToList();
+
+            var selectListUnits = listunits.Select(x => new SelectListItem() { Value = x.Value.ToString(), Text = x.Text }).ToList();
+            ViewBag.LstUnits = selectListUnits;
+
             ISettingRepository _setting = new SettingRepository();
             DorderVM Do = new DorderVM();
             bool autoInc = _setting.GetDoAutoIncrement();
@@ -80,7 +88,8 @@ namespace ProTrukWeb.Controllers
 
                 Do.DoNumber = (_setting.GetLastDoNumber() + 1);
             }
-            else {
+            else
+            {
                 Do.DoNumber = _setting.GetLastDoNumber();
 
 
@@ -89,7 +98,166 @@ namespace ProTrukWeb.Controllers
             Do.ContractNumber = _setting.GetLastContractNumber();
 
             ViewBag.isAutoIncrement = autoInc;
+            Do.BagsPerWeight = _setting.GetPackPerWeight();
             return View(Do);
         }
+
+        
+        [HttpPost]
+        public async Task<ActionResult> AddDo(DorderVM dorder, FormCollection frm)
+        {
+             
+
+            int saveCopy = Convert.ToInt32( frm["SaveCopy"]);
+            decimal lastDoNumber = 0;
+            decimal lastContractNumber = 0;
+            double totalQty = 0;
+            int party =(int) dorder.Party;
+            if (saveCopy == 1)
+            {
+                dorder.EcomID = (int)Session["Comp"];
+                dorder.CreatedOn = DateTime.Today;
+                lastDoNumber = (decimal) dorder.DoNumber;
+                lastContractNumber = (decimal) dorder.ContractNumber;
+                Response reslut = await _Repository.AddDo(dorder);
+                totalQty =(double) dorder.Weight;
+                if (!reslut.IsError)
+                {
+
+
+                    ISettingRepository _setting = new SettingRepository();
+                    _setting.UpdateDoAutoIncrement(dorder.autoincrement);
+                    _setting.UpdateLastContractNumber((decimal)dorder.ContractNumber);
+                    _setting.UpdateLastDoNumber((lastDoNumber + 1));
+
+
+                    IContractRespository _contract = new ContractRepository();
+                    ContractVM contract = new ContractVM();
+                    contract.Party = party;
+                    contract.PartyName = dorder.PartyName;
+                    contract.TotatQty = totalQty;
+                    contract.Unit = dorder.Unit;
+                    contract.EcomID = (int)Session["Comp"];
+                    contract.CreatedOn = DateTime.Today;
+                    contract.ContractType = dorder.ContractType;
+                    contract.ContractNo = dorder.ContractNumber;
+                    if (_contract.isInsertable(contract))
+                    {
+                        await _contract.AddContract(contract);
+                    }
+                    else {
+                        await _contract.UpdateContractQty(contract);
+
+                    }
+
+                    IAddressHistoryRepository _addresHistory = new AddressHistoryRepository();
+                    AdressHistory addressHistory = new AdressHistory();
+
+                    addressHistory.Party = dorder.Party;
+                    addressHistory.EnglisgAddress = dorder.AddressEng;
+                    addressHistory.UrduAddress = dorder.AddressUrd;
+
+                    if (_addresHistory.isInsertable((int)addressHistory.Party))
+                    {
+                        _addresHistory.AddAddressHistory(addressHistory);
+
+                    }
+
+                    else {
+                        _addresHistory.updqateAddressHistory(addressHistory);
+                    }
+                }
+
+
+                
+
+            }
+
+            else
+            {
+                lastDoNumber = (decimal)dorder.DoNumber;
+                for (int i = 0; i < saveCopy; i++)
+                {
+
+                    dorder.EcomID = (int)Session["Comp"];
+                    dorder.CreatedOn = DateTime.Today;
+                    dorder.DoNumber = lastDoNumber;
+                    lastContractNumber = (decimal)dorder.ContractNumber;
+                    Response reslutloop = await _Repository.AddDo(dorder);
+                    totalQty = totalQty +(double) dorder.Weight;
+                    lastDoNumber++;
+                }
+
+                ISettingRepository _setting = new SettingRepository();
+                _setting.UpdateDoAutoIncrement(dorder.autoincrement);
+                _setting.UpdateLastContractNumber((decimal)dorder.ContractNumber);
+                _setting.UpdateLastDoNumber((lastDoNumber));
+
+                IContractRespository _contract = new ContractRepository();
+                ContractVM contract = new ContractVM();
+                contract.Party = party;
+                contract.PartyName = dorder.PartyName;
+                contract.TotatQty = totalQty;
+                contract.Unit = dorder.Unit;
+                contract.EcomID = (int)Session["Comp"];
+                contract.CreatedOn = DateTime.Today;
+                contract.ContractType = dorder.ContractType;
+                contract.ContractNo = dorder.ContractNumber;
+
+                if (_contract.isInsertable(contract))
+                {
+                    await _contract.AddContract(contract);
+                }
+                else
+                {
+                    await _contract.UpdateContractQty(contract);
+
+                }
+
+                IAddressHistoryRepository _addresHistory = new AddressHistoryRepository();
+                AdressHistory addressHistory = new AdressHistory();
+
+                addressHistory.Party = dorder.Party;
+                addressHistory.EnglisgAddress = dorder.AddressEng;
+                addressHistory.UrduAddress = dorder.AddressUrd;
+
+                if (_addresHistory.isInsertable((int)addressHistory.Party))
+                {
+                    _addresHistory.AddAddressHistory(addressHistory);
+
+                }
+
+                else
+                {
+                    _addresHistory.updqateAddressHistory(addressHistory);
+                }
+
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public async Task<JsonResult> GetPartyAddressHistory(int party)
+        {
+
+
+            IAddressHistoryRepository _addressrepo = new AddressHistoryRepository();
+
+            
+            Response result = await _addressrepo.GetAddressHistory(party);
+            return Json(result, JsonRequestBehavior.AllowGet);
+            /*
+            if (result.IsError == false)
+            {
+                AdressHistoryVM Obj = (AdressHistoryVM)result.Value;
+                return Json(Obj, JsonRequestBehavior.AllowGet);
+            }
+            else {
+                return Json(result.Message, JsonRequestBehavior.AllowGet);
+            }
+
+            */
+        }
+
     }
 }

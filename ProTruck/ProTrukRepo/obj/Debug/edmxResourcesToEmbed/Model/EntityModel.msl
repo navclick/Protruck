@@ -260,5 +260,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="AdressHistories">
+      <EntityTypeMapping TypeName="ProTruckModel.AdressHistory">
+        <MappingFragment StoreEntitySet="AdressHistory">
+          <ScalarProperty Name="UrduAddress" ColumnName="UrduAddress" />
+          <ScalarProperty Name="EnglisgAddress" ColumnName="EnglisgAddress" />
+          <ScalarProperty Name="Party" ColumnName="Party" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

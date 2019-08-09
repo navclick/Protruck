@@ -30,7 +30,7 @@ namespace ProTrukRepo.Repository
               
 
 
-                cfg.CreateMap<ContractVM, Contract>();
+                cfg.CreateMap<DorderVM, Dorder>();
                 /* cfg.CreateMap<User, UserVM>().ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role.Role1.Trim())); ;
                  cfg.CreateMap<Module, ModuleVM>();
                  cfg.CreateMap<Role, RolesVM>();

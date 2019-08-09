@@ -23,6 +23,8 @@ namespace ProTrukRepo.ViewModels
         public string CityName { get; set; }
         public Nullable<int> Party { get; set; }
 
+        public bool autoincrement { get; set; }
+
         public string PartyName { get; set; }
         public Nullable<double> Weight { get; set; }
         public Nullable<int> Unit { get; set; }
@@ -31,5 +33,7 @@ namespace ProTrukRepo.ViewModels
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<int> EcomID { get; set; }
         public int SaveCopy { get; set; }
+
+        public int BagsPerWeight { get; set; }
     }
 }
