@@ -173,11 +173,16 @@
                                                             <input id="phone" ng-model="party.Phone" type="text">
                                                             <label for="phone">Phonen</label>
                                                         </div>
-                                                        <div class="input-field col s12">
+                                                        <div class="input-field col m6 s12">
                                                             <p>
                                                                 <label>
-                                                                    <input ng-model="party.IsSubParty" type="checkbox" class="filled-in" />
-                                                                    <span>Sub Party</span>
+                                                                    <input name="group" ng-model="party.IsSubParty" type="radio" class="filled-in" checked />
+                                                                    <span>Recevier</span>
+                                                                </label>
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <label>
+                                                                    <input name="group" ng-model="party.IsSubParty" type="radio" class="filled-in" />
+                                                                    <span>Sender</span>
                                                                 </label>
                                                             </p>
                                                         </div>
