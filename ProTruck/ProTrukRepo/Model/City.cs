@@ -17,8 +17,8 @@ namespace ProTrukRepo.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public City()
         {
-            this.Dorders = new HashSet<Dorder>();
             this.Contractors = new HashSet<Contractor>();
+            this.Dorders = new HashSet<Dorder>();
             this.Vendors = new HashSet<Vendor>();
         }
     
@@ -29,9 +29,9 @@ namespace ProTrukRepo.Model
     
         public virtual ExanaduCompany ExanaduCompany { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Dorder> Dorders { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contractor> Contractors { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Dorder> Dorders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Vendor> Vendors { get; set; }
     }

@@ -1,0 +1,48 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[Bilty]
+       [dbo].[Dorder]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The type for column BiltyNo in table [dbo].[Bilty] is currently  INT IDENTITY (1, 1) NOT NULL but is being changed to 
+         NUMERIC (18) IDENTITY (1, 1) NOT NULL. Data loss could occur.
+       The column [dbo].[Dorder].[Id] is being dropped, data loss could occur.
+
+** User actions
+     Table rebuild
+       [dbo].[Bilty] (Table)
+       [dbo].[Dorder] (Table)
+     Alter
+       [dbo].[Users] (Table)
+     Create
+       [dbo].[FK_BiltyToDos_Bilty] (Foreign Key)
+       [dbo].[FK_BiltyToDos_Dorder] (Foreign Key)
+       [dbo].[FK_Users_Roles] (Foreign Key)
+
+** Supporting actions
+     Drop
+       [dbo].[FK_Bilty_vehicle] (Foreign Key)
+       [dbo].[FK_Bilty_Drivers] (Foreign Key)
+       [dbo].[FK_Bilty_Party] (Foreign Key)
+       [dbo].[FK_Bilty_GoodTypes] (Foreign Key)
+       [dbo].[FK_Dorder_ContractType] (Foreign Key)
+       [dbo].[FK_Dorder_GoodsTypes] (Foreign Key)
+       [dbo].[FK_Dorder_Cities] (Foreign Key)
+       [dbo].[FK_Dorder_Party] (Foreign Key)
+     Create
+       [dbo].[FK_Bilty_vehicle] (Foreign Key)
+       [dbo].[FK_Bilty_Drivers] (Foreign Key)
+       [dbo].[FK_Bilty_Party] (Foreign Key)
+       [dbo].[FK_Bilty_GoodTypes] (Foreign Key)
+       [dbo].[FK_Dorder_ContractType] (Foreign Key)
+       [dbo].[FK_Dorder_GoodsTypes] (Foreign Key)
+       [dbo].[FK_Dorder_Cities] (Foreign Key)
+       [dbo].[FK_Dorder_Party] (Foreign Key)
+
+The type for column BiltyNo in table [dbo].[Bilty] is currently  INT IDENTITY (1, 1) NOT NULL but is being changed to  NUMERIC (18) IDENTITY (1, 1) NOT NULL. Data loss could occur.
+The column [dbo].[Dorder].[Id] is being dropped, data loss could occur.
+The column DoNumber on table [dbo].[Dorder] must be changed from NULL to NOT NULL. If the table contains data, the ALTER script may not work. To avoid this issue, you must add values to this column for all rows or mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+

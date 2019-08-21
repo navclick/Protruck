@@ -8,3 +8,17 @@
 	var today = m_names[curr_month] + " " + curr_date + ", " + curr_year;
 	return today;
 }
+
+
+function showMessage(msg, error) {
+	
+	if (error == false) {
+		var toastHTML = '<span>' + msg+' </span>';
+		M.toast({ html: toastHTML });
+	}
+	else {
+		var toastHTML = '<span style="color:red;">'+msg+'</span>';
+		M.toast({ html: toastHTML });
+	}
+
+}

@@ -29,6 +29,6 @@ F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukRepo\bin\Debug\AutoMapper.xml
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukRepo\bin\Debug\EntityFramework.xml
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukRepo\bin\Debug\EntityFramework.SqlServer.xml
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukRepo\bin\Debug\System.ValueTuple.xml
-F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukRepo\obj\Debug\ProTrukRepo.csprojResolveAssemblyReference.cache
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukRepo\obj\Debug\ProTrukRepo.dll
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukRepo\obj\Debug\ProTrukRepo.pdb
+F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukRepo\obj\Debug\ProTrukRepo.csprojResolveAssemblyReference.cache

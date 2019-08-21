@@ -1610,6 +1610,7 @@
     <Content Include="Views\DO\AddDo.cshtml" />
     <Content Include="Views\Contractor\Index.cshtml" />
     <Content Include="Views\Vendor\Index.cshtml" />
+    <Content Include="Views\Bilty\AddBilty.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

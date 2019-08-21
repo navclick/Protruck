@@ -14,6 +14,12 @@ namespace ProTrukRepo.Model
     
     public partial class Driver
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Driver()
+        {
+            this.Bilties = new HashSet<Bilty>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public string Phone { get; set; }
@@ -24,6 +30,8 @@ namespace ProTrukRepo.Model
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<int> EcomID { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Bilty> Bilties { get; set; }
         public virtual ExanaduCompany ExanaduCompany { get; set; }
         public virtual vehicle vehicle1 { get; set; }
     }

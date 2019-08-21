@@ -24,6 +24,38 @@
     <Property Name="Branch" Type="nchar" MaxLength="20" />
     <Property Name="Address" Type="nchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="Bilty">
+    <Key>
+      <PropertyRef Name="BiltyNo" />
+    </Key>
+    <Property Name="BiltyNo" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VehicleId" Type="int" />
+    <Property Name="SenderParty" Type="int" />
+    <Property Name="PaymentCode" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="DriverId" Type="int" />
+    <Property Name="Weight" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="UnitId" Type="int" />
+    <Property Name="Rate" Type="float" />
+    <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="PaidAmount" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="RemainingAmount" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Qty" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="BiltyDate" Type="date" />
+    <Property Name="CreateDate" Type="date" />
+    <Property Name="Status" Type="int" />
+    <Property Name="PartyId" Type="int" />
+    <Property Name="Contractno" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="GoodTypeId" Type="int" />
+  </EntityType>
+  <EntityType Name="BiltyToDos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Biltyno" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Donumber" Type="numeric" Precision="18" Scale="0" />
+  </EntityType>
   <EntityType Name="Cities">
     <Key>
       <PropertyRef Name="Id" />
@@ -70,10 +102,9 @@
   </EntityType>
   <EntityType Name="Dorder">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="DoNumber" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="DoNumber" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="DoNumber" Type="numeric" Precision="18" Scale="0" Nullable="false" />
     <Property Name="ContractNumber" Type="numeric" Precision="18" Scale="0" />
     <Property Name="ContractType" Type="int" />
     <Property Name="QTY" Type="int" />
@@ -258,6 +289,78 @@
       </Principal>
       <Dependent Role="AdressHistory">
         <PropertyRef Name="Party" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bilty_Drivers">
+    <End Role="Drivers" Type="Self.Drivers" Multiplicity="0..1" />
+    <End Role="Bilty" Type="Self.Bilty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Drivers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bilty">
+        <PropertyRef Name="DriverId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bilty_GoodTypes">
+    <End Role="GoodsTypes" Type="Self.GoodsTypes" Multiplicity="0..1" />
+    <End Role="Bilty" Type="Self.Bilty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GoodsTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bilty">
+        <PropertyRef Name="GoodTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bilty_Party">
+    <End Role="Party" Type="Self.Party" Multiplicity="0..1" />
+    <End Role="Bilty" Type="Self.Bilty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Party">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bilty">
+        <PropertyRef Name="PartyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bilty_vehicle">
+    <End Role="vehicle" Type="Self.vehicle" Multiplicity="0..1" />
+    <End Role="Bilty" Type="Self.Bilty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vehicle">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bilty">
+        <PropertyRef Name="VehicleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BiltyToDos_Bilty">
+    <End Role="Bilty" Type="Self.Bilty" Multiplicity="0..1" />
+    <End Role="BiltyToDos" Type="Self.BiltyToDos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bilty">
+        <PropertyRef Name="BiltyNo" />
+      </Principal>
+      <Dependent Role="BiltyToDos">
+        <PropertyRef Name="Biltyno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BiltyToDos_Dorder">
+    <End Role="Dorder" Type="Self.Dorder" Multiplicity="0..1" />
+    <End Role="BiltyToDos" Type="Self.BiltyToDos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dorder">
+        <PropertyRef Name="DoNumber" />
+      </Principal>
+      <Dependent Role="BiltyToDos">
+        <PropertyRef Name="Donumber" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -577,6 +680,8 @@
     <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AdressHistory" EntityType="Self.AdressHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bilty" EntityType="Self.Bilty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BiltyToDos" EntityType="Self.BiltyToDos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Contract" EntityType="Self.Contract" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Contractor" EntityType="Self.Contractor" Schema="dbo" store:Type="Tables" />
@@ -598,6 +703,30 @@
     <AssociationSet Name="FK_AdressHistory_Party" Association="Self.FK_AdressHistory_Party">
       <End Role="Party" EntitySet="Party" />
       <End Role="AdressHistory" EntitySet="AdressHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bilty_Drivers" Association="Self.FK_Bilty_Drivers">
+      <End Role="Drivers" EntitySet="Drivers" />
+      <End Role="Bilty" EntitySet="Bilty" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bilty_GoodTypes" Association="Self.FK_Bilty_GoodTypes">
+      <End Role="GoodsTypes" EntitySet="GoodsTypes" />
+      <End Role="Bilty" EntitySet="Bilty" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bilty_Party" Association="Self.FK_Bilty_Party">
+      <End Role="Party" EntitySet="Party" />
+      <End Role="Bilty" EntitySet="Bilty" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bilty_vehicle" Association="Self.FK_Bilty_vehicle">
+      <End Role="vehicle" EntitySet="vehicle" />
+      <End Role="Bilty" EntitySet="Bilty" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BiltyToDos_Bilty" Association="Self.FK_BiltyToDos_Bilty">
+      <End Role="Bilty" EntitySet="Bilty" />
+      <End Role="BiltyToDos" EntitySet="BiltyToDos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BiltyToDos_Dorder" Association="Self.FK_BiltyToDos_Dorder">
+      <End Role="Dorder" EntitySet="Dorder" />
+      <End Role="BiltyToDos" EntitySet="BiltyToDos" />
     </AssociationSet>
     <AssociationSet Name="FK_Cities_ExanaduCompanies" Association="Self.FK_Cities_ExanaduCompanies">
       <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />

@@ -60,6 +60,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Interface\IAddressHistoryRepository.cs" />
     <Compile Include="Interface\IBankRepository.cs" />
+    <Compile Include="Interface\IBiltyRepository.cs" />
     <Compile Include="Interface\ICityRepository.cs" />
     <Compile Include="Interface\IContractorRepository.cs" />
     <Compile Include="Interface\IContractRespository.cs" />
@@ -79,6 +80,12 @@
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Bank.cs">
+      <DependentUpon>EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Bilty.cs">
+      <DependentUpon>EntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BiltyToDo.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\City.cs">
@@ -162,6 +169,7 @@
     </Compile>
     <Compile Include="Repository\AddressHistoryRepository.cs" />
     <Compile Include="Repository\BankRepository.cs" />
+    <Compile Include="Repository\BiltyRepository.cs" />
     <Compile Include="Repository\CityRepository.cs" />
     <Compile Include="Repository\ContractorRepository.cs" />
     <Compile Include="Repository\ContractRepository.cs" />
@@ -182,6 +190,7 @@
     <Compile Include="Util\StringUtil.cs" />
     <Compile Include="ViewModels\AdressHistoryVM.cs" />
     <Compile Include="ViewModels\BankVM.cs" />
+    <Compile Include="ViewModels\BiltyVM.cs" />
     <Compile Include="ViewModels\CityVM.cs" />
     <Compile Include="ViewModels\ContractorVM.cs" />
     <Compile Include="ViewModels\ContractTypeVM.cs" />

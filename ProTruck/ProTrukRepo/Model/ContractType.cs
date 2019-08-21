@@ -26,9 +26,9 @@ namespace ProTrukRepo.Model
         public Nullable<int> EcomID { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
     
-        public virtual ExanaduCompany ExanaduCompany { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contract> Contracts { get; set; }
+        public virtual ExanaduCompany ExanaduCompany { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Dorder> Dorders { get; set; }
     }

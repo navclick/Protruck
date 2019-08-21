@@ -1,0 +1,750 @@
+﻿
+@model ProTrukRepo.ViewModels.BiltyVM
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script language="JavaScript" type="text/javascript">
+
+    function ValidateEmail(email) {
+    var x = email
+    var atpos = x.indexOf("@@");
+    var dotpos = x.lastIndexOf(".");
+    if (atpos< 1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+        alert("Not a valid e-mail address");
+        return false;
+    }
+    else{
+
+        return true;
+    }
+}
+
+function ValidateItem(selid,email){
+
+    var r=true;
+      $(selid).find('option').each(function () {
+                // alert($(this).val());
+
+                if ($(this).text() === email) {
+
+
+                    r=false;
+
+
+
+
+                }
+
+
+            });
+
+    return r;
+}
+
+
+
+function ValidateSelect(selid){
+
+
+    var r=true;
+
+
+     var selObj = document.getElementById(selid);
+
+
+           for (var i = 0; i < selObj.options.length; i++) {
+               selObj.options[i].selected = true;
+           }
+
+        if(selObj.options.length <1){
+
+            r=false;
+
+
+        }
+
+
+
+
+
+        return r;
+}
+
+
+    function validateForm(email) {
+        var x = email;
+    var atpos = x.indexOf("@@");
+    var dotpos = x.lastIndexOf(".");
+    if (atpos< 1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+        alert("Not a valid e-mail address");
+        return false;
+    }
+    else{
+
+        return true;
+    }
+}
+       function isNumber (o) {
+  return ! isNaN (o-0) && o !== null && o.replace(/^\s\s*/, '') !== "" && o !== false;
+}
+
+    var ios = 0;
+        var aos = 0;
+        function insertOldSchool(theSel, newText, newValue) {
+         var item=$('#tags').val();
+
+         newText = $('#tags').val() ;
+            newValue = $('#tags').val() ;
+
+         if(item ==null || item==''){
+                alert("Kindly enter Email");
+                    return false;
+
+         }
+
+         if(!validateForm(newText)){
+
+             return false;
+
+
+         }
+
+
+
+
+           var add = true;
+
+            $('#selos').find('option').each(function () {
+                // alert($(this).val());
+
+                if ($(this).text() == item) {
+
+                    alert("Do already added");
+                    add= false;
+
+
+
+
+                }
+
+
+            });
+
+            if (add == false) {
+
+                $('#tags').val('');
+
+                return false;
+
+            }
+
+            if (theSel.length == 0) {
+                var newOpt1 = new Option(newText, newValue);
+                theSel.options[0] = newOpt1;
+                theSel.selectedIndex = 0;
+            } else if (theSel.selectedIndex != -1) {
+                var selText = new Array();
+                var selValues = new Array();
+                var selIsSel = new Array();
+                var newCount = -1;
+                var newSelected = -1;
+                var i;
+                for (i = 0; i < theSel.length; i++) {
+                    newCount++;
+                    if (newCount == theSel.selectedIndex) {
+                        selText[newCount] = newText;
+                        selValues[newCount] = newValue;
+                        selIsSel[newCount] = false;
+                        newCount++;
+                        newSelected = newCount;
+                    }
+                    selText[newCount] = theSel.options[i].text;
+                    selValues[newCount] = theSel.options[i].value;
+                    selIsSel[newCount] = theSel.options[i].selected;
+                }
+                for (i = 0; i <= newCount; i++) {
+                    var newOpt = new Option(selText[i], selValues[i]);
+                    theSel.options[i] = newOpt;
+                    theSel.options[i].selected = selIsSel[i];
+                }
+            }
+
+
+      $('#tags').val('');
+
+
+
+}
+
+        function appendOldSchool(theSel, newText, newValue) {
+            if (theSel.length == 0) {
+                var newOpt1 = new Option(newText, newValue);
+                theSel.options[0] = newOpt1;
+                theSel.selectedIndex = 0;
+            } else if (theSel.selectedIndex != -1) {
+                var selText = new Array();
+                var selValues = new Array();
+                var selIsSel = new Array();
+                var newCount = -1;
+                var newSelected = -1;
+                var i;
+                for (i = 0; i < theSel.length; i++) {
+                    newCount++;
+                    selText[newCount] = theSel.options[i].text;
+                    selValues[newCount] = theSel.options[i].value;
+                    selIsSel[newCount] = theSel.options[i].selected;
+
+                    if (newCount == theSel.selectedIndex) {
+                        newCount++;
+                        selText[newCount] = newText;
+                        selValues[newCount] = newValue;
+                        selIsSel[newCount] = false;
+                        newSelected = newCount - 1;
+                    }
+                }
+                for (i = 0; i <= newCount; i++) {
+                    var newOpt = new Option(selText[i], selValues[i]);
+                    theSel.options[i] = newOpt;
+                    theSel.options[i].selected = selIsSel[i];
+                }
+            }
+        }
+
+
+        function removeOldSchool(theSelid) {
+            var theSel=document.getElementById(theSelid);
+            var selIndex = theSel.selectedIndex;
+            if (selIndex != -1) {
+                for (i = theSel.length - 1; i >= 0; i--) {
+                    if (theSel.options[i].selected) {
+                        theSel.options[i] = null;
+                    }
+                }
+                if (theSel.length > 0) {
+                    theSel.selectedIndex = selIndex == 0 ? 0 : selIndex - 1;
+                }
+            }
+        }
+
+
+</script>
+
+
+<script type="text/javascript">
+
+
+
+
+        function validateMainForm() {
+
+            $('#msg').text("");
+            var selObj = document.getElementById("selosCC");
+
+            if (ValidateSelect('selosCC') == false) {
+
+                //alert("No Dos Added");;
+
+                showMessage("No DO Added!", true)
+                $('#msg').text("No DO Added!");
+                return false;
+            }
+
+            var msg = "Required Field!";
+            var date = document.getElementById("date");
+            var weight = document.getElementById("weight");
+            var qty = document.getElementById("qty");
+
+
+
+            if (date.value === '' || date.value === null) {
+
+                showMessage(msg, true)
+                date.focus();
+                $('#msg').text(msg);
+                return false;
+
+            }
+
+            if (weight.value === '' || weight.value === null) {
+
+                showMessage(msg, true)
+                weight.focus();
+                $('#msg').text(msg);
+                return false;
+
+            }
+
+            if (qty.value === '' || qty.value == null) {
+
+                showMessage(msg, true)
+                qty.focus();
+                $('#msg').text(msg);
+                return false;
+
+            }
+
+
+
+
+            for (var i = 0; i < selObj.options.length; i++) {
+                selObj.options[i].selected = true;
+            }
+
+
+            $("#frmbilty").submit();
+
+
+
+        }
+
+
+        function searchKeyPress(e) {
+
+            // look for window.event in case event isn't passed in
+            e = e || window.event;
+            if (e.keyCode == 13) {
+
+                addDo();
+                //        document.getElementById('btnSearch').click();
+                return false;
+            }
+
+            if (e.keyCode == 46) {
+
+                RemoveDo();
+            }
+            return true;
+        }
+
+        function addDo() {
+            var val = $('#cc').val();
+            var text = $('#cc').val();
+
+            if (val == "") {
+
+                alert("Kindly Enter  Do Number!");
+                return false
+
+            }
+
+
+
+            if (ValidateItem("#selosCC", text) == false) {
+                alert("Do number Already in List");
+                return false;
+
+            }
+
+
+
+
+                $.ajax({
+                    //base address/controller/Action
+                    url: '/DO/GetDoJson',
+                    type: 'GET',
+                    data: {
+                        //Passing Input parameter
+                        donumber: text
+                    },
+                    success: function (result) {
+                        //write something
+                        if (!result.IsError) {
+
+                            var data = result.Value;
+                            $('#selosCC').append("<option value='" + val + "'>" + text + "</option>");
+                            $('#cc').val('');
+                            $('#sbr_lsb').val(data.ContractNumber);
+                            $('#party').val(data.PartyName);
+                            $('#partyid').val(data.Party);
+                            $('#cement').val(data.GoodsTypeName);
+                            $('#goodstypeid').val(data.GoodsType);
+                            $('#address').val(data.AddressUrd);
+                            CalacAdd(data);
+
+                        }
+                        else {
+
+                            alert(result.Message);
+                            $('#cc').val('');
+                        }
+
+                    },
+                    error: function () {
+                        alert("error");
+                    }
+                });
+
+
+
+
+        }
+
+
+        function RemoveDo() {
+            var donumber = 0;
+
+            var selObjcc = document.getElementById("selosCC");
+
+            var allRemove = true;
+            for (var i = 0; i < selObjcc.options.length; i++) {
+                if (selObjcc.options[i].selected) {
+
+                    donumber = selObjcc.options[i].value;
+                }
+            }
+
+
+            $.ajax({
+                //base address/controller/Action
+                url: '/DO/GetDoJson',
+                type: 'GET',
+                data: {
+                    //Passing Input parameter
+                    donumber: donumber
+                },
+                success: function (result) {
+                    //write something
+                    if (!result.IsError) {
+
+                        var data = result.Value;
+
+                        CalacRemove(data);
+
+                        for (var i = 0; i < selObjcc.options.length; i++) {
+                            allRemove = false;
+                        }
+                        removeOldSchool('selosCC');
+                        if (allRemove) {
+                            cleanall();
+
+                        }
+
+                        CalacRate();
+                        CalacPaidAmount();
+                    }
+                    else {
+
+                        alert(result.Message);
+                        $('#cc').val('');
+                    }
+
+                },
+                error: function () {
+                    alert("error");
+                }
+            });
+
+
+
+
+        }
+
+        function CalacAdd(data) {
+            var weight = Number( $('#weight').val());
+            var qty = Number($('#qty').val());
+
+            var Doweight = parseFloat(data.Weight);
+            var Doqty = parseFloat(data.QTY);
+
+            var Tweight = parseFloat(parseFloat( weight)+ data.Weight);
+            var Toqty = parseFloat(parseFloat(qty) + data.QTY);
+            var weight = $('#weight').val(Tweight);
+            var qty = $('#qty').val(Toqty);
+
+        }
+
+        function CalacRemove(data) {
+            var weight = Number($('#weight').val());
+            var qty = Number($('#qty').val());
+
+            var Doweight = parseFloat(data.Weight);
+            var Doqty = parseFloat(data.QTY);
+
+            var Tweight = parseFloat(parseFloat(weight) - data.Weight);
+            var Toqty = parseFloat(parseFloat(qty) - data.QTY);
+            var weight = $('#weight').val(Tweight);
+            var qty = $('#qty').val(Toqty);
+
+        }
+
+        function CalacRate() {
+            var rate = Number($('#rate_ton').val());
+            var Totalweight = Number($('#weight').val());
+            var totalamount = (rate * Totalweight);
+            $('#totalamount').val(totalamount);
+
+
+
+        }
+
+        function CalacPaidAmount() {
+
+            var totalamount = Number($('#totalamount').val());
+            var paidamount = Number($('#paidamount').val());
+            var balanceamount = (totalamount - paidamount);
+            $('#balanceamount').val(balanceamount);
+
+        }
+
+        function cleanall() {
+            $('#sbr_lsb').val('');
+            $('#party').val('');
+            $('#partyid').val('');
+            $('#cement').val('');
+            $('#goodstypeid').val('');
+            $('#address').val('');
+
+        }
+
+
+        function getDriver(vehicleid) {
+
+
+            $.ajax({
+                //base address/controller/Action
+                url: '/Driver/GetDriverByVehicle',
+                type: 'GET',
+                data: {
+                    //Passing Input parameter
+                    vehicleId: vehicleid
+                },
+                success: function (result) {
+                    //write something
+                    if (!result.IsError) {
+                        var data = result.Value;
+
+                        $("#driver option:contains(" + data.Name+")").attr('selected', 'selected');
+                        //$("#driver").append(new Option(data.Name, data.Id));
+                    }
+                    else {
+
+                     //   alert(result.Message);
+
+                    }
+
+                },
+                error: function () {
+                    //alert("error");
+                }
+            });
+
+
+
+
+
+        }
+
+        $(document).ready(function () {
+            // Handler for .ready() called.
+
+            $("#v_id").change(function () {
+                var status = this.value;
+                getDriver(status);
+
+            });
+
+        })
+
+</script>
+<div>
+    <form id="frmbilty" method="post" action="/Bilty/AddBilty">
+        <div class="row" id="ContentMain">
+            <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
+            <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper"></div>
+
+            <div class="col s12">
+                <div class="container">
+                    <div class="section section-data-tables">
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <h4 class="card-title left">Bilty</h4>
+                                        <span id="msg" style="color:red"></span>
+                                        <div class="row">
+                                            <div class="col s12">
+                                                <div class="input-field col s6">
+                                                    @Html.TextBoxFor(m => m.BiltyDate, new { @id = "date", @class = "datepicker", @data_validation = "required" })
+                                                    <label for="date">Select Date</label>
+                                                </div>
+                                                <div class="input-field col s6">
+                                                    <input id="cc" type="number" onkeypress="return searchKeyPress(event);" class="validate">
+                                                    <label for="cc">DO Number</label>
+                                                    <select size="10" id="selosCC" name="selectDos" multiple="multiple" class="browser-default"></select>
+                                                    <input class="add" type="button" id="addcc" onclick="addDo();" value="Add" style="margin-right:15px;">
+                                                    <input type="button" value="Remove" id="btn-removeemailCC" onclick="RemoveDo();" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col s12">
+                                                <div class="input-field col s4">
+                                                    @Html.DropDownListFor(x => Model.VehicleId, (IEnumerable
+<SelectListItem>)ViewBag.vehcles, new { @id = "v_id" })
+                                                    <label for="v_id">Vehicle ID</label>
+                                                </div>
+                                                <div class="input-field col s4">
+
+                                                    @Html.DropDownListFor(x => Model.SenderParty, (IEnumerable
+<SelectListItem>)ViewBag.Parties, new { @id = "sender" })
+                                                    <label>Customer</label>
+                                                </div>
+                                                <div class="input-field col s4">
+                                                    <select name="PaymentCode">
+                                                        <option value="1">Paid</option>
+                                                        <option value="2">Cash On Delivery</option>
+                                                        <option value="3">Credit</option>
+                                                    </select>
+                                                    <label>Payment</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col s12">
+                                                <div class="input-field col s4">
+                                                    @Html.DropDownListFor(x => Model.DriverId, (IEnumerable
+<SelectListItem>)ViewBag.Drivers, new { @id = "driver", @class = "browser-default" })
+
+
+                                                    <label>Driver</label>
+                                                </div>
+                                                <div class="input-field col s4">
+
+                                                    <input id="rate_ton" name="Rate" onkeyup="CalacRate();" type="number" class="validate">
+                                                    <label for="rate_ton">Rate / Ton</label>
+                                                </div>
+
+                                                <div class="input-field col s2">
+                                                    <input id="weight" name="Weight" type="number" data_validation="required" class="validate">
+                                                    <label for="weight">Weight</label>
+                                                </div>
+                                                <div class="input-field col s2">
+                                                    <select>
+                                                        <option value="1">Ton(s)</option>
+                                                        <option value="2">Kilogram(s)</option>
+                                                    </select>
+                                                </div>
+                                                <div class="input-field col s4">
+                                                    <input id="qty" type="number" name="Qty" data_validation="required" class="validate">
+                                                    <label for="qty">Qty</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col s12">
+
+
+
+
+                                                <div class="input-field col s4">
+                                                    <input id="totalamount" name="TotalAmount" type="number" class="validate">
+                                                    <label for="totalamount">Total Amount</label>
+                                                </div>
+                                                <div class="input-field col s4">
+                                                    <input id="paidamount" name="PaidAmount" onkeyup="CalacPaidAmount();" type="number" class="validate">
+                                                    <label for="paidamount">Paid Amount</label>
+                                                </div>
+                                                <div class="input-field col s4">
+                                                    <input id="balanceamount" name="RemainingAmount" type="number" class="validate">
+                                                    <label for="balanceamount">Balance Amount</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col s12">
+
+                                                <div class="input-field col s4 push-s4">
+                                                    <!-- <a class="btn purple waves-effect waves-light right">Save</a>-->
+                                                    <input type="button" value="Save" onclick="validateMainForm();" class="btn purple waves-effect waves-light right" />
+                                                    <a class="btn purple waves-effect waves-light right">Save & Print</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12">
+                <div class="container">
+                    <div class="section section-data-tables">
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="card">
+                                    <div class="card-content">
+
+                                        <div class="row">
+                                            <div class="col s12">
+                                                <div class="input-field col s4">
+                                                    <input id="sbr_lsb" name="Contractno" type="text" class="validate" readonly>
+                                                    <label for="sbr_lsb">SBR / LSB</label>
+                                                </div>
+                                                <div class="input-field col s4">
+                                                    <input id="party" type="text" readonly class="validate">
+                                                    <input id="partyid" name="PartyId" type="hidden">
+                                                    <label for="party">Party</label>
+                                                </div>
+                                                <div class="input-field col s4">
+                                                    <input id="cement" type="text" readonly class="validate">
+                                                    <input id="goodstypeid" name="GoodTypeId" type="hidden">
+                                                    <label for="cement">Cement</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col s12">
+                                                <div class="input-field col s12">
+                                                    <textarea id="address" dir="rtl" name="Address" readonly class="materialize-textarea"></textarea>
+                                                    <label for="address">Address</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+
+
+    // Or with jQuery
+
+    $(document).ready(function () {
+
+        $('.datepicker').datepicker();
+        $('.datepicker').datepicker('setDate', new Date());
+        document.getElementById("date").value = getTodayDate();
+    });
+</script>
+@Scripts.Render("~/bundles/val")
+<script>
+    $.validate({
+        lang: 'es'
+    });
+</script>
+
+
+
+

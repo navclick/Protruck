@@ -13,6 +13,8 @@ namespace ProTrukRepo.Interface
 
         Task<Response> GetALLParties();
 
+        Task<Response> GetALLSenderParties();
+
         Task<Response> AddParty(PartyVM party);
         Task<Response> RemoveParty(PartyVM party);
         Response GetallSelectListParties();

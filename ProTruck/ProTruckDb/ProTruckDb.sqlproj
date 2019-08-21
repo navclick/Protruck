@@ -80,6 +80,8 @@
     <Build Include="Tables\Vendor.sql" />
     <Build Include="Tables\Contractor.sql" />
     <Build Include="Tables\AdressHistory.sql" />
+    <Build Include="Tables\Bilty.sql" />
+    <Build Include="Tables\BiltyToDos.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ProTruckDb.refactorlog" />

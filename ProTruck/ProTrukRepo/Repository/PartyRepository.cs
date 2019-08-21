@@ -39,6 +39,52 @@ namespace ProTrukRepo.Repository
 
         }
 
+        
+             public async Task<Response> GetALLSenderParties()
+        {
+            try
+            {
+                List<PartyVM> response = new List<PartyVM>();
+                //var users =  _db.Users.Select(x => x).ToList();
+                var DTO = await _db.Parties.Where(x=> x.SenderOrReceiver.Trim()== "Sender").ToListAsync();
+                foreach (var party in DTO)
+                {
+                    PartyVM obj = new PartyVM();
+                    obj.ConectPerson = party.ConectPerson;
+                    obj.CreatedOn = party.CreatedOn;
+                    obj.EcomID = party.EcomID;
+                    obj.Id = party.Id;
+                    obj.IsSubParty = party.IsSubParty;
+                    obj.ParentId = party.ParentId;
+                    obj.Phone = party.Phone;
+                    obj.Party1 = party.Party1;
+                    if (party.ParentId != null && party.ParentId != 0)
+                    {
+                        obj.ParentPartyName = GetPartyById((int)party.ParentId).Party1;
+
+                    }
+                    response.Add(obj);
+                }
+
+                //   Mapper.Initialize(cfg => cfg.CreateMap<User, UserVM>());
+
+                //   Mapper.Initialize(cfg => cfg.CreateMap<User, UserVM>());
+                // response = Mapper.Map<IEnumerable<Expense>, List<ExpenseVM>>(DTO);
+                if (response.Count() > 0)
+                {
+                    return GenericResponses<IEnumerable<PartyVM>>.ResponseStatus(false, response.Count() + Constant.MSGRecordFound, (int)Constant.httpStatus.Ok, response);
+                }
+                else
+                {
+                    return GenericResponses<IEnumerable<PartyVM>>.ResponseStatus(false, Constant.MDGNoRecordFound, (int)Constant.httpStatus.NoContent, response.ToList());
+                }
+            }
+            catch (Exception e)
+            {
+                return GenericResponses<PartyVM>.ResponseStatus(true);
+            }
+        }
+
         public async Task<Response> GetALLParties()
         {
             try

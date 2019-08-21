@@ -49,5 +49,16 @@ namespace ProTrukWeb.Controllers
             //  List<UserVM> employees = ((IEnumerable)r.Value).Cast<UserVM>().ToList(); ;
             return Json(r, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpGet]
+        public async Task<JsonResult> GetDriverByVehicle(int vehicleId)
+        {
+            Response r = await Repository.GetDriverByVehicle(vehicleId);
+            //  List<UserVM> employees = ((IEnumerable)r.Value).Cast<UserVM>().ToList(); ;
+            return Json(r, JsonRequestBehavior.AllowGet);
+        }
+
+        
+
     }
 }

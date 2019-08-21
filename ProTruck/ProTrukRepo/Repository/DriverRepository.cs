@@ -120,5 +120,34 @@ namespace ProTrukRepo.Repository
         }
 
 
+        public async Task<Response> GetDriverByVehicle(int vehicleId)
+        {
+            try
+            {
+                var DTO = await _db.Drivers.Where(x => x.Vehicle == vehicleId).FirstOrDefaultAsync();
+ 
+
+               
+              
+
+                if (DTO != null)
+                {
+                    // Mapper.Initialize(cfg => cfg.CreateMap<User, UserVM>());
+                    var Obj = Mapper.Map<Driver, DriverVM>(DTO);
+                    return GenericResponses<DriverVM>.ResponseStatus(false, Constant.MSGRecordFound, (int)Constant.httpStatus.Ok, Obj);
+                }
+                else
+                {
+                    return GenericResponses<int>.ResponseStatus(true, Constant.MSGFailed, (int)Constant.httpStatus.NoContent, 0);
+                }
+            }
+            catch (Exception e)
+            {
+                return GenericResponses<int>.ResponseStatus(true, e.Message, (int)Constant.httpStatus.NoContent, 0);
+
+            }
+        }
+
+
     }
 }

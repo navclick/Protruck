@@ -14,6 +14,8 @@ namespace ProTrukRepo.Interface
 
         Task<Response> AddDriver(DriverVM driver);
         Task<Response> RemoveDriver(DriverVM driver);
-        
+
+        Task<Response> GetDriverByVehicle(int vehicleId);
+
     }
 }

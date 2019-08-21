@@ -49,7 +49,7 @@
 					<Element Type="SqlIndexedColumnSpecification">
 						<Relationship Name="Column">
 							<Entry>
-								<References Name="[dbo].[Contract].[Id]" />
+								<References Name="[dbo].[Bilty].[BiltyNo]" />
 							</Entry>
 						</Relationship>
 					</Element>
@@ -57,333 +57,10 @@
 			</Relationship>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[Contract]" />
+					<References Name="[dbo].[Bilty]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="3" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[ContractType].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[ContractType]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="4" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[Cities].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[Cities]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="5" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[Expense].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[Expense]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="6" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[Bank].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[Bank]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="7" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[Drivers].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[Drivers]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="8" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[GoodsTypes].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[GoodsTypes]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="9" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[LinkRoleMenus].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[LinkRoleMenus]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="10" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[Menus].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[Menus]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="11" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[Modules].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[Modules]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="12" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[Roles].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[Roles]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="13" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[ExanaduCompanies].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[ExanaduCompanies]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="14" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[Users].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[Users]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="15" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[Dorder].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[Dorder]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="16" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[Vendor].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[Vendor]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="17" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[Contractor].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[Contractor]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="18" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[vehicle].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[vehicle]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="19" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[Settings].[Id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[Settings]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="20" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -402,7 +79,121 @@
 					<References Name="[dbo].[AdressHistory]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="21" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="4" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[Contractor].[Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Contractor]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="5" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[Vendor].[Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Vendor]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="6" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[Settings].[Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Settings]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="7" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[Contract].[Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Contract]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="8" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[ContractType].[Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[ContractType]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="9" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[Cities].[Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Cities]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="10" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -421,7 +212,235 @@
 					<References Name="[dbo].[Party]" />
 				</Entry>
 			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="11" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[Expense].[Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Expense]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="12" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[Bank].[Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Bank]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="13" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[Drivers].[Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Drivers]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="14" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[vehicle].[Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[vehicle]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="15" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[GoodsTypes].[Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[GoodsTypes]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="16" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[LinkRoleMenus].[Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[LinkRoleMenus]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="17" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[Menus].[Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Menus]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="18" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[Modules].[Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Modules]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="19" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[Roles].[Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Roles]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="20" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[ExanaduCompanies].[Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[ExanaduCompanies]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="21" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[BiltyToDos].[Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[BiltyToDos]" />
+				</Entry>
+			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="22" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[Users].[Id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Users]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="23" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[AdressHistory]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -441,7 +460,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="21" />
+						<AttachedAnnotation Disambiguator="4" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -497,7 +516,7 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="23" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="24" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[Bank]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -517,7 +536,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="7" />
+						<AttachedAnnotation Disambiguator="13" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -575,6 +594,380 @@
 				</Entry>
 			</Relationship>
 		</Element>
+		<Element Type="SqlTable" Name="[dbo].[Bilty]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Bilty].[BiltyNo]">
+						<Property Name="IsNullable" Value="False" />
+						<Property Name="IsIdentity" Value="True" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Precision" Value="18" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[numeric]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="3" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Bilty].[VehicleId]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Bilty].[SenderParty]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Bilty].[PaymentCode]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Precision" Value="18" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[numeric]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Bilty].[DriverId]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Bilty].[Weight]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Precision" Value="18" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[decimal]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Bilty].[UnitId]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Bilty].[Rate]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Precision" Value="53" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[float]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Bilty].[TotalAmount]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Precision" Value="18" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[decimal]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Bilty].[PaidAmount]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Precision" Value="18" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[decimal]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Bilty].[RemainingAmount]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Precision" Value="18" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[decimal]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Bilty].[Qty]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Precision" Value="18" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[decimal]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Bilty].[Address]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Bilty].[BiltyDate]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[date]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Bilty].[CreateDate]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[date]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Bilty].[Status]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Bilty].[PartyId]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Bilty].[Contractno]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Precision" Value="18" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[numeric]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[Bilty].[GoodTypeId]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="25" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="26" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="27" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="28" />
+		</Element>
+		<Element Type="SqlTable" Name="[dbo].[BiltyToDos]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BiltyToDos].[Id]">
+						<Property Name="IsNullable" Value="False" />
+						<Property Name="IsIdentity" Value="True" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="22" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BiltyToDos].[Biltyno]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Precision" Value="18" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[numeric]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[BiltyToDos].[Donumber]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Precision" Value="18" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[numeric]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="29" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="30" />
+		</Element>
 		<Element Type="SqlTable" Name="[dbo].[Cities]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
 			<Relationship Name="Columns">
@@ -593,7 +986,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="5" />
+						<AttachedAnnotation Disambiguator="10" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -648,7 +1041,7 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="24" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="31" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[Contract]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -668,7 +1061,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="3" />
+						<AttachedAnnotation Disambiguator="8" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -784,9 +1177,9 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="25" />
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="26" />
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="27" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="32" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="33" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="34" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[Contractor]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -806,7 +1199,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="18" />
+						<AttachedAnnotation Disambiguator="5" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -925,8 +1318,8 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="28" />
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="29" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="35" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="36" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[ContractType]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -946,7 +1339,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="4" />
+						<AttachedAnnotation Disambiguator="9" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1001,31 +1394,14 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="30" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="37" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[Dorder]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
 			<Relationship Name="Columns">
 				<Entry>
-					<Element Type="SqlSimpleColumn" Name="[dbo].[Dorder].[Id]">
-						<Property Name="IsNullable" Value="False" />
-						<Property Name="IsIdentity" Value="True" />
-						<Relationship Name="TypeSpecifier">
-							<Entry>
-								<Element Type="SqlTypeSpecifier">
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[int]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-						<AttachedAnnotation Disambiguator="16" />
-					</Element>
-				</Entry>
-				<Entry>
 					<Element Type="SqlSimpleColumn" Name="[dbo].[Dorder].[DoNumber]">
+						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
 								<Element Type="SqlTypeSpecifier">
@@ -1261,10 +1637,11 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="31" />
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="32" />
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="33" />
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="34" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="38" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="39" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="40" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="41" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="42" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[Drivers]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -1284,7 +1661,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="8" />
+						<AttachedAnnotation Disambiguator="14" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1417,8 +1794,8 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="35" />
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="36" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="43" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="44" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[ExanaduCompanies]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -1438,7 +1815,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="14" />
+						<AttachedAnnotation Disambiguator="21" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1576,7 +1953,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="6" />
+						<AttachedAnnotation Disambiguator="12" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1647,7 +2024,7 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="37" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="45" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_AdressHistory_Party]">
 			<Relationship Name="Columns">
@@ -1670,7 +2047,145 @@
 					<References Name="[dbo].[Party]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="23" />
+			<AttachedAnnotation Disambiguator="24" />
+		</Element>
+		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Bilty_Drivers]">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[Bilty].[DriverId]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Bilty]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[Drivers].[Id]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[Drivers]" />
+				</Entry>
+			</Relationship>
+			<AttachedAnnotation Disambiguator="26" />
+		</Element>
+		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Bilty_GoodTypes]">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[Bilty].[GoodTypeId]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Bilty]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[GoodsTypes].[Id]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[GoodsTypes]" />
+				</Entry>
+			</Relationship>
+			<AttachedAnnotation Disambiguator="28" />
+		</Element>
+		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Bilty_Party]">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[Bilty].[PartyId]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Bilty]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[Party].[Id]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[Party]" />
+				</Entry>
+			</Relationship>
+			<AttachedAnnotation Disambiguator="27" />
+		</Element>
+		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Bilty_vehicle]">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[Bilty].[VehicleId]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Bilty]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[vehicle].[Id]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[vehicle]" />
+				</Entry>
+			</Relationship>
+			<AttachedAnnotation Disambiguator="25" />
+		</Element>
+		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_BiltyToDos_Bilty]">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[BiltyToDos].[Biltyno]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[BiltyToDos]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[Bilty].[BiltyNo]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[Bilty]" />
+				</Entry>
+			</Relationship>
+			<AttachedAnnotation Disambiguator="29" />
+		</Element>
+		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_BiltyToDos_Dorder]">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[BiltyToDos].[Donumber]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[BiltyToDos]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[Dorder].[DoNumber]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[Dorder]" />
+				</Entry>
+			</Relationship>
+			<AttachedAnnotation Disambiguator="30" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Cities_ExanaduCompanies]">
 			<Relationship Name="Columns">
@@ -1693,7 +2208,7 @@
 					<References Name="[dbo].[ExanaduCompanies]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="24" />
+			<AttachedAnnotation Disambiguator="31" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Contract_ContractType]">
 			<Relationship Name="Columns">
@@ -1716,7 +2231,7 @@
 					<References Name="[dbo].[ContractType]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="25" />
+			<AttachedAnnotation Disambiguator="32" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Contract_ExanaduCompanies]">
 			<Relationship Name="Columns">
@@ -1739,7 +2254,7 @@
 					<References Name="[dbo].[ExanaduCompanies]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="27" />
+			<AttachedAnnotation Disambiguator="34" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Contract_Party]">
 			<Relationship Name="Columns">
@@ -1762,7 +2277,7 @@
 					<References Name="[dbo].[Party]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="26" />
+			<AttachedAnnotation Disambiguator="33" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Contractor_Cities]">
 			<Relationship Name="Columns">
@@ -1785,7 +2300,7 @@
 					<References Name="[dbo].[Cities]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="28" />
+			<AttachedAnnotation Disambiguator="35" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Contractor_ExanaduCompanies]">
 			<Relationship Name="Columns">
@@ -1808,7 +2323,7 @@
 					<References Name="[dbo].[ExanaduCompanies]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="29" />
+			<AttachedAnnotation Disambiguator="36" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_ContractType_ExanaduCompanies]">
 			<Relationship Name="Columns">
@@ -1831,7 +2346,7 @@
 					<References Name="[dbo].[ExanaduCompanies]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="30" />
+			<AttachedAnnotation Disambiguator="37" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Dorder_Cities]">
 			<Relationship Name="Columns">
@@ -1854,7 +2369,7 @@
 					<References Name="[dbo].[Cities]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="33" />
+			<AttachedAnnotation Disambiguator="40" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Dorder_ContractType]">
 			<Relationship Name="Columns">
@@ -1877,7 +2392,7 @@
 					<References Name="[dbo].[ContractType]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="31" />
+			<AttachedAnnotation Disambiguator="38" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Dorder_GoodsTypes]">
 			<Relationship Name="Columns">
@@ -1900,7 +2415,7 @@
 					<References Name="[dbo].[GoodsTypes]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="32" />
+			<AttachedAnnotation Disambiguator="39" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Dorder_Party]">
 			<Relationship Name="Columns">
@@ -1923,7 +2438,7 @@
 					<References Name="[dbo].[Party]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="34" />
+			<AttachedAnnotation Disambiguator="41" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Drivers_ExanaduCompanies]">
 			<Relationship Name="Columns">
@@ -1946,7 +2461,7 @@
 					<References Name="[dbo].[ExanaduCompanies]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="36" />
+			<AttachedAnnotation Disambiguator="44" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Drivers_vehicle]">
 			<Relationship Name="Columns">
@@ -1969,7 +2484,7 @@
 					<References Name="[dbo].[vehicle]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="35" />
+			<AttachedAnnotation Disambiguator="43" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Expense_ExanaduCompanies]">
 			<Relationship Name="Columns">
@@ -1992,7 +2507,7 @@
 					<References Name="[dbo].[ExanaduCompanies]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="37" />
+			<AttachedAnnotation Disambiguator="45" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_GoodsTypes_ExanaduCompanies]">
 			<Relationship Name="Columns">
@@ -2015,7 +2530,7 @@
 					<References Name="[dbo].[ExanaduCompanies]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="38" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="46" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_LinkRoleMenus_Menus]">
 			<Relationship Name="Columns">
@@ -2038,7 +2553,7 @@
 					<References Name="[dbo].[Menus]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="39" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="47" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_LinkRoleMenus_Roles]">
 			<Relationship Name="Columns">
@@ -2061,7 +2576,7 @@
 					<References Name="[dbo].[Roles]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="40" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="48" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Menus_Modules]">
 			<Relationship Name="Columns">
@@ -2084,7 +2599,7 @@
 					<References Name="[dbo].[Modules]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="41" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="49" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Party_ExanaduCompanies]">
 			<Relationship Name="Columns">
@@ -2107,7 +2622,7 @@
 					<References Name="[dbo].[ExanaduCompanies]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="42" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="50" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Roles_ExanaduCompanies]">
 			<Relationship Name="Columns">
@@ -2130,7 +2645,7 @@
 					<References Name="[dbo].[ExanaduCompanies]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="43" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="51" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Settings_ExanaduCompanies]">
 			<Relationship Name="Columns">
@@ -2153,7 +2668,7 @@
 					<References Name="[dbo].[ExanaduCompanies]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="44" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="52" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Users_ExanaduCompanies]">
 			<Relationship Name="Columns">
@@ -2176,7 +2691,7 @@
 					<References Name="[dbo].[ExanaduCompanies]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="45" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="53" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Users_Roles]">
 			<Relationship Name="Columns">
@@ -2199,7 +2714,7 @@
 					<References Name="[dbo].[Roles]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="46" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="54" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_vehicle_Contractor]">
 			<Relationship Name="Columns">
@@ -2222,7 +2737,7 @@
 					<References Name="[dbo].[Contractor]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="47" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="55" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Vendor_Cities]">
 			<Relationship Name="Columns">
@@ -2245,7 +2760,7 @@
 					<References Name="[dbo].[Cities]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="48" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="56" />
 		</Element>
 		<Element Type="SqlForeignKeyConstraint" Name="[dbo].[FK_Vendor_ExanaduCompanies]">
 			<Relationship Name="Columns">
@@ -2268,7 +2783,7 @@
 					<References Name="[dbo].[ExanaduCompanies]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="49" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="57" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[GoodsTypes]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -2288,7 +2803,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="9" />
+						<AttachedAnnotation Disambiguator="16" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -2359,7 +2874,7 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="38" />
+			<AttachedAnnotation Disambiguator="46" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[LinkRoleMenus]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -2379,7 +2894,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="10" />
+						<AttachedAnnotation Disambiguator="17" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -2418,8 +2933,8 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="40" />
-			<AttachedAnnotation Disambiguator="39" />
+			<AttachedAnnotation Disambiguator="48" />
+			<AttachedAnnotation Disambiguator="47" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[Menus]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -2439,7 +2954,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="11" />
+						<AttachedAnnotation Disambiguator="18" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -2543,7 +3058,7 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="41" />
+			<AttachedAnnotation Disambiguator="49" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[Modules]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -2563,7 +3078,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="12" />
+						<AttachedAnnotation Disambiguator="19" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -2670,7 +3185,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="22" />
+						<AttachedAnnotation Disambiguator="11" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -2803,6 +3318,25 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
+			<AttachedAnnotation Disambiguator="50" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_Dorder]">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[Dorder].[DoNumber]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[Dorder]" />
+				</Entry>
+			</Relationship>
 			<AttachedAnnotation Disambiguator="42" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[Roles]">
@@ -2823,7 +3357,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="13" />
+						<AttachedAnnotation Disambiguator="20" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -2894,7 +3428,7 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="43" />
+			<AttachedAnnotation Disambiguator="51" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[Settings]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -2914,7 +3448,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="20" />
+						<AttachedAnnotation Disambiguator="7" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -3000,7 +3534,7 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="44" />
+			<AttachedAnnotation Disambiguator="52" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[Users]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -3020,7 +3554,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="15" />
+						<AttachedAnnotation Disambiguator="23" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -3201,8 +3735,8 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="45" />
-			<AttachedAnnotation Disambiguator="46" />
+			<AttachedAnnotation Disambiguator="53" />
+			<AttachedAnnotation Disambiguator="54" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[vehicle]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -3222,7 +3756,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="19" />
+						<AttachedAnnotation Disambiguator="15" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -3399,7 +3933,7 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="47" />
+			<AttachedAnnotation Disambiguator="55" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[Vendor]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -3419,7 +3953,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="17" />
+						<AttachedAnnotation Disambiguator="6" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -3538,8 +4072,8 @@
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="48" />
-			<AttachedAnnotation Disambiguator="49" />
+			<AttachedAnnotation Disambiguator="56" />
+			<AttachedAnnotation Disambiguator="57" />
 		</Element>
 	</Model>
 </DataSchemaModel>

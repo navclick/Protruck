@@ -140,4 +140,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ContactPerson" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="3705243a-de4c-410c-8496-cf9d2bd5acf7" ChangeDateTime="08/18/2019 12:56:43" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[Bilty].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Bilty]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="BiltyNo" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9e33027c-3270-4eea-bd2a-1ce8823adf4a" ChangeDateTime="08/18/2019 13:02:39" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[Bilty].[Status]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Bilty]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Qty" />
+  </Operation>
 </Operations>

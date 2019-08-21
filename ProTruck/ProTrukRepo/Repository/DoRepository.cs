@@ -100,7 +100,7 @@ namespace ProTrukRepo.Repository
         {
             try
             {
-                var DTO = await _db.Dorders.Where(x => x.Id == dorder.Id).FirstOrDefaultAsync();
+                var DTO = await _db.Dorders.Where(x => x.DoNumber == dorder.DoNumber).FirstOrDefaultAsync();
 
                 _db.Dorders.Remove(DTO);
 
@@ -130,7 +130,7 @@ namespace ProTrukRepo.Repository
         {
             try
             {
-                var DTO = await _db.Dorders.Where(x => x.Id == Id).FirstOrDefaultAsync();
+                var DTO = await _db.Dorders.Where(x => x.DoNumber == Id).FirstOrDefaultAsync();
 
                 if (DTO != null)
                 {

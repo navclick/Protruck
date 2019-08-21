@@ -259,5 +259,14 @@ namespace ProTrukWeb.Controllers
             */
         }
 
+
+        [HttpGet]
+        public async Task<JsonResult> GetDoJson(decimal donumber)
+        {
+            Response r = await _Repository.GetDo(donumber);
+
+            return Json(r, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

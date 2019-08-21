@@ -14,8 +14,13 @@ namespace ProTrukRepo.Model
     
     public partial class Dorder
     {
-        public int Id { get; set; }
-        public Nullable<decimal> DoNumber { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Dorder()
+        {
+            this.BiltyToDos = new HashSet<BiltyToDo>();
+        }
+    
+        public decimal DoNumber { get; set; }
         public Nullable<decimal> ContractNumber { get; set; }
         public Nullable<int> ContractType { get; set; }
         public Nullable<int> QTY { get; set; }
@@ -31,6 +36,8 @@ namespace ProTrukRepo.Model
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<int> EcomID { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BiltyToDo> BiltyToDos { get; set; }
         public virtual City City { get; set; }
         public virtual ContractType ContractType1 { get; set; }
         public virtual GoodsType GoodsType1 { get; set; }
