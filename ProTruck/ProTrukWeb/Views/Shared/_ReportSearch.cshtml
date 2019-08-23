@@ -1,0 +1,98 @@
+﻿@model ProTrukRepo.ViewModels.ReportSearchVM
+
+
+
+<div class="row" id="ContentMain">
+
+    <div class="col s12">
+        <div class="container">
+            <div class="section section-data-tables">
+                <div class="row">
+                    <div class="col s12">
+                        <div class="card">
+                            <div class="card-content">
+                                <h4 class="card-title left">Bilty Report</h4>
+                                <div class="row">
+                                    <div class="col s12">
+                                        <div class="input-field col s3">
+                                            @Html.TextBoxFor(m => m.DateFrom, new { @id = "Datefrom", @class = "datepicker", @data_validation = "required" })
+
+                                            <label for="Datefrom">Date From</label>
+                                        </div>
+                                        <div class="input-field col s3">
+                                            @Html.TextBoxFor(m => m.DateTo, new { @id = "DateTo", @class = "datepicker", @data_validation = "required" })
+
+                                            <label for="DateTo">Date From</label>
+                                        </div>
+                                        <div class="input-field col s3 center">
+                                            <div class="col s6">
+                                             @Html.TextBoxFor(m => m.FiledoneValue, new { @id = "FiledoneValue"})
+                                                <label for="FiledoneValue">@Html.Raw(Model.FiledoneName)</label>
+                                                @Html.HiddenFor(m => m.FiledoneName, new { @id = "FiledoneName" })
+                                            </div>
+                                            <div class="col s6">
+                                                @Html.TextBoxFor(m => m.FiledtwoValue, new { @id = "FiledtwoValue" })
+                                                <label for="FiledtwoValue">@Html.Raw(Model.FiledtwoName)</label>
+                                                @Html.HiddenFor(m => m.FiledtwoName, new { @id = "FiledtwoName" })
+                                            </div>
+                                        </div>
+                                        @if (Model.DropdownoneList != null)
+                                        {
+                                        <div class="input-field col s3">
+                                            <div class="input-field col s6">
+                                                @{ 
+                                                    List<SelectListItem> lst = new List<SelectListItem>();
+                                                    foreach (var item in Model.DropdownoneList) {
+                                                        SelectListItem obj = new SelectListItem();
+                                                        obj.Text = item.Text;
+                                                        obj.Value = item.Value.ToString();
+                                                        lst.Add(obj);
+                                                    }
+
+                                                }
+
+                                                @Html.DropDownListFor(m => m.DropdownoneValue, (IEnumerable
+ <SelectListItem>)lst, "-- Select--", new { @id = "DropdownoneValue" })
+                                                <label for="DropdownoneValue">@Html.Raw(Model.DropdownoneLable)</label>
+                                            </div>
+                                            
+                                        </div>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="input-field col s3 center">
+                                    <div class="col s6">
+                                     <input type="submit" value="Search"/>
+                                    </div>
+
+
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+    <script>
+
+
+    // Or with jQuery
+
+    $(document).ready(function () {
+
+        $('.datepicker').datepicker();
+        $('.datepicker').datepicker('setDate', new Date());
+        document.getElementById("Datefrom").value = getTodayDate();
+        document.getElementById("DateTo").value = getTodayDate();
+    });
+    </script>
+    @Scripts.Render("~/bundles/val")
+    <script>
+    $.validate({
+        lang: 'es'
+    });
+    </script>

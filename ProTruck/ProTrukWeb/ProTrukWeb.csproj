@@ -192,6 +192,7 @@
     <Compile Include="Controllers\GoodsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PartiesController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\VehicleController.cs" />
     <Compile Include="Controllers\VendorController.cs" />
@@ -1611,6 +1612,8 @@
     <Content Include="Views\Contractor\Index.cshtml" />
     <Content Include="Views\Vendor\Index.cshtml" />
     <Content Include="Views\Bilty\AddBilty.cshtml" />
+    <Content Include="Views\Shared\_ReportSearch.cshtml" />
+    <Content Include="Views\Reports\Bilty.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
