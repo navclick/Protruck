@@ -203,6 +203,7 @@
     <Compile Include="ViewModels\MenuVM.cs" />
     <Compile Include="ViewModels\ModuleVM.cs" />
     <Compile Include="ViewModels\PartyVM.cs" />
+    <Compile Include="ViewModels\ReportSearchVM.cs" />
     <Compile Include="ViewModels\RolesVM.cs" />
     <Compile Include="ViewModels\UserVM.cs" />
     <Compile Include="ViewModels\VehicleVM.cs" />
