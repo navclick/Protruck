@@ -19,16 +19,15 @@
         "Google": 'https://placehold.it/250x250'
     };
     function myOnload(evt) {
-       $('.datepicker').datepicker();
-       $('.datepicker').datepicker('setDate', new Date());
-
+        $('.datepicker').datepicker();
+        $('.datepicker').datepicker('setDate', new Date());
+        $('#label-for-date').addClass('active');
         //$("#date").datepicker({ dateFormat: "yy/mm/dd" }).datepicker("setDate", new Date());
 
-        
         makeUrduEditorById("AddressUrd", "25px");//enable Urdu in html text area
-       // makeUrduEditorById("txtBox", "14px");//enable Urdu in html text box
+        // makeUrduEditorById("txtBox", "14px");//enable Urdu in html text box
         //var d = new Date("03/25/2015");
-        
+
         document.getElementById("date").value = getTodayDate();
         $('input.autocomplete').autocomplete({
             data: options,
@@ -54,7 +53,7 @@
             var bagsParWeight = document.getElementById("bags").value;
             document.getElementById("weight").value = (totalbags / bagsParWeight);
         });
-        
+
     }
 
     function test() {
@@ -70,26 +69,26 @@
             success: function (result) {
                 //write something
                 alert(result);
-                 $('input.autocomplete').autocomplete({
+                $('input.autocomplete').autocomplete({
                     data: result,
                 });
-               
+
             },
             error: function () {
-                alert("error"); 
+                alert("error");
             }
         });
 
 
-/*
-        options = {
-            "AppleUpdate": null,
-            "MicrosoftUpdate": null,
-            "GoogleUpdate": 'https://placehold.it/250x250'
-        };
-        */
-       
-        
+        /*
+                options = {
+                    "AppleUpdate": null,
+                    "MicrosoftUpdate": null,
+                    "GoogleUpdate": 'https://placehold.it/250x250'
+                };
+                */
+
+
     }
 
     function getPartyHistoryAdd(party) {
@@ -118,220 +117,139 @@
         });
     }
 </script>
-<div class="row" id="ContentMain" >
+<div class="row" id="ContentMain">
     @using (Html.BeginForm("AddDo", "DO", FormMethod.Post))
     {
-    <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
-    <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper"></div>
+        <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
+        <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper"></div>
 
-    <div class="col s12">
-        <div class="container">
-            <div class="section section-data-tables">
-                <div class="row">
-                    <div class="col s12">
-                        <div class="card">
-                            <div class="card-content">
-                                <h4 class="card-title left">Delivery Order</h4>
-                                <div class="row">
-                                    <div class="col s12">
-                                        @Html.HiddenFor(m => m.BagsPerWeight,new {@id="bags" })
-                                        <div class="input-field col s2">
-                                            @Html.TextBoxFor(m => m.DoDate, new { @id = "date", @class = "datepicker", @data_validation = "required" })                                
-                                            
-                                            <label for="date">Select Date</label>
-                                        </div>
+        <div class="col s12">
+            <div class="container">
+                <div class="section section-data-tables">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <h4 class="card-title left">Delivery Order</h4>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            @Html.HiddenFor(m => m.BagsPerWeight, new { @id = "bags" })
+                                            <div class="input-field col s2">
+                                                @Html.TextBoxFor(m => m.DoDate, new { @id = "date", @class = "datepicker", @data_validation = "required" })
 
-                                        <div class="input-field col s2">
-                                            
-                                            @Html.TextBoxFor(m => m.DoNumber, new { @id = "do_number", @class = "validate", @type = "number", @data_validation = "required" })
-                                            
-                                            <label for="do_number">DO Number</label>
-                                        </div>
-
-                                        <div class="input-field col s2">
-                                            <select name="SaveCopy">
-                                                
-                                                <option value="1" selected>1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                                <option value="7">7</option>
-                                                <option value="8">8</option>
-                                                <option value="9">9</option>
-                                                <option value="10">10</option>
-                                            </select>
-                                            <label>Save DO(s)</label>
-                                        </div>
-
-                                        <div class="input-field col s2">
-                                            <p class="center">
-                                                <label>
-                                                    @{
-                                                        var checkboxAttributes = Model.autoincrement ?
-                                                            (object)new { @class = "filled-in", @checked = "checked", @style = "opacity:UNSET;" } :
-                                                            (object)new { @class = "filled-in", @style = "opacity:UNSET;" };
-                                                    }
-                                                    @Html.CheckBox("autoincrement", checkboxAttributes)
-                                                    <!-- <input type="checkbox" name="autoincrement" class="filled-in" checked="checked" /> -->
-
-                                                    <span>Inc</span>
-                                                </label>
-                                            </p>
-                                        </div>
-
-                                        <div class="input-field col s2">
-                                            @Html.DropDownListFor(x => Model.ContractType, (IEnumerable
-<SelectListItem>)ViewBag.LstContractType)
-                                        </div>
-
-                                        <div class="input-field col s2">
-                                            @Html.TextBoxFor(m => m.ContractNumber, new { @id = "autocomplete-input", @class = "autocomplete", @type = "number", @data_validation = "required" })
-                                            
-                                         
-                                        </div>
-
-                                    </div>
-
-
-                                </div>
-
-                                <div class="row">
-                                    <div class="col s12">
-                                        <div class="input-field col s6">
-                                            @Html.DropDownListFor(x => Model.Party, (IEnumerable
-<SelectListItem>)ViewBag.LstParty, new { @id = "ddparty" })
-                                            <label for="party">Party</label>
-                                        </div>
-                                        <div class="input-field col s6">
-                                            @Html.DropDownListFor(x => Model.GoodsType, (IEnumerable
-<SelectListItem>)ViewBag.LstGoods)
-                                            <label for="cement">Cement</label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col s12">
-                                        <div class="input-field col s5">
-                                            @Html.TextAreaFor(m => m.AddressEng, new { @id = "e_address", @class = "materialize-textarea" })     
-                                            <label for="e_address">Address English</label>
-                                        </div>
-                                        <div class="input-field col s2">
-                                            <div class="input-field col s12 center">
-                                                <a class="btn btn-small purple waves-effect waves-light pull-left" style="padding:0 25px">Copy</a>
-                                                <a class="btn btn-small purple waves-effect waves-light pull-right" style="padding:0 25px">Paste</a>
+                                                <label for="date" id="label-for-date">Select Date</label>
                                             </div>
-                                        </div>
-                                        <div class="input-field col s5">
-                                            @Html.TextAreaFor(m => m.AddressUrd, new { @id = "AddressUrd", @class = "materialize-textarea", @dir = "rtl", @data_validation = "required" })
-                                            
-                                            
-                                            <label for="AddressUrd">Address Urdu</label>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="row">
-                                    <div class="col s12">
-                                        <div class="input-field col s4">
-                                            @Html.DropDownListFor(x => Model.CityID, (IEnumerable
-<SelectListItem>)ViewBag.LstCities, new { @id = "phone", @class = "js-example-basic-single" })
-                                            <label>City</label>
-                                        </div>
+                                            <div class="input-field col s2">
 
-                                        <div class="input-field col s4">
-                                            @Html.TextBoxFor(m => m.QTY, new { @id = "qty", @class = "validate", @placeholder = "20 Bag(s) = 1 Ton", @type = "number", @data_validation = "required" })
-                                          
-                                            <label for="qty">Qty</label>
-                                        </div>
+                                                @Html.TextBoxFor(m => m.DoNumber, new { @id = "do_number", @class = "validate", @type = "number", @data_validation = "required" })
 
-                                        <div class="input-field col s2">
-                                            
-                                            @Html.TextBoxFor(m => m.Weight, new { @id = "weight", @class = "validate", @type = "number", @data_validation = "required" })
-                                            <label for="weight">Weight</label>
-                                        </div>
-                                        <div class="input-field col s2">
-                                            @Html.DropDownListFor(x => Model.Unit, (IEnumerable
-<SelectListItem>)ViewBag.LstUnits, new { @id = "Unit", @class = "js-example-basic-single" })
-                                            
-                                            <label for="Unit">Unit</label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col s12">
-                                       
-
-                                        <div class="input-field col s4 push-s4">
-                                            <input type="submit"  class="btn purple waves-effect waves-light right"  value="Save" name="action" >
-                                    
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col s12" style="display:none">
-        <div class="container">
-            <div class="section section-data-tables">
-                <div class="row">
-                    <div class="col s12">
-                        <div class="card">
-                            <div class="card-content">
-                                <h4 class="card-title left">Payment</h4>
-                                <div class="row">
-                                    <div class="col s12">
-                                        <div class="input-field col s3">
-                                            <input id="amount" type="text" class="validate">
-                                            <label for="amount">Amount</label>
-                                        </div>
-                                        <div class="input-field col s3">
-                                            <select>
-                                                <option value="" disabled selected>Choose your option</option>
-                                                <option value="1">On Delivery</option>
-                                                <option value="2">Advance Payment</option>
-                                                <option value="3">Credit</option>
-                                            </select>
-                                            <label>Payment Type</label>
-                                        </div>
-                                        <div class="input-field col s3 center">
-                                            <div class="col s6">
-                                                <label>
-                                                    <input class="with-gap" name="group1" type="radio" checked />
-                                                    <span>Cash</span>
-                                                </label>
+                                                <label for="do_number">DO Number</label>
                                             </div>
-                                            <div class="col s6">
-                                                <label>
-                                                    <input class="with-gap" name="group1" type="radio" />
-                                                    <span>Cheque</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="input-field col s3">
-                                            <div class="input-field col s6">
-                                                <select>
-                                                    <option value="" disabled selected>Choose your Bank</option>
-                                                    <option value="1">Meezan Bank Ltd</option>
-                                                    <option value="2">Habib Bank Ltd</option>
-                                                    <option value="3">NBP</option>
+
+                                            <div class="input-field col s2">
+                                                <select name="SaveCopy">
+
+                                                    <option value="1" selected>1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
                                                 </select>
-                                                <label>Bank</label>
+                                                <label>Save DO(s)</label>
+                                            </div>
+
+                                            <div class="input-field col s2">
+                                                <p class="center">
+                                                    <label class="inc-check">
+                                                        @{
+                                                            var checkboxAttributes = Model.autoincrement ?
+                                                                (object)new { @class = "filled-in", @checked = "checked", @style = "opacity:UNSET; width:18px; height:18px;" } :
+                                                                (object)new { @class = "filled-in", @style = "opacity:UNSET; width:18px; height:18px;" };
+                                                        }
+                                                        @Html.CheckBox("autoincrement", checkboxAttributes)
+                                                        <!-- <input type="checkbox" name="autoincrement" class="filled-in" checked="checked" /> -->
+
+                                                        <span>Inc</span>
+                                                    </label>
+                                                </p>
+                                            </div>
+
+                                            <div class="input-field col s2">
+                                                @Html.DropDownListFor(x => Model.ContractType, (IEnumerable
+<SelectListItem>)ViewBag.LstContractType)
+                                            </div>
+
+                                            <div class="input-field col s2">
+                                                @Html.TextBoxFor(m => m.ContractNumber, new { @id = "autocomplete-input", @class = "autocomplete", @type = "number", @data_validation = "required" })
+
+
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <div class="input-field col s6">
+                                                @Html.DropDownListFor(x => Model.Party, (IEnumerable
+<SelectListItem>)ViewBag.LstParty, new { @id = "ddparty" })
+                                                <label for="party">Party</label>
                                             </div>
                                             <div class="input-field col s6">
-                                                <input id="cheque_number" type="text" class="validate">
-                                                <label for="cheque_number">Cheque Number</label>
+                                                @Html.DropDownListFor(x => Model.GoodsType, (IEnumerable
+<SelectListItem>)ViewBag.LstGoods)
+                                                <label for="cement">Cement</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <div class="input-field col s6">
+                                                @Html.TextAreaFor(m => m.AddressEng, new { @id = "e_address", @class = "materialize-textarea" })
+                                                <label for="e_address">Address English</label>
+                                            </div>
+                                            <div class="input-field col s6">
+                                                @Html.TextAreaFor(m => m.AddressUrd, new { @id = "AddressUrd", @class = "materialize-textarea", @dir = "rtl", @data_validation = "required" })
+                                                <label for="AddressUrd">Address Urdu</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <div class="input-field col s4">
+                                                @Html.DropDownListFor(x => Model.CityID, (IEnumerable
+<SelectListItem>)ViewBag.LstCities, new { @id = "phone", @class = "js-example-basic-single" })
+                                                <label>City</label>
+                                            </div>
+                                            <div class="input-field col s4">
+                                                @Html.TextBoxFor(m => m.QTY, new { @id = "qty", @class = "validate", @placeholder = "20 Bag(s) = 1 Ton", @type = "number", @data_validation = "required" })
+                                                <label for="qty">Qty</label>
+                                            </div>
+                                            <div class="input-field col s2">
+                                                @Html.TextBoxFor(m => m.Weight, new { @id = "weight", @class = "validate", @type = "number", @data_validation = "required" })
+                                                <label for="weight">Weight</label>
+                                            </div>
+                                            <div class="input-field col s2">
+                                                @Html.DropDownListFor(x => Model.Unit, (IEnumerable
+<SelectListItem>)ViewBag.LstUnits, new { @id = "Unit", @class = "js-example-basic-single" })
+                                                <label for="Unit">Unit</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <div class="col s4">
+                                                <button type="submit" class="btn purple waves-effect waves-light" value="Save" name="action">Save</button>
                                             </div>
                                         </div>
                                     </div>
@@ -342,8 +260,69 @@
                 </div>
             </div>
         </div>
-    </div>
-    }
+
+        <div class="col s12" style="display:none">
+            <div class="container">
+                <div class="section section-data-tables">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <h4 class="card-title left">Payment</h4>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <div class="input-field col s3">
+                                                <input id="amount" type="text" class="validate">
+                                                <label for="amount">Amount</label>
+                                            </div>
+                                            <div class="input-field col s3">
+                                                <select>
+                                                    <option value="" disabled selected>Choose your option</option>
+                                                    <option value="1">On Delivery</option>
+                                                    <option value="2">Advance Payment</option>
+                                                    <option value="3">Credit</option>
+                                                </select>
+                                                <label>Payment Type</label>
+                                            </div>
+                                            <div class="input-field col s3 center">
+                                                <div class="col s6">
+                                                    <label>
+                                                        <input class="with-gap" name="group1" type="radio" checked />
+                                                        <span>Cash</span>
+                                                    </label>
+                                                </div>
+                                                <div class="col s6">
+                                                    <label>
+                                                        <input class="with-gap" name="group1" type="radio" />
+                                                        <span>Cheque</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="input-field col s3">
+                                                <div class="input-field col s6">
+                                                    <select>
+                                                        <option value="" disabled selected>Choose your Bank</option>
+                                                        <option value="1">Meezan Bank Ltd</option>
+                                                        <option value="2">Habib Bank Ltd</option>
+                                                        <option value="3">NBP</option>
+                                                    </select>
+                                                    <label>Bank</label>
+                                                </div>
+                                                <div class="input-field col s6">
+                                                    <input id="cheque_number" type="text" class="validate">
+                                                    <label for="cheque_number">Cheque Number</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                                                            }
 </div>
 
 

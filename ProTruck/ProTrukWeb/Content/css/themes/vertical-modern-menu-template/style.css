@@ -11175,3 +11175,6 @@ tr.group:hover
 /*.truckart {
     background: url('../../../images/cards/truckart.png') no-repeat right bottom white;
 }*/
+.inc-check span {
+    font-size:18px;
+}

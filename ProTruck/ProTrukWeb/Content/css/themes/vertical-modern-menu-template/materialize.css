@@ -7337,8 +7337,8 @@ textarea {
 /* Remove default checkbox */
 [type='checkbox']:not(:checked),
 [type='checkbox']:checked {
-    position: absolute;
-    pointer-events: none;
+    /*position: absolute;
+    pointer-events: none;*/
     opacity: 0;
 }
 
