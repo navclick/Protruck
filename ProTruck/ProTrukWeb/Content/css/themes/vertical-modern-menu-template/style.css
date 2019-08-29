@@ -11178,3 +11178,6 @@ tr.group:hover
 .inc-check span {
     font-size:18px;
 }
+#selosCC > option {
+    display:inline-block;
+}

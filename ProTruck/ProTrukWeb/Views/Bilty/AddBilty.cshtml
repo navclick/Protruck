@@ -559,12 +559,12 @@
                                                 </div>
                                                 <div class="input-field col s3">
                                                     <input id="cc" type="number" onkeypress="return searchKeyPress(event);" class="validate">
-                                                    <label for="cc">DO Number</label>
+                                                    <label for="cc" class="active">DO Number</label>
                                                 </div>
                                                 <div class="input-field col s6">
-                                                    <select size="10" id="selosCC" name="selectDos" multiple="multiple" class="browser-default s8"></select>
-                                                    <input class="add" type="button" id="addcc" onclick="addDo();" value="Add" style="margin-right:15px;">
-                                                    <input type="button" value="Remove" id="btn-removeemailCC" onclick="RemoveDo();" />
+                                                    <select size="10" id="selosCC" name="selectDos" multiple="multiple" class="browser-default col s8"></select>
+                                                    <input class="add btn btn-purple btn-small" type="button" id="addcc" onclick="addDo();" value="Add" style="margin:0px 10px;">
+                                                    <input type="button" class="btn btn-purple btn-small" value="Remove" id="btn-removeemailCC" onclick="RemoveDo();" />
                                                 </div>
                                             </div>
                                         </div>
@@ -596,17 +596,16 @@
                                                 <div class="input-field col s4">
                                                     @Html.DropDownListFor(x => Model.DriverId, (IEnumerable
 <SelectListItem>)ViewBag.Drivers, new { @id = "driver", @class = "browser-default" })
-                                                    <label>Driver</label>
+                                                    <label class="active">Driver</label>
                                                 </div>
                                                 <div class="input-field col s4">
-
-                                                    <input id="rate_ton" name="Rate" onkeyup="CalacRate();" type="number" class="validate">
-                                                    <label for="rate_ton">Rate / Ton</label>
+                                                    <input id="rate_ton" name="Rate" onkeyup="CalacRate();" type="number" class="validate" placeholder="">
+                                                    <label for="rate_ton" class="active">Rate / Ton</label>
                                                 </div>
 
                                                 <div class="input-field col s2">
-                                                    <input id="weight" name="Weight" type="number" data_validation="required" class="validate">
-                                                    <label for="weight">Weight</label>
+                                                    <input id="weight" name="Weight" type="number" data_validation="required" class="validate" placeholder="">
+                                                    <label for="weight" class="active">Weight</label>
                                                 </div>
                                                 <div class="input-field col s2">
                                                     <select>
@@ -615,24 +614,24 @@
                                                     </select>
                                                 </div>
                                                 <div class="input-field col s4">
-                                                    <input id="qty" type="number" name="Qty" data_validation="required" class="validate">
-                                                    <label for="qty">Qty</label>
+                                                    <input id="qty" type="number" name="Qty" data_validation="required" class="validate" placeholder="">
+                                                    <label for="qty" class="active">Qty</label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col s12">
                                                 <div class="input-field col s4">
-                                                    <input id="totalamount" name="TotalAmount" type="number" class="validate">
-                                                    <label for="totalamount">Total Amount</label>
+                                                    <input id="totalamount" name="TotalAmount" type="number" class="validate" placeholder="">
+                                                    <label for="totalamount" class="active">Total Amount</label>
                                                 </div>
                                                 <div class="input-field col s4">
-                                                    <input id="paidamount" name="PaidAmount" onkeyup="CalacPaidAmount();" type="number" class="validate">
-                                                    <label for="paidamount">Paid Amount</label>
+                                                    <input id="paidamount" name="PaidAmount" onkeyup="CalacPaidAmount();" placeholder="" type="number" class="validate">
+                                                    <label for="paidamount" class="active">Paid Amount</label>
                                                 </div>
                                                 <div class="input-field col s4">
-                                                    <input id="balanceamount" name="RemainingAmount" type="number" class="validate">
-                                                    <label for="balanceamount">Balance Amount</label>
+                                                    <input id="balanceamount" name="RemainingAmount" placeholder="" type="number" class="validate">
+                                                    <label for="balanceamount" class="active">Balance Amount</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -664,18 +663,18 @@
                                         <div class="row">
                                             <div class="col s12">
                                                 <div class="input-field col s4">
-                                                    <input id="sbr_lsb" name="Contractno" type="text" class="validate" readonly>
-                                                    <label for="sbr_lsb">SBR / LSB</label>
+                                                    <input id="sbr_lsb" name="Contractno" type="text" placeholder="" class="validate" readonly>
+                                                    <label for="sbr_lsb" class="active">SBR / LSB</label>
                                                 </div>
                                                 <div class="input-field col s4">
-                                                    <input id="party" type="text" readonly class="validate">
+                                                    <input id="party" type="text" readonly class="validate" placeholder="">
                                                     <input id="partyid" name="PartyId" type="hidden">
-                                                    <label for="party">Party</label>
+                                                    <label for="party" class="active">Party</label>
                                                 </div>
                                                 <div class="input-field col s4">
-                                                    <input id="cement" type="text" readonly class="validate">
+                                                    <input id="cement" type="text" readonly class="validate" placeholder="">
                                                     <input id="goodstypeid" name="GoodTypeId" type="hidden">
-                                                    <label for="cement">Cement</label>
+                                                    <label for="cement" class="active">Cement</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -683,8 +682,8 @@
                                         <div class="row">
                                             <div class="col s12">
                                                 <div class="input-field col s12">
-                                                    <textarea id="address" dir="rtl" name="Address" readonly class="materialize-textarea"></textarea>
-                                                    <label for="address">Address</label>
+                                                    <textarea id="address" dir="rtl" placeholder="" name="Address" readonly class="materialize-textarea"></textarea>
+                                                    <label for="address" class="active">Address</label>
                                                 </div>
                                             </div>
                                         </div>
