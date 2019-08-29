@@ -27,12 +27,85 @@ namespace ProTrukRepo.Repository
                  .ForMember(dest => dest.VehicleReg, opt => opt.MapFrom(src => src.vehicle.RegNumber.Trim()));
                  
                 cfg.CreateMap<BiltyVM, Bilty>();
+
+
                 /* cfg.CreateMap<User, UserVM>().ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role.Role1.Trim())); ;
                  cfg.CreateMap<Module, ModuleVM>();
                  cfg.CreateMap<Role, RolesVM>();
                  cfg.CreateMap<UserVM, User>();
                  */
             });
+        }
+
+
+        public async Task<Response> GetAllBiltiesForReport(ReportSearchVM search)
+        {
+            try
+            {
+
+                string qry = "select * from bilty";
+
+
+                if (search.DateFrom != "" && search.DateFrom != null)
+                {
+
+                    qry = qry + " where BiltyDate <= '" + search.DateFrom + "' and BiltyDate >= '"+ search.DateFrom + "'" ;
+
+                }
+
+                if (search.FiledoneValue != "" && search.FiledoneValue != null)
+                {
+                    qry= qry + " and BiltyNo="+ search.FiledoneValue +"";
+
+                }
+
+                if (search.DropdownoneValue != "" && search.DropdownoneValue != null) {
+
+                    qry = qry + " and PartyId=" + search.DropdownoneValue + "";
+
+
+                }
+
+
+                List<BiltyVM> response = new List<BiltyVM>();
+                //var users =  _db.Users.Select(x => x).ToList();
+                var DTO = await _db.Bilties.SqlQuery(qry).ToListAsync();
+
+                /*
+                if (search.DateFrom != "" && search.DateFrom != null) {
+
+                    DTO.Where(m => m.BiltyDate >= Convert.ToDateTime(search.DateFrom) && m.BiltyDate <= Convert.ToDateTime(search.DateTo));
+
+                }
+                */
+
+                /*
+                if (search.FiledoneValue != "" && search.FiledoneValue != null) {
+
+                     DTO.Where(m => m.BiltyNo == Convert.ToDecimal(search.FiledoneValue));
+
+                    }
+                    */
+
+                
+                
+                //   Mapper.Initialize(cfg => cfg.CreateMap<User, UserVM>());
+
+                //   Mapper.Initialize(cfg => cfg.CreateMap<User, UserVM>());
+                //response = Mapper.Map<IEnumerable<Bilty>, List<BiltyVM>>(DTO);
+                if (DTO.Count() > 0)
+                {
+                    return GenericResponses<IEnumerable<Bilty>>.ResponseStatus(false, response.Count() + Constant.MSGRecordFound, (int)Constant.httpStatus.Ok, DTO);
+                }
+                else
+                {
+                    return GenericResponses<IEnumerable<Bilty>>.ResponseStatus(false, Constant.MDGNoRecordFound, (int)Constant.httpStatus.NoContent, DTO.ToList());
+                }
+            }
+            catch (Exception e)
+            {
+                return GenericResponses<DorderVM>.ResponseStatus(true);
+            }
         }
 
 
@@ -145,6 +218,25 @@ namespace ProTrukRepo.Repository
             {
                 return GenericResponses<int>.ResponseStatus(true, Constant.MDGNoRecordFound, (int)Constant.httpStatus.NoContent, 0);
 
+            }
+
+
+        }
+
+
+
+        public async Task<Response> GetDoByBilty(decimal biltynumber) {
+           
+            var DTOBiltyToDo = await _db.BiltyToDos.Where(x => x.Biltyno == biltynumber).ToListAsync();
+
+            if (DTOBiltyToDo != null)
+            {
+
+                return GenericResponses<IEnumerable<BiltyToDo>>.ResponseStatus(false, Constant.MSGRecordFound, (int)Constant.httpStatus.Ok, DTOBiltyToDo);
+            }
+            else {
+
+                return GenericResponses<int>.ResponseStatus(true, Constant.MDGNoRecordFound, (int)Constant.httpStatus.NoContent, 0);
             }
 
 

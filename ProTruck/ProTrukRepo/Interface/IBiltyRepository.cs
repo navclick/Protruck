@@ -12,6 +12,8 @@ public  interface IBiltyRepository
     {
 
         Task<Response> GetAllBilties();
+        Task<Response> GetAllBiltiesForReport(ReportSearchVM search);
+        
         //  Response GetUserById(int id);
         Task<Response> GetBilty(decimal biltynumber);
 
@@ -19,6 +21,7 @@ public  interface IBiltyRepository
        
 
         Task<Response> GetBiltyByDo(decimal donumber);
+        Task<Response> GetDoByBilty(decimal biltynumber);
 
         Task<Response> RemoveBilty(BiltyVM bilty);
     }

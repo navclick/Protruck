@@ -22,6 +22,11 @@ namespace ProTrukWeb.Controllers
         {
             return View();
         }
+        public ActionResult Voucher()
+        {
+            return View();
+        }
+        
 
         [HttpGet]
         public async Task<JsonResult> GetALLExpenses()

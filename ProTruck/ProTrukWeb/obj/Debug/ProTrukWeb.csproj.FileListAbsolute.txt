@@ -102,7 +102,6 @@ D:\Projects\VS\PROTruck\ProTruck\ProTrukWeb\obj\Debug\ProTrukWeb.csprojAssemblyR
 D:\Projects\VS\PROTruck\ProTruck\ProTrukWeb\obj\Debug\ProTrukWeb.csproj.CoreCompileInputs.cache
 D:\Projects\VS\PROTruck\ProTruck\ProTrukWeb\obj\Debug\ProTrukWeb.dll
 D:\Projects\VS\PROTruck\ProTruck\ProTrukWeb\obj\Debug\ProTrukWeb.pdb
-F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\obj\Debug\ProTrukWeb.csprojResolveAssemblyReference.cache
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\bin\ApplicationInsights.config
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\bin\roslyn\csc.exe
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\bin\roslyn\csc.exe.config
@@ -143,9 +142,14 @@ F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\bin\Microsoft.AI.Web.dll
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\bin\Microsoft.AI.WindowsServer.dll
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\bin\Microsoft.ApplicationInsights.dll
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\bin\Microsoft.ReportViewer.Common.dll
+F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\bin\Microsoft.ReportViewer.ProcessingObjectModel.DLL
+F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\bin\Microsoft.ReportViewer.WebForms.DLL
+F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\bin\Microsoft.SqlServer.Types.dll
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\bin\Microsoft.Web.Infrastructure.dll
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\bin\Newtonsoft.Json.dll
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\bin\ProTrukRepo.dll
+F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\bin\ReportViewerForMvc.dll
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\bin\System.Net.Http.Formatting.dll
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\bin\System.Web.Helpers.dll
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\bin\System.Web.Http.dll
@@ -200,5 +204,8 @@ F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\bin\AutoMapper.pdb
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\bin\AutoMapper.xml
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\bin\EntityFramework.xml
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\bin\System.ValueTuple.xml
+F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\obj\Debug\ProTrukWeb.csprojResolveAssemblyReference.cache
+F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\obj\Debug\RdlCompile.cache
+F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\obj\Debug\RdlCompile.compiled
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\obj\Debug\ProTrukWeb.dll
 F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukWeb\obj\Debug\ProTrukWeb.pdb

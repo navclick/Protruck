@@ -18,7 +18,7 @@ namespace ProTrukRepo.Model
         public Nullable<decimal> Biltyno { get; set; }
         public Nullable<decimal> Donumber { get; set; }
     
-        public virtual Bilty Bilty { get; set; }
         public virtual Dorder Dorder { get; set; }
+        public virtual Bilty Bilty { get; set; }
     }
 }

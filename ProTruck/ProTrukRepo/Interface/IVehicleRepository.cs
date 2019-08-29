@@ -20,5 +20,7 @@ namespace ProTrukRepo.Interface
         Response GetallVehicleStatus();
         Response GetallSelectListVehicles();
 
+        Response GetVehicleById(int vehicleId);
+
     }
 }

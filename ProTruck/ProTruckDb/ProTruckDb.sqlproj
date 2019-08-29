@@ -82,6 +82,8 @@
     <Build Include="Tables\AdressHistory.sql" />
     <Build Include="Tables\Bilty.sql" />
     <Build Include="Tables\BiltyToDos.sql" />
+    <Build Include="Tables\ExpenseVoucher.sql" />
+    <Build Include="Tables\ExpenseVoucherDetails.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ProTruckDb.refactorlog" />

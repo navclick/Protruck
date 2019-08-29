@@ -4,7 +4,6 @@
     <EntitySet Name="C__RefactorLog" EntityType="ProTruckModel.C__RefactorLog" />
     <EntitySet Name="AdressHistories" EntityType="ProTruckModel.AdressHistory" />
     <EntitySet Name="Banks" EntityType="ProTruckModel.Bank" />
-    <EntitySet Name="Bilties" EntityType="ProTruckModel.Bilty" />
     <EntitySet Name="BiltyToDos" EntityType="ProTruckModel.BiltyToDo" />
     <EntitySet Name="Cities" EntityType="ProTruckModel.City" />
     <EntitySet Name="Contracts" EntityType="ProTruckModel.Contract" />
@@ -27,26 +26,6 @@
     <AssociationSet Name="FK_AdressHistory_Party" Association="ProTruckModel.FK_AdressHistory_Party">
       <End Role="Party" EntitySet="Parties" />
       <End Role="AdressHistory" EntitySet="AdressHistories" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Bilty_Drivers" Association="ProTruckModel.FK_Bilty_Drivers">
-      <End Role="Driver" EntitySet="Drivers" />
-      <End Role="Bilty" EntitySet="Bilties" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Bilty_GoodTypes" Association="ProTruckModel.FK_Bilty_GoodTypes">
-      <End Role="GoodsType" EntitySet="GoodsTypes" />
-      <End Role="Bilty" EntitySet="Bilties" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Bilty_Party" Association="ProTruckModel.FK_Bilty_Party">
-      <End Role="Party" EntitySet="Parties" />
-      <End Role="Bilty" EntitySet="Bilties" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Bilty_vehicle" Association="ProTruckModel.FK_Bilty_vehicle">
-      <End Role="vehicle" EntitySet="vehicles" />
-      <End Role="Bilty" EntitySet="Bilties" />
-    </AssociationSet>
-    <AssociationSet Name="FK_BiltyToDos_Bilty" Association="ProTruckModel.FK_BiltyToDos_Bilty">
-      <End Role="Bilty" EntitySet="Bilties" />
-      <End Role="BiltyToDo" EntitySet="BiltyToDos" />
     </AssociationSet>
     <AssociationSet Name="FK_BiltyToDos_Dorder" Association="ProTruckModel.FK_BiltyToDos_Dorder">
       <End Role="Dorder" EntitySet="Dorders" />
@@ -156,6 +135,27 @@
       <End Role="Role" EntitySet="Roles" />
       <End Role="User" EntitySet="Users" />
     </AssociationSet>
+    <EntitySet Name="Bilties" EntityType="ProTruckModel.Bilty" />
+    <AssociationSet Name="FK_Bilty_Drivers" Association="ProTruckModel.FK_Bilty_Drivers">
+      <End Role="Driver" EntitySet="Drivers" />
+      <End Role="Bilty" EntitySet="Bilties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bilty_GoodTypes" Association="ProTruckModel.FK_Bilty_GoodTypes">
+      <End Role="GoodsType" EntitySet="GoodsTypes" />
+      <End Role="Bilty" EntitySet="Bilties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bilty_Party" Association="ProTruckModel.FK_Bilty_Party">
+      <End Role="Party" EntitySet="Parties" />
+      <End Role="Bilty" EntitySet="Bilties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bilty_vehicle" Association="ProTruckModel.FK_Bilty_vehicle">
+      <End Role="vehicle" EntitySet="vehicles" />
+      <End Role="Bilty" EntitySet="Bilties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BiltyToDos_Bilty" Association="ProTruckModel.FK_BiltyToDos_Bilty">
+      <End Role="Bilty" EntitySet="Bilties" />
+      <End Role="BiltyToDo" EntitySet="BiltyToDos" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="C__RefactorLog">
     <Key>
@@ -182,35 +182,6 @@
     <Property Name="Branch" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
     <Property Name="Address" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
   </EntityType>
-  <EntityType Name="Bilty">
-    <Key>
-      <PropertyRef Name="BiltyNo" />
-    </Key>
-    <Property Name="BiltyNo" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="VehicleId" Type="Int32" />
-    <Property Name="SenderParty" Type="Int32" />
-    <Property Name="PaymentCode" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="DriverId" Type="Int32" />
-    <Property Name="Weight" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="UnitId" Type="Int32" />
-    <Property Name="Rate" Type="Double" />
-    <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="PaidAmount" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="RemainingAmount" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="Qty" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="BiltyDate" Type="DateTime" Precision="0" />
-    <Property Name="CreateDate" Type="DateTime" Precision="0" />
-    <Property Name="Status" Type="Int32" />
-    <Property Name="PartyId" Type="Int32" />
-    <Property Name="Contractno" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="GoodTypeId" Type="Int32" />
-    <NavigationProperty Name="Driver" Relationship="ProTruckModel.FK_Bilty_Drivers" FromRole="Bilty" ToRole="Driver" />
-    <NavigationProperty Name="GoodsType" Relationship="ProTruckModel.FK_Bilty_GoodTypes" FromRole="Bilty" ToRole="GoodsType" />
-    <NavigationProperty Name="Party" Relationship="ProTruckModel.FK_Bilty_Party" FromRole="Bilty" ToRole="Party" />
-    <NavigationProperty Name="vehicle" Relationship="ProTruckModel.FK_Bilty_vehicle" FromRole="Bilty" ToRole="vehicle" />
-    <NavigationProperty Name="BiltyToDos" Relationship="ProTruckModel.FK_BiltyToDos_Bilty" FromRole="Bilty" ToRole="BiltyToDo" />
-  </EntityType>
   <EntityType Name="BiltyToDo">
     <Key>
       <PropertyRef Name="Id" />
@@ -218,8 +189,8 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Biltyno" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="Donumber" Type="Decimal" Precision="18" Scale="0" />
-    <NavigationProperty Name="Bilty" Relationship="ProTruckModel.FK_BiltyToDos_Bilty" FromRole="BiltyToDo" ToRole="Bilty" />
     <NavigationProperty Name="Dorder" Relationship="ProTruckModel.FK_BiltyToDos_Dorder" FromRole="BiltyToDo" ToRole="Dorder" />
+    <NavigationProperty Name="Bilty" Relationship="ProTruckModel.FK_BiltyToDos_Bilty" FromRole="BiltyToDo" ToRole="Bilty" />
   </EntityType>
   <EntityType Name="City">
     <Key>
@@ -316,9 +287,9 @@
     <Property Name="Vehicle" Type="Int32" />
     <Property Name="CreatedOn" Type="DateTime" Precision="0" />
     <Property Name="EcomID" Type="Int32" />
-    <NavigationProperty Name="Bilties" Relationship="ProTruckModel.FK_Bilty_Drivers" FromRole="Driver" ToRole="Bilty" />
     <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Drivers_ExanaduCompanies" FromRole="Driver" ToRole="ExanaduCompany" />
     <NavigationProperty Name="vehicle1" Relationship="ProTruckModel.FK_Drivers_vehicle" FromRole="Driver" ToRole="vehicle" />
+    <NavigationProperty Name="Bilties" Relationship="ProTruckModel.FK_Bilty_Drivers" FromRole="Driver" ToRole="Bilty" />
   </EntityType>
   <EntityType Name="ExanaduCompany">
     <Key>
@@ -365,9 +336,9 @@
     <Property Name="Description" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
     <Property Name="Unit" Type="Int32" />
     <Property Name="EcomID" Type="Int32" />
-    <NavigationProperty Name="Bilties" Relationship="ProTruckModel.FK_Bilty_GoodTypes" FromRole="GoodsType" ToRole="Bilty" />
     <NavigationProperty Name="Dorders" Relationship="ProTruckModel.FK_Dorder_GoodsTypes" FromRole="GoodsType" ToRole="Dorder" />
     <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_GoodsTypes_ExanaduCompanies" FromRole="GoodsType" ToRole="ExanaduCompany" />
+    <NavigationProperty Name="Bilties" Relationship="ProTruckModel.FK_Bilty_GoodTypes" FromRole="GoodsType" ToRole="Bilty" />
   </EntityType>
   <EntityType Name="LinkRoleMenu">
     <Key>
@@ -419,10 +390,10 @@
     <Property Name="ParentId" Type="Int32" />
     <Property Name="EcomID" Type="Int32" />
     <NavigationProperty Name="AdressHistories" Relationship="ProTruckModel.FK_AdressHistory_Party" FromRole="Party" ToRole="AdressHistory" />
-    <NavigationProperty Name="Bilties" Relationship="ProTruckModel.FK_Bilty_Party" FromRole="Party" ToRole="Bilty" />
     <NavigationProperty Name="Contracts" Relationship="ProTruckModel.FK_Contract_Party" FromRole="Party" ToRole="Contract" />
     <NavigationProperty Name="Dorders" Relationship="ProTruckModel.FK_Dorder_Party" FromRole="Party" ToRole="Dorder" />
     <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Party_ExanaduCompanies" FromRole="Party" ToRole="ExanaduCompany" />
+    <NavigationProperty Name="Bilties" Relationship="ProTruckModel.FK_Bilty_Party" FromRole="Party" ToRole="Bilty" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -484,9 +455,9 @@
     <Property Name="EcomID" Type="Int32" />
     <Property Name="IsContractorVehicle" Type="Boolean" />
     <Property Name="ContractorId" Type="Int32" />
-    <NavigationProperty Name="Bilties" Relationship="ProTruckModel.FK_Bilty_vehicle" FromRole="vehicle" ToRole="Bilty" />
     <NavigationProperty Name="Contractor" Relationship="ProTruckModel.FK_vehicle_Contractor" FromRole="vehicle" ToRole="Contractor" />
     <NavigationProperty Name="Drivers" Relationship="ProTruckModel.FK_Drivers_vehicle" FromRole="vehicle" ToRole="Driver" />
+    <NavigationProperty Name="Bilties" Relationship="ProTruckModel.FK_Bilty_vehicle" FromRole="vehicle" ToRole="Bilty" />
   </EntityType>
   <EntityType Name="Vendor">
     <Key>
@@ -512,66 +483,6 @@
       </Principal>
       <Dependent Role="AdressHistory">
         <PropertyRef Name="Party" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Bilty_Drivers">
-    <End Type="ProTruckModel.Driver" Role="Driver" Multiplicity="0..1" />
-    <End Type="ProTruckModel.Bilty" Role="Bilty" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Driver">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Bilty">
-        <PropertyRef Name="DriverId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Bilty_GoodTypes">
-    <End Type="ProTruckModel.GoodsType" Role="GoodsType" Multiplicity="0..1" />
-    <End Type="ProTruckModel.Bilty" Role="Bilty" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="GoodsType">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Bilty">
-        <PropertyRef Name="GoodTypeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Bilty_Party">
-    <End Type="ProTruckModel.Party" Role="Party" Multiplicity="0..1" />
-    <End Type="ProTruckModel.Bilty" Role="Bilty" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Party">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Bilty">
-        <PropertyRef Name="PartyId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Bilty_vehicle">
-    <End Type="ProTruckModel.vehicle" Role="vehicle" Multiplicity="0..1" />
-    <End Type="ProTruckModel.Bilty" Role="Bilty" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="vehicle">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Bilty">
-        <PropertyRef Name="VehicleId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_BiltyToDos_Bilty">
-    <End Type="ProTruckModel.Bilty" Role="Bilty" Multiplicity="0..1" />
-    <End Type="ProTruckModel.BiltyToDo" Role="BiltyToDo" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Bilty">
-        <PropertyRef Name="BiltyNo" />
-      </Principal>
-      <Dependent Role="BiltyToDo">
-        <PropertyRef Name="Biltyno" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -896,6 +807,95 @@
       </Principal>
       <Dependent Role="User">
         <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Bilty">
+    <Key>
+      <PropertyRef Name="BiltyNo" />
+    </Key>
+    <Property Name="BiltyNo" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VehicleId" Type="Int32" />
+    <Property Name="SenderParty" Type="Int32" />
+    <Property Name="PaymentCode" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="DriverId" Type="Int32" />
+    <Property Name="Weight" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="UnitId" Type="Int32" />
+    <Property Name="Rate" Type="Double" />
+    <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="PaidAmount" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="RemainingAmount" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Qty" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BiltyDate" Type="DateTime" Precision="0" />
+    <Property Name="CreateDate" Type="DateTime" Precision="0" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="PartyId" Type="Int32" />
+    <Property Name="Contractno" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="GoodTypeId" Type="Int32" />
+    <NavigationProperty Name="Driver" Relationship="ProTruckModel.FK_Bilty_Drivers" FromRole="Bilty" ToRole="Driver" />
+    <NavigationProperty Name="GoodsType" Relationship="ProTruckModel.FK_Bilty_GoodTypes" FromRole="Bilty" ToRole="GoodsType" />
+    <NavigationProperty Name="Party" Relationship="ProTruckModel.FK_Bilty_Party" FromRole="Bilty" ToRole="Party" />
+    <NavigationProperty Name="vehicle" Relationship="ProTruckModel.FK_Bilty_vehicle" FromRole="Bilty" ToRole="vehicle" />
+    <NavigationProperty Name="BiltyToDos" Relationship="ProTruckModel.FK_BiltyToDos_Bilty" FromRole="Bilty" ToRole="BiltyToDo" />
+  </EntityType>
+  <Association Name="FK_Bilty_Drivers">
+    <End Type="ProTruckModel.Driver" Role="Driver" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Bilty" Role="Bilty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Driver">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bilty">
+        <PropertyRef Name="DriverId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bilty_GoodTypes">
+    <End Type="ProTruckModel.GoodsType" Role="GoodsType" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Bilty" Role="Bilty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GoodsType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bilty">
+        <PropertyRef Name="GoodTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bilty_Party">
+    <End Type="ProTruckModel.Party" Role="Party" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Bilty" Role="Bilty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Party">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bilty">
+        <PropertyRef Name="PartyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bilty_vehicle">
+    <End Type="ProTruckModel.vehicle" Role="vehicle" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Bilty" Role="Bilty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vehicle">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bilty">
+        <PropertyRef Name="VehicleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BiltyToDos_Bilty">
+    <End Type="ProTruckModel.Bilty" Role="Bilty" Multiplicity="0..1" />
+    <End Type="ProTruckModel.BiltyToDo" Role="BiltyToDo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bilty">
+        <PropertyRef Name="BiltyNo" />
+      </Principal>
+      <Dependent Role="BiltyToDo">
+        <PropertyRef Name="Biltyno" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

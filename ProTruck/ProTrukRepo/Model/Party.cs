@@ -18,9 +18,9 @@ namespace ProTrukRepo.Model
         public Party()
         {
             this.AdressHistories = new HashSet<AdressHistory>();
-            this.Bilties = new HashSet<Bilty>();
             this.Contracts = new HashSet<Contract>();
             this.Dorders = new HashSet<Dorder>();
+            this.Bilties = new HashSet<Bilty>();
         }
     
         public int Id { get; set; }
@@ -36,11 +36,11 @@ namespace ProTrukRepo.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AdressHistory> AdressHistories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bilty> Bilties { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contract> Contracts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Dorder> Dorders { get; set; }
         public virtual ExanaduCompany ExanaduCompany { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Bilty> Bilties { get; set; }
     }
 }

@@ -142,6 +142,26 @@ namespace ProTrukRepo.Repository
             }
         }
 
+
+        public Response GetVehicleById(int vehicleId) {
+
+            var vehicleDTO =  _db.vehicles.Where(x => x.Id == vehicleId).FirstOrDefault();
+
+          //  VehicleVM vehicleVm= Mapper.Map<vehicle, VehicleVM>(vehicleDTO);
+
+            if (vehicleDTO != null)
+            {
+                return GenericResponses<vehicle>.ResponseStatus(false, Constant.MSGRecordFound, (int)Constant.httpStatus.Ok, vehicleDTO);
+            }
+            else {
+
+                return GenericResponses<int>.ResponseStatus(true, Constant.MSGFailed, (int)Constant.httpStatus.NoContent, 0);
+
+            }
+
+
+        }
+
         public Response GetallUnits()
         {
 

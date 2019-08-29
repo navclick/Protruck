@@ -28,7 +28,6 @@ namespace ProTrukRepo.Model
         public virtual DbSet<C__RefactorLog> C__RefactorLog { get; set; }
         public virtual DbSet<AdressHistory> AdressHistories { get; set; }
         public virtual DbSet<Bank> Banks { get; set; }
-        public virtual DbSet<Bilty> Bilties { get; set; }
         public virtual DbSet<BiltyToDo> BiltyToDos { get; set; }
         public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<Contract> Contracts { get; set; }
@@ -48,5 +47,6 @@ namespace ProTrukRepo.Model
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<vehicle> vehicles { get; set; }
         public virtual DbSet<Vendor> Vendors { get; set; }
+        public virtual DbSet<Bilty> Bilties { get; set; }
     }
 }

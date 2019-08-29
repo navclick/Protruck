@@ -28,31 +28,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Bilties">
-      <EntityTypeMapping TypeName="ProTruckModel.Bilty">
-        <MappingFragment StoreEntitySet="Bilty">
-          <ScalarProperty Name="GoodTypeId" ColumnName="GoodTypeId" />
-          <ScalarProperty Name="Contractno" ColumnName="Contractno" />
-          <ScalarProperty Name="PartyId" ColumnName="PartyId" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-          <ScalarProperty Name="BiltyDate" ColumnName="BiltyDate" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="Qty" ColumnName="Qty" />
-          <ScalarProperty Name="RemainingAmount" ColumnName="RemainingAmount" />
-          <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
-          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
-          <ScalarProperty Name="Rate" ColumnName="Rate" />
-          <ScalarProperty Name="UnitId" ColumnName="UnitId" />
-          <ScalarProperty Name="Weight" ColumnName="Weight" />
-          <ScalarProperty Name="DriverId" ColumnName="DriverId" />
-          <ScalarProperty Name="PaymentCode" ColumnName="PaymentCode" />
-          <ScalarProperty Name="SenderParty" ColumnName="SenderParty" />
-          <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
-          <ScalarProperty Name="BiltyNo" ColumnName="BiltyNo" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="BiltyToDos">
       <EntityTypeMapping TypeName="ProTruckModel.BiltyToDo">
         <MappingFragment StoreEntitySet="BiltyToDos">
@@ -301,6 +276,31 @@
           <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bilties">
+      <EntityTypeMapping TypeName="ProTruckModel.Bilty">
+        <MappingFragment StoreEntitySet="Bilty">
+          <ScalarProperty Name="GoodTypeId" ColumnName="GoodTypeId" />
+          <ScalarProperty Name="Contractno" ColumnName="Contractno" />
+          <ScalarProperty Name="PartyId" ColumnName="PartyId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="BiltyDate" ColumnName="BiltyDate" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="RemainingAmount" ColumnName="RemainingAmount" />
+          <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="DriverId" ColumnName="DriverId" />
+          <ScalarProperty Name="PaymentCode" ColumnName="PaymentCode" />
+          <ScalarProperty Name="SenderParty" ColumnName="SenderParty" />
+          <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+          <ScalarProperty Name="BiltyNo" ColumnName="BiltyNo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

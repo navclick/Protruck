@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="BiltyDs" targetNamespace="http://tempuri.org/BiltyDs.xsd" xmlns:mstns="http://tempuri.org/BiltyDs.xsd" xmlns="http://tempuri.org/BiltyDs.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ProTruckConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ProTruckConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ProTruckConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="BiltyDs" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="BiltyDs" msprop:Generator_UserDSName="BiltyDs">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Bilty" msprop:Generator_TableClassName="BiltyDataTable" msprop:Generator_TableVarName="tableBilty" msprop:Generator_TablePropName="Bilty" msprop:Generator_RowDeletingName="BiltyRowDeleting" msprop:Generator_RowChangingName="BiltyRowChanging" msprop:Generator_RowEvHandlerName="BiltyRowChangeEventHandler" msprop:Generator_RowDeletedName="BiltyRowDeleted" msprop:Generator_UserTableName="Bilty" msprop:Generator_RowChangedName="BiltyRowChanged" msprop:Generator_RowEvArgName="BiltyRowChangeEvent" msprop:Generator_RowClassName="BiltyRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="BiltyNo" msprop:Generator_ColumnVarNameInTable="columnBiltyNo" msprop:Generator_ColumnPropNameInRow="BiltyNo" msprop:Generator_ColumnPropNameInTable="BiltyNoColumn" msprop:Generator_UserColumnName="BiltyNo" type="xs:string" minOccurs="0" />
+              <xs:element name="Vehicle" msprop:Generator_ColumnVarNameInTable="columnVehicle" msprop:Generator_ColumnPropNameInRow="Vehicle" msprop:Generator_ColumnPropNameInTable="VehicleColumn" msprop:Generator_UserColumnName="Vehicle" type="xs:string" minOccurs="0" />
+              <xs:element name="Driver" msprop:Generator_ColumnVarNameInTable="columnDriver" msprop:Generator_ColumnPropNameInRow="Driver" msprop:Generator_ColumnPropNameInTable="DriverColumn" msprop:Generator_UserColumnName="Driver" type="xs:string" minOccurs="0" />
+              <xs:element name="Party" msprop:Generator_ColumnVarNameInTable="columnParty" msprop:Generator_ColumnPropNameInRow="Party" msprop:Generator_ColumnPropNameInTable="PartyColumn" msprop:Generator_UserColumnName="Party" type="xs:string" minOccurs="0" />
+              <xs:element name="Address" msprop:Generator_ColumnVarNameInTable="columnAddress" msprop:Generator_ColumnPropNameInRow="Address" msprop:Generator_ColumnPropNameInTable="AddressColumn" msprop:Generator_UserColumnName="Address" type="xs:string" minOccurs="0" />
+              <xs:element name="GoodsType" msprop:Generator_ColumnVarNameInTable="columnGoodsType" msprop:Generator_ColumnPropNameInRow="GoodsType" msprop:Generator_ColumnPropNameInTable="GoodsTypeColumn" msprop:Generator_UserColumnName="GoodsType" type="xs:string" minOccurs="0" />
+              <xs:element name="Weight" msprop:Generator_ColumnVarNameInTable="columnWeight" msprop:Generator_ColumnPropNameInRow="Weight" msprop:Generator_ColumnPropNameInTable="WeightColumn" msprop:Generator_UserColumnName="Weight" type="xs:string" minOccurs="0" />
+              <xs:element name="Qty" msprop:Generator_ColumnVarNameInTable="columnQty" msprop:Generator_ColumnPropNameInRow="Qty" msprop:Generator_ColumnPropNameInTable="QtyColumn" msprop:Generator_UserColumnName="Qty" type="xs:string" minOccurs="0" />
+              <xs:element name="Dos" msprop:Generator_ColumnVarNameInTable="columnDos" msprop:Generator_ColumnPropNameInRow="Dos" msprop:Generator_ColumnPropNameInTable="DosColumn" msprop:Generator_UserColumnName="Dos" type="xs:string" minOccurs="0" />
+              <xs:element name="Rate" msprop:Generator_ColumnVarNameInTable="columnRate" msprop:Generator_ColumnPropNameInRow="Rate" msprop:Generator_ColumnPropNameInTable="RateColumn" msprop:Generator_UserColumnName="Rate" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalAmount" msprop:Generator_ColumnVarNameInTable="columnTotalAmount" msprop:Generator_ColumnPropNameInRow="TotalAmount" msprop:Generator_ColumnPropNameInTable="TotalAmountColumn" msprop:Generator_UserColumnName="TotalAmount" type="xs:string" minOccurs="0" />
+              <xs:element name="PainAmount" msprop:Generator_ColumnVarNameInTable="columnPainAmount" msprop:Generator_ColumnPropNameInRow="PainAmount" msprop:Generator_ColumnPropNameInTable="PainAmountColumn" msprop:Generator_UserColumnName="PainAmount" type="xs:string" minOccurs="0" />
+              <xs:element name="RemainingAmount" msprop:Generator_ColumnVarNameInTable="columnRemainingAmount" msprop:Generator_ColumnPropNameInRow="RemainingAmount" msprop:Generator_ColumnPropNameInTable="RemainingAmountColumn" msprop:Generator_UserColumnName="RemainingAmount" type="xs:string" minOccurs="0" />
+              <xs:element name="Date" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_UserColumnName="Date" type="xs:string" minOccurs="0" />
+              <xs:element name="Sender" msprop:Generator_ColumnVarNameInTable="columnSender" msprop:Generator_ColumnPropNameInRow="Sender" msprop:Generator_ColumnPropNameInTable="SenderColumn" msprop:Generator_UserColumnName="Sender" type="xs:string" minOccurs="0" />
+              <xs:element name="Billing" msprop:Generator_ColumnVarNameInTable="columnBilling" msprop:Generator_ColumnPropNameInRow="Billing" msprop:Generator_ColumnPropNameInTable="BillingColumn" msprop:Generator_UserColumnName="Billing" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

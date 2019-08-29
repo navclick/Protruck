@@ -8,7 +8,6 @@
         <EntityTypeShape EntityType="ProTruckModel.C__RefactorLog" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="ProTruckModel.AdressHistory" Width="1.5" PointX="5.25" PointY="18.125" />
         <EntityTypeShape EntityType="ProTruckModel.Bank" Width="1.5" PointX="0.75" PointY="2.75" />
-        <EntityTypeShape EntityType="ProTruckModel.Bilty" Width="1.5" PointX="10.75" PointY="27.375" />
         <EntityTypeShape EntityType="ProTruckModel.BiltyToDo" Width="1.5" PointX="13" PointY="31.75" />
         <EntityTypeShape EntityType="ProTruckModel.City" Width="1.5" PointX="3" PointY="35.375" />
         <EntityTypeShape EntityType="ProTruckModel.Contract" Width="1.5" PointX="8.25" PointY="29" />
@@ -29,11 +28,6 @@
         <EntityTypeShape EntityType="ProTruckModel.vehicle" Width="1.5" PointX="7.5" PointY="39.125" />
         <EntityTypeShape EntityType="ProTruckModel.Vendor" Width="1.5" PointX="5.25" PointY="32.625" />
         <AssociationConnector Association="ProTruckModel.FK_AdressHistory_Party" />
-        <AssociationConnector Association="ProTruckModel.FK_Bilty_Drivers" />
-        <AssociationConnector Association="ProTruckModel.FK_Bilty_GoodTypes" />
-        <AssociationConnector Association="ProTruckModel.FK_Bilty_Party" />
-        <AssociationConnector Association="ProTruckModel.FK_Bilty_vehicle" />
-        <AssociationConnector Association="ProTruckModel.FK_BiltyToDos_Bilty" />
         <AssociationConnector Association="ProTruckModel.FK_BiltyToDos_Dorder" />
         <AssociationConnector Association="ProTruckModel.FK_Cities_ExanaduCompanies" />
         <AssociationConnector Association="ProTruckModel.FK_Contractor_Cities" />
@@ -61,6 +55,12 @@
         <AssociationConnector Association="ProTruckModel.FK_LinkRoleMenus_Roles" />
         <AssociationConnector Association="ProTruckModel.FK_Menus_Modules" />
         <AssociationConnector Association="ProTruckModel.FK_Users_Roles" />
+        <EntityTypeShape EntityType="ProTruckModel.Bilty" Width="1.5" PointX="13" PointY="25.375" />
+        <AssociationConnector Association="ProTruckModel.FK_Bilty_Drivers" />
+        <AssociationConnector Association="ProTruckModel.FK_Bilty_GoodTypes" />
+        <AssociationConnector Association="ProTruckModel.FK_Bilty_Party" />
+        <AssociationConnector Association="ProTruckModel.FK_Bilty_vehicle" />
+        <AssociationConnector Association="ProTruckModel.FK_BiltyToDos_Bilty" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
