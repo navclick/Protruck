@@ -1,0 +1,155 @@
+﻿
+@{
+    ViewBag.Title = "DO";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@Styles.Render("~/Content/datatable")
+
+
+
+<script>
+
+    app.controller('DoCtrl', ['$scope', 'svc', '$http', function ($scope, svc, $http) {
+
+        $scope.dorders = [];
+        $scope.dorder = [];
+        $scope.msg = "";
+
+
+
+        $scope.getDos = function () {
+
+            $http.get('/DO/GetAllDos').then(
+                function (successResponse) {
+                    // alert(successResponse.data[0].AccountStatus);
+                    $scope.dorders = successResponse.data;
+                },
+                function (errorResponse) {
+                    alert(errorResponse);
+                    // handle errors here
+                });
+        };
+
+        $scope.DeleteDo = function (dorder) {
+            if (confirm("Do you want to delete!")) {
+                $http({
+                    method: "post",
+                    url: "/DO/RemoveDo",
+                    datatype: "json",
+                    data: JSON.stringify(dorder)
+                }).then(function (response) {
+                    $scope.getDos();
+                    if (response.data.IsError == false) {
+                        svc.notifymsg(false);
+                        // util.notifymsg(false);
+
+                    }
+                    else {
+                        svc.notifymsgcus(true, response.data.Message);
+
+                    }
+                })
+            }
+        };
+        
+
+        $scope.addEmployee = function () {
+            $http.post('/Home/AddEmployee', $scope.newEmployee).then(
+                function (successResponse) {
+                    console.log('success');
+                },
+                function (errorResponse) {
+                    // handle errors here
+                });
+        };
+    }]);
+
+    $(document).ready(function () {
+        // Handler for .ready() called.
+        //alert("ready");
+        var scope = angular.element(document.getElementById("ContentMain")).scope();
+        scope.$apply(function () {
+            scope.getDos();
+        });
+    });
+</script>
+
+    <div class="row" id="ContentMain" ng-controller="DoCtrl">
+        <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
+        <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper"></div>
+        <div class="col s12">
+            <div class="container">
+                <div class="section section-data-tables">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <h4 class="card-title left">Delivery Order</h4>
+                                    <a class="right waves-effect waves-light btn btn-small modal-trigger" href="/DO/AddDo">Add Delivery Order <i class="material-icons right">add</i></a>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <table id="data-table-simple" class="display nowrap striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Sno</th>
+                                                        <th>DO</th>
+                                                        <th>Date</th>
+                                                        <th>Contract#</th>
+                                                        <th>Party</th>
+                                                        <th>Type</th>
+                                                        <th>City</th>
+                                                        <th>QTY</th>
+                                                        <th>Total Weight</th>
+                                                        
+                                                        <th>Created On</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="dorder in dorders" >
+                                                        <td>{{dorder.Id}}</td>
+                                                        <td>{{dorder.DoNumber}}</td>
+                                                        <td>{{dorder.DoDate.slice(6, -2) | date : 'dd MMMM yyyy'}}</td>
+                                                        <td>{{dorder.ContractTypeName.toString() + dorder.ContractNumber.toString()}}</td>
+                                                        <td>{{dorder.PartyName}}</td>
+                                                        <td>{{dorder.GoodsTypeName}}</td>
+                                                        <td>{{dorder.CityName}}</td>
+                                                        <td>{{dorder.QTY}}</td>
+                                                        <td>{{dorder.Weight}}</td>
+                                                        <td>{{dorder.CreatedOn.slice(6, -2) | date : 'dd MMMM yyyy'}}</td>
+                                                        <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <button class="btn-floating" ng-click="DeleteUser(user)"><i class="material-icons">delete</i></button> </td>
+                                                    </tr>
+
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>Sno</th>
+                                                        <th>DO</th>
+                                                        <th>Date</th>
+                                                        <th>Contract#</th>
+                                                        <th>Party</th>
+                                                        <th>Type</th>
+                                                        <th>City</th>
+                                                        <th>QTY</th>
+                                                        <th>Total Weight</th>
+
+                                                        <th>Created On</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    

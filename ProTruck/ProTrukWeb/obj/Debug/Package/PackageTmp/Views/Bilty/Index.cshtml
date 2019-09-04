@@ -1,0 +1,151 @@
+﻿
+@{
+    ViewBag.Title = "Bilty";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@Styles.Render("~/Content/datatable")
+
+
+
+<script>
+
+    app.controller('BiltyCtrl', ['$scope', 'svc', '$http', function ($scope, svc, $http) {
+
+        $scope.bilties = [];
+        $scope.bilty = [];
+        $scope.msg = "";
+
+
+
+        $scope.getBilties = function () {
+
+            $http.get('/Bilty/GetAllBilties').then(
+                function (successResponse) {
+                    // alert(successResponse.data[0].AccountStatus);
+                    $scope.bilties = successResponse.data;
+                },
+                function (errorResponse) {
+                    alert(errorResponse);
+                    // handle errors here
+                });
+        };
+
+        $scope.DeleteBilty = function (bilty) {
+            if (confirm("Do you want to delete!")) {
+                $http({
+                    method: "post",
+                    url: "/Bilty/RemoveBilty",
+                    datatype: "json",
+                    data: JSON.stringify(bilty)
+                }).then(function (response) {
+                    $scope.getBilties();
+                    if (response.data.IsError == false) {
+                        svc.notifymsg(false);
+                        // util.notifymsg(false);
+
+                    }
+                    else {
+                        svc.notifymsgcus(true, response.data.Message);
+
+                    }
+                })
+            }
+        };
+
+
+        $scope.addEmployee = function () {
+            $http.post('/Home/AddEmployee', $scope.newEmployee).then(
+                function (successResponse) {
+                    console.log('success');
+                },
+                function (errorResponse) {
+                    // handle errors here
+                });
+        };
+    }]);
+
+    $(document).ready(function () {
+        // Handler for .ready() called.
+        //alert("ready");
+        var scope = angular.element(document.getElementById("ContentMain")).scope();
+        scope.$apply(function () {
+            scope.getBilties();
+        });
+    });
+</script>
+
+<div class="row" id="ContentMain" ng-controller="BiltyCtrl">
+    <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
+    <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper"></div>
+    <div class="col s12">
+        <div class="container">
+            <div class="section section-data-tables">
+                <div class="row">
+                    <div class="col s12">
+                        <div class="card">
+                            <div class="card-content">
+                                <h4 class="card-title left">Bilty</h4>
+                                <a class="right waves-effect waves-light btn btn-small modal-trigger" href="/Bilty/AddBilty">Add Bilty <i class="material-icons right">add</i></a>
+                                <div class="row">
+                                    <div class="col s12">
+                                        <table id="data-table-simple" class="display nowrap striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Bilty</th>
+                                                    <th>Date</th>
+                                                    <th>Party</th>
+                                                    <th>Vehicle</th>
+                                                    <th>Goods Type</th>
+                                                    <th>Total Qty</th>
+                                                    <th>Total Weight</th>
+                                                    <th>Do(s)</th>
+                                                    
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="bilty in bilties">
+                                                    <td>{{bilty.BiltyNo}}</td>
+                                                    
+                                                    <td>{{bilty.BiltyDate.slice(6, -2) | date : 'dd MMMM yyyy'}}</td>
+                                                    <td>{{bilty.PartyName}}</td>
+                                                    <td>{{bilty.VehicleReg}}</td>
+                                                    <td>{{bilty.GoodTypeName}}</td>
+                                                    <td>{{bilty.Qty}}</td>
+                                                    <td>{{bilty.Weight}}</td>
+                                                    <td>{{bilty.DOs}}</td>
+                                                    
+                                                    <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <button class="btn-floating" ng-click="DeleteBilty(bilty)"><i class="material-icons">delete</i></button> </td>
+                                                </tr>
+
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>Bilty</th>
+                                                    <th>Date</th>
+                                                    <th>Party</th>
+                                                    <th>Vehicle</th>
+                                                    <th>Good Type</th>
+                                                    <th>Total Qty</th>
+                                                    <th>Total Weight</th>
+                                                    <th>Do(s)</th>
+
+                                                    <th>Action</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

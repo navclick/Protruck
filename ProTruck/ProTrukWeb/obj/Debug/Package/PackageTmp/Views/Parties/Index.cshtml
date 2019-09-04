@@ -1,0 +1,274 @@
+﻿
+@{
+    ViewBag.Title = "Parties";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@Styles.Render("~/Content/datatable")
+
+
+
+<script>
+
+    app.controller('PartyCtrl', ['$scope', 'svc', '$http', function ($scope, svc, $http) {
+
+      
+        $scope.partiesSelect = [];
+
+        $scope.parties = [];
+        $scope.party = {};
+        $scope.msg = "";
+        
+
+        $scope.getParties = function () {
+            $scope.party.SenderOrReceiver = "Receiver";
+            $http.get('/Parties/GetALLParties').then(
+
+                function (successResponse) {
+
+                    //this.notes = JSON.parse(successResponse);
+
+                    $scope.parties = successResponse.data;
+                },
+                function (errorResponse) {
+                    alert(errorResponse);
+                    // handle errors here
+                });
+        };
+
+
+        $scope.getPartiesSelect = function () {
+
+            $http.get('/Parties/GetallSelectListParties').then(
+
+                function (successResponse) {
+
+                    //this.notes = JSON.parse(successResponse);
+                    //alert(successResponse.);
+                    $scope.partiesSelect = successResponse.data;
+                },
+                function (errorResponse) {
+                    alert(errorResponse);
+                    // handle errors here
+                });
+        };
+
+
+
+
+        $scope.DeleteParty = function (party) {
+            if (confirm("Do you want to delete!")) {
+                $http({
+                    method: "post",
+                    url: "/Expense/RemoveExpense",
+                    datatype: "json",
+                    data: JSON.stringify(party)
+                }).then(function (response) {
+                    $scope.getParties();
+                    if (response.data.IsError == false) {
+                        svc.notifymsg(false);
+                        // util.notifymsg(false);
+
+                    }
+                    else {
+                        svc.notifymsgcus(true, response.data.Message);
+
+                    }
+                })
+            }
+        };
+
+        $scope.addParty = function () {
+
+          
+            if ($scope.partyIsSubParty) {
+                if (!$scope.party.ParentId) {
+
+                    $scope.msg = "Please select Main Party!";
+                    return;
+                }
+
+            }
+
+
+            $http.post('/Parties/AddParty', $scope.party).then(
+                function (successResponse) {
+                    if (successResponse.data.IsError == true) {
+                        $scope.msg = successResponse.data.Message;
+
+                    }
+                    else {
+                        $('.modal').modal('close');;
+                        svc.notifymsg(false);
+                        // util.notifymsg(false);
+
+                        $scope.getParties();
+
+                    }
+
+
+                    console.log(successResponse.data.IsError);
+                },
+                function (errorResponse) {
+                    // handle errors here
+                });
+        };
+    }]);
+
+    $(document).ready(function () {
+        // Handler for .ready() called.
+       
+        var scope = angular.element(document.getElementById("MainContent")).scope();
+        scope.$apply(function () {
+            scope.getParties();
+            scope.getPartiesSelect();
+           
+
+        });
+    });
+</script>
+
+
+<div id="MainContent" ng-controller="PartyCtrl">
+    <div class="row">
+        <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
+        <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper"></div>
+        <div class="col s12">
+            <div class="container">
+                <div class="section section-data-tables">
+                    <!-- Page Length Options -->
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <h4 class="card-title left">Parties</h4>
+                                    <a class="right waves-effect waves-light btn btn-small modal-trigger" href="#modal1">Add Party <i class="material-icons right">add</i></a>
+                                    <div id="modal1" class="modal">
+                                        <form ng-submit="addParty()" id="frm" name="frm" class="col s12">
+                                            <div class="modal-content">
+                                                <!-- Form Advance -->
+                                                <div class="col s12 m12 l12">
+
+                                                    <div ng-show='party.IsSubParty' class="row">
+                                                        <div class="input-field col s12">
+                                                            <select ng-model="party.ParentId" class="browser-default">
+                                                                <option ng-repeat="x in partiesSelect" value="{{x.Value}}">{{x.Text}}</option>
+                                                            </select>
+                                                            <label>Main Party</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="input-field col m6 s12">
+                                                            <input id="first_name01" ng-model="party.Party1" required type="text">
+                                                            <label for="first_name01">Party Name</label>
+                                                        </div>
+                                                        <div class="input-field col m6 s12">
+                                                            <input id="last_name" ng-model="party.ConectPerson" type="text">
+                                                            <label for="last_name">Contact Person</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="input-field col m6 s12">
+                                                            <input id="phone" ng-model="party.Phone" type="text">
+                                                            <label for="phone">Phonen</label>
+                                                        </div>
+                                                        <div class="input-field col s12">
+                                                            <p>
+                                                                <label>
+                                                                    <input ng-model="party.IsSubParty" type="checkbox" class="filled-in" />
+                                                                    <span>Sub Party</span>
+                                                                </label>
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <label style="font-size:1rem;">
+                                                                    <input type="radio" name="SenderOrReceiver"  ng-model="party.SenderOrReceiver"  class="filled-in" style="opacity:unset; position:relative;" value="Sender">
+                                                                    Sender
+                                                                </label>
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                <label style="font-size:1rem;">
+                                                                    <input type="radio" name="SenderOrReceiver" ng-model="party.SenderOrReceiver" class="filled-in" style="opacity:unset; position:relative;" value="Receiver" checked="checked">
+                                                                    Receiver
+                                                                </label><br />
+                                                            </p>
+                                                            
+                                                        </div>
+
+
+                                                    </div>
+
+
+
+                                                </div>
+                                                <!-- Form End -->
+                                            </div>
+                                            <div class="modal-footer">
+                                                <div class="input-field col s12">
+                                                    <span style="float:left;color:red;font-size:medium" id="messages" ng-bind="msg"></span>
+                                                    <a href="#!" class="modal-action modal-close waves-effect waves-purple btn-flat ">Cancel</a>
+                                                    <input type="submit" class="modal-action  waves-purple btn" value="Add" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <table id="data-table-simple" class="display nowrap striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Party Name</th>
+                                                        <th>Contact Person</th>
+                                                        <th>Phone</th>
+                                                        <th>Sub Party</th>
+                                                        <td>Main Party</td>
+                                                        <th>Created On</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="party in parties">
+                                                        <td>{{party.Id}}</td>
+                                                        <td>{{party.Party1}}</td>
+                                                        <td>{{party.ConectPerson}}</td>
+                                                        <td>{{party.Phone}}</td>
+                                                        <td>{{party.IsSubParty}}</td>
+                                                        <td>{{party.ParentPartyName}}</td>
+                                                        <td>{{party.CreatedOn.slice(6, -2) | date : 'dd MMMM yyyy'}}</td>
+                                                        
+                                                        <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating" ng-click="DeleteParty(party)"><i class="material-icons">delete</i></a></td>
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Party Name</th>
+                                                        <th>Contact Person</th>
+                                                        <th>Phone</th>
+                                                        <th>Sub Party</th>
+                                                        <td>Parent Party</td>
+                                                        <th>Created On</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+        $('.modal').modal();
+    });
+</script>
+
+

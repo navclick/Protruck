@@ -1,0 +1,222 @@
+﻿
+@{
+    ViewBag.Title = "Voucher";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@Styles.Render("~/Content/datatable")
+
+<script>
+
+    app.controller('ExpenseCtrl', ['$scope', 'svc', '$http', function ($scope, svc, $http) {
+
+        $scope.selectlistExpenseTypes = [];
+        $scope.expenses = [];
+        $scope.expense = {};
+        $scope.msg = "";
+
+
+        $scope.getExpenses = function () {
+
+            $http.get('/Expense/GetALLExpenses').then(
+
+                function (successResponse) {
+
+                    //this.notes = JSON.parse(successResponse);
+
+                    $scope.expenses = successResponse.data;
+                },
+                function (errorResponse) {
+                    alert(errorResponse);
+                    // handle errors here
+                });
+        };
+
+
+        $scope.getselectlistExpenseTypes = function () {
+
+            $http.get('/Expense/GetallExpenseTypes').then(
+
+                function (successResponse) {
+
+                    //this.notes = JSON.parse(successResponse);
+                    //alert(successResponse.);
+                    $scope.selectlistExpenseTypes = successResponse.data;
+                },
+                function (errorResponse) {
+                    alert(errorResponse);
+                    // handle errors here
+                });
+        };
+
+
+
+
+
+        $scope.DeleteExpense = function (expense) {
+            if (confirm("Do you want to delete!")) {
+                $http({
+                    method: "post",
+                    url: "/Expense/RemoveExpense",
+                    datatype: "json",
+                    data: JSON.stringify(expense)
+                }).then(function (response) {
+                    $scope.getExpenses();
+                    if (response.data.IsError == false) {
+                        svc.notifymsg(false);
+                        // util.notifymsg(false);
+
+                    }
+                    else {
+                        svc.notifymsgcus(true, response.data.Message);
+
+                    }
+                })
+            }
+        };
+
+        $scope.addExpense = function () {
+            if (!$scope.expense.Type) {
+
+                $scope.msg = "Please select Expense Type!";
+                return;
+            }
+
+
+
+
+            $http.post('/Expense/AddExpense', $scope.expense).then(
+                function (successResponse) {
+                    if (successResponse.data.IsError == true) {
+                        $scope.msg = successResponse.data.Message;
+
+                    }
+                    else {
+                        $('.modal').modal('close');;
+                        svc.notifymsg(false);
+                        // util.notifymsg(false);
+
+                        $scope.getExpenses();
+
+                    }
+
+
+                    console.log(successResponse.data.IsError);
+                },
+                function (errorResponse) {
+                    // handle errors here
+                });
+        };
+    }]);
+
+    $(document).ready(function () {
+        // Handler for .ready() called.
+        //alert("ready");
+        var scope = angular.element(document.getElementById("ContentMain")).scope();
+        scope.$apply(function () {
+            scope.getExpenses();
+            scope.getselectlistExpenseTypes();
+
+        });
+    });
+</script>
+<div id="ContentMain" ng-controller="ExpenseCtrl">
+    <div class="row">
+        <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
+        <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper"></div>
+        <div class="col s12">
+            <div class="container">
+                <div class="section section-data-tables">
+                    <!-- Page Length Options -->
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <h4 class="card-title left">Expense Vocher</h4>
+                                    <a class="right waves-effect waves-light btn btn-small modal-trigger" href="#modal1">Add Expense <i class="material-icons right">add</i></a>
+                                    <div id="modal1" class="modal">
+                                        <form ng-submit="addExpense()" id="frm" name="frm" class="col s12">
+                                            <div class="modal-content">
+                                                <!-- Form Advance -->
+                                                <div class="col s12 m12 l12">
+
+                                                    <div class="row">
+                                                        <div class="input-field col m6 s12">
+                                                            <input id="first_name01" ng-model="expense.Expense1" required type="text">
+                                                            <label for="first_name01">Expense</label>
+                                                        </div>
+                                                        <div class="input-field col m6 s12">
+                                                            <input id="last_name" ng-model="expense.Description" type="text">
+                                                            <label for="last_name">Description</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+
+                                                        <div class="input-field col s12">
+                                                            <label>Expense Type</label>
+                                                            <select ng-model="expense.Type" class="browser-default">
+                                                                <option ng-repeat="x in selectlistExpenseTypes" value="{{x.Value}}">{{x.Text}}</option>
+
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                </div>
+                                                <!-- Form End -->
+                                            </div>
+                                            <div class="modal-footer">
+                                                <div class="input-field col s12">
+                                                    <span style="float:left;color:red;font-size:medium" id="messages" ng-bind="msg"></span>
+                                                    <a href="#!" class="modal-action modal-close waves-effect waves-purple btn-flat ">Cancel</a>
+                                                    <input type="submit" class="modal-action  waves-purple btn" value="Add" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <table id="data-table-simple" class="display nowrap striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Expense</th>
+                                                        <th>Description</th>
+                                                        <th>Expense Type</th>
+
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="expense in expenses">
+                                                        <td>{{expense.Id}}</td>
+                                                        <td>{{expense.Expense1}}</td>
+                                                        <td>{{expense.Description}}</td>
+                                                        <td>{{expense.TypeName}}</td>
+
+                                                        <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating" ng-click="DeleteExpense(expense)">><i class="material-icons">delete</i></a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+        $('.modal').modal();
+    });
+</script>
+

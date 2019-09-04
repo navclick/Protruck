@@ -1,0 +1,15 @@
+F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukRepo\bin\Release\ProTrukRepo.dll.config
+F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukRepo\bin\Release\ProTrukRepo.dll
+F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukRepo\bin\Release\ProTrukRepo.pdb
+F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukRepo\bin\Release\AutoMapper.dll
+F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukRepo\bin\Release\EntityFramework.dll
+F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukRepo\bin\Release\EntityFramework.SqlServer.dll
+F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukRepo\bin\Release\System.ValueTuple.dll
+F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukRepo\bin\Release\AutoMapper.pdb
+F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukRepo\bin\Release\AutoMapper.xml
+F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukRepo\bin\Release\EntityFramework.xml
+F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukRepo\bin\Release\EntityFramework.SqlServer.xml
+F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukRepo\bin\Release\System.ValueTuple.xml
+F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukRepo\obj\Release\ProTrukRepo.csprojResolveAssemblyReference.cache
+F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukRepo\obj\Release\ProTrukRepo.dll
+F:\Project\VS\GitProTruk\Protruck\ProTruck\ProTrukRepo\obj\Release\ProTrukRepo.pdb

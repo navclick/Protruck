@@ -1,0 +1,87 @@
+﻿@model ProTrukRepo.ViewModels.UserVM
+
+@{
+    ViewBag.Title = "Adduser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="__web-inspector-hide-shortcut__">
+    <div class="row">
+        <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
+        <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper">
+           
+        </div>
+        <!-- Form Start -->
+        <div class="col s12 m12 l12">
+            <div id="Form-advance" class="card card card-default scrollspy">
+                <div class="card-content">
+                    <h4 class="card-title">Add User</h4>
+                    @using (Html.BeginForm("Adduser",
+                "Account",
+                FormMethod.Post,
+                new { enctype = "multipart/form-data"}))
+                    {
+                        <div class="row">
+                            <div class="input-field col m6 s12">
+                                @Html.TextBoxFor(x => Model.FullName, new { @id = "first_name01", @data_validation = "required" }) 
+                                <label for="first_name01">Full Name</label>
+                            </div>
+                            <div class="input-field col m6 s12">
+                               
+                                @Html.TextBoxFor(x => Model.Email, new { @id = "email", @data_validation = "email" }) 
+                                <label for="email">Email</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col m6 s12">
+                                @Html.PasswordFor(x => Model.Password, new { @id = "password", @data_validation = "required" }) 
+                                <label for="password">Password</label>
+                            </div>
+                            <div class="input-field col m6 s12">
+                                <input id="Cpassword6" type="password" data-validation = "required">
+                                <label for="Cpassword">Confirm Password</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col m6 s12">
+                                @Html.TextAreaFor(x => Model.Phone, new { @id = "phone", @class = "materialize-textarea" }) 
+                                <label for="phone">Phone</label>
+                            </div>
+                            <div class="input-field col m6 s12">
+                                @Html.DropDownListFor(x => Model.RoleID, (IEnumerable
+     <SelectListItem>)ViewBag.roles)
+                                <label>Role</label>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 file-field input-field">
+                                    <div class="btn float-right purple">
+                                        <span>Picture Upload</span>
+                                        <input type="file" name="file" id="file" />
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input type="submit" class="btn purple waves-effect waves-light" value="Save" name="action" style="color:white;"/>
+                                    <!-- <i class="material-icons right">send</i> -->
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <!-- Form Start -->
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/val")
+<script>
+  $.validate({
+    lang: 'es'
+  });
+</script>

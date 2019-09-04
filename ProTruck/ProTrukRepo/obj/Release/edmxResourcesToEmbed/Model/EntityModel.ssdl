@@ -1,0 +1,836 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProTruckModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__RefactorLog">
+    <Key>
+      <PropertyRef Name="OperationKey" />
+    </Key>
+    <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AdressHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Party" Type="int" />
+    <Property Name="EnglisgAddress" Type="nvarchar(max)" />
+    <Property Name="UrduAddress" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Bank">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Bank" Type="nchar" MaxLength="20" />
+    <Property Name="Branch" Type="nchar" MaxLength="20" />
+    <Property Name="Address" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Bilty">
+    <Key>
+      <PropertyRef Name="BiltyNo" />
+    </Key>
+    <Property Name="BiltyNo" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VehicleId" Type="int" />
+    <Property Name="SenderParty" Type="int" />
+    <Property Name="PaymentCode" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="DriverId" Type="int" />
+    <Property Name="Weight" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="UnitId" Type="int" />
+    <Property Name="Rate" Type="float" />
+    <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="PaidAmount" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="RemainingAmount" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Qty" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="BiltyDate" Type="date" />
+    <Property Name="CreateDate" Type="date" />
+    <Property Name="Status" Type="int" />
+    <Property Name="PartyId" Type="int" />
+    <Property Name="Contractno" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="GoodTypeId" Type="int" />
+  </EntityType>
+  <EntityType Name="BiltyToDos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Biltyno" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Donumber" Type="numeric" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="Cities">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="City" Type="nchar" MaxLength="20" />
+    <Property Name="CreatedOn" Type="date" />
+    <Property Name="EcomID" Type="int" />
+  </EntityType>
+  <EntityType Name="Contract">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ContractNo" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="ContractType" Type="int" />
+    <Property Name="Party" Type="int" />
+    <Property Name="TotatQty" Type="float" />
+    <Property Name="Unit" Type="int" />
+    <Property Name="EcomID" Type="int" />
+    <Property Name="CreatedOn" Type="date" />
+  </EntityType>
+  <EntityType Name="Contractor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="100" />
+    <Property Name="ContactPerson" Type="nchar" MaxLength="100" />
+    <Property Name="Cell" Type="nchar" MaxLength="58" />
+    <Property Name="Email" Type="nchar" MaxLength="50" />
+    <Property Name="Address" Type="nchar" MaxLength="100" />
+    <Property Name="City" Type="int" />
+    <Property Name="EcomID" Type="int" />
+  </EntityType>
+  <EntityType Name="ContractType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="nchar" MaxLength="10" />
+    <Property Name="EcomID" Type="int" />
+    <Property Name="CreatedOn" Type="date" />
+  </EntityType>
+  <EntityType Name="Dorder">
+    <Key>
+      <PropertyRef Name="DoNumber" />
+    </Key>
+    <Property Name="DoNumber" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ContractNumber" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="ContractType" Type="int" />
+    <Property Name="QTY" Type="int" />
+    <Property Name="GoodsType" Type="int" />
+    <Property Name="AddressEng" Type="nvarchar(max)" />
+    <Property Name="AddressUrd" Type="nvarchar(max)" />
+    <Property Name="CityID" Type="int" />
+    <Property Name="Party" Type="int" />
+    <Property Name="Weight" Type="float" />
+    <Property Name="Unit" Type="int" />
+    <Property Name="Attached" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="DoDate" Type="date" />
+    <Property Name="CreatedOn" Type="date" />
+    <Property Name="EcomID" Type="int" />
+  </EntityType>
+  <EntityType Name="Drivers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="15" />
+    <Property Name="Phone" Type="nchar" MaxLength="15" />
+    <Property Name="Address" Type="nchar" MaxLength="500" />
+    <Property Name="DeviceID" Type="nchar" MaxLength="150" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="Vehicle" Type="int" />
+    <Property Name="CreatedOn" Type="date" />
+    <Property Name="EcomID" Type="int" />
+  </EntityType>
+  <EntityType Name="ExanaduCompanies">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientName" Type="nvarchar" MaxLength="500" />
+    <Property Name="ClientEmail" Type="nchar" MaxLength="100" />
+    <Property Name="ClientContactPeson" Type="nchar" MaxLength="100" />
+    <Property Name="ClientContactNumber" Type="nchar" MaxLength="100" />
+    <Property Name="ClientAddress" Type="nchar" MaxLength="200" />
+    <Property Name="StartDate" Type="date" />
+    <Property Name="ExpiryDate" Type="date" />
+  </EntityType>
+  <EntityType Name="Expense">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Expense" Type="nchar" MaxLength="50" />
+    <Property Name="Description" Type="nchar" MaxLength="100" />
+    <Property Name="Type" Type="int" />
+    <Property Name="EcomID" Type="int" />
+  </EntityType>
+  <EntityType Name="GoodsTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Goods" Type="nchar" MaxLength="20" />
+    <Property Name="Description" Type="nchar" MaxLength="50" />
+    <Property Name="Unit" Type="int" />
+    <Property Name="EcomID" Type="int" />
+  </EntityType>
+  <EntityType Name="LinkRoleMenus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleID" Type="int" />
+    <Property Name="MenuID" Type="int" />
+  </EntityType>
+  <EntityType Name="Menus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="100" />
+    <Property Name="Controller" Type="nchar" MaxLength="100" />
+    <Property Name="Action" Type="nchar" MaxLength="100" />
+    <Property Name="Icon" Type="nchar" MaxLength="200" />
+    <Property Name="IsActive" Type="nchar" MaxLength="10" />
+    <Property Name="ModuleID" Type="int" />
+  </EntityType>
+  <EntityType Name="Modules">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="200" />
+    <Property Name="Controller" Type="nchar" MaxLength="100" />
+    <Property Name="Action" Type="nchar" MaxLength="100" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="Icon" Type="nchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="Party">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Party" Type="nchar" MaxLength="100" />
+    <Property Name="ConectPerson" Type="nchar" MaxLength="15" />
+    <Property Name="Phone" Type="nchar" MaxLength="15" />
+    <Property Name="SenderOrReceiver" Type="nchar" MaxLength="10" />
+    <Property Name="IsSubParty" Type="bit" />
+    <Property Name="CreatedOn" Type="date" />
+    <Property Name="ParentId" Type="int" />
+    <Property Name="EcomID" Type="int" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Role" Type="nchar" MaxLength="100" />
+    <Property Name="Desc" Type="nchar" MaxLength="500" />
+    <Property Name="CreatedOn" Type="date" />
+    <Property Name="EcomID" Type="int" />
+  </EntityType>
+  <EntityType Name="Settings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DoAutoincrement" Type="bit" />
+    <Property Name="LastDoNumber" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="PackPerWeight" Type="int" />
+    <Property Name="EcomID" Type="int" />
+    <Property Name="LastConractNumber" Type="numeric" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="nchar" MaxLength="100" />
+    <Property Name="Email" Type="nchar" MaxLength="100" />
+    <Property Name="Password" Type="nvarchar(max)" />
+    <Property Name="Phone" Type="nchar" MaxLength="100" />
+    <Property Name="EmailVeringCode" Type="nvarchar(max)" />
+    <Property Name="EmailConfirmed" Type="bit" />
+    <Property Name="AccountStatus" Type="int" />
+    <Property Name="CreatedOn" Type="date" />
+    <Property Name="RoleID" Type="int" />
+    <Property Name="EcomID" Type="int" Nullable="false" />
+    <Property Name="Picture" Type="nchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="vehicle">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RegNumber" Type="nchar" MaxLength="10" />
+    <Property Name="Type" Type="int" />
+    <Property Name="Manufacturer" Type="nchar" MaxLength="15" />
+    <Property Name="Model" Type="nchar" MaxLength="15" />
+    <Property Name="Capacity" Type="int" />
+    <Property Name="Unit" Type="int" />
+    <Property Name="Status" Type="int" />
+    <Property Name="CreatedOn" Type="date" />
+    <Property Name="EcomID" Type="int" />
+    <Property Name="IsContractorVehicle" Type="bit" />
+    <Property Name="ContractorId" Type="int" />
+  </EntityType>
+  <EntityType Name="Vendor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="100" />
+    <Property Name="ContactPerson" Type="nchar" MaxLength="100" />
+    <Property Name="Cell" Type="nchar" MaxLength="100" />
+    <Property Name="Email" Type="nchar" MaxLength="100" />
+    <Property Name="Address" Type="nchar" MaxLength="100" />
+    <Property Name="City" Type="int" />
+    <Property Name="EcomID" Type="int" />
+  </EntityType>
+  <Association Name="FK_AdressHistory_Party">
+    <End Role="Party" Type="Self.Party" Multiplicity="0..1" />
+    <End Role="AdressHistory" Type="Self.AdressHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Party">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AdressHistory">
+        <PropertyRef Name="Party" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bilty_Drivers">
+    <End Role="Drivers" Type="Self.Drivers" Multiplicity="0..1" />
+    <End Role="Bilty" Type="Self.Bilty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Drivers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bilty">
+        <PropertyRef Name="DriverId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bilty_GoodTypes">
+    <End Role="GoodsTypes" Type="Self.GoodsTypes" Multiplicity="0..1" />
+    <End Role="Bilty" Type="Self.Bilty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GoodsTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bilty">
+        <PropertyRef Name="GoodTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bilty_Party">
+    <End Role="Party" Type="Self.Party" Multiplicity="0..1" />
+    <End Role="Bilty" Type="Self.Bilty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Party">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bilty">
+        <PropertyRef Name="PartyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bilty_vehicle">
+    <End Role="vehicle" Type="Self.vehicle" Multiplicity="0..1" />
+    <End Role="Bilty" Type="Self.Bilty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vehicle">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bilty">
+        <PropertyRef Name="VehicleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BiltyToDos_Bilty">
+    <End Role="Bilty" Type="Self.Bilty" Multiplicity="0..1" />
+    <End Role="BiltyToDos" Type="Self.BiltyToDos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bilty">
+        <PropertyRef Name="BiltyNo" />
+      </Principal>
+      <Dependent Role="BiltyToDos">
+        <PropertyRef Name="Biltyno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BiltyToDos_Dorder">
+    <End Role="Dorder" Type="Self.Dorder" Multiplicity="0..1" />
+    <End Role="BiltyToDos" Type="Self.BiltyToDos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dorder">
+        <PropertyRef Name="DoNumber" />
+      </Principal>
+      <Dependent Role="BiltyToDos">
+        <PropertyRef Name="Donumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cities_ExanaduCompanies">
+    <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="0..1" />
+    <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompanies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cities">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contract_ContractType">
+    <End Role="ContractType" Type="Self.ContractType" Multiplicity="0..1" />
+    <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ContractType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="ContractType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contract_ExanaduCompanies">
+    <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="0..1" />
+    <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompanies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contract_Party">
+    <End Role="Party" Type="Self.Party" Multiplicity="0..1" />
+    <End Role="Contract" Type="Self.Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Party">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="Party" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contractor_Cities">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+    <End Role="Contractor" Type="Self.Contractor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Contractor">
+        <PropertyRef Name="City" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contractor_ExanaduCompanies">
+    <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="0..1" />
+    <End Role="Contractor" Type="Self.Contractor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompanies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Contractor">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContractType_ExanaduCompanies">
+    <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="0..1" />
+    <End Role="ContractType" Type="Self.ContractType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompanies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContractType">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dorder_Cities">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+    <End Role="Dorder" Type="Self.Dorder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Dorder">
+        <PropertyRef Name="CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dorder_ContractType">
+    <End Role="ContractType" Type="Self.ContractType" Multiplicity="0..1" />
+    <End Role="Dorder" Type="Self.Dorder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ContractType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Dorder">
+        <PropertyRef Name="ContractType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dorder_GoodsTypes">
+    <End Role="GoodsTypes" Type="Self.GoodsTypes" Multiplicity="0..1" />
+    <End Role="Dorder" Type="Self.Dorder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GoodsTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Dorder">
+        <PropertyRef Name="GoodsType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dorder_Party">
+    <End Role="Party" Type="Self.Party" Multiplicity="0..1" />
+    <End Role="Dorder" Type="Self.Dorder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Party">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Dorder">
+        <PropertyRef Name="Party" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Drivers_ExanaduCompanies">
+    <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="0..1" />
+    <End Role="Drivers" Type="Self.Drivers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompanies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Drivers">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Drivers_vehicle">
+    <End Role="vehicle" Type="Self.vehicle" Multiplicity="0..1" />
+    <End Role="Drivers" Type="Self.Drivers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vehicle">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Drivers">
+        <PropertyRef Name="Vehicle" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Expense_ExanaduCompanies">
+    <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="0..1" />
+    <End Role="Expense" Type="Self.Expense" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompanies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Expense">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GoodsTypes_ExanaduCompanies">
+    <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="0..1" />
+    <End Role="GoodsTypes" Type="Self.GoodsTypes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompanies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GoodsTypes">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LinkRoleMenus_Menus">
+    <End Role="Menus" Type="Self.Menus" Multiplicity="0..1" />
+    <End Role="LinkRoleMenus" Type="Self.LinkRoleMenus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LinkRoleMenus">
+        <PropertyRef Name="MenuID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LinkRoleMenus_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+    <End Role="LinkRoleMenus" Type="Self.LinkRoleMenus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LinkRoleMenus">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Menus_Modules">
+    <End Role="Modules" Type="Self.Modules" Multiplicity="0..1" />
+    <End Role="Menus" Type="Self.Menus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Modules">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Menus">
+        <PropertyRef Name="ModuleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Party_ExanaduCompanies">
+    <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="0..1" />
+    <End Role="Party" Type="Self.Party" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompanies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Party">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Roles_ExanaduCompanies">
+    <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="0..1" />
+    <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompanies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Roles">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Settings_ExanaduCompanies">
+    <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="0..1" />
+    <End Role="Settings" Type="Self.Settings" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompanies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Settings">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_ExanaduCompanies">
+    <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompanies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vehicle_Contractor">
+    <End Role="Contractor" Type="Self.Contractor" Multiplicity="0..1" />
+    <End Role="vehicle" Type="Self.vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contractor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="vehicle">
+        <PropertyRef Name="ContractorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vendor_Cities">
+    <End Role="Cities" Type="Self.Cities" Multiplicity="0..1" />
+    <End Role="Vendor" Type="Self.Vendor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cities">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Vendor">
+        <PropertyRef Name="City" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vendor_ExanaduCompanies">
+    <End Role="ExanaduCompanies" Type="Self.ExanaduCompanies" Multiplicity="0..1" />
+    <End Role="Vendor" Type="Self.Vendor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompanies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Vendor">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProTruckModelStoreContainer">
+    <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdressHistory" EntityType="Self.AdressHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bilty" EntityType="Self.Bilty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BiltyToDos" EntityType="Self.BiltyToDos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contract" EntityType="Self.Contract" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contractor" EntityType="Self.Contractor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ContractType" EntityType="Self.ContractType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dorder" EntityType="Self.Dorder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Drivers" EntityType="Self.Drivers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExanaduCompanies" EntityType="Self.ExanaduCompanies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Expense" EntityType="Self.Expense" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GoodsTypes" EntityType="Self.GoodsTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LinkRoleMenus" EntityType="Self.LinkRoleMenus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Modules" EntityType="Self.Modules" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Party" EntityType="Self.Party" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vehicle" EntityType="Self.vehicle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_AdressHistory_Party" Association="Self.FK_AdressHistory_Party">
+      <End Role="Party" EntitySet="Party" />
+      <End Role="AdressHistory" EntitySet="AdressHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bilty_Drivers" Association="Self.FK_Bilty_Drivers">
+      <End Role="Drivers" EntitySet="Drivers" />
+      <End Role="Bilty" EntitySet="Bilty" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bilty_GoodTypes" Association="Self.FK_Bilty_GoodTypes">
+      <End Role="GoodsTypes" EntitySet="GoodsTypes" />
+      <End Role="Bilty" EntitySet="Bilty" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bilty_Party" Association="Self.FK_Bilty_Party">
+      <End Role="Party" EntitySet="Party" />
+      <End Role="Bilty" EntitySet="Bilty" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bilty_vehicle" Association="Self.FK_Bilty_vehicle">
+      <End Role="vehicle" EntitySet="vehicle" />
+      <End Role="Bilty" EntitySet="Bilty" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BiltyToDos_Bilty" Association="Self.FK_BiltyToDos_Bilty">
+      <End Role="Bilty" EntitySet="Bilty" />
+      <End Role="BiltyToDos" EntitySet="BiltyToDos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BiltyToDos_Dorder" Association="Self.FK_BiltyToDos_Dorder">
+      <End Role="Dorder" EntitySet="Dorder" />
+      <End Role="BiltyToDos" EntitySet="BiltyToDos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cities_ExanaduCompanies" Association="Self.FK_Cities_ExanaduCompanies">
+      <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
+      <End Role="Cities" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contract_ContractType" Association="Self.FK_Contract_ContractType">
+      <End Role="ContractType" EntitySet="ContractType" />
+      <End Role="Contract" EntitySet="Contract" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contract_ExanaduCompanies" Association="Self.FK_Contract_ExanaduCompanies">
+      <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
+      <End Role="Contract" EntitySet="Contract" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contract_Party" Association="Self.FK_Contract_Party">
+      <End Role="Party" EntitySet="Party" />
+      <End Role="Contract" EntitySet="Contract" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contractor_Cities" Association="Self.FK_Contractor_Cities">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="Contractor" EntitySet="Contractor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contractor_ExanaduCompanies" Association="Self.FK_Contractor_ExanaduCompanies">
+      <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
+      <End Role="Contractor" EntitySet="Contractor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContractType_ExanaduCompanies" Association="Self.FK_ContractType_ExanaduCompanies">
+      <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
+      <End Role="ContractType" EntitySet="ContractType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dorder_Cities" Association="Self.FK_Dorder_Cities">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="Dorder" EntitySet="Dorder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dorder_ContractType" Association="Self.FK_Dorder_ContractType">
+      <End Role="ContractType" EntitySet="ContractType" />
+      <End Role="Dorder" EntitySet="Dorder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dorder_GoodsTypes" Association="Self.FK_Dorder_GoodsTypes">
+      <End Role="GoodsTypes" EntitySet="GoodsTypes" />
+      <End Role="Dorder" EntitySet="Dorder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dorder_Party" Association="Self.FK_Dorder_Party">
+      <End Role="Party" EntitySet="Party" />
+      <End Role="Dorder" EntitySet="Dorder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Drivers_ExanaduCompanies" Association="Self.FK_Drivers_ExanaduCompanies">
+      <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
+      <End Role="Drivers" EntitySet="Drivers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Drivers_vehicle" Association="Self.FK_Drivers_vehicle">
+      <End Role="vehicle" EntitySet="vehicle" />
+      <End Role="Drivers" EntitySet="Drivers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Expense_ExanaduCompanies" Association="Self.FK_Expense_ExanaduCompanies">
+      <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
+      <End Role="Expense" EntitySet="Expense" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GoodsTypes_ExanaduCompanies" Association="Self.FK_GoodsTypes_ExanaduCompanies">
+      <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
+      <End Role="GoodsTypes" EntitySet="GoodsTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LinkRoleMenus_Menus" Association="Self.FK_LinkRoleMenus_Menus">
+      <End Role="Menus" EntitySet="Menus" />
+      <End Role="LinkRoleMenus" EntitySet="LinkRoleMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LinkRoleMenus_Roles" Association="Self.FK_LinkRoleMenus_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="LinkRoleMenus" EntitySet="LinkRoleMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Menus_Modules" Association="Self.FK_Menus_Modules">
+      <End Role="Modules" EntitySet="Modules" />
+      <End Role="Menus" EntitySet="Menus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Party_ExanaduCompanies" Association="Self.FK_Party_ExanaduCompanies">
+      <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
+      <End Role="Party" EntitySet="Party" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Roles_ExanaduCompanies" Association="Self.FK_Roles_ExanaduCompanies">
+      <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
+      <End Role="Roles" EntitySet="Roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Settings_ExanaduCompanies" Association="Self.FK_Settings_ExanaduCompanies">
+      <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
+      <End Role="Settings" EntitySet="Settings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_ExanaduCompanies" Association="Self.FK_Users_ExanaduCompanies">
+      <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vehicle_Contractor" Association="Self.FK_vehicle_Contractor">
+      <End Role="Contractor" EntitySet="Contractor" />
+      <End Role="vehicle" EntitySet="vehicle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vendor_Cities" Association="Self.FK_Vendor_Cities">
+      <End Role="Cities" EntitySet="Cities" />
+      <End Role="Vendor" EntitySet="Vendor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vendor_ExanaduCompanies" Association="Self.FK_Vendor_ExanaduCompanies">
+      <End Role="ExanaduCompanies" EntitySet="ExanaduCompanies" />
+      <End Role="Vendor" EntitySet="Vendor" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

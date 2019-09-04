@@ -1,0 +1,902 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProTruckModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ProTruckEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="C__RefactorLog" EntityType="ProTruckModel.C__RefactorLog" />
+    <EntitySet Name="AdressHistories" EntityType="ProTruckModel.AdressHistory" />
+    <EntitySet Name="Banks" EntityType="ProTruckModel.Bank" />
+    <EntitySet Name="BiltyToDos" EntityType="ProTruckModel.BiltyToDo" />
+    <EntitySet Name="Cities" EntityType="ProTruckModel.City" />
+    <EntitySet Name="Contracts" EntityType="ProTruckModel.Contract" />
+    <EntitySet Name="Contractors" EntityType="ProTruckModel.Contractor" />
+    <EntitySet Name="ContractTypes" EntityType="ProTruckModel.ContractType" />
+    <EntitySet Name="Dorders" EntityType="ProTruckModel.Dorder" />
+    <EntitySet Name="Drivers" EntityType="ProTruckModel.Driver" />
+    <EntitySet Name="ExanaduCompanies" EntityType="ProTruckModel.ExanaduCompany" />
+    <EntitySet Name="Expenses" EntityType="ProTruckModel.Expense" />
+    <EntitySet Name="GoodsTypes" EntityType="ProTruckModel.GoodsType" />
+    <EntitySet Name="LinkRoleMenus" EntityType="ProTruckModel.LinkRoleMenu" />
+    <EntitySet Name="Menus" EntityType="ProTruckModel.Menu" />
+    <EntitySet Name="Modules" EntityType="ProTruckModel.Module" />
+    <EntitySet Name="Parties" EntityType="ProTruckModel.Party" />
+    <EntitySet Name="Roles" EntityType="ProTruckModel.Role" />
+    <EntitySet Name="Settings" EntityType="ProTruckModel.Setting" />
+    <EntitySet Name="Users" EntityType="ProTruckModel.User" />
+    <EntitySet Name="vehicles" EntityType="ProTruckModel.vehicle" />
+    <EntitySet Name="Vendors" EntityType="ProTruckModel.Vendor" />
+    <AssociationSet Name="FK_AdressHistory_Party" Association="ProTruckModel.FK_AdressHistory_Party">
+      <End Role="Party" EntitySet="Parties" />
+      <End Role="AdressHistory" EntitySet="AdressHistories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BiltyToDos_Dorder" Association="ProTruckModel.FK_BiltyToDos_Dorder">
+      <End Role="Dorder" EntitySet="Dorders" />
+      <End Role="BiltyToDo" EntitySet="BiltyToDos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cities_ExanaduCompanies" Association="ProTruckModel.FK_Cities_ExanaduCompanies">
+      <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
+      <End Role="City" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contractor_Cities" Association="ProTruckModel.FK_Contractor_Cities">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="Contractor" EntitySet="Contractors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dorder_Cities" Association="ProTruckModel.FK_Dorder_Cities">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="Dorder" EntitySet="Dorders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vendor_Cities" Association="ProTruckModel.FK_Vendor_Cities">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="Vendor" EntitySet="Vendors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contract_ContractType" Association="ProTruckModel.FK_Contract_ContractType">
+      <End Role="ContractType" EntitySet="ContractTypes" />
+      <End Role="Contract" EntitySet="Contracts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contract_ExanaduCompanies" Association="ProTruckModel.FK_Contract_ExanaduCompanies">
+      <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
+      <End Role="Contract" EntitySet="Contracts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contract_Party" Association="ProTruckModel.FK_Contract_Party">
+      <End Role="Party" EntitySet="Parties" />
+      <End Role="Contract" EntitySet="Contracts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contractor_ExanaduCompanies" Association="ProTruckModel.FK_Contractor_ExanaduCompanies">
+      <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
+      <End Role="Contractor" EntitySet="Contractors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vehicle_Contractor" Association="ProTruckModel.FK_vehicle_Contractor">
+      <End Role="Contractor" EntitySet="Contractors" />
+      <End Role="vehicle" EntitySet="vehicles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContractType_ExanaduCompanies" Association="ProTruckModel.FK_ContractType_ExanaduCompanies">
+      <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
+      <End Role="ContractType" EntitySet="ContractTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dorder_ContractType" Association="ProTruckModel.FK_Dorder_ContractType">
+      <End Role="ContractType" EntitySet="ContractTypes" />
+      <End Role="Dorder" EntitySet="Dorders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dorder_GoodsTypes" Association="ProTruckModel.FK_Dorder_GoodsTypes">
+      <End Role="GoodsType" EntitySet="GoodsTypes" />
+      <End Role="Dorder" EntitySet="Dorders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dorder_Party" Association="ProTruckModel.FK_Dorder_Party">
+      <End Role="Party" EntitySet="Parties" />
+      <End Role="Dorder" EntitySet="Dorders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Drivers_ExanaduCompanies" Association="ProTruckModel.FK_Drivers_ExanaduCompanies">
+      <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
+      <End Role="Driver" EntitySet="Drivers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Drivers_vehicle" Association="ProTruckModel.FK_Drivers_vehicle">
+      <End Role="vehicle" EntitySet="vehicles" />
+      <End Role="Driver" EntitySet="Drivers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Expense_ExanaduCompanies" Association="ProTruckModel.FK_Expense_ExanaduCompanies">
+      <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
+      <End Role="Expense" EntitySet="Expenses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GoodsTypes_ExanaduCompanies" Association="ProTruckModel.FK_GoodsTypes_ExanaduCompanies">
+      <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
+      <End Role="GoodsType" EntitySet="GoodsTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Party_ExanaduCompanies" Association="ProTruckModel.FK_Party_ExanaduCompanies">
+      <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
+      <End Role="Party" EntitySet="Parties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Roles_ExanaduCompanies" Association="ProTruckModel.FK_Roles_ExanaduCompanies">
+      <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
+      <End Role="Role" EntitySet="Roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Settings_ExanaduCompanies" Association="ProTruckModel.FK_Settings_ExanaduCompanies">
+      <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
+      <End Role="Setting" EntitySet="Settings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_ExanaduCompanies" Association="ProTruckModel.FK_Users_ExanaduCompanies">
+      <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vendor_ExanaduCompanies" Association="ProTruckModel.FK_Vendor_ExanaduCompanies">
+      <End Role="ExanaduCompany" EntitySet="ExanaduCompanies" />
+      <End Role="Vendor" EntitySet="Vendors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LinkRoleMenus_Menus" Association="ProTruckModel.FK_LinkRoleMenus_Menus">
+      <End Role="Menu" EntitySet="Menus" />
+      <End Role="LinkRoleMenu" EntitySet="LinkRoleMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LinkRoleMenus_Roles" Association="ProTruckModel.FK_LinkRoleMenus_Roles">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="LinkRoleMenu" EntitySet="LinkRoleMenus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Menus_Modules" Association="ProTruckModel.FK_Menus_Modules">
+      <End Role="Module" EntitySet="Modules" />
+      <End Role="Menu" EntitySet="Menus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Roles" Association="ProTruckModel.FK_Users_Roles">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <EntitySet Name="Bilties" EntityType="ProTruckModel.Bilty" />
+    <AssociationSet Name="FK_Bilty_Drivers" Association="ProTruckModel.FK_Bilty_Drivers">
+      <End Role="Driver" EntitySet="Drivers" />
+      <End Role="Bilty" EntitySet="Bilties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bilty_GoodTypes" Association="ProTruckModel.FK_Bilty_GoodTypes">
+      <End Role="GoodsType" EntitySet="GoodsTypes" />
+      <End Role="Bilty" EntitySet="Bilties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bilty_Party" Association="ProTruckModel.FK_Bilty_Party">
+      <End Role="Party" EntitySet="Parties" />
+      <End Role="Bilty" EntitySet="Bilties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bilty_vehicle" Association="ProTruckModel.FK_Bilty_vehicle">
+      <End Role="vehicle" EntitySet="vehicles" />
+      <End Role="Bilty" EntitySet="Bilties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BiltyToDos_Bilty" Association="ProTruckModel.FK_BiltyToDos_Bilty">
+      <End Role="Bilty" EntitySet="Bilties" />
+      <End Role="BiltyToDo" EntitySet="BiltyToDos" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="C__RefactorLog">
+    <Key>
+      <PropertyRef Name="OperationKey" />
+    </Key>
+    <Property Name="OperationKey" Type="Guid" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AdressHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Party" Type="Int32" />
+    <Property Name="EnglisgAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UrduAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Party1" Relationship="ProTruckModel.FK_AdressHistory_Party" FromRole="AdressHistory" ToRole="Party" />
+  </EntityType>
+  <EntityType Name="Bank">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Bank1" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="Branch" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="BiltyToDo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Biltyno" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Donumber" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="Dorder" Relationship="ProTruckModel.FK_BiltyToDos_Dorder" FromRole="BiltyToDo" ToRole="Dorder" />
+    <NavigationProperty Name="Bilty" Relationship="ProTruckModel.FK_BiltyToDos_Bilty" FromRole="BiltyToDo" ToRole="Bilty" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="City1" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="0" />
+    <Property Name="EcomID" Type="Int32" />
+    <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Cities_ExanaduCompanies" FromRole="City" ToRole="ExanaduCompany" />
+    <NavigationProperty Name="Contractors" Relationship="ProTruckModel.FK_Contractor_Cities" FromRole="City" ToRole="Contractor" />
+    <NavigationProperty Name="Dorders" Relationship="ProTruckModel.FK_Dorder_Cities" FromRole="City" ToRole="Dorder" />
+    <NavigationProperty Name="Vendors" Relationship="ProTruckModel.FK_Vendor_Cities" FromRole="City" ToRole="Vendor" />
+  </EntityType>
+  <EntityType Name="Contract">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ContractNo" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ContractType" Type="Int32" />
+    <Property Name="Party" Type="Int32" />
+    <Property Name="TotatQty" Type="Double" />
+    <Property Name="Unit" Type="Int32" />
+    <Property Name="EcomID" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="ContractType1" Relationship="ProTruckModel.FK_Contract_ContractType" FromRole="Contract" ToRole="ContractType" />
+    <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Contract_ExanaduCompanies" FromRole="Contract" ToRole="ExanaduCompany" />
+    <NavigationProperty Name="Party1" Relationship="ProTruckModel.FK_Contract_Party" FromRole="Contract" ToRole="Party" />
+  </EntityType>
+  <EntityType Name="Contractor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="ContactPerson" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="Cell" Type="String" MaxLength="58" FixedLength="true" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="City" Type="Int32" />
+    <Property Name="EcomID" Type="Int32" />
+    <NavigationProperty Name="City1" Relationship="ProTruckModel.FK_Contractor_Cities" FromRole="Contractor" ToRole="City" />
+    <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Contractor_ExanaduCompanies" FromRole="Contractor" ToRole="ExanaduCompany" />
+    <NavigationProperty Name="vehicles" Relationship="ProTruckModel.FK_vehicle_Contractor" FromRole="Contractor" ToRole="vehicle" />
+  </EntityType>
+  <EntityType Name="ContractType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="EcomID" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Contracts" Relationship="ProTruckModel.FK_Contract_ContractType" FromRole="ContractType" ToRole="Contract" />
+    <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_ContractType_ExanaduCompanies" FromRole="ContractType" ToRole="ExanaduCompany" />
+    <NavigationProperty Name="Dorders" Relationship="ProTruckModel.FK_Dorder_ContractType" FromRole="ContractType" ToRole="Dorder" />
+  </EntityType>
+  <EntityType Name="Dorder">
+    <Key>
+      <PropertyRef Name="DoNumber" />
+    </Key>
+    <Property Name="DoNumber" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="ContractNumber" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ContractType" Type="Int32" />
+    <Property Name="QTY" Type="Int32" />
+    <Property Name="GoodsType" Type="Int32" />
+    <Property Name="AddressEng" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AddressUrd" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CityID" Type="Int32" />
+    <Property Name="Party" Type="Int32" />
+    <Property Name="Weight" Type="Double" />
+    <Property Name="Unit" Type="Int32" />
+    <Property Name="Attached" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="DoDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="0" />
+    <Property Name="EcomID" Type="Int32" />
+    <NavigationProperty Name="BiltyToDos" Relationship="ProTruckModel.FK_BiltyToDos_Dorder" FromRole="Dorder" ToRole="BiltyToDo" />
+    <NavigationProperty Name="City" Relationship="ProTruckModel.FK_Dorder_Cities" FromRole="Dorder" ToRole="City" />
+    <NavigationProperty Name="ContractType1" Relationship="ProTruckModel.FK_Dorder_ContractType" FromRole="Dorder" ToRole="ContractType" />
+    <NavigationProperty Name="GoodsType1" Relationship="ProTruckModel.FK_Dorder_GoodsTypes" FromRole="Dorder" ToRole="GoodsType" />
+    <NavigationProperty Name="Party1" Relationship="ProTruckModel.FK_Dorder_Party" FromRole="Dorder" ToRole="Party" />
+  </EntityType>
+  <EntityType Name="Driver">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
+    <Property Name="DeviceID" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="Vehicle" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="0" />
+    <Property Name="EcomID" Type="Int32" />
+    <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Drivers_ExanaduCompanies" FromRole="Driver" ToRole="ExanaduCompany" />
+    <NavigationProperty Name="vehicle1" Relationship="ProTruckModel.FK_Drivers_vehicle" FromRole="Driver" ToRole="vehicle" />
+    <NavigationProperty Name="Bilties" Relationship="ProTruckModel.FK_Bilty_Drivers" FromRole="Driver" ToRole="Bilty" />
+  </EntityType>
+  <EntityType Name="ExanaduCompany">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ClientEmail" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="ClientContactPeson" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="ClientContactNumber" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="ClientAddress" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Precision="0" />
+    <Property Name="ExpiryDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Cities" Relationship="ProTruckModel.FK_Cities_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="City" />
+    <NavigationProperty Name="Contracts" Relationship="ProTruckModel.FK_Contract_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Contract" />
+    <NavigationProperty Name="Contractors" Relationship="ProTruckModel.FK_Contractor_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Contractor" />
+    <NavigationProperty Name="ContractTypes" Relationship="ProTruckModel.FK_ContractType_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="ContractType" />
+    <NavigationProperty Name="Drivers" Relationship="ProTruckModel.FK_Drivers_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Driver" />
+    <NavigationProperty Name="Expenses" Relationship="ProTruckModel.FK_Expense_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Expense" />
+    <NavigationProperty Name="GoodsTypes" Relationship="ProTruckModel.FK_GoodsTypes_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="GoodsType" />
+    <NavigationProperty Name="Parties" Relationship="ProTruckModel.FK_Party_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Party" />
+    <NavigationProperty Name="Roles" Relationship="ProTruckModel.FK_Roles_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Role" />
+    <NavigationProperty Name="Settings" Relationship="ProTruckModel.FK_Settings_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Setting" />
+    <NavigationProperty Name="Users" Relationship="ProTruckModel.FK_Users_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="User" />
+    <NavigationProperty Name="Vendors" Relationship="ProTruckModel.FK_Vendor_ExanaduCompanies" FromRole="ExanaduCompany" ToRole="Vendor" />
+  </EntityType>
+  <EntityType Name="Expense">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Expense1" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="Type" Type="Int32" />
+    <Property Name="EcomID" Type="Int32" />
+    <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Expense_ExanaduCompanies" FromRole="Expense" ToRole="ExanaduCompany" />
+  </EntityType>
+  <EntityType Name="GoodsType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Goods" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Unit" Type="Int32" />
+    <Property Name="EcomID" Type="Int32" />
+    <NavigationProperty Name="Dorders" Relationship="ProTruckModel.FK_Dorder_GoodsTypes" FromRole="GoodsType" ToRole="Dorder" />
+    <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_GoodsTypes_ExanaduCompanies" FromRole="GoodsType" ToRole="ExanaduCompany" />
+    <NavigationProperty Name="Bilties" Relationship="ProTruckModel.FK_Bilty_GoodTypes" FromRole="GoodsType" ToRole="Bilty" />
+  </EntityType>
+  <EntityType Name="LinkRoleMenu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleID" Type="Int32" />
+    <Property Name="MenuID" Type="Int32" />
+    <NavigationProperty Name="Menu" Relationship="ProTruckModel.FK_LinkRoleMenus_Menus" FromRole="LinkRoleMenu" ToRole="Menu" />
+    <NavigationProperty Name="Role" Relationship="ProTruckModel.FK_LinkRoleMenus_Roles" FromRole="LinkRoleMenu" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="Controller" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="Action" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="Icon" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="IsActive" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ModuleID" Type="Int32" />
+    <NavigationProperty Name="LinkRoleMenus" Relationship="ProTruckModel.FK_LinkRoleMenus_Menus" FromRole="Menu" ToRole="LinkRoleMenu" />
+    <NavigationProperty Name="Module" Relationship="ProTruckModel.FK_Menus_Modules" FromRole="Menu" ToRole="Module" />
+  </EntityType>
+  <EntityType Name="Module">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="Controller" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="Action" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="Icon" Type="String" MaxLength="300" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Menus" Relationship="ProTruckModel.FK_Menus_Modules" FromRole="Module" ToRole="Menu" />
+  </EntityType>
+  <EntityType Name="Party">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Party1" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="ConectPerson" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="SenderOrReceiver" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="IsSubParty" Type="Boolean" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="0" />
+    <Property Name="ParentId" Type="Int32" />
+    <Property Name="EcomID" Type="Int32" />
+    <NavigationProperty Name="AdressHistories" Relationship="ProTruckModel.FK_AdressHistory_Party" FromRole="Party" ToRole="AdressHistory" />
+    <NavigationProperty Name="Contracts" Relationship="ProTruckModel.FK_Contract_Party" FromRole="Party" ToRole="Contract" />
+    <NavigationProperty Name="Dorders" Relationship="ProTruckModel.FK_Dorder_Party" FromRole="Party" ToRole="Dorder" />
+    <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Party_ExanaduCompanies" FromRole="Party" ToRole="ExanaduCompany" />
+    <NavigationProperty Name="Bilties" Relationship="ProTruckModel.FK_Bilty_Party" FromRole="Party" ToRole="Bilty" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Role1" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="Desc" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="0" />
+    <Property Name="EcomID" Type="Int32" />
+    <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Roles_ExanaduCompanies" FromRole="Role" ToRole="ExanaduCompany" />
+    <NavigationProperty Name="LinkRoleMenus" Relationship="ProTruckModel.FK_LinkRoleMenus_Roles" FromRole="Role" ToRole="LinkRoleMenu" />
+    <NavigationProperty Name="Users" Relationship="ProTruckModel.FK_Users_Roles" FromRole="Role" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Setting">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DoAutoincrement" Type="Boolean" />
+    <Property Name="LastDoNumber" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="PackPerWeight" Type="Int32" />
+    <Property Name="EcomID" Type="Int32" />
+    <Property Name="LastConractNumber" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Settings_ExanaduCompanies" FromRole="Setting" ToRole="ExanaduCompany" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="EmailVeringCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" />
+    <Property Name="AccountStatus" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="0" />
+    <Property Name="RoleID" Type="Int32" />
+    <Property Name="EcomID" Type="Int32" Nullable="false" />
+    <Property Name="Picture" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Users_ExanaduCompanies" FromRole="User" ToRole="ExanaduCompany" />
+    <NavigationProperty Name="Role" Relationship="ProTruckModel.FK_Users_Roles" FromRole="User" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="vehicle">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RegNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Type" Type="Int32" />
+    <Property Name="Manufacturer" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="Model" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="Capacity" Type="Int32" />
+    <Property Name="Unit" Type="Int32" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="0" />
+    <Property Name="EcomID" Type="Int32" />
+    <Property Name="IsContractorVehicle" Type="Boolean" />
+    <Property Name="ContractorId" Type="Int32" />
+    <NavigationProperty Name="Contractor" Relationship="ProTruckModel.FK_vehicle_Contractor" FromRole="vehicle" ToRole="Contractor" />
+    <NavigationProperty Name="Drivers" Relationship="ProTruckModel.FK_Drivers_vehicle" FromRole="vehicle" ToRole="Driver" />
+    <NavigationProperty Name="Bilties" Relationship="ProTruckModel.FK_Bilty_vehicle" FromRole="vehicle" ToRole="Bilty" />
+  </EntityType>
+  <EntityType Name="Vendor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="ContactPerson" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="Cell" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="City" Type="Int32" />
+    <Property Name="EcomID" Type="Int32" />
+    <NavigationProperty Name="City1" Relationship="ProTruckModel.FK_Vendor_Cities" FromRole="Vendor" ToRole="City" />
+    <NavigationProperty Name="ExanaduCompany" Relationship="ProTruckModel.FK_Vendor_ExanaduCompanies" FromRole="Vendor" ToRole="ExanaduCompany" />
+  </EntityType>
+  <Association Name="FK_AdressHistory_Party">
+    <End Type="ProTruckModel.Party" Role="Party" Multiplicity="0..1" />
+    <End Type="ProTruckModel.AdressHistory" Role="AdressHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Party">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AdressHistory">
+        <PropertyRef Name="Party" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BiltyToDos_Dorder">
+    <End Type="ProTruckModel.Dorder" Role="Dorder" Multiplicity="0..1" />
+    <End Type="ProTruckModel.BiltyToDo" Role="BiltyToDo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dorder">
+        <PropertyRef Name="DoNumber" />
+      </Principal>
+      <Dependent Role="BiltyToDo">
+        <PropertyRef Name="Donumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cities_ExanaduCompanies">
+    <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
+    <End Type="ProTruckModel.City" Role="City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompany">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contractor_Cities">
+    <End Type="ProTruckModel.City" Role="City" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Contractor" Role="Contractor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Contractor">
+        <PropertyRef Name="City" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dorder_Cities">
+    <End Type="ProTruckModel.City" Role="City" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Dorder" Role="Dorder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Dorder">
+        <PropertyRef Name="CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vendor_Cities">
+    <End Type="ProTruckModel.City" Role="City" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Vendor" Role="Vendor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Vendor">
+        <PropertyRef Name="City" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contract_ContractType">
+    <End Type="ProTruckModel.ContractType" Role="ContractType" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Contract" Role="Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ContractType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="ContractType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contract_ExanaduCompanies">
+    <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Contract" Role="Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompany">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contract_Party">
+    <End Type="ProTruckModel.Party" Role="Party" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Contract" Role="Contract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Party">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Contract">
+        <PropertyRef Name="Party" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contractor_ExanaduCompanies">
+    <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Contractor" Role="Contractor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompany">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Contractor">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vehicle_Contractor">
+    <End Type="ProTruckModel.Contractor" Role="Contractor" Multiplicity="0..1" />
+    <End Type="ProTruckModel.vehicle" Role="vehicle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contractor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="vehicle">
+        <PropertyRef Name="ContractorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContractType_ExanaduCompanies">
+    <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
+    <End Type="ProTruckModel.ContractType" Role="ContractType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompany">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContractType">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dorder_ContractType">
+    <End Type="ProTruckModel.ContractType" Role="ContractType" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Dorder" Role="Dorder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ContractType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Dorder">
+        <PropertyRef Name="ContractType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dorder_GoodsTypes">
+    <End Type="ProTruckModel.GoodsType" Role="GoodsType" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Dorder" Role="Dorder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GoodsType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Dorder">
+        <PropertyRef Name="GoodsType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dorder_Party">
+    <End Type="ProTruckModel.Party" Role="Party" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Dorder" Role="Dorder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Party">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Dorder">
+        <PropertyRef Name="Party" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Drivers_ExanaduCompanies">
+    <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Driver" Role="Driver" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompany">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Driver">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Drivers_vehicle">
+    <End Type="ProTruckModel.vehicle" Role="vehicle" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Driver" Role="Driver" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vehicle">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Driver">
+        <PropertyRef Name="Vehicle" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Expense_ExanaduCompanies">
+    <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Expense" Role="Expense" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompany">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Expense">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GoodsTypes_ExanaduCompanies">
+    <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
+    <End Type="ProTruckModel.GoodsType" Role="GoodsType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompany">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GoodsType">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Party_ExanaduCompanies">
+    <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Party" Role="Party" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompany">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Party">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Roles_ExanaduCompanies">
+    <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Role" Role="Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompany">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Role">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Settings_ExanaduCompanies">
+    <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Setting" Role="Setting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompany">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Setting">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_ExanaduCompanies">
+    <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="1" />
+    <End Type="ProTruckModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompany">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vendor_ExanaduCompanies">
+    <End Type="ProTruckModel.ExanaduCompany" Role="ExanaduCompany" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Vendor" Role="Vendor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ExanaduCompany">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Vendor">
+        <PropertyRef Name="EcomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LinkRoleMenus_Menus">
+    <End Type="ProTruckModel.Menu" Role="Menu" Multiplicity="0..1" />
+    <End Type="ProTruckModel.LinkRoleMenu" Role="LinkRoleMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menu">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LinkRoleMenu">
+        <PropertyRef Name="MenuID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LinkRoleMenus_Roles">
+    <End Type="ProTruckModel.Role" Role="Role" Multiplicity="0..1" />
+    <End Type="ProTruckModel.LinkRoleMenu" Role="LinkRoleMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LinkRoleMenu">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Menus_Modules">
+    <End Type="ProTruckModel.Module" Role="Module" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Menu" Role="Menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Module">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Menu">
+        <PropertyRef Name="ModuleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Roles">
+    <End Type="ProTruckModel.Role" Role="Role" Multiplicity="0..1" />
+    <End Type="ProTruckModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Bilty">
+    <Key>
+      <PropertyRef Name="BiltyNo" />
+    </Key>
+    <Property Name="BiltyNo" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VehicleId" Type="Int32" />
+    <Property Name="SenderParty" Type="Int32" />
+    <Property Name="PaymentCode" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="DriverId" Type="Int32" />
+    <Property Name="Weight" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="UnitId" Type="Int32" />
+    <Property Name="Rate" Type="Double" />
+    <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="PaidAmount" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="RemainingAmount" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Qty" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BiltyDate" Type="DateTime" Precision="0" />
+    <Property Name="CreateDate" Type="DateTime" Precision="0" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="PartyId" Type="Int32" />
+    <Property Name="Contractno" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="GoodTypeId" Type="Int32" />
+    <NavigationProperty Name="Driver" Relationship="ProTruckModel.FK_Bilty_Drivers" FromRole="Bilty" ToRole="Driver" />
+    <NavigationProperty Name="GoodsType" Relationship="ProTruckModel.FK_Bilty_GoodTypes" FromRole="Bilty" ToRole="GoodsType" />
+    <NavigationProperty Name="Party" Relationship="ProTruckModel.FK_Bilty_Party" FromRole="Bilty" ToRole="Party" />
+    <NavigationProperty Name="vehicle" Relationship="ProTruckModel.FK_Bilty_vehicle" FromRole="Bilty" ToRole="vehicle" />
+    <NavigationProperty Name="BiltyToDos" Relationship="ProTruckModel.FK_BiltyToDos_Bilty" FromRole="Bilty" ToRole="BiltyToDo" />
+  </EntityType>
+  <Association Name="FK_Bilty_Drivers">
+    <End Type="ProTruckModel.Driver" Role="Driver" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Bilty" Role="Bilty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Driver">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bilty">
+        <PropertyRef Name="DriverId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bilty_GoodTypes">
+    <End Type="ProTruckModel.GoodsType" Role="GoodsType" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Bilty" Role="Bilty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GoodsType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bilty">
+        <PropertyRef Name="GoodTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bilty_Party">
+    <End Type="ProTruckModel.Party" Role="Party" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Bilty" Role="Bilty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Party">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bilty">
+        <PropertyRef Name="PartyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bilty_vehicle">
+    <End Type="ProTruckModel.vehicle" Role="vehicle" Multiplicity="0..1" />
+    <End Type="ProTruckModel.Bilty" Role="Bilty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vehicle">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Bilty">
+        <PropertyRef Name="VehicleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BiltyToDos_Bilty">
+    <End Type="ProTruckModel.Bilty" Role="Bilty" Multiplicity="0..1" />
+    <End Type="ProTruckModel.BiltyToDo" Role="BiltyToDo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bilty">
+        <PropertyRef Name="BiltyNo" />
+      </Principal>
+      <Dependent Role="BiltyToDo">
+        <PropertyRef Name="Biltyno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

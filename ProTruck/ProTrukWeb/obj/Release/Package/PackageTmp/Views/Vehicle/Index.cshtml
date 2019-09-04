@@ -1,0 +1,350 @@
+﻿
+@{
+    ViewBag.Title = "Vehicle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render("~/Content/datatable")
+
+<script>
+
+    app.controller('VechicleCtrl', ['$scope', 'svc', '$http', function ($scope, svc, $http) {
+
+        $scope.vehicles = [];
+        $scope.vehicle = {};
+        $scope.msg = "";
+        $scope.selectlist = [];
+        $scope.selectlistContarctors = [];
+        $scope.selectlistvtype = [];
+        $scope.selectlistvstatus = [];
+
+        $scope.getVehicles = function () {
+
+            $http.get('/Vehicle/GetallVehicles').then(
+
+                function (successResponse) {
+
+                    //this.notes = JSON.parse(successResponse);
+
+                    $scope.vehicles = successResponse.data;
+                },
+                function (errorResponse) {
+                    alert(errorResponse);
+                    // handle errors here
+                });
+        };
+
+
+        $scope.getUnits = function () {
+
+            $http.get('/Vehicle/getUnits').then(
+
+                function (successResponse) {
+
+                    //this.notes = JSON.parse(successResponse);
+                    //alert(successResponse.);
+                    $scope.selectlist = successResponse.data;
+                },
+                function (errorResponse) {
+                    alert(errorResponse);
+                    // handle errors here
+                });
+        };
+
+        $scope.getVehicleTypes = function () {
+
+            $http.get('/Vehicle/getallVehicleType').then(
+
+                function (successResponse) {
+
+                    //this.notes = JSON.parse(successResponse);
+                    //alert(successResponse.);
+                    $scope.selectlistvtype = successResponse.data;
+                },
+                function (errorResponse) {
+                    alert(errorResponse);
+                    // handle errors here
+                });
+        };
+
+
+        $scope.getContractors = function () {
+
+            $http.get('/Contractor/GetallSelectListContractors').then(
+
+                function (successResponse) {
+
+                    //this.notes = JSON.parse(successResponse);
+                    //alert(successResponse.);
+                    $scope.selectlistContarctors = successResponse.data;
+                },
+                function (errorResponse) {
+                    alert(errorResponse);
+                    // handle errors here
+                });
+        };
+
+
+        
+
+        $scope.getVehicleStatus = function () {
+
+            $http.get('/Vehicle/getallVehicleStatus').then(
+
+                function (successResponse) {
+
+                    //this.notes = JSON.parse(successResponse);
+                    //alert(successResponse.);
+                    $scope.selectlistvstatus = successResponse.data;
+                },
+                function (errorResponse) {
+                    alert(errorResponse);
+                    // handle errors here
+                });
+        };
+
+        $scope.DeleteVehicle = function (vehicle) {
+            if (confirm("Do you want to delete!")) {
+                $http({
+                    method: "post",
+                    url: "/Vehicle/RemoveVehicle",
+                    datatype: "json",
+                    data: JSON.stringify(vehicle)
+                }).then(function (response) {
+                    $scope.getVehicles();
+                    if (response.data.IsError == false) {
+                        svc.notifymsg(false);
+                        // util.notifymsg(false);
+
+                    }
+                    else {
+                        svc.notifymsgcus(true, response.data.Message);
+
+                    }
+                })
+            }
+        };
+
+        $scope.changeStatus = function () {
+            alert("call");
+
+        };
+
+        $scope.addVehicle = function () {
+            if (!$scope.vehicle.Unit || !$scope.vehicle.Unit ) {
+
+                $scope.msg = "Please select unit!";
+                return;
+            }
+
+            if (!$scope.vehicle.Status || !$scope.vehicle.Status) {
+
+                $scope.msg = "Please select status!";
+                return;
+            }
+            if (!$scope.vehicle.Type || !$scope.vehicle.Type) {
+
+                $scope.msg = "Please select vehicle Type!";
+                return;
+            }
+
+
+            if ($scope.vehicle.IsContractorVehicle) {
+                if (!$scope.vehicle.ContractorId) {
+
+                    $scope.msg = "Please select Contractor!";
+                    return;
+                }
+
+            }
+
+
+            $http.post('/Vehicle/AddVehicle', $scope.vehicle).then(
+                function (successResponse) {
+                    if (successResponse.data.IsError == true) {
+                        $scope.msg = successResponse.data.Message;
+
+                    }
+                    else {
+                        $('.modal').modal('close');;
+                        svc.notifymsg(false);
+                        // util.notifymsg(false);
+                      
+                        $scope.getVehicles();
+
+                    }
+
+
+                    console.log(successResponse.data.IsError);
+                },
+                function (errorResponse) {
+                    // handle errors here
+                });
+        };
+    }]);
+
+    $(document).ready(function () {
+        // Handler for .ready() called.
+        //alert("ready");
+        var scope = angular.element(document.getElementById("MainContent")).scope();
+        scope.$apply(function () {
+          scope.getVehicles();
+          scope.getUnits();
+          scope.getVehicleTypes();
+          scope.getVehicleStatus(); 
+          scope.getContractors();
+
+        });
+    });
+</script>
+<div id="MainContent" ng-controller="VechicleCtrl">
+    <div class="row">
+        <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
+        <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper"></div>
+        <div class="col s12">
+            <div class="container">
+                <div class="section section-data-tables">
+                    <!-- Page Length Options -->
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <h4 class="card-title left">Vehicle</h4>
+                                    <a class="right waves-effect waves-light btn btn-small modal-trigger" href="#modal1">Add Vihecle <i class="material-icons right">add</i></a>
+                                    <div id="modal1" class="modal">
+                                        <form ng-submit="addVehicle()" id="frm" name="frm" class="col s12">
+                                            <div class="modal-content">
+                                                <!-- Form Advance -->
+                                                <div class="col s12 m12 l12">
+
+                                                    <div class="row">
+                                                        <div class="input-field col m6 s12">
+                                                            <input id="first_name01" ng-model="vehicle.RegNumber" required type="text">
+                                                            <label for="first_name01">Registration Number</label>
+                                                        </div>
+                                                        <div class="input-field col m6 s12">
+                                                            <input id="last_name" ng-model="vehicle.Model" type="text">
+                                                            <label for="last_name">Model</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="input-field col m6 s12">
+                                                            <input id="capacity" ng-model="vehicle.Capacity" onkeypress="return event.charCode >= 48 && event.charCode <= 57"  required type="text">
+                                                            <label for="capacity">Capacity(In Weight)</label>
+                                                        </div>
+                                                        <div class="input-field col m6 s12">
+                                                            <label>Unit</label>
+                                                            <select ng-model="vehicle.Unit" class="browser-default">
+                                                                <option ng-repeat="x in selectlist" value="{{x.Value}}">{{x.Text}}</option>
+
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="input-field col m6 s12">
+                                                            <input id="manufacturer" ng-model="vehicle.Manufacturer" type="text">
+                                                            <label for="manufacturer">Manufacturer</label>
+                                                        </div>
+                                                        <div class="input-field col m6 s12">
+                                                            <label>Type</label>
+                                                            <select ng-model="vehicle.Type" class="browser-default">
+                                                                <option ng-repeat="x in selectlistvtype" value="{{x.Value}}">{{x.Text}}</option>
+
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="input-field col m6 s12">
+                                                            <p>
+                                                                <label>
+                                                                    <input ng-model="vehicle.IsContractorVehicle" type="checkbox" class="filled-in" />
+                                                                    <span>Contractor's Vehicle</span>
+                                                                </label>
+                                                            </p>
+                                                        </div>
+                                                        <div class="input-field col m6 s12" ng-show='vehicle.IsContractorVehicle'>
+                                                            <label>Contractors</label>
+                                                            <select ng-model="vehicle.ContractorId" class="browser-default">
+                                                                <option ng-repeat="x in selectlistContarctors" value="{{x.Value}}">{{x.Text}}</option>
+
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="input-field col s12">
+                                                            <label>Status</label>
+                                                            <select ng-model="vehicle.Status" class="browser-default">
+                                                                <option ng-repeat="x in selectlistvstatus" value="{{x.Value}}">{{x.Text}}</option>
+
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <!-- Form End -->
+                                            </div>
+                                            <div class="modal-footer">
+                                                <div class="input-field col s12">
+                                                    <span style="float:left;color:red;font-size:medium" id="messages" ng-bind="msg"></span>
+                                                    <a href="#!" class="modal-action modal-close waves-effect waves-purple btn-flat ">Cancel</a>
+                                                    <input type="submit" class="modal-action  waves-purple btn" value="Add" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <table id="data-table-simple" class="display nowrap striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Registration Number</th>
+                                                        <th>Model</th>
+                                                        <th>Capacity</th>
+                                                        <th>Manufacturer</th>
+                                                        <th>Contractor</th>
+                                                        <th>Vehicle Type</th>
+                                                        <th>Vehicle Status</th>
+                                                        
+                                                        
+                                                       
+                                                        <th>Created On</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr  ng-repeat="vehicle in vehicles">
+                                                        <td>{{vehicle.Id}}</td>
+                                                        <td>{{vehicle.RegNumber}}</td>
+                                                        <td>{{vehicle.Model}}</td>
+                                                        <td>{{vehicle.Capacity}}</td>
+                                                        <td>{{vehicle.Manufacturer}}</td>
+                                                        <td>{{vehicle.ContractorName}}</td>
+                                                        <td>{{vehicle.TypeName}}</td>
+                                                        <td>{{vehicle.StatusName}}</td>
+                                                        <td>{{vehicle.CreatedOn.slice(6, -2) | date : 'dd MMMM yyyy'}}</td>
+                                                        <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating" ng-click="DeleteVehicle(vehicle)"><i class="material-icons">delete</i></a></td>
+                                                    </tr>
+                                                </tbody>
+                                                </table>
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+        $('.modal').modal();
+    });
+</script>

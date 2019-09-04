@@ -1588,6 +1588,7 @@
     <Content Include="Reports\BiltyDs.xsc">
       <DependentUpon>BiltyDs.xsd</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Reports\BiltyDs.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>

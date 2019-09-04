@@ -1,0 +1,177 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<!--
+<div id="MainWrap" ng-app="app" ng-controller="HomeCtrl">
+
+    <h2>Get Employees</h2>
+    <a href="" ng-click="getEmployees()">Get Employees</a>
+    <div ng-repeat="user in users">
+        <p>Id: {{user.Id}}</p>
+        <p>First Name: {{user.FullName}}</p>
+        <p>Last Name: {{user.FullName}}</p>
+    </div>
+
+
+</div>
+-->
+
+
+@Styles.Render("~/Content/datatable")
+
+
+
+<script>
+
+    app.controller('HomeCtrl', ['$scope', 'svc', '$http', function ($scope, svc, $http) {
+
+        $scope.users = [];
+        $scope.user = {};
+
+
+
+        $scope.getEmployees = function () {
+
+            $http.get('/Account/GetAllUsers').then(
+                function (successResponse) {
+                    // alert(successResponse.data[0].AccountStatus);
+                    $scope.users = successResponse.data;
+                },
+                function (errorResponse) {
+                    alert(errorResponse);
+                    // handle errors here
+                });
+        };
+
+        $scope.DeleteUser = function (user) {
+            if (confirm("Do you want to delete!")) {
+                $http({
+                    method: "post",
+                    url: "/Account/RemoveUser",
+                    datatype: "json",
+                    data: JSON.stringify(user)
+                }).then(function (response) {
+                    if (response.data == true) {
+                        svc.notifymsg(false);
+                        // util.notifymsg(false);
+                        $scope.getEmployees();
+                    }
+                    else {
+                        svc.notifymsg(true);
+
+                    }
+                })
+            }
+        };
+
+        $scope.changeStatus = function () {
+            alert("call");
+
+        };
+
+        $scope.addEmployee = function () {
+            $http.post('/Home/AddEmployee', $scope.newEmployee).then(
+                function (successResponse) {
+                    console.log('success');
+                },
+                function (errorResponse) {
+                    // handle errors here
+                });
+        };
+    }]);
+
+    $(document).ready(function () {
+        // Handler for .ready() called.
+        //alert("ready");
+        var scope = angular.element(document.getElementById("ContentMain")).scope();
+        scope.$apply(function () {
+            scope.getEmployees();
+        });
+    });
+</script>
+
+<div>
+    <div class="row" id="ContentMain" ng-controller="HomeCtrl">
+        <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
+        <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper"></div>
+        <div class="col s12">
+            <div class="container">
+                <div class="section section-data-tables">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <h4 class="card-title left">User's</h4>
+
+                                    <a class="right waves-effect waves-light btn btn-small modal-trigger" href="/Account/Adduser">Add User <i class="material-icons right">add</i></a>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <table id="data-table-simple" class="display nowrap striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>User</th>
+                                                        <th>ID</th>
+                                                        <th>Full Name</th>
+                                                        <th>Email</th>
+                                                        <th>Phone</th>
+                                                        <th>Account Status</th>
+                                                        <th>Role</th>
+                                                        <th>Created On</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="user in users" id="{{user.Id}}">
+                                                        <td class="width-10"><img src="{{user.Picture}}" class="width-30 circle" alt="avatar"></td>
+                                                        <td>{{user.Id}}</td>
+                                                        <td>{{user.FullName.trim()}}</td>
+                                                        <td>{{user.Email.trim()}}</td>
+                                                        <td>{{user.AccountStatus}}</td>
+                                                        <td>
+                                                            <div class="switch center">
+                                                                <label>
+                                                                    <input type="checkbox" ng-bind="user.AccountStatus" ng-model="chk" ng-true-value="{{ 1 | json }}" ng-false-value="{{ 0 | json }}">
+                                                                    <span class="lever"></span>
+                                                                </label>
+                                                            </div>
+                                                        </td>
+                                                        <td>{{user.Role.trim()}}</td>
+                                                        <td>{{user.CreatedOn}}</td>
+                                                        <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <button class="btn-floating" ng-click="DeleteUser(user)"><i class="material-icons">delete</i></button> </td>
+                                                    </tr>
+
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>User</th>
+                                                        <th>ID</th>
+                                                        <th>Full Name</th>
+                                                        <th>Email</th>
+                                                        <th>Phone</th>
+                                                        <th>Account Status</th>
+                                                        <th>Role</th>
+                                                        <th>Created On</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+

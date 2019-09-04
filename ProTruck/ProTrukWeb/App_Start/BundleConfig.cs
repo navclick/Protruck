@@ -8,6 +8,7 @@ namespace ProTrukWeb
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.IgnoreList.Clear();
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Content/js/jquery-1.8.3.min.js",
                        

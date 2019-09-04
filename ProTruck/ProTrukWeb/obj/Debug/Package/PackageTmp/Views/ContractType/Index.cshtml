@@ -1,0 +1,190 @@
+﻿
+@{
+    ViewBag.Title = "Contract Type";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@Styles.Render("~/Content/datatable")
+
+<script>
+
+    app.controller('ContractTypeCtrl', ['$scope', 'svc', '$http', function ($scope, svc, $http) {
+
+
+        $scope.contracttypes = [];
+        $scope.contracttype = {};
+        $scope.msg = "";
+
+
+        $scope.getContractTypes = function () {
+
+            $http.get('/ContractType/GetallContractTrypes').then(
+
+                function (successResponse) {
+
+                    //this.notes = JSON.parse(successResponse);
+
+                    $scope.contracttypes = successResponse.data;
+                },
+                function (errorResponse) {
+                    alert(errorResponse);
+                    // handle errors here
+                });
+        };
+
+
+
+
+
+
+
+
+        $scope.DeleteContractType = function (contracttype) {
+            if (confirm("Do you want to delete!")) {
+                $http({
+                    method: "post",
+                    url: "/ContractType/RemoveContractType",
+                    datatype: "json",
+                    data: JSON.stringify(contracttype)
+                }).then(function (response) {
+                    $scope.getContractTypes();
+                    if (response.data.IsError == false) {
+                        svc.notifymsg(false);
+                        // util.notifymsg(false);
+
+                    }
+                    else {
+                        svc.notifymsgcus(true, response.data.Message);
+
+                    }
+                })
+            }
+        };
+
+        $scope.addContractType = function () {
+
+
+
+
+
+            $http.post('/ContractType/AddContractType', $scope.contracttype).then(
+                function (successResponse) {
+                    if (successResponse.data.IsError == true) {
+                        $scope.msg = successResponse.data.Message;
+
+                    }
+                    else {
+                        $('.modal').modal('close');;
+                        svc.notifymsg(false);
+                        // util.notifymsg(false);
+
+                        $scope.getContractTypes();
+
+                    }
+
+
+                    console.log(successResponse.data.IsError);
+                },
+                function (errorResponse) {
+                    // handle errors here
+                });
+        };
+    }]);
+
+    $(document).ready(function () {
+        // Handler for .ready() called.
+        //alert("ready");
+        var scope = angular.element(document.getElementById("ContentMain")).scope();
+        scope.$apply(function () {
+            scope.getContractTypes();
+           
+        });
+    });
+</script>
+<div id="ContentMain" ng-controller="ContractTypeCtrl">
+    <div class="row">
+        <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
+        <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper"></div>
+        <div class="col s12">
+            <div class="container">
+                <div class="section section-data-tables">
+                    <!-- Page Length Options -->
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <h4 class="card-title left">Vehicle</h4>
+                                    <a class="right waves-effect waves-light btn btn-small modal-trigger" href="#modal1">Add <i class="material-icons right">add</i></a>
+                                    <div id="modal1" class="modal">
+                                        <form ng-submit="addContractType()" id="frm" name="frm" class="col s12">
+                                            <div class="modal-content">
+                                                <!-- Form Advance -->
+                                                <div class="col s12 m12 l12">
+
+                                                    <div class="row">
+                                                        <div class="input-field col m6 s12">
+                                                            <input id="first_name01" ng-model="contracttype.Type" required type="text">
+                                                            <label for="first_name01">Type</label>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    
+
+
+
+                                                </div>
+                                                <!-- Form End -->
+                                            </div>
+                                            <div class="modal-footer">
+                                                <div class="input-field col s12">
+                                                    <span style="float:left;color:red;font-size:medium" id="messages" ng-bind="msg"></span>
+                                                    <a href="#!" class="modal-action modal-close waves-effect waves-purple btn-flat ">Cancel</a>
+                                                    <input type="submit" class="modal-action  waves-purple btn" value="Add" />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <table id="data-table-simple" class="display nowrap striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Contract Type</th>
+                                                        <th>CreatedOn</th>
+                                                       
+
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="contracttype in contracttypes">
+                                                        <td>{{contracttype.Id}}</td>
+                                                        <td>{{contracttype.Type}}</td>
+                                                       
+                                                        <td>{{contracttype.CreatedOn.slice(6, -2) | date : 'dd MMMM yyyy'}}</td>
+
+                                                        <td class="center"><a class="btn-floating"><i class="material-icons">edit</i></a>  <a class="btn-floating" ng-click="DeleteContractType(contracttype)"><i class="material-icons">delete</i></a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+        $('.modal').modal();
+    });
+</script>
+

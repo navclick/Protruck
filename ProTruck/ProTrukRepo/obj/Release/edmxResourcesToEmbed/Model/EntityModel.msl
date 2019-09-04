@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProTruckModelStoreContainer" CdmEntityContainer="ProTruckEntities">
+    <EntitySetMapping Name="C__RefactorLog">
+      <EntityTypeMapping TypeName="ProTruckModel.C__RefactorLog">
+        <MappingFragment StoreEntitySet="__RefactorLog">
+          <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdressHistories">
+      <EntityTypeMapping TypeName="ProTruckModel.AdressHistory">
+        <MappingFragment StoreEntitySet="AdressHistory">
+          <ScalarProperty Name="UrduAddress" ColumnName="UrduAddress" />
+          <ScalarProperty Name="EnglisgAddress" ColumnName="EnglisgAddress" />
+          <ScalarProperty Name="Party" ColumnName="Party" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Banks">
+      <EntityTypeMapping TypeName="ProTruckModel.Bank">
+        <MappingFragment StoreEntitySet="Bank">
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Branch" ColumnName="Branch" />
+          <ScalarProperty Name="Bank1" ColumnName="Bank" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BiltyToDos">
+      <EntityTypeMapping TypeName="ProTruckModel.BiltyToDo">
+        <MappingFragment StoreEntitySet="BiltyToDos">
+          <ScalarProperty Name="Donumber" ColumnName="Donumber" />
+          <ScalarProperty Name="Biltyno" ColumnName="Biltyno" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="ProTruckModel.City">
+        <MappingFragment StoreEntitySet="Cities">
+          <ScalarProperty Name="EcomID" ColumnName="EcomID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="City1" ColumnName="City" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contracts">
+      <EntityTypeMapping TypeName="ProTruckModel.Contract">
+        <MappingFragment StoreEntitySet="Contract">
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="EcomID" ColumnName="EcomID" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="TotatQty" ColumnName="TotatQty" />
+          <ScalarProperty Name="Party" ColumnName="Party" />
+          <ScalarProperty Name="ContractType" ColumnName="ContractType" />
+          <ScalarProperty Name="ContractNo" ColumnName="ContractNo" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contractors">
+      <EntityTypeMapping TypeName="ProTruckModel.Contractor">
+        <MappingFragment StoreEntitySet="Contractor">
+          <ScalarProperty Name="EcomID" ColumnName="EcomID" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Cell" ColumnName="Cell" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContractTypes">
+      <EntityTypeMapping TypeName="ProTruckModel.ContractType">
+        <MappingFragment StoreEntitySet="ContractType">
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="EcomID" ColumnName="EcomID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dorders">
+      <EntityTypeMapping TypeName="ProTruckModel.Dorder">
+        <MappingFragment StoreEntitySet="Dorder">
+          <ScalarProperty Name="EcomID" ColumnName="EcomID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="DoDate" ColumnName="DoDate" />
+          <ScalarProperty Name="Attached" ColumnName="Attached" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Party" ColumnName="Party" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="AddressUrd" ColumnName="AddressUrd" />
+          <ScalarProperty Name="AddressEng" ColumnName="AddressEng" />
+          <ScalarProperty Name="GoodsType" ColumnName="GoodsType" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="ContractType" ColumnName="ContractType" />
+          <ScalarProperty Name="ContractNumber" ColumnName="ContractNumber" />
+          <ScalarProperty Name="DoNumber" ColumnName="DoNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Drivers">
+      <EntityTypeMapping TypeName="ProTruckModel.Driver">
+        <MappingFragment StoreEntitySet="Drivers">
+          <ScalarProperty Name="EcomID" ColumnName="EcomID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Vehicle" ColumnName="Vehicle" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExanaduCompanies">
+      <EntityTypeMapping TypeName="ProTruckModel.ExanaduCompany">
+        <MappingFragment StoreEntitySet="ExanaduCompanies">
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="ClientAddress" ColumnName="ClientAddress" />
+          <ScalarProperty Name="ClientContactNumber" ColumnName="ClientContactNumber" />
+          <ScalarProperty Name="ClientContactPeson" ColumnName="ClientContactPeson" />
+          <ScalarProperty Name="ClientEmail" ColumnName="ClientEmail" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Expenses">
+      <EntityTypeMapping TypeName="ProTruckModel.Expense">
+        <MappingFragment StoreEntitySet="Expense">
+          <ScalarProperty Name="EcomID" ColumnName="EcomID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Expense1" ColumnName="Expense" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GoodsTypes">
+      <EntityTypeMapping TypeName="ProTruckModel.GoodsType">
+        <MappingFragment StoreEntitySet="GoodsTypes">
+          <ScalarProperty Name="EcomID" ColumnName="EcomID" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Goods" ColumnName="Goods" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LinkRoleMenus">
+      <EntityTypeMapping TypeName="ProTruckModel.LinkRoleMenu">
+        <MappingFragment StoreEntitySet="LinkRoleMenus">
+          <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Menus">
+      <EntityTypeMapping TypeName="ProTruckModel.Menu">
+        <MappingFragment StoreEntitySet="Menus">
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="Action" ColumnName="Action" />
+          <ScalarProperty Name="Controller" ColumnName="Controller" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Modules">
+      <EntityTypeMapping TypeName="ProTruckModel.Module">
+        <MappingFragment StoreEntitySet="Modules">
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Action" ColumnName="Action" />
+          <ScalarProperty Name="Controller" ColumnName="Controller" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parties">
+      <EntityTypeMapping TypeName="ProTruckModel.Party">
+        <MappingFragment StoreEntitySet="Party">
+          <ScalarProperty Name="EcomID" ColumnName="EcomID" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="IsSubParty" ColumnName="IsSubParty" />
+          <ScalarProperty Name="SenderOrReceiver" ColumnName="SenderOrReceiver" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="ConectPerson" ColumnName="ConectPerson" />
+          <ScalarProperty Name="Party1" ColumnName="Party" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="ProTruckModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="EcomID" ColumnName="EcomID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="Role1" ColumnName="Role" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Settings">
+      <EntityTypeMapping TypeName="ProTruckModel.Setting">
+        <MappingFragment StoreEntitySet="Settings">
+          <ScalarProperty Name="LastConractNumber" ColumnName="LastConractNumber" />
+          <ScalarProperty Name="EcomID" ColumnName="EcomID" />
+          <ScalarProperty Name="PackPerWeight" ColumnName="PackPerWeight" />
+          <ScalarProperty Name="LastDoNumber" ColumnName="LastDoNumber" />
+          <ScalarProperty Name="DoAutoincrement" ColumnName="DoAutoincrement" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="ProTruckModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+          <ScalarProperty Name="EcomID" ColumnName="EcomID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="AccountStatus" ColumnName="AccountStatus" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="EmailVeringCode" ColumnName="EmailVeringCode" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vehicles">
+      <EntityTypeMapping TypeName="ProTruckModel.vehicle">
+        <MappingFragment StoreEntitySet="vehicle">
+          <ScalarProperty Name="ContractorId" ColumnName="ContractorId" />
+          <ScalarProperty Name="IsContractorVehicle" ColumnName="IsContractorVehicle" />
+          <ScalarProperty Name="EcomID" ColumnName="EcomID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="RegNumber" ColumnName="RegNumber" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vendors">
+      <EntityTypeMapping TypeName="ProTruckModel.Vendor">
+        <MappingFragment StoreEntitySet="Vendor">
+          <ScalarProperty Name="EcomID" ColumnName="EcomID" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Cell" ColumnName="Cell" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bilties">
+      <EntityTypeMapping TypeName="ProTruckModel.Bilty">
+        <MappingFragment StoreEntitySet="Bilty">
+          <ScalarProperty Name="GoodTypeId" ColumnName="GoodTypeId" />
+          <ScalarProperty Name="Contractno" ColumnName="Contractno" />
+          <ScalarProperty Name="PartyId" ColumnName="PartyId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="BiltyDate" ColumnName="BiltyDate" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="RemainingAmount" ColumnName="RemainingAmount" />
+          <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="DriverId" ColumnName="DriverId" />
+          <ScalarProperty Name="PaymentCode" ColumnName="PaymentCode" />
+          <ScalarProperty Name="SenderParty" ColumnName="SenderParty" />
+          <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+          <ScalarProperty Name="BiltyNo" ColumnName="BiltyNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
