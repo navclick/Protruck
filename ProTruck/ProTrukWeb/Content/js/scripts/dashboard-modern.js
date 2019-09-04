@@ -3,11 +3,11 @@
 
 (function (window, document, $) {
     // //Sample toast
-    setTimeout(function () {
-        M.toast({ html: "Hey! I am a toast." });
-    }, 2000);
+    //setTimeout(function () {
+    //    M.toast({ html: "Hey! I am a toast." });
+    //}, 2000);
 
-    // Donut chart
+    // Donut chart ---- Revenue
     // -----------
     var CurrentBalanceDonutChart = new Chartist.Pie(
         "#current-balance-donut-chart",
@@ -24,7 +24,32 @@
                 Chartist.plugins.fillDonut({
                     items: [
                         {
-                            content: '<p class="small">Balance</p><h5 class="mt-0 mb-0">$ 10k</h5>'
+                            content: '<p class="small">This</p><h5 class="mt-0 mb-0">Year</h5>'
+                        }
+                    ]
+                })
+            ]
+        }
+    )
+
+    // Donut chart -----   outstanding payments
+    // -----------
+    var CurrentBalanceDonutChart1 = new Chartist.Pie(
+        "#current-balance-donut-chart1",
+        {
+            labels: [1, 2],
+            series: [{ meta: "Completed", value: 60 }, { meta: "Remaining", value: 40 }]
+        },
+        {
+            donut: true,
+            donutWidth: 8,
+            showLabel: false,
+            plugins: [
+                Chartist.plugins.tooltip({ class: "current-balance-tooltip", appendToBody: true }),
+                Chartist.plugins.fillDonut({
+                    items: [
+                        {
+                            content: '<p class="small">From</p><h5 class="mt-0 mb-0">10 Parties</h5>'
                         }
                     ]
                 })
@@ -118,8 +143,8 @@
     var UserStatisticsBarChart = new Chartist.Bar(
         "#user-statistics-bar-chart",
         {
-            labels: ["B1", "B2", "B3", "B4", "B5", "B6"],
-            series: [[4000, 8000, 12000, 14000, 12000, 18000], [5000, 10000, 13000, 12000, 11000, 15000]]
+            labels: ["3000 / 8000\nLucky\nCement", "5400 / 6000\nAA\nAssociate", "8000 / 9000\nDewan\nCement", "8000 / 9000\nAttock\nCement", "8000 / 9000\nTashal\nEnterprises", "15000 / 19000\nLucky &\nAdvani"],
+            series: [[3000, 5400, 8000, 8000, 8000, 15000], [8000, 6000, 9000, 9000, 9000, 19000]]
         },
         {
             // Default mobile configuration
@@ -143,7 +168,7 @@
                 "screen and (min-width: 800px)",
                 {
                     stackBars: false,
-                    seriesBarDistance: 10
+                    seriesBarDistance: 0
                 }
             ],
             // Options override for media > 1000px
