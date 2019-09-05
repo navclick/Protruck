@@ -11183,11 +11183,12 @@ tr.group:hover
 }
 .jugnu-icon {
     width: 50px;
-    height:58px;
-    background: url('../../../images/Jugnu-OFF.png') no-repeat;
+    height: 58px;
+    background: url('../../../images/Jugnu-ON.png') no-repeat;
     margin-left: 10px;
     margin-top: 10px;
-    background-size:contain;
+    background-size: contain;
+    display: inline-block;
 }
 .jugnu-container:hover .jugnu-icon {
     width: 50px;
@@ -11196,4 +11197,11 @@ tr.group:hover
     margin-left: 10px;
     margin-top: 10px;
     background-size: contain;
+}
+.jugnu-logo {
+    width: 100px;
+    height: 58px;
+    background: url('../../../images/Jugnu-Logo-Only.png') no-repeat;
+    background-size: contain;
+    display:inline-block;
 }
