@@ -11181,3 +11181,19 @@ tr.group:hover
 #selosCC > option {
     display:inline-block;
 }
+.jugnu-icon {
+    width: 50px;
+    height:58px;
+    background: url('../../../images/Jugnu-OFF.png') no-repeat;
+    margin-left: 10px;
+    margin-top: 10px;
+    background-size:contain;
+}
+.jugnu-container:hover .jugnu-icon {
+    width: 50px;
+    height: 58px;
+    background: url('../../../images/Jugnu-Animation.gif') no-repeat;
+    margin-left: 10px;
+    margin-top: 10px;
+    background-size: contain;
+}
