@@ -7,7 +7,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <_NewBackgroundProfile>False</_NewBackgroundProfile>
-    <_PublishTargetUrl>C:\Inetpub\wwwroot\protruk</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Users\ASAD\Desktop\protruk</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="ApplicationInsights.config">
@@ -371,7 +371,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/24/2019 15:42:29</publishTime>
     </File>
     <File Include="Content/css/pages/dashboard-modern.css">
-      <publishTime>06/24/2019 15:42:29</publishTime>
+      <publishTime>09/05/2019 02:29:33</publishTime>
     </File>
     <File Include="Content/css/pages/dashboard-modern.min.css">
       <publishTime>06/24/2019 15:42:29</publishTime>
@@ -602,7 +602,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/24/2019 15:46:45</publishTime>
     </File>
     <File Include="Content/css/themes/vertical-modern-menu-template/style.css">
-      <publishTime>08/29/2019 15:06:14</publishTime>
+      <publishTime>09/05/2019 16:59:53</publishTime>
     </File>
     <File Include="Content/css/themes/vertical-modern-menu-template/style.min.css">
       <publishTime>06/24/2019 15:46:45</publishTime>
@@ -899,22 +899,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/05/2019 19:17:46</publishTime>
     </File>
     <File Include="Content/images/favicon/apple-touch-icon-152x152.png">
-      <publishTime>07/25/2018 12:29:08</publishTime>
+      <publishTime>09/05/2019 16:59:53</publishTime>
     </File>
     <File Include="Content/images/favicon/favicon-32x32.png">
-      <publishTime>07/25/2018 12:29:08</publishTime>
+      <publishTime>09/05/2019 16:59:53</publishTime>
     </File>
     <File Include="Content/images/favicon/mstile-144x144.png">
-      <publishTime>07/25/2018 12:29:08</publishTime>
+      <publishTime>09/05/2019 16:59:53</publishTime>
     </File>
     <File Include="Content/images/favicon/Oapple-touch-icon-152x152.png">
-      <publishTime>07/25/2018 12:29:08</publishTime>
+      <publishTime>09/05/2019 16:59:53</publishTime>
     </File>
     <File Include="Content/images/favicon/Ofavicon-32x32.png">
-      <publishTime>07/25/2018 12:29:08</publishTime>
+      <publishTime>09/05/2019 16:59:53</publishTime>
     </File>
     <File Include="Content/images/favicon/Omstile-144x144.png">
-      <publishTime>07/25/2018 12:29:08</publishTime>
+      <publishTime>09/05/2019 16:59:53</publishTime>
     </File>
     <File Include="Content/images/gallery/1.png">
       <publishTime>02/05/2019 19:17:46</publishTime>
@@ -1427,7 +1427,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/19/2019 12:29:28</publishTime>
     </File>
     <File Include="Content/js/scripts/dashboard-modern.js">
-      <publishTime>07/24/2019 16:34:25</publishTime>
+      <publishTime>09/05/2019 02:29:33</publishTime>
     </File>
     <File Include="Content/js/scripts/dashboard-modern.min.js">
       <publishTime>02/19/2019 12:29:28</publishTime>
@@ -4394,7 +4394,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/19/2019 20:35:02</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
-      <publishTime>07/24/2019 16:34:25</publishTime>
+      <publishTime>09/05/2019 16:59:53</publishTime>
     </File>
     <File Include="Views/Bank/Index.cshtml">
       <publishTime>07/19/2019 20:35:02</publishTime>
@@ -4442,10 +4442,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/20/2019 17:34:14</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>07/24/2019 16:34:26</publishTime>
+      <publishTime>09/05/2019 17:35:18</publishTime>
     </File>
     <File Include="Views/Parties/Index.cshtml">
-      <publishTime>08/09/2019 18:27:52</publishTime>
+      <publishTime>09/05/2019 17:12:48</publishTime>
     </File>
     <File Include="Views/Reports/Bilty.cshtml">
       <publishTime>08/29/2019 16:52:18</publishTime>
